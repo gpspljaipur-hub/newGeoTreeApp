@@ -70,7 +70,7 @@ const AppOpeningScreen = () => {
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
-                    source={Images.global}
+                    source={Images.globe}
                     style={styles.cardIcon}
                     resizeMode="contain"
                   />
