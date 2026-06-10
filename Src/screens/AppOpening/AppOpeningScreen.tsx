@@ -11,6 +11,9 @@ import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Images from '../../constants/images';
 import String from '../../comman/String';
+import Loader_button from '../../comman/Loader_button';
+import LinearGradient from 'react-native-linear-gradient';
+import GradientText from '../../comman/GradientText';
 
 const Logo = () => {
   return (
@@ -40,13 +43,24 @@ const AppOpeningScreen = () => {
           <View style={styles.titleContainer}>
             <Text style={styles.titleDark}>{String.AppOpening_PlantTitle}</Text>
             <Text style={styles.titleDark}>{String.AppOpening_TrackTitle}</Text>
-            <Text style={styles.titleGreen}>{String.AppOpening_ImpactTitle}</Text>
+            <GradientText
+              colors={['#217545', '#9eb657', '#2a978a']}
+              style={styles.titleGreen}
+            >
+              {String.AppOpening_ImpactTitle}
+            </GradientText>
           </View>
           <View style={styles.subtitleContainer}>
             <Text style={styles.subtitleText}>
               {String.AppOpening_Subtitle1}{'\n'}
               {String.AppOpening_Subtitle2}{'\n'}
-              {String.AppOpening_Subtitle3}<Text style={styles.subtitleLegacy}>{String.AppOpening_SubtitleLegacy}</Text>.
+              {String.AppOpening_Subtitle3}
+              <GradientText
+                colors={['#238563', '#9eb657',]}
+                style={styles.subtitleLegacy}
+              >
+                {String.AppOpening_SubtitleLegacy}
+              </GradientText>
             </Text>
           </View>
 
@@ -102,12 +116,20 @@ const AppOpeningScreen = () => {
           <View style={styles.spacer} />
 
           {/* Button Area */}
-          <TouchableOpacity style={styles.button} activeOpacity={0.85}>
-            <Text style={styles.buttonText}>{String.AppOpening_GetStarted}</Text>
-            <View style={styles.arrowContainer}>
-              <View style={styles.arrowLine} />
-              <View style={styles.arrowHead} />
-            </View>
+
+          <TouchableOpacity style={styles.buttonContainer} activeOpacity={0.85}>
+            <LinearGradient
+              colors={['#9eb657', '#77a958', '#38915d', '#238563']}
+              style={styles.buttonGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <Text style={styles.buttonText}>{String.AppOpening_GetStarted}</Text>
+              <View style={styles.arrowContainer}>
+                <View style={styles.arrowLine} />
+                <View style={styles.arrowHead} />
+              </View>
+            </LinearGradient>
           </TouchableOpacity>
 
           {/* Sign In Link */}
@@ -123,6 +145,7 @@ const AppOpeningScreen = () => {
               <Image
                 source={Images.verified}
                 style={styles.footerIcon}
+                resizeMode='contain'
               />
               <Text style={styles.footerText}>{String.AppOpening_VerifiedPlantations}</Text>
             </View>

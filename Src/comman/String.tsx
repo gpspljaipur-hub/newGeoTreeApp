@@ -536,7 +536,7 @@ const translations: Record<'en' | 'hi', Record<string, string>> = {
 
 		AppOpening_PlantTitle: 'PLANT.',
 		AppOpening_TrackTitle: 'TRACK.',
-		AppOpening_ImpactTitle: 'IMPACT.',
+		AppOpening_ImpactTitle: 'IMPACT',
 		AppOpening_Subtitle1: 'Plant verified trees.',
 		AppOpening_Subtitle2: 'Track growth.',
 		AppOpening_Subtitle3: 'Leave a ',
