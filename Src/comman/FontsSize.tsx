@@ -14,19 +14,27 @@ export function normalize(size: number) {
 }
 
 const FontsSize = {
+    size9: 9,
     size10: 10,
     size12: 12,
     size14: 14,
     size16: 16,
     size18: 18,
+    size19: 19,
     size20: 20,
     size22: 22,
     size24: 24,
     size26: 26,
     size28: hp(3.6),
     size30: hp(3.85),
+    size32: hp(4.1),
     size34: hp(4.38),
+    size40: hp(5.14),
     size42: hp(5.38),
+    size48: hp(6.15),
+    size50: hp(6.4),
+    size52: hp(6.67),
+    size56: hp(7.18),
 
     ImageH12: hp(1.55),
     ImageH14: hp(1.81),

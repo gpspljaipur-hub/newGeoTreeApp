@@ -1,4 +1,3 @@
-
 const Images = {
   logo: require('../assets/Images/logo.png'),
   background: require('../assets/Images/background.png'),
@@ -8,8 +7,6 @@ const Images = {
   verified: require('../assets/Images/verified.png'),
   location: require('../assets/Images/location.png'),
   leaf: require('../assets/Images/leaf.png'),
-
-
 };
 
 export type ImageKey = keyof typeof Images;

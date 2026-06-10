@@ -6,6 +6,5 @@ const fonts = {
     OpenSans_Medium: 'OpenSans-Medium',
     OpenSans_Regular: 'OpenSans-Regular',
     OpenSans_SemiBold: 'OpenSans-SemiBold',
-
 }
 export default fonts

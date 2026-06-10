@@ -6,7 +6,6 @@ import {
   Image,
   TouchableOpacity,
   StatusBar,
-  ScrollView,
 } from 'react-native';
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -35,17 +34,14 @@ const AppOpeningScreen = () => {
       <View style={styles.overlay} />
 
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          showsVerticalScrollIndicator={false}
-        >
+        <View>
           <Logo />
           <View style={styles.titleContainer}>
             <Text style={styles.titleDark}>PLANT.</Text>
             <Text style={styles.titleDark}>TRACK.</Text>
             <Text style={styles.titleGreen}>IMPACT.</Text>
           </View>
-          <View style={styles.subtitleContainer}>``
+          <View style={styles.subtitleContainer}>
             <Text style={styles.subtitleText}>
               Plant verified trees.{'\n'}
               Track growth.{'\n'}
@@ -53,15 +49,14 @@ const AppOpeningScreen = () => {
             </Text>
           </View>
 
-          {/* Glassmorphic Stats Card */}
+          {/* Glass Stats Card */}
           <View style={styles.cardContainer}>
             <View style={styles.glassCard}>
-              {/* Row 1: Trees Planted */}
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
                     source={Images.tree}
-                    style={{ width: 22, height: 22 }}
+                    style={styles.cardIcon}
                     resizeMode="contain"
                   />
                 </View>
@@ -72,13 +67,11 @@ const AppOpeningScreen = () => {
               </View>
 
               <View style={styles.divider} />
-
-              {/* Row 2: CO2 Offset */}
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
                     source={Images.globe}
-                    style={{ width: 22, height: 22 }}
+                    style={styles.cardIcon}
                     resizeMode="contain"
                   />
                 </View>
@@ -89,13 +82,11 @@ const AppOpeningScreen = () => {
               </View>
 
               <View style={styles.divider} />
-
-              {/* Row 3: Survival Rate */}
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
                     source={Images.shield}
-                    style={{ width: 22, height: 22 }}
+                    style={styles.cardIcon}
                     resizeMode="contain"
                   />
                 </View>
@@ -130,7 +121,7 @@ const AppOpeningScreen = () => {
             <View style={styles.footerItem}>
               <Image
                 source={Images.verified}
-                style={{ width: 16, height: 16 }}
+                style={styles.footerIcon}
               />
               <Text style={styles.footerText}>VERIFIED{'\n'}PLANTATIONS</Text>
             </View>
@@ -140,7 +131,7 @@ const AppOpeningScreen = () => {
             <View style={styles.footerItem}>
               <Image
                 source={Images.location}
-                style={{ width: 16, height: 16 }}
+                style={styles.footerIcon}
               />
               <Text style={styles.footerText}>GPS{'\n'}TRACKED</Text>
             </View>
@@ -150,13 +141,13 @@ const AppOpeningScreen = () => {
             <View style={styles.footerItem}>
               <Image
                 source={Images.leaf}
-                style={{ width: 16, height: 16 }}
+                style={styles.footerIcon}
               />
               <Text style={styles.footerText}>REAL{'\n'}IMPACT</Text>
             </View>
           </View>
 
-        </ScrollView>
+        </View>
       </SafeAreaView>
     </ImageBackground>
   );
