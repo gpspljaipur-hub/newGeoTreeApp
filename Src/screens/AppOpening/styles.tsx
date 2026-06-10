@@ -33,18 +33,14 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH10,
   },
   titleDark: {
-    fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size52,
-    color: Colors.darkGreen,
-    lineHeight: FontsSize.size56,
-    letterSpacing: -1,
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size30,
+    color: Colors.green,
   },
   titleGreen: {
-    fontFamily: fonts.OpenSans_ExtraBold,
-    fontSize: FontsSize.size52,
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size30,
     color: Colors.legacyGreen,
-    lineHeight: FontsSize.size56,
-    letterSpacing: -1,
   },
   subtitleContainer: {
     paddingHorizontal: MarginHW.PaddingW30,
@@ -52,9 +48,8 @@ export const styles = StyleSheet.create({
   },
   subtitleText: {
     fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size20,
+    fontSize: FontsSize.size14,
     color: Colors.labelGrey,
-    lineHeight: FontsSize.size26,
   },
   subtitleLegacy: {
     fontFamily: fonts.OpenSans_Bold,
@@ -83,9 +78,9 @@ export const styles = StyleSheet.create({
     paddingVertical: MarginHW.PaddingH8,
   },
   iconWrapper: {
-    width: ImageSize.ImageW42,
-    height: ImageSize.ImageH42,
-    borderRadius: 21,
+    width: 42,
+    height: 42,
+    borderRadius: 42 / 2,
     backgroundColor: Colors.iconWrapperBg,
     alignItems: 'center',
     justifyContent: 'center',
@@ -101,7 +96,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardValue: {
-    fontFamily: fonts.OpenSans_ExtraBold,
+    fontFamily: fonts.OpenSans_Bold,
     fontSize: FontsSize.size19,
     color: Colors.darkGreen,
   },
@@ -121,21 +116,21 @@ export const styles = StyleSheet.create({
     flex: 1,
     minHeight: 20,
   },
-  button: {
-    backgroundColor: Colors.btnBg,
-    height: HWSize.H_Height50,
-    borderRadius: FontsSize.size12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+  buttonContainer: {
     marginHorizontal: MarginHW.MarginW24,
     shadowColor: Colors.btnShadow,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.3,
     shadowRadius: 12,
     elevation: 6,
-    borderWidth: 1.5,
-    borderColor: Colors.btnBorder,
+  },
+  buttonGradient: {
+    height: HWSize.H_Height50,
+    borderRadius: FontsSize.size12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+
   },
   buttonText: {
     fontFamily: fonts.OpenSans_Bold,
@@ -180,7 +175,7 @@ export const styles = StyleSheet.create({
   },
   signInHighlight: {
     fontFamily: fonts.OpenSans_Bold,
-    color: Colors.textHighlight,
+    color: Colors.lightGreen,
     textDecorationLine: 'underline',
   },
   footerContainer: {
@@ -215,13 +210,13 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.footerDivider,
   },
   cardIcon: {
-    width: ImageSize.ImageW22,
-    height: ImageSize.ImageH22,
+    width: 22,
+    height: 22,
     tintColor: Colors.darkGreen,
   },
   footerIcon: {
-    width: ImageSize.ImageW16,
-    height: ImageSize.ImageH16,
+    width: 16,
+    height: 16,
     tintColor: Colors.greenMint,
   },
 });

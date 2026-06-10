@@ -7,11 +7,13 @@ export const Colors = {
     // Text
     white: '#FFFFFF',
     black: '#000000',
+    lightGreen: '#99b949',
 
     // Heading
-    darkGreen: '#032c17ff',
+    darkGreen: '#354826',
     greenMint: '#39B89A',
     legacyGreen: '#0D684D',
+    green: '#22391f',
 
     // Card
     glassBg: 'rgba(255, 255, 255, 0.53)',

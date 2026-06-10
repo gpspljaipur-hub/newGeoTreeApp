@@ -10,6 +10,10 @@ import {
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Images from '../../constants/images';
+import String from '../../comman/String';
+import Loader_button from '../../comman/Loader_button';
+import LinearGradient from 'react-native-linear-gradient';
+import GradientText from '../../comman/GradientText';
 
 const Logo = () => {
   return (
@@ -37,15 +41,26 @@ const AppOpeningScreen = () => {
         <View>
           <Logo />
           <View style={styles.titleContainer}>
-            <Text style={styles.titleDark}>PLANT.</Text>
-            <Text style={styles.titleDark}>TRACK.</Text>
-            <Text style={styles.titleGreen}>IMPACT.</Text>
+            <Text style={styles.titleDark}>{String.AppOpening_PlantTitle}</Text>
+            <Text style={styles.titleDark}>{String.AppOpening_TrackTitle}</Text>
+            <GradientText
+              colors={['#217545', '#9eb657', '#2a978a']}
+              style={styles.titleGreen}
+            >
+              {String.AppOpening_ImpactTitle}
+            </GradientText>
           </View>
           <View style={styles.subtitleContainer}>
             <Text style={styles.subtitleText}>
-              Plant verified trees.{'\n'}
-              Track growth.{'\n'}
-              Leave a <Text style={styles.subtitleLegacy}>legacy</Text>.
+              {String.AppOpening_Subtitle1}{'\n'}
+              {String.AppOpening_Subtitle2}{'\n'}
+              {String.AppOpening_Subtitle3}
+              <GradientText
+                colors={['#238563', '#9eb657',]}
+                style={styles.subtitleLegacy}
+              >
+                {String.AppOpening_SubtitleLegacy}
+              </GradientText>
             </Text>
           </View>
 
@@ -62,7 +77,7 @@ const AppOpeningScreen = () => {
                 </View>
                 <View style={styles.cardTextContainer}>
                   <Text style={styles.cardValue}>50,000+</Text>
-                  <Text style={styles.cardLabel}>TREES PLANTED</Text>
+                  <Text style={styles.cardLabel}>{String.AppOpening_TreesPlanted}</Text>
                 </View>
               </View>
 
@@ -77,7 +92,7 @@ const AppOpeningScreen = () => {
                 </View>
                 <View style={styles.cardTextContainer}>
                   <Text style={styles.cardValue}>12,500+ Tons</Text>
-                  <Text style={styles.cardLabel}>CO₂ OFFSET</Text>
+                  <Text style={styles.cardLabel}>{String.AppOpening_CO2Offset}</Text>
                 </View>
               </View>
 
@@ -92,7 +107,7 @@ const AppOpeningScreen = () => {
                 </View>
                 <View style={styles.cardTextContainer}>
                   <Text style={styles.cardValue}>98%</Text>
-                  <Text style={styles.cardLabel}>SURVIVAL RATE</Text>
+                  <Text style={styles.cardLabel}>{String.AppOpening_SurvivalRate}</Text>
                 </View>
               </View>
             </View>
@@ -101,18 +116,26 @@ const AppOpeningScreen = () => {
           <View style={styles.spacer} />
 
           {/* Button Area */}
-          <TouchableOpacity style={styles.button} activeOpacity={0.85}>
-            <Text style={styles.buttonText}>Get Started</Text>
-            <View style={styles.arrowContainer}>
-              <View style={styles.arrowLine} />
-              <View style={styles.arrowHead} />
-            </View>
+
+          <TouchableOpacity style={styles.buttonContainer} activeOpacity={0.85}>
+            <LinearGradient
+              colors={['#9eb657', '#77a958', '#38915d', '#238563']}
+              style={styles.buttonGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <Text style={styles.buttonText}>{String.AppOpening_GetStarted}</Text>
+              <View style={styles.arrowContainer}>
+                <View style={styles.arrowLine} />
+                <View style={styles.arrowHead} />
+              </View>
+            </LinearGradient>
           </TouchableOpacity>
 
           {/* Sign In Link */}
           <TouchableOpacity style={styles.signInContainer} activeOpacity={0.7}>
             <Text style={styles.signInText}>
-              Already have an account? <Text style={styles.signInHighlight}>Sign In</Text>
+              {String.AppOpening_AlreadyHaveAccount}<Text style={styles.signInHighlight}>{String.AppOpening_SignIn}</Text>
             </Text>
           </TouchableOpacity>
 
@@ -122,8 +145,9 @@ const AppOpeningScreen = () => {
               <Image
                 source={Images.verified}
                 style={styles.footerIcon}
+                resizeMode='contain'
               />
-              <Text style={styles.footerText}>VERIFIED{'\n'}PLANTATIONS</Text>
+              <Text style={styles.footerText}>{String.AppOpening_VerifiedPlantations}</Text>
             </View>
 
             <View style={styles.footerSeparator} />
@@ -133,7 +157,7 @@ const AppOpeningScreen = () => {
                 source={Images.location}
                 style={styles.footerIcon}
               />
-              <Text style={styles.footerText}>GPS{'\n'}TRACKED</Text>
+              <Text style={styles.footerText}>{String.AppOpening_GPSTracked}</Text>
             </View>
 
             <View style={styles.footerSeparator} />
@@ -143,7 +167,7 @@ const AppOpeningScreen = () => {
                 source={Images.leaf}
                 style={styles.footerIcon}
               />
-              <Text style={styles.footerText}>REAL{'\n'}IMPACT</Text>
+              <Text style={styles.footerText}>{String.AppOpening_RealImpact}</Text>
             </View>
           </View>
 
