@@ -1,41 +1,37 @@
-const tintColorLight = '#1B5E20';
-const tintColorDark = '#1B5E20';
+const tintColorLight = '#1E6B46';
 
 export const Colors = {
-    text: '#fff',
-    background: '#0c3a0fff',
+    // Main Brand Colors
     tint: tintColorLight,
-    icon: '#fff',
-    button: '#C8E6C9',
-    primary_button: '#2E7D4F',
-    secondary_button: '#1E3F2B',
-    // Surfaces
-    surface: '#FFFFFF',
+
+    // Text
     white: '#FFFFFF',
     black: '#000000',
-    darkonboding: '#0E151D',
-    surfaceMuted: '#E8F5E9',
-    surfaceAlt: '#F1F8E9',
-    tabIconDefault: '#687076',
-    darkonboding1: '#183C60',
-    tabIconSelected: tintColorLight,
-    ApptextColor: '#235035',
-    AppTextColor80: '#23503580',
-    Red: '#E44746',
-    themcolor: '#F6F9F6',
-    grey: '#9CA3AF',
-    lightGrey: '#F3F4F6',
-    lightGreen: '#f1fdf5',
-    dividerBg: '#F9FAFB',
-    primaryGreen: '#22c55e',
-    backgroundAlt: '#F7F9FC',
-    inputBg: '#f0f3f7a2',
-    contactCardBg: '#E8F5E9',
-    contactIcon: '#2E7D32',
-    answerText: '#5F6F5F',
-    helpSectionBg: '#F8F9FA',
-    contactButton: '#00D644',
-    primaryOrange: '#f59e0b',
-    lightGreen1: '#DCFCE7',
-    tintColors: '#1DB954',
-}
+
+    // Heading
+    darkGreen: '#032c17ff',
+    greenMint: '#39B89A',
+    legacyGreen: '#0D684D',
+
+    // Card
+    glassBg: 'rgba(255, 255, 255, 0.53)',
+    glassBorder: 'rgba(255,255,255,0.65)',
+    iconWrapperBg: 'rgba(255,255,255,0.75)',
+
+    // Card Text
+    labelGrey: '#000000ff',
+
+    // Overlay
+    overlayBg: 'rgba(255,255,255,0.08)',
+
+    // Button
+    btnBg: '#2F9E67',
+    btnShadow: '#1E6B46',
+    btnBorder: '#52B97D',
+
+    // Links & Footer
+    textHighlight: '#64D5A7',
+    textShadow: 'rgba(0,0,0,0.15)',
+    whiteDivider: 'rgba(255,255,255,0.40)',
+    footerDivider: 'rgba(255,255,255,0.30)',
+};
