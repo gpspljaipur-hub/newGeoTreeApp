@@ -58,9 +58,9 @@ export default CommonTextInput;
 const styles = StyleSheet.create({
   container: { alignItems: 'center', top: MarginHW.MarginH10, },
   inputContainer: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#E1EACE', borderRadius: 8, },
-  errorText: { fontFamily: fonts.Lexend_Regular, color: '#E44746', fontSize: FontsSize.size12, top: 4 },
-  countryCode: { color: Colors.ApptextColor, fontSize: FontsSize.size16, fontFamily: fonts.Lexend_Medium, marginHorizontal: MarginHW.MarginW12, },
+  errorText: { fontFamily: fonts.OpenSans_Regular, color: '#E44746', fontSize: FontsSize.size12, top: 4 },
+  countryCode: { color: Colors.ApptextColor, fontSize: FontsSize.size16, fontFamily: fonts.OpenSans_Medium, marginHorizontal: MarginHW.MarginW12, },
   inputWithCode: {},
   divider: { width: 2, height: 24, backgroundColor: Colors.ApptextColor, },
-  input: { height: 50, borderTopRightRadius: 8, borderBottomRightRadius: 8, flex: 1, paddingHorizontal: MarginHW.MarginW12, fontSize: FontsSize.size16, fontFamily: fonts.Lexend_Medium, color: Colors.ApptextColor, textAlignVertical: 'center' },
+  input: { height: 50, borderTopRightRadius: 8, borderBottomRightRadius: 8, flex: 1, paddingHorizontal: MarginHW.MarginW12, fontSize: FontsSize.size16, fontFamily: fonts.OpenSans_Medium, color: Colors.ApptextColor, textAlignVertical: 'center' },
 });

@@ -109,13 +109,13 @@ const styles = StyleSheet.create({
     title: {
         width: 120,
         fontSize: FontsSize.size14,
-        fontFamily: fonts.Lexend_ExtraBold,
+        fontFamily: fonts.OpenSans_ExtraBold,
         marginBottom: MarginHW.MarginH10,
     },
     titleName: {
 
         fontSize: FontsSize.size14,
-        fontFamily: fonts.Lexend_Medium,
+        fontFamily: fonts.OpenSans_Regular,
         marginBottom: MarginHW.MarginH10,
     },
     dropdownContainer: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     dropdownText: {
         color: '#FFF',
         fontSize: FontsSize.size16,
-        fontFamily: fonts.Lexend_Medium,
+        fontFamily: fonts.OpenSans_Medium,
     },
 
     rightIcons: {
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     closeButtonText: {
         color: '#fff',
         fontSize: FontsSize.size16,
-        fontFamily: fonts.Lexend_Medium,
+        fontFamily: fonts.OpenSans_Medium,
     },
 });
 

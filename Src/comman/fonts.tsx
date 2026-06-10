@@ -1,10 +1,11 @@
 const fonts = {
-    LexendBold: 'Lexend-Bold',
-    Lexend_ExtraBold: 'Lexend-ExtraBold',
-    Lexend_Light: 'Lexend-Light',
-    Lexend_Medium: 'Lexend-Medium',
-    Lexend_Regular: 'Lexend-Regular',
-    Lexend_SemiBold: 'Lexend-SemiBold',
-    Lexend_Thin: 'Lexend-Thin',
+    // OpenSans Fonts
+    OpenSans_Bold: 'OpenSans-Bold',
+    OpenSans_ExtraBold: 'OpenSans-ExtraBold',
+    OpenSans_Light: 'OpenSans-Light',
+    OpenSans_Medium: 'OpenSans-Medium',
+    OpenSans_Regular: 'OpenSans-Regular',
+    OpenSans_SemiBold: 'OpenSans-SemiBold',
+
 }
 export default fonts

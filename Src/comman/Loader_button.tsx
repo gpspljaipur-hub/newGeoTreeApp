@@ -57,10 +57,7 @@ const Loader_button: React.FC<LoaderButtonProps> = props => {
                     <Text style={[styles.Wait_Text, { color: props.textcolor ? props.textcolor : '#fff' }]}>{String.Loading}</Text>
                 </View>
             )}
-            {props.leftArrow &&
-                <View style={styles.LeftView}>
-                    <Image resizeMode='contain' source={Images.LeftArrow} style={[styles.LeftArrow, { tintColor: props.tintColor ? '#fff' : Colors.ApptextColor }]} />
-                </View>}
+
 
         </TouchableOpacity>
     )
@@ -73,9 +70,9 @@ const styles = StyleSheet.create({
     ButtonBlackview: { borderWidth: 0.5, padding: 10, height: MarginHW.MarginH55, marginVertical: MarginHW.MarginH5, alignItems: 'center', justifyContent: 'center', transform: [{ scale: 1 }] },
     imageStyle: { width: 20, height: 20, marginBottom: MarginHW.MarginH5, marginRight: MarginHW.MarginW10 },
     ButtonText: { fontSize: FontsSize.size18 },
-    ButtonBlackText: { color: '#000', fontFamily: fonts.Lexend_ExtraBold, fontSize: FontsSize.size18 },
-    Size_ButtonText: { color: Colors.text, fontFamily: fonts.Lexend_ExtraBold, fontSize: FontsSize.size18 },
-    Wait_Text: { fontFamily: fonts.Lexend_ExtraBold, fontSize: FontsSize.size12 },
+    ButtonBlackText: { color: '#000', fontFamily: fonts.OpenSans_Bold, fontSize: FontsSize.size18 },
+    Size_ButtonText: { color: Colors.text, fontFamily: fonts.OpenSans_ExtraBold, fontSize: FontsSize.size18 },
+    Wait_Text: { fontFamily: fonts.OpenSans_ExtraBold, fontSize: FontsSize.size12 },
     LeftArrow: { height: 24, width: 24 },
     LeftView: { position: 'absolute', right: 20, top: 0, bottom: 0, justifyContent: 'center' }
 

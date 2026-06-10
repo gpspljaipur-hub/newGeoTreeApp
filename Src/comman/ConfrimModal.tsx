@@ -78,11 +78,11 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 8,
     },
-    modalTitle: { fontSize: FontsSize.size18, fontFamily: fonts.Lexend_SemiBold, marginBottom: 10, },
-    modalText: { fontSize: FontsSize.size16, fontFamily: fonts.Lexend_Medium, color: '#555', marginBottom: 20, },
+    modalTitle: { fontSize: FontsSize.size18, fontFamily: fonts.OpenSans_Regular, marginBottom: 10, },
+    modalText: { fontSize: FontsSize.size16, fontFamily: fonts.OpenSans_Medium, color: '#555', marginBottom: 20, },
     modalButtons: { flexDirection: 'row', justifyContent: 'flex-end', },
     cancelBtn: { backgroundColor: '#E53935', marginRight: 10, paddingHorizontal: 15, paddingVertical: 8, borderRadius: 6, },
     deleteBtn: { backgroundColor: '#2E7D4F', paddingHorizontal: 15, paddingVertical: 8, borderRadius: 6, },
-    deleteText: { color: '#fff', fontSize: FontsSize.size14, fontFamily: fonts.Lexend_Medium },
-    cancelText: { fontSize: FontsSize.size14, color: '#fff', fontFamily: fonts.Lexend_Medium }
+    deleteText: { color: '#fff', fontSize: FontsSize.size14, fontFamily: fonts.OpenSans_Medium },
+    cancelText: { fontSize: FontsSize.size14, color: '#fff', fontFamily: fonts.OpenSans_Medium }
 });
