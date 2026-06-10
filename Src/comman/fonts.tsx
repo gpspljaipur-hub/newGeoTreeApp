@@ -1,5 +1,6 @@
 const fonts = {
     LexendBold: 'Lexend-Bold',
+    Lexend_Bold: 'Lexend-Bold',
     Lexend_ExtraBold: 'Lexend-ExtraBold',
     Lexend_Light: 'Lexend-Light',
     Lexend_Medium: 'Lexend-Medium',
