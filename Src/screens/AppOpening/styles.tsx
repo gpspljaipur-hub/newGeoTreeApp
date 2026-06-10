@@ -33,14 +33,14 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH10,
   },
   titleDark: {
-    fontFamily: fonts.Lexend_ExtraBold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size52,
     color: Colors.darkGreen,
     lineHeight: FontsSize.size56,
     letterSpacing: -1,
   },
   titleGreen: {
-    fontFamily: fonts.Lexend_ExtraBold,
+    fontFamily: fonts.OpenSans_ExtraBold,
     fontSize: FontsSize.size52,
     color: Colors.legacyGreen,
     lineHeight: FontsSize.size56,
@@ -51,13 +51,13 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH30,
   },
   subtitleText: {
-    fontFamily: fonts.Lexend_Medium,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size20,
     color: Colors.labelGrey,
     lineHeight: FontsSize.size26,
   },
   subtitleLegacy: {
-    fontFamily: fonts.Lexend_Bold,
+    fontFamily: fonts.OpenSans_Bold,
     color: Colors.legacyGreen,
   },
   cardContainer: {
@@ -101,12 +101,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardValue: {
-    fontFamily: fonts.Lexend_Bold,
+    fontFamily: fonts.OpenSans_ExtraBold,
     fontSize: FontsSize.size19,
     color: Colors.darkGreen,
   },
   cardLabel: {
-    fontFamily: fonts.Lexend_ExtraBold,
+    fontFamily: fonts.OpenSans_Bold,
     fontSize: FontsSize.size10,
     color: Colors.labelGrey,
     marginTop: MarginHW.MarginH2,
@@ -138,7 +138,7 @@ export const styles = StyleSheet.create({
     borderColor: Colors.btnBorder,
   },
   buttonText: {
-    fontFamily: fonts.Lexend_Bold,
+    fontFamily: fonts.OpenSans_Bold,
     color: Colors.white,
     fontSize: FontsSize.size20,
   },
@@ -171,7 +171,7 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH10,
   },
   signInText: {
-    fontFamily: fonts.Lexend_Medium,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size14,
     color: Colors.white,
     textShadowColor: Colors.textShadow,
@@ -179,7 +179,7 @@ export const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   signInHighlight: {
-    fontFamily: fonts.Lexend_Bold,
+    fontFamily: fonts.OpenSans_Bold,
     color: Colors.textHighlight,
     textDecorationLine: 'underline',
   },
@@ -199,7 +199,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   footerText: {
-    fontFamily: fonts.Lexend_ExtraBold,
+    fontFamily: fonts.OpenSans_Bold,
     fontSize: FontsSize.size9,
     color: Colors.white,
     marginLeft: MarginHW.MarginW6,
