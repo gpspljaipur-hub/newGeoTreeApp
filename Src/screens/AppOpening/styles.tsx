@@ -4,6 +4,7 @@ import FontsSize from '../../comman/FontsSize';
 import MarginHW from '../../comman/MarginHW';
 import ImageSize from '../../comman/ImageSize';
 import HWSize from '../../comman/HWSize';
+import fonts from '../../comman/fonts';
 
 export const styles = StyleSheet.create({
   backgroundImage: {
@@ -32,15 +33,15 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH10,
   },
   titleDark: {
+    fontFamily: fonts.Lexend_ExtraBold,
     fontSize: FontsSize.size52,
-    fontWeight: '900',
     color: Colors.darkGreen,
     lineHeight: FontsSize.size56,
     letterSpacing: -1,
   },
   titleGreen: {
+    fontFamily: fonts.Lexend_ExtraBold,
     fontSize: FontsSize.size52,
-    fontWeight: '900',
     color: Colors.legacyGreen,
     lineHeight: FontsSize.size56,
     letterSpacing: -1,
@@ -50,14 +51,14 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH30,
   },
   subtitleText: {
+    fontFamily: fonts.Lexend_Medium,
     fontSize: FontsSize.size20,
     color: Colors.labelGrey,
     lineHeight: FontsSize.size26,
-    fontWeight: '500',
   },
   subtitleLegacy: {
+    fontFamily: fonts.Lexend_Bold,
     color: Colors.legacyGreen,
-    fontWeight: 'bold',
   },
   cardContainer: {
     marginTop: MarginHW.MarginH30,
@@ -100,13 +101,13 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardValue: {
+    fontFamily: fonts.Lexend_Bold,
     fontSize: FontsSize.size19,
-    fontWeight: 'bold',
     color: Colors.darkGreen,
   },
   cardLabel: {
-    fontSize: FontsSize.size12,
-    fontWeight: '800',
+    fontFamily: fonts.Lexend_ExtraBold,
+    fontSize: FontsSize.size10,
     color: Colors.labelGrey,
     marginTop: MarginHW.MarginH2,
     letterSpacing: 1,
@@ -137,9 +138,9 @@ export const styles = StyleSheet.create({
     borderColor: Colors.btnBorder,
   },
   buttonText: {
+    fontFamily: fonts.Lexend_Bold,
     color: Colors.white,
     fontSize: FontsSize.size20,
-    fontWeight: '700',
   },
   arrowContainer: {
     width: ImageSize.ImageW24,
@@ -170,17 +171,17 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH10,
   },
   signInText: {
+    fontFamily: fonts.Lexend_Medium,
     fontSize: FontsSize.size14,
     color: Colors.white,
-    fontWeight: '500',
     textShadowColor: Colors.textShadow,
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 2,
   },
   signInHighlight: {
+    fontFamily: fonts.Lexend_Bold,
     color: Colors.textHighlight,
     textDecorationLine: 'underline',
-    fontWeight: 'bold',
   },
   footerContainer: {
     flexDirection: 'row',
@@ -198,9 +199,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   footerText: {
+    fontFamily: fonts.Lexend_ExtraBold,
     fontSize: FontsSize.size9,
     color: Colors.white,
-    fontWeight: '800',
     marginLeft: MarginHW.MarginW6,
     lineHeight: FontsSize.size12,
     letterSpacing: 0.5,

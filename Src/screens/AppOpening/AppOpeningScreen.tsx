@@ -9,12 +9,13 @@ import {
 } from 'react-native';
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Images from '../../constants/images';
 
 const Logo = () => {
   return (
     <View style={styles.logoContainer}>
       <Image
-        source={require('../../assets/logo.png')}
+        source={Images.logo}
         style={styles.logoImage}
         resizeMode="contain"
       />
@@ -25,7 +26,7 @@ const Logo = () => {
 const AppOpeningScreen = () => {
   return (
     <ImageBackground
-      source={require('../../assets/background.png')}
+      source={Images.background}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
@@ -33,8 +34,7 @@ const AppOpeningScreen = () => {
       <View style={styles.overlay} />
 
       <SafeAreaView style={styles.safeArea}>
-        <View
-        >
+        <View>
           <Logo />
           <View style={styles.titleContainer}>
             <Text style={styles.titleDark}>PLANT.</Text>
@@ -55,7 +55,7 @@ const AppOpeningScreen = () => {
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
-                    source={require('../../assets/tree.png')}
+                    source={Images.tree}
                     style={styles.cardIcon}
                     resizeMode="contain"
                   />
@@ -70,7 +70,7 @@ const AppOpeningScreen = () => {
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
-                    source={require('../../assets/globe.png')}
+                    source={Images.global}
                     style={styles.cardIcon}
                     resizeMode="contain"
                   />
@@ -85,7 +85,7 @@ const AppOpeningScreen = () => {
               <View style={styles.cardRow}>
                 <View style={styles.iconWrapper}>
                   <Image
-                    source={require('../../assets/shield.png')}
+                    source={Images.shield}
                     style={styles.cardIcon}
                     resizeMode="contain"
                   />
@@ -120,7 +120,7 @@ const AppOpeningScreen = () => {
           <View style={styles.footerContainer}>
             <View style={styles.footerItem}>
               <Image
-                source={require('../../assets/verified.png')}
+                source={Images.verified}
                 style={styles.footerIcon}
               />
               <Text style={styles.footerText}>VERIFIED{'\n'}PLANTATIONS</Text>
@@ -130,7 +130,7 @@ const AppOpeningScreen = () => {
 
             <View style={styles.footerItem}>
               <Image
-                source={require('../../assets/location.png')}
+                source={Images.location}
                 style={styles.footerIcon}
               />
               <Text style={styles.footerText}>GPS{'\n'}TRACKED</Text>
@@ -140,7 +140,7 @@ const AppOpeningScreen = () => {
 
             <View style={styles.footerItem}>
               <Image
-                source={require('../../assets/leaf.png')}
+                source={Images.leaf}
                 style={styles.footerIcon}
               />
               <Text style={styles.footerText}>REAL{'\n'}IMPACT</Text>
