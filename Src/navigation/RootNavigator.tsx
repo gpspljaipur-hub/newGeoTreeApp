@@ -20,3 +20,23 @@ export default function RootNavigator() {
     </Stack.Navigator>
   );
 }
+
+export function handleNavigation(nav: any) {
+  switch (nav.type) {
+    case 'push':
+      nav.navigation.navigate(nav.page, nav.passProps)
+      break
+    case 'setRoot':
+      nav.navigation.reset({ index: 0, routes: [{ name: nav.page }] })
+      break
+    case 'pop':
+      nav.navigation.goBack()
+      break
+    case 'popToTop':
+      nav.navigation.popToTop()
+      break
+    case 'navigate':
+      nav.navigation.push(nav.page, nav.passProps)
+      break
+  }
+}
