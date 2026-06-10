@@ -533,6 +533,7 @@ const translations: Record<'en' | 'hi', Record<string, string>> = {
 		Amount: "Amount",
 		Status: "Status",
 		GoBack: "Change Number ",
+
 		AppOpening_PlantTitle: 'PLANT.',
 		AppOpening_TrackTitle: 'TRACK.',
 		AppOpening_ImpactTitle: 'IMPACT.',
