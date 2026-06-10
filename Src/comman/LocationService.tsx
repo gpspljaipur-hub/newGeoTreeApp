@@ -27,7 +27,6 @@ export async function setStateFromCurrentLocation(dispatch: any): Promise<void> 
         return;
     }
 
-    // Attempt high accuracy location (GPS) first
     Geolocations.getCurrentPosition(
         position => {
             console.log('Location success (High Accuracy):', position.coords);
@@ -35,7 +34,6 @@ export async function setStateFromCurrentLocation(dispatch: any): Promise<void> 
         },
         error => {
             console.log('High accuracy location failed, trying low accuracy...', error);
-            // Fallback to low accuracy (uses network provider, which works instantly indoors/emulators)
             Geolocations.getCurrentPosition(
                 position => {
                     console.log('Location success (Low Accuracy):', position.coords);
