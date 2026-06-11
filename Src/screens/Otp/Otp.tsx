@@ -18,6 +18,8 @@ import { RootStackParamList } from '../../navigation/RootNavigator';
 import Images from '../../constants/images';
 import { styles } from './styles';
 import String from '../../comman/String';
+import Loader_button from '../../comman/Loader_button';
+import MarginHW from '../../comman/MarginHW';
 
 type OtpScreenRouteProp = RouteProp<RootStackParamList, 'Otp'>;
 
@@ -113,7 +115,7 @@ const OtpScreen = () => {
 
     return (
         <ImageBackground
-            source={Images.LoginBg}
+            source={Images.OtpScreenGeotree}
             style={styles.backgroundImage}
             resizeMode="cover"
         >
@@ -125,10 +127,7 @@ const OtpScreen = () => {
                 >
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View style={styles.contentContainer}>
-                            <Logo />
-                            <View style={styles.spacer} />
-
-                            {/* Glass Card */}
+                            {/* <View style={styles.spacer} /> */}
                             <View style={styles.cardContainer}>
                                 <View style={styles.glassCard}>
                                     <Text style={styles.cardTitle}>{String.Otp_VerifyTitle}</Text>
@@ -136,13 +135,9 @@ const OtpScreen = () => {
                                         {String.Otp_EnterCodeSent}{'\n'}
                                         <Text style={styles.phoneNumberText}>{formattedPhoneNumber}</Text>
                                     </Text>
-
-                                    {/* OTP Row */}
                                     <View style={styles.otpContainer}>
                                         {renderOtpBoxes()}
                                     </View>
-
-                                    {/* Hidden TextInput for keyboard input */}
                                     <TextInput
                                         ref={textInputRef}
                                         style={styles.hiddenTextInput}
@@ -152,8 +147,6 @@ const OtpScreen = () => {
                                         onChangeText={setCode}
                                         autoFocus={true}
                                     />
-
-                                    {/* Info Row 1: Secure mobile verification */}
                                     <View style={styles.infoRow}>
                                         <View style={styles.infoIconWrapper}>
                                             <Image
@@ -164,8 +157,6 @@ const OtpScreen = () => {
                                         </View>
                                         <Text style={styles.infoText}>{String.Otp_SecureVerification}</Text>
                                     </View>
-
-                                    <View style={styles.dividerLine} />
 
                                     {/* Info Row 2: Clock Timer */}
                                     <View style={styles.infoRow}>
@@ -184,7 +175,7 @@ const OtpScreen = () => {
                                         </Text>
                                     </View>
 
-                                    <View style={styles.dividerLine} />
+                                    {/* <View style={styles.dividerLine} /> */}
 
                                     {/* Info Row 3: Resend OTP */}
                                     <View style={styles.infoRow}>
@@ -206,22 +197,15 @@ const OtpScreen = () => {
                                         </Text>
                                     </View>
 
-                                    {/* Verify OTP Button */}
-                                    <Pressable
-                                        style={({ pressed }) => [
-                                            styles.button,
-                                            code.length < 6 && styles.buttonDisabled,
-                                            pressed && code.length === 6 && styles.buttonPressed,
-                                        ]}
-                                        onPress={handleVerifyOTP}
+                                    <Loader_button
+                                        isGradient
+                                        showArrow
+                                        textcolor="#fff"
+                                        title={String.Otp_VerifyTitle}
                                         disabled={code.length < 6}
-                                    >
-                                        <Text style={styles.buttonText}>{String.Otp_VerifyTitle}</Text>
-                                        <View style={styles.arrowContainer}>
-                                            <View style={styles.arrowLine} />
-                                            <View style={styles.arrowHead} />
-                                        </View>
-                                    </Pressable>
+                                        Onclick={handleVerifyOTP}
+                                        containerStyle={{ marginHorizontal: 0, marginTop: MarginHW.MarginH24 }}
+                                    />
                                 </View>
                             </View>
 

@@ -1,6 +1,7 @@
 const Images = {
   logo: require('../assets/Images/logo.png'),
   SinginGeotree: require('../assets/Images/SinginGeotree.png'),
+  OtpScreenGeotree: require('../assets/Images/OtpScreen.png'),
   LoginBg: require('../assets/Images/LoginBg.png'),
   background: require('../assets/Images/NewBg.png'),
   tree: require('../assets/Images/tree.png'),
