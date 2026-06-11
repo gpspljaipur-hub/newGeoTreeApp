@@ -259,26 +259,53 @@ const HomeScreen = () => {
         </View>
 
         {/* Bottom Banner Section */}
+
         <View style={styles.bottomBanner}>
-          <View style={styles.bannerOverlayContent}>
-            <Text style={styles.bannerTitle}>{String.Home_BannerSubtitle}</Text>
-            <Text style={styles.bannerTitleBold}>
-              {String.Home_BannerTitleLeft}
-              <Text style={styles.bannerTitleGreen}>{String.Home_BannerTitleHighlight}</Text>
-              {String.Home_BannerTitleRight}
-            </Text>
+          <View style={{ flex: 0.9, justifyContent: 'center', alignItems: 'center' }}>
+            <Image
+              source={Images.handtree}
+              style={styles.bannerImage}
+              resizeMode="contain"
+            />
+          </View>
+
+          <View style={styles.bannerContent}>
+            <View style={{ left: 20, }}>
+              <Text style={styles.bannerTitle}>{String.Home_BannerSubtitle}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginTop: 2 }}>
+                {String.Home_BannerTitleLeft ? (
+                  <Text style={[styles.bannerTitleBold, { marginTop: 0 }]}>
+                    {String.Home_BannerTitleLeft}
+                  </Text>
+                ) : null}
+                <GradientText
+                  colors={['#27702d', '#4f902d', '#4a8d21', '#68a212']}
+                  style={[styles.bannerTitleBold, { marginTop: 0 }]}
+                >
+                  {String.Home_BannerTitleHighlight}
+                </GradientText>
+                {String.Home_BannerTitleRight ? (
+                  <Text style={[styles.bannerTitleBold, { marginTop: 0 }]}>
+                    {String.Home_BannerTitleRight}
+                  </Text>
+                ) : null}
+              </View>
+            </View>
+
 
             <View style={styles.bannerRow}>
               <View style={styles.bannerItem}>
-                <Text style={styles.bannerIcon}>🌿</Text>
+                <Image source={Images.leaf} style={styles.bannerIcon} resizeMode="contain" />
                 <Text style={styles.bannerText}>{String.Home_BannerItemAir}</Text>
               </View>
+              <View style={styles.bannerDivider} />
               <View style={styles.bannerItem}>
-                <Text style={styles.bannerIcon}>🌍</Text>
+                <Image source={Images.globe} style={styles.bannerIcon} resizeMode="contain" />
                 <Text style={styles.bannerText}>{String.Home_BannerItemPlanet}</Text>
               </View>
+              <View style={styles.bannerDivider} />
               <View style={styles.bannerItem}>
-                <Text style={styles.bannerIcon}>💚</Text>
+                <Image source={Images.bird} style={styles.bannerIcon} resizeMode="contain" />
                 <Text style={styles.bannerText}>{String.Home_BannerItemTomorrow}</Text>
               </View>
             </View>
