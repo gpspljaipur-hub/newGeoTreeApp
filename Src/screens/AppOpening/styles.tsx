@@ -161,9 +161,11 @@ export const styles = StyleSheet.create({
     right: 4,
   },
   signInContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: MarginHW.MarginH16,
-    marginBottom: MarginHW.MarginH10,
+    marginBottom: MarginHW.MarginH24,
   },
   signInText: {
     fontFamily: fonts.OpenSans_Medium,

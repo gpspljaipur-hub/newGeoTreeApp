@@ -36,4 +36,5 @@ export const Colors = {
     textShadow: 'rgba(0,0,0,0.15)',
     whiteDivider: 'rgba(255,255,255,0.40)',
     footerDivider: 'rgba(255,255,255,0.30)',
+    placeholderColor: "#8E9A93"
 };
