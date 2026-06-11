@@ -37,5 +37,12 @@ export const Colors = {
     textShadow: 'rgba(0,0,0,0.15)',
     whiteDivider: 'rgba(255,255,255,0.40)',
     footerDivider: 'rgba(255,255,255,0.30)',
-    placeholderColor: "#8E9A93"
+    placeholderColor: "#8E9A93",
+    lightgray: '#f7f7f6',
+    continue: '#175e2b',
+    footertextgray: "#66756C",
+    bannerBg: '#f1f5e9',
+    bannerBorder: '#E8EFEA',
+    bannerTextDesc: '#333333',
+    bannerBenefitLabel: '#55665C',
 };
