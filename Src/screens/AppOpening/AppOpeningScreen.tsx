@@ -5,7 +5,6 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
-  StatusBar,
 } from 'react-native';
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,6 +13,9 @@ import String from '../../comman/String';
 import Loader_button from '../../comman/Loader_button';
 import LinearGradient from 'react-native-linear-gradient';
 import GradientText from '../../comman/GradientText';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootNavigator';
 
 const Logo = () => {
   return (
@@ -28,13 +30,13 @@ const Logo = () => {
 };
 
 const AppOpeningScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <ImageBackground
       source={Images.background}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
-      <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
       <View style={styles.overlay} />
 
       <SafeAreaView style={styles.safeArea}>
@@ -133,11 +135,14 @@ const AppOpeningScreen = () => {
           </TouchableOpacity>
 
           {/* Sign In Link */}
-          <TouchableOpacity style={styles.signInContainer} activeOpacity={0.7}>
+          <View style={styles.signInContainer}>
             <Text style={styles.signInText}>
               {String.AppOpening_AlreadyHaveAccount}<Text style={styles.signInHighlight}>{String.AppOpening_SignIn}</Text>
             </Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+              <Text style={styles.signInHighlight}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
 
           {/* Footer Features */}
           <View style={styles.footerContainer}>

@@ -1,9 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
+import SignInScreen from '../screens/SignIn/SignInScreen';
+import OtpScreen from '../screens/AppOpening/Otp/Otp';
 
 export type RootStackParamList = {
   AppOpening: undefined;
+  SignIn: undefined;
+  Otp: { phoneNumber: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -17,6 +21,8 @@ export default function RootNavigator() {
       }}
     >
       <Stack.Screen name="AppOpening" component={AppOpeningScreen} />
+      <Stack.Screen name="SignIn" component={SignInScreen} />
+      <Stack.Screen name="Otp" component={OtpScreen} />
     </Stack.Navigator>
   );
 }
