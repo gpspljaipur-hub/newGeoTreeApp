@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: 'rgba(10, 30, 20, 0.15)',
   },
   safeArea: {
     flex: 1,
@@ -25,25 +24,24 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginTop: -MarginHW.MarginH20,
     marginBottom: MarginHW.MarginH5,
   },
   logoImage: {
-    width: ImageSize.ImageW180,
-    height: ImageSize.ImageH80,
+    width: 250,
+    height: 250,
   },
   spacer: {
     flex: 1,
   },
   cardContainer: {
     paddingHorizontal: MarginHW.PaddingW24,
-    marginBottom: MarginHW.MarginH40,
+    marginBottom: MarginHW.MarginH10,
   },
   glassCard: {
     backgroundColor: Colors.glassBorder,
     borderRadius: FontsSize.size24,
     borderWidth: 1.5,
-    borderColor: Colors.glassBorder,
+    borderColor: Colors.inputBg,
     paddingVertical: MarginHW.PaddingH14,
     paddingHorizontal: MarginHW.PaddingW20,
     shadowColor: Colors.black,

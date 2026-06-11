@@ -14,9 +14,10 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../../navigation/RootNavigator';
-import Images from '../../../constants/images';
+import { RootStackParamList } from '../../navigation/RootNavigator';
+import Images from '../../constants/images';
 import { styles } from './styles';
+import String from '../../comman/String';
 
 type OtpScreenRouteProp = RouteProp<RootStackParamList, 'Otp'>;
 
@@ -28,7 +29,7 @@ const Logo = () => {
                 style={styles.logoImage}
                 resizeMode="contain"
             />
-            <Text style={styles.logoSubtitle}>Plant. Track. Impact.</Text>
+            <Text style={styles.logoSubtitle}>{String.Otp_LogoSubtitle}</Text>
         </View>
     );
 };
@@ -130,9 +131,9 @@ const OtpScreen = () => {
                             {/* Glass Card */}
                             <View style={styles.cardContainer}>
                                 <View style={styles.glassCard}>
-                                    <Text style={styles.cardTitle}>Verify OTP</Text>
+                                    <Text style={styles.cardTitle}>{String.Otp_VerifyTitle}</Text>
                                     <Text style={styles.cardSubtitle}>
-                                        Enter the 6-digit verification code sent to{'\n'}
+                                        {String.Otp_EnterCodeSent}{'\n'}
                                         <Text style={styles.phoneNumberText}>{formattedPhoneNumber}</Text>
                                     </Text>
 
@@ -156,12 +157,12 @@ const OtpScreen = () => {
                                     <View style={styles.infoRow}>
                                         <View style={styles.infoIconWrapper}>
                                             <Image
-                                                source={Images.security}
+                                                source={Images.verified}
                                                 style={styles.infoIconImage}
                                                 resizeMode="contain"
                                             />
                                         </View>
-                                        <Text style={styles.infoText}>Secure mobile verification</Text>
+                                        <Text style={styles.infoText}>{String.Otp_SecureVerification}</Text>
                                     </View>
 
                                     <View style={styles.dividerLine} />
@@ -176,7 +177,7 @@ const OtpScreen = () => {
                                             </View>
                                         </View>
                                         <Text style={styles.infoText}>
-                                            Code expires in{' '}
+                                            {String.Otp_ExpiresIn}{' '}
                                             <Text style={styles.highlightText}>
                                                 00:{secondsLeft < 10 ? `0${secondsLeft}` : secondsLeft}
                                             </Text>
@@ -192,7 +193,7 @@ const OtpScreen = () => {
                                             <Text style={styles.refreshIconText}>⟳</Text>
                                         </View>
                                         <Text style={styles.infoText}>
-                                            Didn't receive OTP?{' '}
+                                            {String.Otp_DidNotReceive}
                                             <Text
                                                 style={[
                                                     styles.pressableText,
@@ -200,7 +201,7 @@ const OtpScreen = () => {
                                                 ]}
                                                 onPress={handleResendOTP}
                                             >
-                                                Resend OTP
+                                                {String.Otp_Resend}
                                             </Text>
                                         </Text>
                                     </View>
@@ -215,7 +216,7 @@ const OtpScreen = () => {
                                         onPress={handleVerifyOTP}
                                         disabled={code.length < 6}
                                     >
-                                        <Text style={styles.buttonText}>Verify OTP</Text>
+                                        <Text style={styles.buttonText}>{String.Otp_VerifyTitle}</Text>
                                         <View style={styles.arrowContainer}>
                                             <View style={styles.arrowLine} />
                                             <View style={styles.arrowHead} />
@@ -227,13 +228,13 @@ const OtpScreen = () => {
                             {/* Bottom footer text */}
                             <View style={styles.footerContainer}>
                                 <Text style={styles.footerText}>
-                                    <Text style={styles.footerLockIcon}>🔒</Text> By continuing, you agree to our{' '}
+                                    <Text style={styles.footerLockIcon}>🔒</Text> {String.Otp_AgreeTo}
                                     <Text style={styles.footerLink} onPress={handleTermsPress}>
-                                        Terms & Conditions
+                                        {String.Otp_TermsAndConditions}
                                     </Text>{' '}
                                     and{' '}
                                     <Text style={styles.footerLink} onPress={handlePrivacyPress}>
-                                        Privacy Policy
+                                        {String.Otp_PrivacyPolicy}
                                     </Text>
                                 </Text>
                             </View>

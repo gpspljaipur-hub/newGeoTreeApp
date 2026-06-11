@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../../comman/Colors';
-import FontsSize from '../../../comman/FontsSize';
-import MarginHW from '../../../comman/MarginHW';
-import ImageSize from '../../../comman/ImageSize';
-import HWSize from '../../../comman/HWSize';
-import fonts from '../../../comman/fonts';
+import { Colors } from '../../comman/Colors';
+import FontsSize from '../../comman/FontsSize';
+import MarginHW from '../../comman/MarginHW';
+import ImageSize from '../../comman/ImageSize';
+import HWSize from '../../comman/HWSize';
+import fonts from '../../comman/fonts';
 
 export const styles = StyleSheet.create({
     backgroundImage: {
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
         height: ImageSize.ImageH80,
     },
     logoSubtitle: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         fontSize: FontsSize.size10 || 10,
         color: Colors.tint,
         letterSpacing: 2,
@@ -61,20 +61,20 @@ export const styles = StyleSheet.create({
         elevation: 8,
     },
     cardTitle: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         fontSize: FontsSize.size28 || 28,
         color: Colors.darkGreen,
         marginBottom: MarginHW.MarginH5,
     },
     cardSubtitle: {
-        fontFamily: fonts.Lexend_Medium,
+        fontFamily: fonts.OpenSans_Medium,
         fontSize: FontsSize.size14 || 14,
         color: '#4A5D53',
         lineHeight: FontsSize.size20 || 20,
         marginBottom: MarginHW.MarginH16,
     },
     phoneNumberText: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         color: Colors.legacyGreen,
     },
     // OTP input styles
@@ -104,17 +104,17 @@ export const styles = StyleSheet.create({
         elevation: 2,
     },
     otpText: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         fontSize: FontsSize.size22 || 22,
         color: Colors.darkGreen,
     },
     otpDot: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         fontSize: FontsSize.size22 || 22,
         color: 'rgba(3, 44, 23, 0.25)',
     },
     otpCursor: {
-        fontFamily: fonts.Lexend_Regular,
+        fontFamily: fonts.OpenSans_Regular,
         fontSize: FontsSize.size22 || 22,
         color: Colors.btnBorder,
     },
@@ -147,17 +147,17 @@ export const styles = StyleSheet.create({
         tintColor: '#5E6E66',
     },
     infoText: {
-        fontFamily: fonts.Lexend_Medium,
+        fontFamily: fonts.OpenSans_Medium,
         fontSize: FontsSize.size12 || 13,
         color: '#5E6E66',
         flex: 1,
     },
     highlightText: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         color: Colors.legacyGreen,
     },
     pressableText: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         color: Colors.btnBg,
     },
     resendDisabled: {
@@ -179,7 +179,7 @@ export const styles = StyleSheet.create({
         opacity: 0.8,
     },
     buttonText: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         color: Colors.white,
         fontSize: FontsSize.size16 || 16,
     },
@@ -216,7 +216,7 @@ export const styles = StyleSheet.create({
         marginBottom: MarginHW.MarginH16,
     },
     footerText: {
-        fontFamily: fonts.Lexend_Medium,
+        fontFamily: fonts.OpenSans_Medium,
         fontSize: FontsSize.size10 || 10,
         color: Colors.white,
         textAlign: 'center',
@@ -226,7 +226,7 @@ export const styles = StyleSheet.create({
         textShadowRadius: 2,
     },
     footerLink: {
-        fontFamily: fonts.Lexend_Bold,
+        fontFamily: fonts.OpenSans_Bold,
         color: Colors.textHighlight,
         textDecorationLine: 'underline',
     },

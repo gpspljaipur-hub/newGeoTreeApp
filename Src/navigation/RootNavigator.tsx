@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
 import SignInScreen from '../screens/SignIn/SignInScreen';
-import OtpScreen from '../screens/AppOpening/Otp/Otp';
+import OtpScreen from '../screens/Otp/Otp';
 
 export type RootStackParamList = {
   AppOpening: undefined;
