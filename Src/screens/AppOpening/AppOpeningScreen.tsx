@@ -44,7 +44,7 @@ const AppOpeningScreen = () => {
             <Text style={styles.titleDark}>{String.AppOpening_PlantTitle}</Text>
             <Text style={styles.titleDark}>{String.AppOpening_TrackTitle}</Text>
             <GradientText
-              colors={['#217545', '#9eb657', '#2a978a']}
+              colors={['#217545', '#9eb657', '#9eb657', '#2a978a', '#2a978a']}
               style={styles.titleGreen}
             >
               {String.AppOpening_ImpactTitle}
@@ -166,6 +166,7 @@ const AppOpeningScreen = () => {
               <Image
                 source={Images.leaf}
                 style={styles.footerIcon}
+                resizeMode='contain'
               />
               <Text style={styles.footerText}>{String.AppOpening_RealImpact}</Text>
             </View>

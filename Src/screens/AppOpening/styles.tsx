@@ -215,8 +215,8 @@ export const styles = StyleSheet.create({
     tintColor: Colors.darkGreen,
   },
   footerIcon: {
-    width: 16,
-    height: 16,
+    width: 18,
+    height: 18,
     tintColor: Colors.greenMint,
   },
 });
