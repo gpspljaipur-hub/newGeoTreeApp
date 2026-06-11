@@ -113,7 +113,7 @@ const OtpScreen = () => {
 
     return (
         <ImageBackground
-            source={Images.background}
+            source={Images.LoginBg}
             style={styles.backgroundImage}
             resizeMode="cover"
         >
