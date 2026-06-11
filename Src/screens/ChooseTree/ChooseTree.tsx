@@ -26,6 +26,7 @@ interface TreeItem {
   co2: string;
   growthRate: string;
   maintenance: string;
+  maintenanceKey: 'low' | 'medium' | 'high';
   points: number;
   image: any;
 }
@@ -39,27 +40,27 @@ const ChooseTreeScreen = () => {
   const categories = [
     {
       id: 'all',
-      name: 'All Trees',
+      name: String.ChooseTree_CategoryAll,
       /* IMAGE: Category icon (Leaf) */
-      icon: Images.leaf, // REPLACE_IMAGE: Icon for 'All Trees' category
+      icon: Images.leaf,
     },
     {
       id: 'native',
-      name: 'Native Trees',
+      name: String.ChooseTree_CategoryNative,
       /* IMAGE: Category icon (Tree) */
-      icon: Images.tree, // REPLACE_IMAGE: Icon for 'Native Trees' category
+      icon: Images.tree,
     },
     {
       id: 'fruit',
-      name: 'Fruit Trees',
+      name: String.ChooseTree_CategoryFruit,
       /* IMAGE: Category icon (Tree as placeholder) */
-      icon: Images.tree, // REPLACE_IMAGE: Icon for 'Fruit Trees' category
+      icon: Images.tree,
     },
     {
       id: 'flowering',
-      name: 'Flowering Trees',
+      name: String.ChooseTree_CategoryFlowering,
       /* IMAGE: Category icon (Leaf as placeholder) */
-      icon: Images.leaf, // REPLACE_IMAGE: Icon for 'Flowering Trees' category
+      icon: Images.leaf,
     },
   ];
 
@@ -67,63 +68,63 @@ const ChooseTreeScreen = () => {
   const trees: TreeItem[] = [
     {
       id: '1',
-      name: 'Neem',
-      scientificName: 'Azadirachta indica',
-      description: 'A hardy native tree known for its medicinal properties and air purifying qualities.',
+      name: String.ChooseTree_TreeNeemName,
+      scientificName: String.ChooseTree_TreeNeemScientific,
+      description: String.ChooseTree_TreeNeemDesc,
       category: 'native',
-      badge: 'Native',
+      badge: String.ChooseTree_TreeNeemBadge,
       badgeColor: '#1E6B46',
       co2: '22 kg/year',
-      growthRate: 'Medium',
-      maintenance: 'Low',
+      growthRate: String.ChooseTree_RateMedium,
+      maintenance: String.ChooseTree_MaintLow,
+      maintenanceKey: 'low',
       points: 100,
-      /* IMAGE: Neem Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Neem tree
+      image: Images.tree,
     },
     {
       id: '2',
-      name: 'Peepal',
-      scientificName: 'Ficus religiosa',
-      description: 'A sacred tree that produces oxygen even at night and supports biodiversity.',
+      name: String.ChooseTree_TreePeepalName,
+      scientificName: String.ChooseTree_TreePeepalScientific,
+      description: String.ChooseTree_TreePeepalDesc,
       category: 'native',
-      badge: 'Native',
+      badge: String.ChooseTree_TreePeepalBadge,
       badgeColor: '#1E6B46',
       co2: '28 kg/year',
-      growthRate: 'Fast',
-      maintenance: 'Low',
+      growthRate: String.ChooseTree_RateFast,
+      maintenance: String.ChooseTree_MaintLow,
+      maintenanceKey: 'low',
       points: 120,
-      /* IMAGE: Peepal Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Peepal tree
+      image: Images.tree,
     },
     {
       id: '3',
-      name: 'Mango',
-      scientificName: 'Mangifera indica',
-      description: 'A popular fruit tree that provides shade and delicious fruits.',
+      name: String.ChooseTree_TreeMangoName,
+      scientificName: String.ChooseTree_TreeMangoScientific,
+      description: String.ChooseTree_TreeMangoDesc,
       category: 'fruit',
-      badge: 'Fruit',
+      badge: String.ChooseTree_TreeMangoBadge,
       badgeColor: '#F5B041',
       co2: '25 kg/year',
-      growthRate: 'Medium',
-      maintenance: 'Medium',
+      growthRate: String.ChooseTree_RateMedium,
+      maintenance: String.ChooseTree_MaintMedium,
+      maintenanceKey: 'medium',
       points: 150,
-      /* IMAGE: Mango Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Mango tree
+      image: Images.tree,
     },
     {
       id: '4',
-      name: 'Gulmohar',
-      scientificName: 'Delonix regia',
-      description: 'A beautiful flowering tree that adds vibrant colors to the environment.',
+      name: String.ChooseTree_TreeGulmoharName,
+      scientificName: String.ChooseTree_TreeGulmoharScientific,
+      description: String.ChooseTree_TreeGulmoharDesc,
       category: 'flowering',
-      badge: 'Flowering',
+      badge: String.ChooseTree_TreeGulmoharBadge,
       badgeColor: '#EC7063',
       co2: '20 kg/year',
-      growthRate: 'Medium',
-      maintenance: 'Low',
+      growthRate: String.ChooseTree_RateMedium,
+      maintenance: String.ChooseTree_MaintLow,
+      maintenanceKey: 'low',
       points: 120,
-      /* IMAGE: Gulmohar Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Gulmohar tree
+      image: Images.tree,
     },
   ];
 
@@ -135,7 +136,6 @@ const ChooseTreeScreen = () => {
   const handleContinue = () => {
     const selectedTree = trees.find(t => t.id === selectedTreeId);
     console.log('Continuing with selected tree:', selectedTree?.name);
-    // You can handle state changes or navigation to Location Screen here
   };
 
   const renderTreeItem = ({ item }: { item: TreeItem }) => {
@@ -157,7 +157,7 @@ const ChooseTreeScreen = () => {
           </View>
           {/* Main Tree image */}
           <Image
-            source={item.image} // REPLACE_IMAGE: Source for each tree illustration in the card
+            source={item.image}
             style={styles.cardImage}
             resizeMode="cover"
           />
@@ -170,7 +170,7 @@ const ChooseTreeScreen = () => {
               <Text style={styles.cardTitle}>{item.name}</Text>
               {/* Green Verified Tick Image */}
               <Image
-                source={Images.leaf} // REPLACE_IMAGE: Mini green check or leaf verification icon
+                source={Images.leaf}
                 style={styles.checkIcon}
                 resizeMode="contain"
               />
@@ -183,16 +183,16 @@ const ChooseTreeScreen = () => {
           {/* Grid Spec */}
           <View style={styles.specsContainer}>
             <View style={styles.specItem}>
-              <Text style={styles.specLabel}>CO₂ Absorption</Text>
+              <Text style={styles.specLabel}>{String.ChooseTree_CO2Absorption}</Text>
               <Text style={styles.specValue}>{item.co2}</Text>
             </View>
             <View style={styles.specItem}>
-              <Text style={styles.specLabel}>Growth Rate</Text>
+              <Text style={styles.specLabel}>{String.ChooseTree_GrowthRate}</Text>
               <Text style={[styles.specValue, { color: Colors.tint }]}>{item.growthRate}</Text>
             </View>
             <View style={styles.specItem}>
-              <Text style={styles.specLabel}>Maintenance</Text>
-              <Text style={[styles.specValue, { color: item.maintenance === 'Low' ? Colors.tint : '#4B5E53' }]}>
+              <Text style={styles.specLabel}>{String.ChooseTree_Maintenance}</Text>
+              <Text style={[styles.specValue, { color: item.maintenanceKey === 'low' ? Colors.tint : '#4B5E53' }]}>
                 {item.maintenance}
               </Text>
             </View>
@@ -203,7 +203,7 @@ const ChooseTreeScreen = () => {
         <View style={styles.cardPointsBadge}>
           {/* Little green points/leaf badge icon */}
           <Image
-            source={Images.leaf} // REPLACE_IMAGE: Leaf or coin points badge icon
+            source={Images.leaf}
             style={styles.cardPointsIcon}
             resizeMode="contain"
           />
@@ -221,8 +221,8 @@ const ChooseTreeScreen = () => {
         >
           {/* Arrow icon */}
           <Image
-            source={Images.verified} // REPLACE_IMAGE: Right-facing small white arrow
-            style={[styles.arrowButtonIcon, { transform: [{ rotate: '-90deg' }] }]} // placeholder rotate
+            source={Images.verified}
+            style={[styles.arrowButtonIcon, { transform: [{ rotate: '-90deg' }] }]}
             resizeMode="contain"
           />
         </TouchableOpacity>
@@ -241,23 +241,23 @@ const ChooseTreeScreen = () => {
         >
           {/* Left Arrow Icon */}
           <Image
-            source={Images.verified} // REPLACE_IMAGE: Header Back left arrow icon
-            style={[styles.backIcon, { transform: [{ rotate: '90deg' }] }]} // rotate placeholder to face left
+            source={Images.verified}
+            style={[styles.backIcon, { transform: [{ rotate: '90deg' }] }]}
             resizeMode="contain"
           />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Plant Your First Tree</Text>
+        <Text style={styles.headerTitle}>{String.ChooseTree_HeaderTitle}</Text>
 
         {/* Green Points Badge on the Right */}
         <View style={styles.pointsBadge}>
           {/* Gold Coin Icon */}
           <Image
-            source={Images.globe} // REPLACE_IMAGE: Points badge gold coin/green-point icon
+            source={Images.globe}
             style={styles.pointsIcon}
             resizeMode="contain"
           />
-          <Text style={styles.pointsText}>1,250 Green Points</Text>
+          <Text style={styles.pointsText}>1,250 {String.ChooseTree_PointsBadge}</Text>
         </View>
       </View>
 
@@ -269,7 +269,7 @@ const ChooseTreeScreen = () => {
             <View style={[styles.stepCircle, styles.stepCircleActive]}>
               <Text style={styles.stepTextActive}>1</Text>
             </View>
-            <Text style={styles.stepLabelActive}>Choose Tree</Text>
+            <Text style={styles.stepLabelActive}>{String.ChooseTree_Step1}</Text>
             <View style={[styles.stepLine, styles.stepLineActive]} />
           </View>
 
@@ -278,7 +278,7 @@ const ChooseTreeScreen = () => {
             <View style={[styles.stepCircle, styles.stepCircleInactive]}>
               <Text style={styles.stepTextInactive}>2</Text>
             </View>
-            <Text style={styles.stepLabelInactive}>Choose Location</Text>
+            <Text style={styles.stepLabelInactive}>{String.ChooseTree_Step2}</Text>
             <View style={styles.stepLine} />
           </View>
 
@@ -287,7 +287,7 @@ const ChooseTreeScreen = () => {
             <View style={[styles.stepCircle, styles.stepCircleInactive]}>
               <Text style={styles.stepTextInactive}>3</Text>
             </View>
-            <Text style={styles.stepLabelInactive}>Details</Text>
+            <Text style={styles.stepLabelInactive}>{String.ChooseTree_Step3}</Text>
             <View style={styles.stepLine} />
           </View>
 
@@ -296,7 +296,7 @@ const ChooseTreeScreen = () => {
             <View style={[styles.stepCircle, styles.stepCircleInactive]}>
               <Text style={styles.stepTextInactive}>4</Text>
             </View>
-            <Text style={styles.stepLabelInactive}>Payment</Text>
+            <Text style={styles.stepLabelInactive}>{String.ChooseTree_Step4}</Text>
           </View>
         </View>
 
@@ -306,19 +306,19 @@ const ChooseTreeScreen = () => {
             <View style={styles.stateIconContainer}>
               {/* Map Marker Pin Icon */}
               <Image
-                source={Images.location} // REPLACE_IMAGE: Green pin location icon
+                source={Images.location}
                 style={styles.stateIcon}
                 resizeMode="contain"
               />
             </View>
-            <Text style={styles.stateLabel}>Selected State</Text>
-            <Text style={styles.stateName}>Rajasthan</Text>
+            <Text style={styles.stateLabel}>{String.ChooseTree_SelectedStateLabel}</Text>
+            <Text style={styles.stateName}>{String.ChooseTree_Rajasthan}</Text>
 
             <TouchableOpacity style={styles.changeStateContainer} activeOpacity={0.7}>
-              <Text style={styles.changeStateText}>Change State</Text>
+              <Text style={styles.changeStateText}>{String.ChooseTree_ChangeState}</Text>
               {/* Tiny Edit Pencil Icon */}
               <Image
-                source={Images.verified} // REPLACE_IMAGE: Edit pencil icon
+                source={Images.verified}
                 style={styles.pencilIcon}
                 resizeMode="contain"
               />
@@ -328,7 +328,7 @@ const ChooseTreeScreen = () => {
           {/* Right Side Teardrop Fort Graphic */}
           <View style={styles.stateGraphicContainer}>
             <Image
-              source={Images.chooseTree} // REPLACE_IMAGE: Teardrop glass-pin fort illustration (assets/Images/chooseTree.png)
+              source={Images.chooseTree}
               style={styles.stateGraphic}
               resizeMode="contain"
             />
@@ -338,10 +338,14 @@ const ChooseTreeScreen = () => {
         {/* 4. Choose Tree Headers */}
         <View style={styles.mainTitleContainer}>
           <Text style={styles.mainTitle}>
-            Choose a Tree to {'\n'}Plant in <Text style={styles.mainTitleHighlight}>Rajasthan</Text>
+            {String.ChooseTree_MainTitleLeft}
+            <Text style={styles.mainTitleHighlight}>{String.ChooseTree_MainTitleHighlight}</Text>
+            {String.ChooseTree_MainTitleRight}
           </Text>
           <Text style={styles.mainSubtitle}>
-            Every tree you plant contributes to a <Text style={styles.mainSubtitleHighlight}>greener</Text> and healthier Rajasthan.
+            {String.ChooseTree_MainSubtitleLeft}
+            <Text style={styles.mainSubtitleHighlight}>{String.ChooseTree_MainSubtitleHighlight}</Text>
+            {String.ChooseTree_MainSubtitleRight}
           </Text>
         </View>
 
@@ -365,7 +369,7 @@ const ChooseTreeScreen = () => {
               >
                 {/* Category Icon */}
                 <Image
-                  source={cat.icon} // REPLACE_IMAGE: Mini icon beside category text (e.g. leaf, tree)
+                  source={cat.icon}
                   style={[styles.categoryIcon, isActive && styles.categoryIconActive]}
                   resizeMode="contain"
                 />
@@ -392,9 +396,9 @@ const ChooseTreeScreen = () => {
               resizeMode="contain"
             />
             <View style={styles.bannerTextContainer}>
-              <Text style={styles.bannerTextTitle}>Once you choose a tree,</Text>
+              <Text style={styles.bannerTextTitle}>{String.ChooseTree_BannerTitle}</Text>
               <Text style={styles.bannerTextDesc}>
-                you'll be able to select the best location for plantation in Rajasthan.
+                {String.ChooseTree_BannerDesc}
               </Text>
             </View>
           </View>
@@ -407,8 +411,8 @@ const ChooseTreeScreen = () => {
                 style={styles.benefitIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.benefitLabel}>Reduces</Text>
-              <Text style={styles.benefitValue}>Carbon</Text>
+              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitReduces}</Text>
+              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitCarbon}</Text>
             </View>
             <View style={styles.benefitItem}>
               <Image
@@ -416,8 +420,8 @@ const ChooseTreeScreen = () => {
                 style={styles.benefitIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.benefitLabel}>Supports</Text>
-              <Text style={styles.benefitValue}>Biodiversity</Text>
+              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitSupports}</Text>
+              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitSupportsSub}</Text>
             </View>
             <View style={styles.benefitItem}>
               <Image
@@ -425,8 +429,8 @@ const ChooseTreeScreen = () => {
                 style={styles.benefitIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.benefitLabel}>Creates a</Text>
-              <Text style={styles.benefitValue}>Greener Future</Text>
+              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitCreates}</Text>
+              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitGreenerFuture}</Text>
             </View>
           </View>
         </View>
@@ -440,7 +444,7 @@ const ChooseTreeScreen = () => {
               resizeMode="contain"
             />
             <Text style={styles.footerText}>
-              All trees are verified and planted in partnership with local communities.
+              {String.ChooseTree_FooterText}
             </Text>
           </View>
           <TouchableOpacity
@@ -448,7 +452,7 @@ const ChooseTreeScreen = () => {
             onPress={handleContinue}
             activeOpacity={0.85}
           >
-            <Text style={styles.continueText}>Continue</Text>
+            <Text style={styles.continueText}>{String.ChooseTree_Continue}</Text>
             <Image
               source={Images.back}
               style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}

@@ -1,0 +1,536 @@
+import { Dimensions, StyleSheet } from 'react-native';
+import { Colors } from '../../comman/Colors';
+import FontsSize from '../../comman/FontsSize';
+import MarginHW from '../../comman/MarginHW';
+import ImageSize from '../../comman/ImageSize';
+import HWSize from '../../comman/HWSize';
+import fonts from '../../comman/fonts';
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+  },
+  scrollViewContent: {
+  },
+  // Header
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingHorizontal: MarginHW.PaddingW10,
+    marginTop: MarginHW.MarginH20,
+  },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  headerLogo: {
+    width: 38,
+    height: 38,
+    marginRight: 8,
+  },
+  headerLogoGeotree: {
+    left: -10,
+    top: -50,
+    position: 'absolute',
+    width: 150,
+    height: 150,
+  },
+  logoTextContainer: {
+    justifyContent: 'center',
+  },
+  logoTitle: {
+    fontSize: FontsSize.size20,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1E6B46',
+    lineHeight: FontsSize.size24,
+  },
+  logoSubtitle: {
+    fontSize: 8,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#8E9A93',
+    letterSpacing: 0.5,
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    justifyContent: 'flex-end'
+  },
+  iconButton: {
+    width: 35,
+    height: 35,
+    borderRadius: 20,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  iconImg: {
+    width: 15,
+    height: 15,
+    tintColor: '#2F3E35',
+  },
+  // Hero Section
+  heroContainer: {
+    height: Dimensions.get("window").height / 2.9,
+    width: '100%',
+    paddingHorizontal: MarginHW.PaddingW10,
+    overflow: 'hidden',
+  },
+  heroImage: {
+    flex: 1,
+  },
+  heroTextContent: {
+    marginVertical: 15,
+  },
+  heroTitle: {
+    fontSize: FontsSize.size30,
+    fontFamily: fonts.OpenSans_ExtraBold,
+    color: '#22391f',
+
+  },
+  heroTitleGreen: {
+    fontSize: FontsSize.size24,
+    fontFamily: fonts.OpenSans_ExtraBold,
+    color: '#2F9E67',
+    lineHeight: 30,
+  },
+  heroSubtitle: {
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#5E6E66',
+    marginTop: 10,
+    maxWidth: '65%',
+    lineHeight: 18,
+    overflow: 'visible',
+
+  },
+  heroSubtitleHighlight: {
+    fontSize: FontsSize.size14,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#4f902d',
+  },
+  heroButtonRow: {
+    flexDirection: 'column',
+    width: '100%',
+    gap: 10,
+    marginBottom: 5,
+  },
+  heroBtnGreenContainer: {
+
+  },
+  heroBtnGreenGradient: {
+    borderRadius: 10,
+    width: Dimensions.get('window').width / 2,
+    height: 46,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+  },
+  heroBtnTextWhite: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size12,
+    color: Colors.white,
+  },
+  heroBtnIconWrapper: {
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heroBtnIconGreen: {
+    fontSize: 14,
+    color: '#2F9E67',
+    fontWeight: 'bold',
+  },
+  heroBtnWhite: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    width: Dimensions.get('window').width / 2,
+    height: 46,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 4,
+    maxWidth: '75%',
+  },
+  heroBtnTextDark: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: 11,
+    color: '#22391f',
+  },
+  heroBtnSubtext: {
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: 8,
+    color: '#8E9A93',
+    marginTop: 1,
+  },
+  heroBtnIconWrapperwhite: {
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heroBtnIconWrapperGreen: {
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+    backgroundColor: '#1E6B46',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heroBtnIconWhite: {
+    fontSize: 14,
+    color: Colors.white,
+    fontWeight: 'bold',
+  },
+  // Stats Section
+  statsCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 16,
+    marginHorizontal: MarginHW.MarginW10,
+    marginTop: -20, // Overlap onto hero
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: MarginHW.PaddingH14,
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.06,
+    shadowRadius: 16,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+  },
+  statsItem: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  statsIconBg: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#F0F6F3',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  statsIcon: {
+    width: 18,
+    height: 18,
+  },
+  statsValue: {
+    fontSize: FontsSize.size16,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+  },
+  statsLabel: {
+    fontSize: 9,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#8E9A93',
+    marginTop: 2,
+    textAlign: 'center',
+  },
+  statsDivider: {
+    width: 1,
+    height: '70%',
+    backgroundColor: '#ECEFEF',
+    alignSelf: 'center',
+  },
+  // Quick Actions Section
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: MarginHW.PaddingW20,
+    marginTop: 20,
+  },
+  gridCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 16,
+    width: '48%',
+    padding: 12,
+    marginBottom: 14,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.03,
+    shadowRadius: 8,
+    elevation: 2,
+    justifyContent: 'space-between',
+  },
+  quickActionsScroll: {
+    marginHorizontal: MarginHW.PaddingW10,
+    marginVertical: 10,
+  },
+  quickActionCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    width: 145,
+    padding: 12,
+    marginRight: 10,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.03,
+    shadowRadius: 8,
+    elevation: 2,
+    justifyContent: 'space-between',
+  },
+  cardImage: {
+    width: '100%',
+    height: 90,
+    borderRadius: 10,
+    marginBottom: 8,
+  },
+  cardTitle: {
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+    lineHeight: 15,
+  },
+  cardFooterRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 6,
+  },
+  cardSubtitle: {
+    fontSize: 9,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#8E9A93',
+  },
+  cardCircleArrow: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: '#F0F6F3',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cardArrowIcon: {
+    fontSize: 14,
+    top: -2,
+    color: '#2F9E67',
+    fontWeight: 'bold',
+  },
+  // Section Headers
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: MarginHW.PaddingW10,
+    marginTop: 15,
+    marginBottom: 10,
+  },
+  sectionTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sectionTitle: {
+    fontSize: FontsSize.size14,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  viewAllLink: {
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#2F9E67',
+  },
+  // Projects Horizontal List
+  projectsScroll: {
+    paddingLeft: MarginHW.PaddingW10,
+  },
+  projectCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 10,
+    width: 220,
+    marginRight: 14,
+    marginVertical: 1,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.04,
+    shadowRadius: 10,
+    elevation: 3,
+    overflow: 'hidden',
+  },
+  projectImgContainer: {
+    width: '100%',
+    height: 110,
+  },
+  projectImage: {
+    width: '100%',
+    height: '100%',
+  },
+  projectBadge: {
+    position: 'absolute',
+    top: 8,
+    left: 8,
+    backgroundColor: 'rgba(34, 57, 31, 0.85)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  projectBadgeText: {
+    color: Colors.white,
+    fontSize: 8,
+    fontFamily: fonts.OpenSans_Bold,
+    textTransform: 'uppercase',
+  },
+  projectInfo: {
+    padding: 10,
+  },
+  projectTitle: {
+    fontSize: 13,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+  },
+  projectLocationRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  projectLocationIcon: {
+    width: 10,
+    height: 10,
+    marginRight: 3,
+    tintColor: '#8E9A93',
+  },
+  projectLocation: {
+    fontSize: 9,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#8E9A93',
+  },
+  // Pagination Dots
+  dotsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 14,
+    gap: 6,
+  },
+  dotActive: {
+    width: 12,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: '#2F9E67',
+  },
+  dotInactive: {
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: '#D1DCD6',
+  },
+  // Bottom Banner
+  bottomBanner: {
+    backgroundColor: '#EBF3EF',
+    marginHorizontal: MarginHW.MarginW20,
+    borderRadius: 16,
+    padding: 16,
+    marginTop: 10,
+    marginBottom: 20,
+    overflow: 'hidden',
+  },
+  bannerOverlayContent: {
+    alignItems: 'center',
+  },
+  bannerTitle: {
+    fontSize: 13,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#8E9A93',
+    letterSpacing: 0.5,
+    textAlign: 'center',
+  },
+  bannerTitleBold: {
+    fontSize: 15,
+    color: '#22391f',
+    fontFamily: fonts.OpenSans_Bold,
+    marginTop: 4,
+  },
+  bannerTitleGreen: {
+    color: '#2F9E67',
+  },
+  bannerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: 16,
+  },
+  bannerItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  bannerIcon: {
+    fontSize: 12,
+    marginRight: 4,
+  },
+  bannerText: {
+    fontSize: 9,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+  },
+  // Bottom Nav Bar
+  bottomNav: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 64,
+    backgroundColor: Colors.white,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#ECEFEF',
+    paddingBottom: 6,
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 10,
+  },
+  navItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  navIcon: {
+    width: 22,
+    height: 22,
+    tintColor: '#8E9A93',
+  },
+  navIconActive: {
+    tintColor: '#2F9E67',
+  },
+  navText: {
+    fontSize: 9,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#8E9A93',
+    marginTop: 4,
+  },
+  navTextActive: {
+    color: '#2F9E67',
+    fontFamily: fonts.OpenSans_Bold,
+  },
+});

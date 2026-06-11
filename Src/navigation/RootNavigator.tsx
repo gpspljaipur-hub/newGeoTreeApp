@@ -4,12 +4,14 @@ import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
 import SignInScreen from '../screens/SignIn/SignInScreen';
 import OtpScreen from '../screens/Otp/Otp';
 import ChooseTreeScreen from '../screens/ChooseTree/ChooseTree';
+import HomeScreen from '../screens/Home/HomeScreen';
 
 export type RootStackParamList = {
   AppOpening: undefined;
   SignIn: undefined;
   Otp: { phoneNumber: string };
   ChooseTree: undefined;
+  Home: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -17,7 +19,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function RootNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="ChooseTree"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
       }}
@@ -26,6 +28,7 @@ export default function RootNavigator() {
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="Otp" component={OtpScreen} />
       <Stack.Screen name="ChooseTree" component={ChooseTreeScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
   );
 }

@@ -8,6 +8,7 @@ export const Colors = {
     white: '#FFFFFF',
     black: '#000000',
     lightGreen: '#99b949',
+    tintColorDrak: '#135928',
 
     // Heading
     darkGreen: '#354826',
@@ -45,4 +46,6 @@ export const Colors = {
     bannerBorder: '#E8EFEA',
     bannerTextDesc: '#333333',
     bannerBenefitLabel: '#55665C',
+    ApptextColor: '#22391f',
+    secondary_button: '#2F9E67',
 };

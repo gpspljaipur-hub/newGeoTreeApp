@@ -16,6 +16,19 @@ const Images = {
   earth: require('../assets/Images/earth.png'),
   bird: require('../assets/Images/bird.png'),
   co2Cloud: require('../assets/Images/co2-cloud.png'),
+  gift_tree: require('../assets/Images/gift_tree.png'),
+  carbon_cal: require('../assets/Images/carbon_cal.png'),
+  sponsor_plant: require('../assets/Images/sponsor_plant.png'),
+  project_aravalli: require('../assets/Images/project_aravalli.png'),
+  project_jaipur: require('../assets/Images/project_jaipur.png'),
+  project_himalayas: require('../assets/Images/project_himalayas.png'),
+  HomeBg: require('../assets/Images/HomeBg.png'),
+  Leaf: require('../assets/Images/leaf.png'),
+  Globe: require('../assets/Images/globe.png'),
+  logoGeotree: require('../assets/Images/logoGeotree.png'),
+  notification: require('../assets/Images/notification.png'),
+  settings: require('../assets/Images/setting.png'),
+  group: require('../assets/Images/group.png'),
 };
 
 export type ImageKey = keyof typeof Images;
