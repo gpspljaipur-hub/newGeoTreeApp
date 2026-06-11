@@ -46,6 +46,10 @@ export const Colors = {
     bannerBorder: '#E8EFEA',
     bannerTextDesc: '#333333',
     bannerBenefitLabel: '#55665C',
-    ApptextColor: '#22391f',
-    secondary_button: '#2F9E67',
+    stateIconBg: '#EEF5EE',
+    stateLabelText: '#7C8A81',
+    textDark: '#111827',
+    textMuted: '#5B665F',
+    borderLight: '#E7ECE8',
+    textDarkGray: '#222222',
 };
