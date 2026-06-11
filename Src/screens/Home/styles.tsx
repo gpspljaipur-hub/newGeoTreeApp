@@ -444,51 +444,73 @@ export const styles = StyleSheet.create({
   },
   // Bottom Banner
   bottomBanner: {
-    backgroundColor: '#EBF3EF',
-    marginHorizontal: MarginHW.MarginW20,
+    backgroundColor: '#eff3e3',
+    marginHorizontal: MarginHW.MarginW10,
     borderRadius: 16,
-    padding: 16,
-    marginTop: 10,
-    marginBottom: 20,
+    height: 125,
+    position: 'relative',
     overflow: 'hidden',
-  },
-  bannerOverlayContent: {
+    marginTop: 15,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#e2ecd1',
+    flexDirection: 'row',
     alignItems: 'center',
   },
+  bannerImage: {
+    width: 100,
+    height: 100,
+  },
+  bannerContent: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingRight: 10,
+
+  },
   bannerTitle: {
-    fontSize: 13,
+    fontSize: 11,
     fontFamily: fonts.OpenSans_Bold,
-    color: '#8E9A93',
+    color: '#22391f',
     letterSpacing: 0.5,
-    textAlign: 'center',
+
   },
   bannerTitleBold: {
-    fontSize: 15,
+    fontSize: 13,
     color: '#22391f',
     fontFamily: fonts.OpenSans_Bold,
-    marginTop: 4,
+    marginTop: 2,
+
   },
   bannerTitleGreen: {
     color: '#2F9E67',
   },
   bannerRow: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
     width: '100%',
-    marginTop: 16,
+    marginTop: 12,
+
   },
   bannerItem: {
-    flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   bannerIcon: {
-    fontSize: 12,
-    marginRight: 4,
+    width: 24,
+    height: 24,
+    marginBottom: 4,
   },
   bannerText: {
-    fontSize: 9,
+    fontSize: 8,
     fontFamily: fonts.OpenSans_Bold,
     color: '#22391f',
+    textAlign: 'center',
+  },
+  bannerDivider: {
+    width: 1,
+    height: 20,
+    backgroundColor: '#d8e3be',
+    alignSelf: 'center',
   },
   // Bottom Nav Bar
   bottomNav: {
