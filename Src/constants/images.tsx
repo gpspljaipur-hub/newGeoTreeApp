@@ -10,7 +10,12 @@ const Images = {
   verified: require('../assets/Images/verified.png'),
   location: require('../assets/Images/location.png'),
   leaf: require('../assets/Images/leaf.png'),
-
+  back: require('../assets/Images/back.png'),
+  chooseTree: require('../assets/Images/chooseTree.png'),
+  handtree: require('../assets/Images/handtree.png'),
+  earth: require('../assets/Images/earth.png'),
+  bird: require('../assets/Images/bird.png'),
+  co2Cloud: require('../assets/Images/co2-cloud.png'),
 };
 
 export type ImageKey = keyof typeof Images;
