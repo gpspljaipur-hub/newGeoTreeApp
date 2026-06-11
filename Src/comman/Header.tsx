@@ -61,7 +61,7 @@ const Header: React.FC<Props> = ({
                                 <Image source={Images.notification} style={styles.icon} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => { handleNavigation({ type: 'push', navigation, page: 'Setting' }) }}>
-                                <Image source={Images.setting} style={styles.icon} />
+                                <Image source={Images.settings} style={styles.icon} />
                             </TouchableOpacity>
                         </View>
                     </View>)}

@@ -8,6 +8,7 @@ export const Colors = {
     white: '#FFFFFF',
     black: '#000000',
     lightGreen: '#99b949',
+    tintColorDrak: '#135928',
 
     // Heading
     darkGreen: '#354826',

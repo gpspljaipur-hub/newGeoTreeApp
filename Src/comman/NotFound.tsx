@@ -19,7 +19,7 @@ const NotFound = () => {
 export default NotFound
 const styles = StyleSheet.create({
     Buttonview: { height: windowHeight / 3, justifyContent: 'center', alignItems: 'center' },
-    ButtonText: { color: Colors.white, fontFamily: fonts.Lexend_Medium, fontSize: FontsSize.size18 },
-    Wait_Text: { color: Colors.black, fontFamily: fonts.Lexend_Medium, fontSize: FontsSize.size18 },
+    ButtonText: { color: Colors.white, fontFamily: fonts.OpenSans_Medium, fontSize: FontsSize.size18 },
+    Wait_Text: { color: Colors.black, fontFamily: fonts.OpenSans_Medium, fontSize: FontsSize.size18 },
 
 })

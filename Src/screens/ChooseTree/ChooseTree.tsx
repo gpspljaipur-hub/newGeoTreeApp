@@ -335,12 +335,12 @@ const ChooseTreeScreen = () => {
             <Image
               source={Images.handtree}
               style={styles.bannerHandImage}
-              resizeMode="cover"
+              resizeMode="contain"
             />
             <View style={styles.bannerTextContainer}>
-              <Text style={styles.bannerTextTitle}>Once you choose a tree,</Text>
+              <Text style={styles.bannerTextTitle}>{String.ChooseTree_BannerTitle}</Text>
               <Text style={styles.bannerTextDesc}>
-                you'll be able to select the best location for plantation in Rajasthan.
+                {String.ChooseTree_BannerDesc}
               </Text>
             </View>
           </View>
@@ -355,8 +355,8 @@ const ChooseTreeScreen = () => {
                 style={styles.benefitIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.benefitLabel}>Reduces</Text>
-              <Text style={styles.benefitValue}>Carbon</Text>
+              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitReduces}</Text>
+              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitCarbon}</Text>
             </View>
             <View style={styles.benefitItem}>
               <Image
@@ -364,8 +364,8 @@ const ChooseTreeScreen = () => {
                 style={styles.benefitIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.benefitLabel}>Supports</Text>
-              <Text style={styles.benefitValue}>Biodiversity</Text>
+              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitSupports}</Text>
+              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitSupportsSub}</Text>
             </View>
             <View style={styles.benefitItem}>
               <Image
@@ -373,38 +373,38 @@ const ChooseTreeScreen = () => {
                 style={styles.benefitIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.benefitLabel}>Creates a</Text>
-              <Text style={styles.benefitValue}>Greener Future</Text>
+              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitCreates}</Text>
+              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitGreenerFuture}</Text>
             </View>
           </View>
         </View>
-      </ScrollView>
 
-      {/*Footer*/}
-      <View style={styles.footerContainer}>
-        <View style={styles.footerTextRow}>
-          <Image
-            source={Images.shield}
-            style={styles.footerCheckIcon}
-            resizeMode="contain"
-          />
-          <Text style={styles.footerText}>
-            All trees are verified and planted in partnership with local communities.
-          </Text>
+        {/*Footer*/}
+        <View style={styles.footerContainer}>
+          <View style={styles.footerTextRow}>
+            <Image
+              source={Images.shield}
+              style={styles.footerCheckIcon}
+              resizeMode="contain"
+            />
+            <Text style={styles.footerText}>
+              {String.ChooseTree_FooterText}
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={styles.continueButton}
+            onPress={handleContinue}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.continueText}>{String.ChooseTree_Continue}</Text>
+            <Image
+              source={Images.back}
+              style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.continueButton}
-          // onPress={ }
-          activeOpacity={0.85}
-        >
-          <Text style={styles.continueText}>Continue</Text>
-          <Image
-            source={Images.back}
-            style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
