@@ -19,14 +19,17 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import { Colors } from '../../comman/Colors';
+import String from '../../comman/String';
+import Loader_button from '../../comman/Loader_button';
+import MarginHW from '../../comman/MarginHW';
 
 const Logo = () => {
   return (
     <View style={styles.logoContainer}>
       <Image
-        source={Images.logo}
+        source={Images.SinginGeotree}
         style={styles.logoImage}
-        resizeMode="contain"
+        resizeMode='cover'
       />
     </View>
   );
@@ -50,7 +53,7 @@ const SignInScreen = () => {
 
   return (
     <ImageBackground
-      source={Images.background}
+      source={Images.LoginBg}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
@@ -65,15 +68,13 @@ const SignInScreen = () => {
               <Logo />
               <View style={styles.spacer} />
 
-              {/* Sign In Glass Card */}
               <View style={styles.cardContainer}>
                 <View style={styles.glassCard}>
-                  <Text style={styles.cardTitle}>Sign In</Text>
+                  <Text style={styles.cardTitle}>{String.SignIn_Title}</Text>
                   <Text style={styles.cardSubtitle}>
-                    Enter your mobile number to continue.
+                    {String.SignIn_Subtitle}
                   </Text>
 
-                  {/* Mobile Number Input Wrapper */}
                   <View style={styles.inputContainer}>
                     <TouchableOpacity style={styles.countryPicker} activeOpacity={0.7}>
                       <Text style={styles.flagEmoji}>🇮🇳</Text>
@@ -85,7 +86,7 @@ const SignInScreen = () => {
 
                     <TextInput
                       style={styles.textInput}
-                      placeholder="Enter mobile number"
+                      placeholder={String.SignIn_MobilePlaceholder}
                       placeholderTextColor={Colors.placeholderColor}
                       keyboardType="phone-pad"
                       value={phoneNumber}
@@ -93,23 +94,15 @@ const SignInScreen = () => {
                       maxLength={10}
                     />
                   </View>
-
-                  {/* Send OTP Button */}
-                  <Pressable
-                    style={({ pressed }) => [
-                      styles.button,
-                      phoneNumber.length < 10 && styles.buttonDisabled,
-                      pressed && phoneNumber.length === 10 && styles.buttonPressed
-                    ]}
-                    onPress={handleSendOTP}
+                  <Loader_button
+                    isGradient
+                    showArrow
+                    textcolor="#fff"
+                    title={String.SignIn_SendOTP}
                     disabled={phoneNumber.length < 10}
-                  >
-                    <Text style={styles.buttonText}>Send OTP</Text>
-                    <View style={styles.arrowContainer}>
-                      <View style={styles.arrowLine} />
-                      <View style={styles.arrowHead} />
-                    </View>
-                  </Pressable>
+                    Onclick={handleSendOTP}
+                    containerStyle={{ marginHorizontal: 0, marginTop: MarginHW.MarginH24 }}
+                  />
                 </View>
               </View>
               <View style={styles.bottomSpacer} />

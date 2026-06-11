@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     color: Colors.legacyGreen,
   },
   cardContainer: {
-    marginTop: MarginHW.MarginH30,
+    marginVertical: MarginHW.MarginH30,
     paddingHorizontal: MarginHW.PaddingW24,
   },
   glassCard: {
@@ -185,9 +185,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingHorizontal: MarginHW.PaddingW12,
-    paddingBottom: MarginHW.PaddingH24,
     marginTop: MarginHW.MarginH10,
-    marginBottom: MarginHW.MarginH35,
   },
   footerItem: {
     flexDirection: 'row',
@@ -217,8 +215,8 @@ export const styles = StyleSheet.create({
     tintColor: Colors.darkGreen,
   },
   footerIcon: {
-    width: 16,
-    height: 16,
+    width: 18,
+    height: 18,
     tintColor: Colors.greenMint,
   },
 });

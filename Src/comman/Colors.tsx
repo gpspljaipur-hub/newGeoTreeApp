@@ -17,8 +17,9 @@ export const Colors = {
 
     // Card
     glassBg: 'rgba(255, 255, 255, 0.53)',
-    glassBorder: 'rgba(255,255,255,0.65)',
+    glassBorder: 'rgba(255,255,255,0.80)',
     iconWrapperBg: 'rgba(255,255,255,0.75)',
+    inputBg: '#d4d6ce',
 
     // Card Text
     labelGrey: '#000000ff',
