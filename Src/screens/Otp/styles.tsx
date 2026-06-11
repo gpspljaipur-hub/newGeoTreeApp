@@ -45,14 +45,16 @@ export const styles = StyleSheet.create({
     },
     cardContainer: {
         paddingHorizontal: MarginHW.PaddingW24,
-        marginBottom: MarginHW.MarginH40,
+        flex: 1,
+        justifyContent: 'flex-end'
+        ,
     },
     glassCard: {
         backgroundColor: 'rgba(255, 255, 255, 0.88)',
-        borderRadius: FontsSize.size40 || 40,
+        borderRadius: 20,
         borderWidth: 1.5,
         borderColor: Colors.glassBorder,
-        paddingVertical: MarginHW.PaddingH24,
+        paddingVertical: MarginHW.PaddingH20,
         paddingHorizontal: MarginHW.PaddingW20,
         shadowColor: Colors.black,
         shadowOffset: { width: 0, height: 8 },
@@ -82,12 +84,12 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginVertical: MarginHW.MarginH10,
+        marginVertical: MarginHW.MarginH2,
     },
     otpBox: {
         width: 44,
-        height: 54,
-        borderRadius: 14,
+        height: 48,
+        borderRadius: 8,
         borderWidth: 1.5,
         borderColor: 'rgba(0, 0, 0, 0.06)',
         backgroundColor: 'rgba(245, 247, 246, 0.8)',
@@ -128,7 +130,7 @@ export const styles = StyleSheet.create({
     infoRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: MarginHW.PaddingH8,
+        paddingVertical: MarginHW.PaddingH3,
     },
     dividerLine: {
         height: 1,
