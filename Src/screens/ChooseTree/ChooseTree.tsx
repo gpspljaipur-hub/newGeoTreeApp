@@ -5,391 +5,337 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  FlatList,
+  ImageBackground,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
 import { styles } from './styles';
-import { Colors } from '../../comman/Colors';
 import Images from '../../constants/images';
-import String from '../../comman/String';
 import { SafeAreaView } from 'react-native-safe-area-context';
-interface TreeItem {
-  id: string;
-  name: string;
-  scientificName: string;
-  description: string;
-  category: string;
-  badge: string;
-  badgeColor: string;
-  co2: string;
-  growthRate: string;
-  maintenance: string;
-  points: number;
-  image: any;
-}
+import LinearGradient from 'react-native-linear-gradient';
+
+const treesData = [
+  {
+    id: 'neem',
+    name: 'Neem',
+    scientificName: 'Azadirachta indica',
+    description: 'A hardy native tree known for its medicinal properties and air purifying qualities.',
+    co2: '22 kg/year',
+    growthRate: 'Medium',
+    maintenance: 'Low',
+    points: 100,
+    category: 'Native',
+    image: Images.neem_tree,
+  },
+  {
+    id: 'peepal',
+    name: 'Peepal',
+    scientificName: 'Ficus religiosa',
+    description: 'A sacred tree that produces oxygen even at night and supports biodiversity.',
+    co2: '28 kg/year',
+    growthRate: 'Fast',
+    maintenance: 'Low',
+    points: 120,
+    category: 'Native',
+    image: Images.peepal_tree,
+  },
+  {
+    id: 'mango',
+    name: 'Mango',
+    scientificName: 'Mangifera indica',
+    description: 'A popular fruit tree that provides shade and delicious fruits.',
+    co2: '25 kg/year',
+    growthRate: 'Medium',
+    maintenance: 'Medium',
+    points: 150,
+    category: 'Fruit',
+    image: Images.mango_tree,
+  },
+  {
+    id: 'gulmohar',
+    name: 'Gulmohar',
+    scientificName: 'Delonix regia',
+    description: 'A beautiful flowering tree that adds vibrant colors to the environment.',
+    co2: '20 kg/year',
+    growthRate: 'Medium',
+    maintenance: 'Low',
+    points: 120,
+    category: 'Flowering',
+    image: Images.gulmohar_tree,
+  },
+];
 
 const ChooseTreeScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedTreeId, setSelectedTreeId] = useState<string>('1'); // Default select Neem
+  const [selectedTab, setSelectedTab] = useState('All');
+  const filteredTrees = selectedTab === 'All'
+    ? treesData
+    : treesData.filter(tree => tree.category === selectedTab);
 
-  // Categories list
+  const steps = [
+    { number: 1, label: 'Choose Tree', active: true },
+    { number: 2, label: 'Choose Location', active: false },
+    { number: 3, label: 'Details', active: false },
+    { number: 4, label: 'Payment', active: false },
+  ];
+
   const categories = [
-    {
-      id: 'all',
-      name: 'All Trees',
-      /* IMAGE: Category icon (Leaf) */
-      icon: Images.leaf, // REPLACE_IMAGE: Icon for 'All Trees' category
-    },
-    {
-      id: 'native',
-      name: 'Native Trees',
-      /* IMAGE: Category icon (Tree) */
-      icon: Images.tree, // REPLACE_IMAGE: Icon for 'Native Trees' category
-    },
-    {
-      id: 'fruit',
-      name: 'Fruit Trees',
-      /* IMAGE: Category icon (Tree as placeholder) */
-      icon: Images.tree, // REPLACE_IMAGE: Icon for 'Fruit Trees' category
-    },
-    {
-      id: 'flowering',
-      name: 'Flowering Trees',
-      /* IMAGE: Category icon (Leaf as placeholder) */
-      icon: Images.leaf, // REPLACE_IMAGE: Icon for 'Flowering Trees' category
-    },
+    { id: 'All', label: 'All Trees' },
+    { id: 'Native', label: 'Native Trees' },
+    { id: 'Fruit', label: 'Fruit Trees' },
+    { id: 'Flowering', label: 'Flowering Trees' },
   ];
 
-  // Tree database list
-  const trees: TreeItem[] = [
-    {
-      id: '1',
-      name: 'Neem',
-      scientificName: 'Azadirachta indica',
-      description: 'A hardy native tree known for its medicinal properties and air purifying qualities.',
-      category: 'native',
-      badge: 'Native',
-      badgeColor: '#1E6B46',
-      co2: '22 kg/year',
-      growthRate: 'Medium',
-      maintenance: 'Low',
-      points: 100,
-      /* IMAGE: Neem Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Neem tree
-    },
-    {
-      id: '2',
-      name: 'Peepal',
-      scientificName: 'Ficus religiosa',
-      description: 'A sacred tree that produces oxygen even at night and supports biodiversity.',
-      category: 'native',
-      badge: 'Native',
-      badgeColor: '#1E6B46',
-      co2: '28 kg/year',
-      growthRate: 'Fast',
-      maintenance: 'Low',
-      points: 120,
-      /* IMAGE: Peepal Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Peepal tree
-    },
-    {
-      id: '3',
-      name: 'Mango',
-      scientificName: 'Mangifera indica',
-      description: 'A popular fruit tree that provides shade and delicious fruits.',
-      category: 'fruit',
-      badge: 'Fruit',
-      badgeColor: '#F5B041',
-      co2: '25 kg/year',
-      growthRate: 'Medium',
-      maintenance: 'Medium',
-      points: 150,
-      /* IMAGE: Mango Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Mango tree
-    },
-    {
-      id: '4',
-      name: 'Gulmohar',
-      scientificName: 'Delonix regia',
-      description: 'A beautiful flowering tree that adds vibrant colors to the environment.',
-      category: 'flowering',
-      badge: 'Flowering',
-      badgeColor: '#EC7063',
-      co2: '20 kg/year',
-      growthRate: 'Medium',
-      maintenance: 'Low',
-      points: 120,
-      /* IMAGE: Gulmohar Tree image illustration */
-      image: Images.tree, // REPLACE_IMAGE: Main list image of Gulmohar tree
-    },
-  ];
-
-  // Filter trees based on chosen tab category
-  const filteredTrees = selectedCategory === 'all'
-    ? trees
-    : trees.filter(tree => tree.category === selectedCategory);
-
-  const handleContinue = () => {
-    const selectedTree = trees.find(t => t.id === selectedTreeId);
-    console.log('Continuing with selected tree:', selectedTree?.name);
-    // You can handle state changes or navigation to Location Screen here
-  };
-
-  const renderTreeItem = ({ item }: { item: TreeItem }) => {
-    const isSelected = selectedTreeId === item.id;
-    return (
-      <TouchableOpacity
-        style={[
-          styles.card,
-          isSelected && { borderColor: Colors.tint, borderWidth: 1.5, backgroundColor: '#FAFCFB' }
-        ]}
-        onPress={() => setSelectedTreeId(item.id)}
-        activeOpacity={0.9}
-      >
-        {/* Tree Image Column */}
-        <View style={styles.cardImageContainer}>
-          {/* Badge */}
-          <View style={[styles.badge, { backgroundColor: item.badgeColor }]}>
-            <Text style={styles.badgeText}>{item.badge}</Text>
-          </View>
-          {/* Main Tree image */}
-          <Image
-            source={item.image} // REPLACE_IMAGE: Source for each tree illustration in the card
-            style={styles.cardImage}
-            resizeMode="cover"
-          />
-        </View>
-
-        {/* Tree Info Details */}
-        <View style={styles.cardContent}>
-          <View style={styles.cardHeader}>
-            <View style={styles.cardTitleRow}>
-              <Text style={styles.cardTitle}>{item.name}</Text>
-              {/* Green Verified Tick Image */}
-              <Image
-                source={Images.leaf} // REPLACE_IMAGE: Mini green check or leaf verification icon
-                style={styles.checkIcon}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-
-          <Text style={styles.cardSub}>{item.scientificName}</Text>
-          <Text style={styles.cardDesc} numberOfLines={2}>{item.description}</Text>
-
-          {/* Grid Spec */}
-          <View style={styles.specsContainer}>
-            <View style={styles.specItem}>
-              <Text style={styles.specLabel}>CO₂ Absorption</Text>
-              <Text style={styles.specValue}>{item.co2}</Text>
-            </View>
-            <View style={styles.specItem}>
-              <Text style={styles.specLabel}>Growth Rate</Text>
-              <Text style={[styles.specValue, { color: Colors.tint }]}>{item.growthRate}</Text>
-            </View>
-            <View style={styles.specItem}>
-              <Text style={styles.specLabel}>Maintenance</Text>
-              <Text style={[styles.specValue, { color: item.maintenance === 'Low' ? Colors.tint : '#4B5E53' }]}>
-                {item.maintenance}
-              </Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Top-Right Green Points Badge */}
-        <View style={styles.cardPointsBadge}>
-          {/* Little green points/leaf badge icon */}
-          <Image
-            source={Images.leaf} // REPLACE_IMAGE: Leaf or coin points badge icon
-            style={styles.cardPointsIcon}
-            resizeMode="contain"
-          />
-          <Text style={styles.cardPointsText}>{item.points}</Text>
-        </View>
-
-        {/* Bottom-Right Arrow Circle */}
-        <TouchableOpacity
-          style={[
-            styles.arrowButton,
-            isSelected && { backgroundColor: '#144D32' }
-          ]}
-          onPress={() => setSelectedTreeId(item.id)}
-          activeOpacity={0.7}
-        >
-          {/* Arrow icon */}
-          <Image
-            source={Images.verified} // REPLACE_IMAGE: Right-facing small white arrow
-            style={[styles.arrowButtonIcon, { transform: [{ rotate: '-90deg' }] }]} // placeholder rotate
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </TouchableOpacity>
-    );
+  const renderTabIcon = (tabId: string, isActive: boolean) => {
+    const tintColor = isActive ? '#FFFFFF' : '#1E6B46';
+    switch (tabId) {
+      case 'All':
+        return <Image source={Images.leaf} style={[styles.tabIcon, { tintColor }]} resizeMode="contain" />;
+      case 'Native':
+        return <Image source={Images.tree} style={[styles.tabIcon, { tintColor }]} resizeMode="contain" />;
+      case 'Fruit':
+        return <Image source={Images.apple} style={[styles.tabIcon, { tintColor }]} resizeMode="contain" />;
+      case 'Flowering':
+        return <Image source={Images.flower} style={[styles.tabIcon]} resizeMode="contain" />;
+      default:
+        return null;
+    }
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* 1. Header Navigation Bar */}
-      <View style={styles.headerContainer}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-          activeOpacity={0.7}
-        >
-          {/* Left Arrow Icon */}
-          <Image
-            source={Images.verified} // REPLACE_IMAGE: Header Back left arrow icon
-            style={[styles.backIcon, { transform: [{ rotate: '90deg' }] }]} // rotate placeholder to face left
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-
-        <Text style={styles.headerTitle}>Plant Your First Tree</Text>
-
-        {/* Green Points Badge on the Right */}
-        <View style={styles.pointsBadge}>
-          {/* Gold Coin Icon */}
-          <Image
-            source={Images.globe} // REPLACE_IMAGE: Points badge gold coin/green-point icon
-            style={styles.pointsIcon}
-            resizeMode="contain"
-          />
-          <Text style={styles.pointsText}>1,250 Green Points</Text>
+    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
+        {/* Header */}
+        <View style={styles.headerContainer}>
+          <TouchableOpacity style={styles.backButton} activeOpacity={0.7}>
+            <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Plant Your First Tree</Text>
+          <View style={styles.coinBadge}>
+            <LinearGradient
+              colors={['#FFE259', '#FFA751']}
+              style={styles.coinIconContainer}
+            >
+              <Image source={Images.leaf} style={styles.coinIcon} resizeMode="contain" />
+            </LinearGradient>
+            <View style={styles.coinTextContainer}>
+              <Text style={styles.coinAmount}>1,250</Text>
+              <Text style={styles.coinLabel}>Green Points</Text>
+            </View>
+          </View>
         </View>
-      </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* 2. Stepper Progress Bar */}
+        {/* Stepper */}
         <View style={styles.stepperContainer}>
-          {/* Step 1 */}
-          <View style={styles.stepWrapper}>
-            <View style={[styles.stepCircle, styles.stepCircleActive]}>
-              <Text style={styles.stepTextActive}>1</Text>
+          <View style={styles.stepperLine} />
+          {steps.map((step) => (
+            <View key={step.number} style={styles.stepItem}>
+              <View style={[styles.stepCircle, step.active ? styles.stepCircleActive : styles.stepCircleInactive]}>
+                <Text style={styles.stepNumber}>{step.number}</Text>
+              </View>
+              <Text style={[styles.stepLabel, step.active ? styles.stepLabelActive : styles.stepLabelInactive]}>
+                {step.label}
+              </Text>
             </View>
-            <Text style={styles.stepLabelActive}>Choose Tree</Text>
-            <View style={[styles.stepLine, styles.stepLineActive]} />
-          </View>
-
-          {/* Step 2 */}
-          <View style={styles.stepWrapper}>
-            <View style={[styles.stepCircle, styles.stepCircleInactive]}>
-              <Text style={styles.stepTextInactive}>2</Text>
-            </View>
-            <Text style={styles.stepLabelInactive}>Choose Location</Text>
-            <View style={styles.stepLine} />
-          </View>
-
-          {/* Step 3 */}
-          <View style={styles.stepWrapper}>
-            <View style={[styles.stepCircle, styles.stepCircleInactive]}>
-              <Text style={styles.stepTextInactive}>3</Text>
-            </View>
-            <Text style={styles.stepLabelInactive}>Details</Text>
-            <View style={styles.stepLine} />
-          </View>
-
-          {/* Step 4 */}
-          <View style={styles.stepWrapper}>
-            <View style={[styles.stepCircle, styles.stepCircleInactive]}>
-              <Text style={styles.stepTextInactive}>4</Text>
-            </View>
-            <Text style={styles.stepLabelInactive}>Payment</Text>
-          </View>
+          ))}
         </View>
-
-        {/* 3. Selected State Decorative Card */}
-        <View style={styles.selectedStateCard}>
-          <View style={styles.stateTextContainer}>
-            <View style={styles.stateIconContainer}>
-              {/* Map Marker Pin Icon */}
-              <Image
-                source={Images.location} // REPLACE_IMAGE: Green pin location icon
-                style={styles.stateIcon}
-                resizeMode="contain"
-              />
-            </View>
-            <Text style={styles.stateLabel}>Selected State</Text>
-            <Text style={styles.stateName}>Rajasthan</Text>
-
-            <TouchableOpacity style={styles.changeStateContainer} activeOpacity={0.7}>
-              <Text style={styles.changeStateText}>Change State</Text>
-              {/* Tiny Edit Pencil Icon */}
-              <Image
-                source={Images.verified} // REPLACE_IMAGE: Edit pencil icon
-                style={styles.pencilIcon}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-          </View>
-
-          {/* Right Side Teardrop Fort Graphic */}
-          <View style={styles.stateGraphicContainer}>
-            <Image
-              source={Images.chooseTree} // REPLACE_IMAGE: Teardrop glass-pin fort illustration (assets/Images/chooseTree.png)
-              style={styles.stateGraphic}
-              resizeMode="contain"
+        {/* Hero Card */}
+        <View style={styles.heroCard}>
+          <ImageBackground
+            source={Images.chooseTree}
+            style={styles.heroImage}
+            imageStyle={styles.heroImageRadius}
+            resizeMode="cover"
+          >
+            {/* White Fade Overlay */}
+            <LinearGradient
+              colors={['#FFFFFF', '#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              locations={[0, 0.35, 0.55, 1]}
+              style={styles.heroOverlay}
             />
+
+            <View style={styles.heroContent}>
+
+              {/* State Card */}
+              <View style={styles.stateCard}>
+                <View style={styles.stateCardRow}>
+                  <View style={styles.stateIconContainer}>
+                    <Image
+                      source={Images.location}
+                      style={styles.stateIcon}
+                      resizeMode="contain"
+                    />
+                  </View>
+
+                  <View style={styles.stateTextContainer}>
+                    <Text style={styles.stateLabel}>
+                      Selected State
+                    </Text>
+
+                    <Text style={styles.stateName}>
+                      Rajasthan
+                    </Text>
+
+                    <TouchableOpacity
+                      activeOpacity={0.8}
+                      style={styles.changeStateButton}
+                    >
+                      <Text style={styles.changeStateText}>
+                        Change State ↗
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+
+              {/* Main Content */}
+              <View style={styles.heroBottomContent}>
+
+                {/* Left Side Text */}
+                <View style={styles.heroTextContainer}>
+                  <Text style={styles.heroTitle}>
+                    Choose a Tree to{'\n'}
+                    Plant in{' '}
+                    <Text style={styles.highlightGreen}>
+                      Rajasthan
+                    </Text>
+                  </Text>
+
+                  <Text style={styles.heroSubtitle}>
+                    Every tree you plant contributes to a{' '}
+                    <Text style={styles.highlightGreen}>
+                      greener
+                    </Text>{' '}
+                    and healthier Rajasthan.
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </ImageBackground>
+
+          {/* Floating Category Tabs */}
+          <View style={styles.tabsContainer}>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.tabsScrollView}
+            >
+              {categories.map(tab => {
+                const isActive = selectedTab === tab.id;
+
+                return (
+                  <TouchableOpacity
+                    key={tab.id}
+                    activeOpacity={0.8}
+                    onPress={() => setSelectedTab(tab.id)}
+                    style={[
+                      styles.tabButton,
+                      isActive
+                        ? styles.tabButtonActive
+                        : styles.tabButtonInactive,
+                    ]}
+                  >
+                    {renderTabIcon(tab.id, isActive)}
+
+                    <Text
+                      style={[
+                        styles.tabText,
+                        isActive
+                          ? styles.tabTextActive
+                          : styles.tabTextInactive,
+                      ]}
+                    >
+                      {tab.label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
           </View>
         </View>
 
-        {/* 4. Choose Tree Headers */}
-        <View style={styles.mainTitleContainer}>
-          <Text style={styles.mainTitle}>
-            Choose a Tree to {'\n'}Plant in <Text style={styles.mainTitleHighlight}>Rajasthan</Text>
-          </Text>
-          <Text style={styles.mainSubtitle}>
-            Every tree you plant contributes to a <Text style={styles.mainSubtitleHighlight}>greener</Text> and healthier Rajasthan.
-          </Text>
-        </View>
+        {/* Tree Cards List */}
+        <View style={styles.treeListContainer}>
+          {filteredTrees.map((tree) => {
+            let badgeStyle = styles.nativeBadge;
+            if (tree.category === 'Fruit') badgeStyle = styles.fruitBadge;
+            if (tree.category === 'Flowering') badgeStyle = styles.floweringBadge;
 
-        {/* 5. Horizontal Categories Filter Tabs */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.categoriesContainer}
-        >
-          {categories.map((cat) => {
-            const isActive = selectedCategory === cat.id;
+            const growthRateColor = '#1E6B46';
+            const maintenanceColor = tree.maintenance === 'Low' ? '#1E6B46' : '#111827';
+
             return (
-              <TouchableOpacity
-                key={cat.id}
-                style={[
-                  styles.categoryButton,
-                  isActive && styles.categoryButtonActive
-                ]}
-                onPress={() => setSelectedCategory(cat.id)}
-                activeOpacity={0.8}
-              >
-                {/* Category Icon */}
-                <Image
-                  source={cat.icon} // REPLACE_IMAGE: Mini icon beside category text (e.g. leaf, tree)
-                  style={[styles.categoryIcon, isActive && styles.categoryIconActive]}
-                  resizeMode="contain"
-                />
-                <Text style={[styles.categoryText, isActive && styles.categoryTextActive]}>
-                  {cat.name}
-                </Text>
-              </TouchableOpacity>
+              <View key={tree.id} style={styles.treeCard}>
+                <View style={styles.treeImageContainer}>
+                  <Image source={tree.image} style={styles.treeImage} resizeMode="cover" />
+                  <View style={[styles.categoryBadge, badgeStyle]}>
+                    <Text style={styles.categoryBadgeText}>{tree.category}</Text>
+                  </View>
+                </View>
+                <View style={styles.treeDetailsContainer}>
+                  <View style={styles.treeHeaderRow}>
+                    <View style={styles.treeNameContainer}>
+                      <View style={styles.treeNameRow}>
+                        <Text style={styles.treeName} numberOfLines={1}>{tree.name}</Text>
+                      </View>
+                      <Text style={styles.scientificName} numberOfLines={1}>{tree.scientificName}</Text>
+                    </View>
+                    <View style={styles.pointsBadgeContainer}>
+                      <View style={styles.pointsPill}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                          <Image source={Images.leaf} style={styles.pointsLeafIcon} resizeMode="contain" />
+                          <Text style={styles.pointsValue}>{tree.points}</Text>
+                        </View>
+                        <Text style={styles.pointsLabel}>Green Points</Text>
+                      </View>
+                    </View>
+                  </View>
+                  <Text style={styles.treeDescription} numberOfLines={2}>
+                    {tree.description}
+                  </Text>
+                  <View style={styles.treeFooterRow}>
+                    <View style={styles.attributesRow}>
+                      <View style={styles.attributeCol}>
+                        <Text style={styles.attributeLabel}>CO₂ Absorption</Text>
+                        <Text style={styles.attributeValue} numberOfLines={1}>{tree.co2}</Text>
+                      </View>
+                      <View style={styles.attributeDivider} />
+                      <View style={styles.attributeCol}>
+                        <Text style={styles.attributeLabel}>Growth Rate</Text>
+                        <Text style={[styles.attributeValue, { color: growthRateColor }]} numberOfLines={1}>
+                          {tree.growthRate}
+                        </Text>
+                      </View>
+                      <View style={styles.attributeDivider} />
+                      <View style={styles.attributeCol}>
+                        <Text style={styles.attributeLabel}>Maintenance</Text>
+                        <Text style={[styles.attributeValue, { color: maintenanceColor }]} numberOfLines={1}>
+                          {tree.maintenance}
+                        </Text>
+                      </View>
+                    </View>
+
+                    {/* Select Button */}
+                    <TouchableOpacity style={styles.arrowButton} activeOpacity={0.8}>
+                      <Image
+                        source={Images.back}
+                        style={styles.arrowIcon}
+                        resizeMode="contain"
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
             );
           })}
-        </ScrollView>
-        <FlatList
-          data={filteredTrees}
-          renderItem={renderTreeItem}
-          keyExtractor={(item) => item.id}
-          scrollEnabled={false}
-          contentContainerStyle={styles.listContainer}
-        />
+        </View>
+
         {/*Bottom banner*/}
         <View style={styles.bottomBanner}>
           <View style={styles.bannerLeftSection}>
             <Image
               source={Images.handtree}
               style={styles.bannerHandImage}
-              resizeMode="contain"
+              resizeMode="cover"
             />
             <View style={styles.bannerTextContainer}>
               <Text style={styles.bannerTextTitle}>Once you choose a tree,</Text>
@@ -399,7 +345,9 @@ const ChooseTreeScreen = () => {
             </View>
           </View>
         </View>
-        <View style={styles.bottomBanner}>
+
+        {/* Benefits banner */}
+        <View style={styles.benefitsBanner}>
           <View style={styles.bannerRightSection}>
             <View style={styles.benefitItem}>
               <Image
@@ -430,35 +378,36 @@ const ChooseTreeScreen = () => {
             </View>
           </View>
         </View>
-
-        {/*Footer*/}
-        <View style={styles.footerContainer}>
-          <View style={styles.footerTextRow}>
-            <Image
-              source={Images.shield}
-              style={styles.footerCheckIcon}
-              resizeMode="contain"
-            />
-            <Text style={styles.footerText}>
-              All trees are verified and planted in partnership with local communities.
-            </Text>
-          </View>
-          <TouchableOpacity
-            style={styles.continueButton}
-            onPress={handleContinue}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.continueText}>Continue</Text>
-            <Image
-              source={Images.back}
-              style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        </View>
       </ScrollView>
+
+      {/*Footer*/}
+      <View style={styles.footerContainer}>
+        <View style={styles.footerTextRow}>
+          <Image
+            source={Images.shield}
+            style={styles.footerCheckIcon}
+            resizeMode="contain"
+          />
+          <Text style={styles.footerText}>
+            All trees are verified and planted in partnership with local communities.
+          </Text>
+        </View>
+        <TouchableOpacity
+          style={styles.continueButton}
+          // onPress={ }
+          activeOpacity={0.85}
+        >
+          <Text style={styles.continueText}>Continue</Text>
+          <Image
+            source={Images.back}
+            style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
 
 export default ChooseTreeScreen;
+

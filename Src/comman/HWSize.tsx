@@ -6,6 +6,7 @@ const HWSize = {
     H_Height56: hp(7.18),
     H_Height40: hp(5.14),
     H_Height45: hp(5.75),
+    H_Height46: hp(5.9),
     H_Height50: hp(6.42),
     H_Height55: hp(7.06),
     H_Height60: hp(7.7),
@@ -31,6 +32,7 @@ const HWSize = {
     H_Height350: hp(45.39),
     H_Height375: hp(48.05),
     H_Height400: hp(58.05),
+    H_Height430: hp(62.4),
 
     W_Width40: wp(10.2),
     W_Width45: wp(11.48),
