@@ -3,11 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
 import SignInScreen from '../screens/SignIn/SignInScreen';
 import OtpScreen from '../screens/Otp/Otp';
+import ChooseTreeScreen from '../screens/ChooseTree/ChooseTree';
 
 export type RootStackParamList = {
   AppOpening: undefined;
   SignIn: undefined;
   Otp: { phoneNumber: string };
+  ChooseTree: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -15,7 +17,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function RootNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="AppOpening"
+      initialRouteName="ChooseTree"
       screenOptions={{
         headerShown: false,
       }}
@@ -23,6 +25,7 @@ export default function RootNavigator() {
       <Stack.Screen name="AppOpening" component={AppOpeningScreen} />
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="Otp" component={OtpScreen} />
+      <Stack.Screen name="ChooseTree" component={ChooseTreeScreen} />
     </Stack.Navigator>
   );
 }
