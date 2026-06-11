@@ -53,13 +53,13 @@ export const styles = StyleSheet.create({
     elevation: 8,
   },
   cardTitle: {
-    fontFamily: fonts.Lexend_Bold,
+    fontFamily: fonts.OpenSans_Bold,
     fontSize: FontsSize.size28 || 28,
     color: Colors.darkGreen,
     marginBottom: MarginHW.MarginH5,
   },
   cardSubtitle: {
-    fontFamily: fonts.Lexend_Medium,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size14 || 14,
     color: Colors.darkGreen,
     marginBottom: MarginHW.MarginH24,
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     marginRight: MarginHW.MarginW6,
   },
   countryCode: {
-    fontFamily: fonts.Lexend_Medium,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size16 || 16,
     color: Colors.darkGreen,
     marginRight: MarginHW.MarginW6,
@@ -106,7 +106,7 @@ export const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    fontFamily: fonts.Lexend_Medium,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size14,
     color: Colors.darkGreen,
     padding: 0,
@@ -127,7 +127,7 @@ export const styles = StyleSheet.create({
     opacity: 0.8,
   },
   buttonText: {
-    fontFamily: fonts.Lexend_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     color: Colors.white,
     fontSize: FontsSize.size16 || 16,
   },
