@@ -35,17 +35,19 @@ const Images = {
   gulmohar_tree: require('../assets/Images/gulmohar_tree.png'),
   apple: require('../assets/Images/apple.png'),
   flower: require('../assets/Images/flower.png'),
-  setting: require('../assets/Images/setting.png'),
+  setting: require('../assets/Images/settings.png'),
   profile: require('../assets/Images/user.png'),
   notification: require('../assets/Images/bell.png'),
   impact: require('../assets/Images/stats.png'),
   home: require('../assets/Images/home.png'),
   plant: require('../assets/Images/growth.png'),
   community: require('../assets/Images/friends.png'),
-
-
-
-
+  location_hero_bg: require('../assets/Images/location_hero_bg.png'),
+  aravali_belt: require('../assets/Images/aravali_belt.png'),
+  sariska_reserve: require('../assets/Images/sariska_reserve.png'),
+  thar_desert: require('../assets/Images/thar_desert.png'),
+  udaipur_lakeside: require('../assets/Images/udaipur_lakeside.png'),
+  bubbletree: require('../assets/Images/bubbletree.png'),
 };
 
 export type ImageKey = keyof typeof Images;
