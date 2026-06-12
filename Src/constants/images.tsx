@@ -48,6 +48,20 @@ const Images = {
   thar_desert: require('../assets/Images/thar_desert.png'),
   udaipur_lakeside: require('../assets/Images/udaipur_lakeside.png'),
   bubbletree: require('../assets/Images/bubbletree.png'),
+  treeIcon: require('../assets/Images/treeIcon.png'),
+  Location: require('../assets/Images/location.png'),
+  Emission: require('../assets/Images/emission.png'),
+  rajasthan: require('../assets/Images/rajasthan.png'),
+  uttarakhand: require('../assets/Images/uttarakhand.png'),
+  karnataka: require('../assets/Images/karnataka.png'),
+  maharashtra: require('../assets/Images/maharashtra.png'),
+  tamil_nadu: require('../assets/Images/tamil_nadu.png'),
+  Deshbordbg: require('../assets/Images/Deshbordbg.png'),
+  geolocation: require('../assets/Images/geolocation.png'),
+  edit_icon: require('../assets/Images/edit_icon.png'),
+  edit: require('../assets/Images/edit.png'),
+  star_badge: require('../assets/Images/star_badge.png'),
+  star: require('../assets/Images/star.png'),
 };
 
 export type ImageKey = keyof typeof Images;

@@ -79,9 +79,10 @@ export const styles = StyleSheet.create({
   },
   // Hero Section
   heroContainer: {
-    height: Dimensions.get("window").height / 2.9,
+    height: Dimensions.get("window").height / 3.2,
     width: '100%',
     paddingHorizontal: MarginHW.PaddingW10,
+    justifyContent: 'flex-end',
     overflow: 'hidden',
   },
   heroImage: {
@@ -205,7 +206,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 16,
     marginHorizontal: MarginHW.MarginW10,
-    marginTop: -20, // Overlap onto hero
+    marginTop: 15,
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: MarginHW.PaddingH14,
@@ -233,6 +234,7 @@ export const styles = StyleSheet.create({
   statsIcon: {
     width: 18,
     height: 18,
+    tintColor: Colors.tintColorDrak,
   },
   statsValue: {
     fontSize: FontsSize.size16,
@@ -458,8 +460,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bannerImage: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
   },
   bannerContent: {
     flex: 1,
@@ -554,5 +556,113 @@ export const styles = StyleSheet.create({
   navTextActive: {
     color: '#2F9E67',
     fontFamily: fonts.OpenSans_Bold,
+  },
+  // State selection section
+  stateSectionContainer: {
+    marginVertical: 15,
+    paddingHorizontal: MarginHW.PaddingW10,
+  },
+  stateHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  stateTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  stateSectionTitle: {
+    fontSize: FontsSize.size14,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  stateTitleIcon: {
+    width: 14,
+    height: 14,
+    marginLeft: 6,
+    tintColor: '#2F9E67',
+  },
+  viewAllStatesContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  viewAllStatesLink: {
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#2F9E67',
+  },
+  viewAllStatesArrow: {
+    fontSize: 14,
+    color: '#2F9E67',
+    marginLeft: 4,
+    fontWeight: 'bold',
+  },
+  stateSectionSubtitle: {
+    fontSize: FontsSize.size11,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#8E9A93',
+    marginBottom: 14,
+  },
+  statesListScroll: {
+    paddingVertical: 4,
+  },
+  stateCard: {
+    backgroundColor: Colors.white,
+    borderRadius: 8,
+    width: 120,
+    padding: 8,
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    alignItems: 'center',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.03,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  stateCardSelected: {
+    borderColor: Colors.tintColorDrak,
+    borderWidth: 1.5,
+  },
+  stateCardImage: {
+    width: '100%',
+    height: 70,
+    borderRadius: 4,
+    marginBottom: 8,
+  },
+  stateCardFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    gap: 4,
+  },
+  stateCardName: {
+    fontSize: 11,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+    textAlign: 'center',
+  },
+  stateCardNameSelected: {
+    color: '#2F9E67',
+  },
+  stateCheckedCircle: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#2F9E67',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  stateCheckedIcon: {
+    color: Colors.white,
+    fontSize: 9,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: 12,
   },
 });

@@ -69,6 +69,36 @@ const HomeScreen = () => {
     },
   ];
 
+  const [selectedState, setSelectedState] = React.useState('1');
+
+  const STATES_LIST = [
+    {
+      id: '1',
+      name: String.Home_ProjRajasthan,
+      image: Images.rajasthan,
+    },
+    {
+      id: '2',
+      name: String.Home_ProjUttarakhand,
+      image: Images.uttarakhand,
+    },
+    {
+      id: '3',
+      name: String.Home_ProjKarnataka,
+      image: Images.karnataka,
+    },
+    {
+      id: '4',
+      name: String.Home_ProjMaharashtra,
+      image: Images.maharashtra,
+    },
+    {
+      id: '5',
+      name: String.Home_ProjTamilNadu,
+      image: Images.tamil_nadu,
+    },
+  ];
+
   return (
     <ImageBackground
       source={Images.HomeBg}
@@ -97,8 +127,6 @@ const HomeScreen = () => {
         contentContainerStyle={styles.scrollViewContent}
       >
         <View style={styles.heroContainer}>
-
-
 
           <View style={styles.heroTextContent}>
             <GradientText
@@ -153,10 +181,13 @@ const HomeScreen = () => {
           </View>
         </View>
 
+        {/* Select State Section */}
+
+
         <View style={styles.statsCard}>
           <View style={styles.statsItem}>
             <View style={styles.statsIconBg}>
-              <Image source={Images.tree} style={styles.statsIcon} tintColor={Colors.tintColorDrak} resizeMode="contain" />
+              <Image source={Images.treeIcon} style={styles.statsIcon} tintColor={Colors.tintColorDrak} resizeMode="contain" />
             </View>
             <Text style={styles.statsValue}>{String.Home_StatsTreesVal}</Text>
             <Text style={styles.statsLabel}>{String.Home_StatsTreesLabel}</Text>
@@ -166,7 +197,7 @@ const HomeScreen = () => {
 
           <View style={styles.statsItem}>
             <View style={styles.statsIconBg}>
-              <Image source={Images.co2Cloud} style={styles.statsIcon} resizeMode="contain" />
+              <Image source={Images.Emission} style={styles.statsIcon} resizeMode="contain" />
             </View>
             <Text style={styles.statsValue}>{String.Home_StatsCO2Val}</Text>
             <Text style={styles.statsLabel}>{String.Home_StatsCO2Label}</Text>
@@ -186,11 +217,48 @@ const HomeScreen = () => {
 
           <View style={styles.statsItem}>
             <View style={styles.statsIconBg}>
-              <Image source={Images.location} style={styles.statsIcon} resizeMode="contain" />
+              <Image source={Images.Location} style={styles.statsIcon} resizeMode="contain" />
             </View>
             <Text style={styles.statsValue}>{String.Home_StatsStatesVal}</Text>
             <Text style={styles.statsLabel}>{String.Home_StatsStatesLabel}</Text>
           </View>
+        </View>
+
+        <View style={styles.stateSectionContainer}>
+          <View style={styles.stateHeaderRow}>
+            <View style={styles.stateTitleContainer}>
+              <Text style={styles.stateSectionTitle}>{String.Home_SelectStateTitle}</Text>
+            </View>
+            <TouchableOpacity activeOpacity={0.7} style={styles.viewAllStatesContainer}>
+              <Text style={styles.viewAllStatesLink}>{String.Home_ViewAllStates}</Text>
+            </TouchableOpacity>
+          </View>
+
+          <FlatList
+            data={STATES_LIST}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.statesListScroll}
+            renderItem={({ item }) => {
+              const isSelected = selectedState === item.id;
+              return (
+                <TouchableOpacity
+                  style={[styles.stateCard, isSelected && styles.stateCardSelected]}
+                  activeOpacity={0.9}
+                  onPress={() => setSelectedState(item.id)}
+                >
+                  <Image source={item.image} style={styles.stateCardImage} resizeMode="cover" />
+                  <View style={styles.stateCardFooter}>
+                    <Text style={[styles.stateCardName, isSelected && styles.stateCardNameSelected]}>
+                      {item.name}
+                    </Text>
+
+                  </View>
+                </TouchableOpacity>
+              );
+            }}
+          />
         </View>
 
         {/* Horizontal Quick Actions List */}
@@ -261,7 +329,7 @@ const HomeScreen = () => {
         {/* Bottom Banner Section */}
 
         <View style={styles.bottomBanner}>
-          <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{ flex: 0.4, justifyContent: 'center', alignItems: 'center' }}>
             <Image
               source={Images.handtree}
               style={styles.bannerImage}
