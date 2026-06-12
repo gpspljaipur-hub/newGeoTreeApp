@@ -1,14 +1,17 @@
 const tintColorLight = '#1E6B46';
+const bgColor = '#18592e';
 
 export const Colors = {
     // Main Brand Colors
     tint: tintColorLight,
+    bgColor: bgColor,
 
     // Text
     white: '#FFFFFF',
     black: '#000000',
     lightGreen: '#99b949',
     tintColorDrak: '#135928',
+    listBg: '#f7f8ef',
 
     // Heading
     darkGreen: '#354826',
