@@ -37,7 +37,7 @@ const Images = {
   flower: require('../assets/Images/flower.png'),
   setting: require('../assets/Images/settings.png'),
   profile: require('../assets/Images/user.png'),
-  notification: require('../assets/Images/bell.png'),
+  bell: require('../assets/Images/bell.png'),
   impact: require('../assets/Images/stats.png'),
   home: require('../assets/Images/home.png'),
   plant: require('../assets/Images/growth.png'),

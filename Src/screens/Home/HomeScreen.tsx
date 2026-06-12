@@ -261,7 +261,7 @@ const HomeScreen = () => {
         {/* Bottom Banner Section */}
 
         <View style={styles.bottomBanner}>
-          <View style={{ flex: 0.9, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center' }}>
             <Image
               source={Images.handtree}
               style={styles.bannerImage}
