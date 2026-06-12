@@ -11,6 +11,9 @@ import { styles } from './styles';
 import Images from '../../constants/images';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/RootNavigator';
 
 const treesData = [
   {
@@ -64,6 +67,7 @@ const treesData = [
 ];
 
 const ChooseTreeScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [selectedTab, setSelectedTab] = useState('All');
   const filteredTrees = selectedTab === 'All'
     ? treesData
@@ -404,7 +408,23 @@ const ChooseTreeScreen = () => {
             />
           </TouchableOpacity>
         </View>
+<<<<<<< Updated upstream
       </ScrollView>
+=======
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={() => navigation.navigate('ChooseLocation')}
+          activeOpacity={0.85}
+        >
+          <Text style={styles.continueText}>Continue</Text>
+          <Image
+            source={Images.back}
+            style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
+>>>>>>> Stashed changes
     </SafeAreaView>
   );
 };
