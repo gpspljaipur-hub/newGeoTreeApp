@@ -14,6 +14,8 @@ import { styles } from './styles';
 import Images from '../../constants/images';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
+import Stepper from '../../comman/Stepper';
+import PlantHeader from '../../comman/PlantHeader';
 
 const locationsData = [
   {
@@ -66,80 +68,15 @@ const ChooseLocationScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [selectedLocationId, setSelectedLocationId] = useState('aravali');
 
-  const steps = [
-    { number: 1, label: 'Choose Tree', status: 'completed' },
-    { number: 2, label: 'Choose Location', status: 'active' },
-    { number: 3, label: 'Details', status: 'inactive' },
-    { number: 4, label: 'Payment', status: 'inactive' },
-  ];
-
-  const handleBack = () => {
-    navigation.goBack();
-  };
-
-  const handleContinue = () => {
-    console.log('Selected location:', selectedLocationId);
-    // Future step: navigation.navigate('Details');
-  };
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
         {/* Header */}
-        <View style={styles.headerContainer}>
-          <TouchableOpacity style={styles.backButton} onPress={handleBack} activeOpacity={0.7}>
-            <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>Plant Your First Tree</Text>
-          <View style={styles.coinBadge}>
-            <LinearGradient
-              colors={['#FFE259', '#FFA751']}
-              style={styles.coinIconContainer}
-            >
-              <Image source={Images.leaf} style={styles.coinIcon} resizeMode="contain" />
-            </LinearGradient>
-            <View style={styles.coinTextContainer}>
-              <Text style={styles.coinAmount}>1,250</Text>
-              <Text style={styles.coinLabel}>Green Points</Text>
-            </View>
-          </View>
-        </View>
+        <PlantHeader />
 
         {/* Stepper */}
-        <View style={styles.stepperContainer}>
-          <View style={styles.stepperLine} />
-          {steps.map((step) => {
-            const isCompleted = step.status === 'completed';
-            const isActive = step.status === 'active';
-
-            return (
-              <View key={step.number} style={step.number === 1 ? [styles.stepItem, { marginLeft: -6 }] : step.number === 4 ? [styles.stepItem, { marginRight: -6 }] : styles.stepItem}>
-                <View
-                  style={[
-                    styles.stepCircle,
-                    isCompleted && styles.stepCircleCompleted,
-                    isActive && styles.stepCircleActive,
-                    (!isCompleted && !isActive) && styles.stepCircleInactive,
-                  ]}
-                >
-                  {isCompleted ? (
-                    <Text style={styles.stepNumber}>✓</Text>
-                  ) : (
-                    <Text style={styles.stepNumber}>{step.number}</Text>
-                  )}
-                </View>
-                <Text
-                  style={[
-                    styles.stepLabel,
-                    (isActive || isCompleted) ? styles.stepLabelActive : styles.stepLabelInactive,
-                  ]}
-                >
-                  {step.label}
-                </Text>
-              </View>
-            );
-          })}
-        </View>
+        <Stepper currentStep={2} />
 
         {/* Hero Card */}
         <View style={styles.heroCard}>
@@ -147,7 +84,7 @@ const ChooseLocationScreen = () => {
             source={Images.location_hero_bg}
             style={styles.heroImage}
             imageStyle={styles.heroImageRadius}
-            resizeMode="cover"
+            resizeMode="stretch"
           >
             {/* White Fade Overlay */}
             <LinearGradient
@@ -157,7 +94,6 @@ const ChooseLocationScreen = () => {
               locations={[0, 0.38, 0.58, 1]}
               style={styles.heroOverlay}
             />
-
             <View style={styles.heroContent}>
               <View style={styles.heroTextContainer}>
                 <Text style={styles.heroTitle}>
@@ -299,7 +235,7 @@ const ChooseLocationScreen = () => {
       <View style={styles.footerContainer}>
         <TouchableOpacity
           style={styles.continueButton}
-          onPress={handleContinue}
+          onPress={() => navigation.navigate('Details')}
           activeOpacity={0.85}
         >
           <Text style={styles.continueText}>Continue</Text>

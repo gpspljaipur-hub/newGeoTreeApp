@@ -20,6 +20,7 @@ const FontsSize = {
     size12: 12,
     size13: 13,
     size14: 14,
+    size15: 15,
     size16: 16,
     size18: 18,
     size19: 19,

@@ -15,6 +15,8 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import String from '../../comman/String';
+import PlantHeader from '../../comman/PlantHeader';
+import Stepper from '../../comman/Stepper';
 
 const treesData = [
   {
@@ -74,13 +76,6 @@ const ChooseTreeScreen = () => {
     ? treesData
     : treesData.filter(tree => tree.category === selectedTab);
 
-  const steps = [
-    { number: 1, label: 'Choose Tree', active: true },
-    { number: 2, label: 'Choose Location', active: false },
-    { number: 3, label: 'Details', active: false },
-    { number: 4, label: 'Payment', active: false },
-  ];
-
   const categories = [
     { id: 'All', label: 'All Trees' },
     { id: 'Native', label: 'Native Trees' },
@@ -112,56 +107,17 @@ const ChooseTreeScreen = () => {
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
         {/* Header */}
-        <View style={styles.headerContainer}>
-          <TouchableOpacity style={styles.backButton} activeOpacity={0.7}>
-            <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>Plant Your First Tree</Text>
-          <View style={styles.coinBadge}>
-            <LinearGradient
-              colors={['#FFE259', '#FFA751']}
-              style={styles.coinIconContainer}
-            >
-              <Image source={Images.leaf} style={styles.coinIcon} resizeMode="contain" />
-            </LinearGradient>
-            <View style={styles.coinTextContainer}>
-              <Text style={styles.coinAmount}>1,250</Text>
-              <Text style={styles.coinLabel}>Green Points</Text>
-            </View>
-          </View>
-        </View>
-
+        <PlantHeader />
         {/* Stepper */}
-        <View style={styles.stepperContainer}>
-          <View style={styles.stepperLine} />
-          {steps.map((step) => (
-            <View key={step.number} style={styles.stepItem}>
-              <View style={[styles.stepCircle, step.active ? styles.stepCircleActive : styles.stepCircleInactive]}>
-                <Text style={styles.stepNumber}>{step.number}</Text>
-              </View>
-              <Text style={[styles.stepLabel, step.active ? styles.stepLabelActive : styles.stepLabelInactive]}>
-                {step.label}
-              </Text>
-            </View>
-          ))}
-        </View>
+        <Stepper currentStep={1} />
         {/* Hero Card */}
         <View style={styles.heroCard}>
           <ImageBackground
-            source={Images.chooseTree}
+            source={Images.detailbg}
             style={styles.heroImage}
             imageStyle={styles.heroImageRadius}
-            resizeMode="cover"
+            resizeMode="stretch"
           >
-            {/* White Fade Overlay */}
-            <LinearGradient
-              colors={['#FFFFFF', '#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              locations={[0, 0.35, 0.55, 1]}
-              style={styles.heroOverlay}
-            />
-
             <View style={styles.heroContent}>
 
               {/* State Card */}
@@ -298,7 +254,7 @@ const ChooseTreeScreen = () => {
                       </View>
                     </View>
                   </View>
-                  <Text style={styles.treeDescription} numberOfLines={2}>
+                  <Text style={styles.treeDescription}>
                     {tree.description}
                   </Text>
                   <View style={styles.treeFooterRow}>
@@ -310,14 +266,14 @@ const ChooseTreeScreen = () => {
                       <View style={styles.attributeDivider} />
                       <View style={styles.attributeCol}>
                         <Text style={styles.attributeLabel}>Growth Rate</Text>
-                        <Text style={[styles.attributeValue, { color: growthRateColor }]} numberOfLines={1}>
+                        <Text style={[styles.attributeValue, { color: growthRateColor }]} >
                           {tree.growthRate}
                         </Text>
                       </View>
                       <View style={styles.attributeDivider} />
                       <View style={styles.attributeCol}>
                         <Text style={styles.attributeLabel}>Maintenance</Text>
-                        <Text style={[styles.attributeValue, { color: maintenanceColor }]} numberOfLines={1}>
+                        <Text style={[styles.attributeValue, { color: maintenanceColor }]} >
                           {tree.maintenance}
                         </Text>
                       </View>
@@ -353,41 +309,78 @@ const ChooseTreeScreen = () => {
               </Text>
             </View>
           </View>
-        </View>
 
-        {/* Benefits banner */}
-        <View style={styles.benefitsBanner}>
-          <View style={styles.bannerRightSection}>
-            <View style={styles.benefitItem}>
-              <Image
-                source={Images.co2Cloud}
-                style={styles.benefitIcon}
-                resizeMode="contain"
-              />
-              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitReduces}</Text>
-              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitCarbon}</Text>
+          {/* Divider */}
+          <View style={styles.bannerDivider} />
+          {/* Benefits Grid Layout */}
+          <View style={styles.benefitsGrid}>
+            {/* Row 1 */}
+            <View style={styles.benefitsRow}>
+              {/* Item 1 */}
+              <View style={styles.benefitGridItem}>
+                <View style={styles.benefitIconWrapper}>
+                  <Image
+                    source={Images.co2Cloud}
+                    style={styles.benefitGridIcon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles.benefitTextCol}>
+                  <Text style={styles.benefitGridLabel}>{String.ChooseTree_BenefitReduces}</Text>
+                  <Text style={styles.benefitGridValue}>{String.ChooseTree_BenefitCarbon}</Text>
+                </View>
+              </View>
+
+              {/* Item 2 */}
+              <View style={styles.benefitGridItem}>
+                <View style={styles.benefitIconWrapper}>
+                  <Image
+                    source={Images.bird}
+                    style={styles.benefitGridIcon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles.benefitTextCol}>
+                  <Text style={styles.benefitGridLabel}>{String.ChooseTree_BenefitSupports}</Text>
+                  <Text style={styles.benefitGridValue}>{String.ChooseTree_BenefitSupportsSub}</Text>
+                </View>
+              </View>
             </View>
-            <View style={styles.benefitItem}>
-              <Image
-                source={Images.bird}
-                style={styles.benefitIcon}
-                resizeMode="contain"
-              />
-              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitSupports}</Text>
-              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitSupportsSub}</Text>
-            </View>
-            <View style={styles.benefitItem}>
-              <Image
-                source={Images.earth}
-                style={styles.benefitIcon}
-                resizeMode="contain"
-              />
-              <Text style={styles.benefitLabel}>{String.ChooseTree_BenefitCreates}</Text>
-              <Text style={styles.benefitValue}>{String.ChooseTree_BenefitGreenerFuture}</Text>
+
+            {/* Row 2 */}
+            <View style={styles.benefitsRow}>
+              {/* Item 3 */}
+              <View style={styles.benefitGridItem}>
+                <View style={styles.benefitIconWrapper}>
+                  <Image
+                    source={Images.earth}
+                    style={styles.benefitGridIcon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles.benefitTextCol}>
+                  <Text style={styles.benefitGridLabel}>{String.ChooseTree_BenefitCreates}</Text>
+                  <Text style={styles.benefitGridValue}>{String.ChooseTree_BenefitGreenerFuture}</Text>
+                </View>
+              </View>
+
+              {/* Item 4 */}
+              <View style={styles.benefitGridItem}>
+                <View style={styles.benefitIconWrapper}>
+                  <Image
+                    source={Images.location}
+                    style={styles.benefitGridIcon}
+                    resizeMode="contain"
+                  />
+                </View>
+                <View style={styles.benefitTextCol}>
+                  <Text style={styles.benefitGridLabel}>{String.ChooseTree_BenefitGPSTracked}</Text>
+                  <Text style={styles.benefitGridValue}>{String.ChooseTree_BenefitVerified}</Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
-
         {/*Footer*/}
         <View style={styles.footerContainer}>
           <View style={styles.footerTextRow}>
@@ -402,7 +395,7 @@ const ChooseTreeScreen = () => {
           </View>
           <TouchableOpacity
             style={styles.continueButton}
-            onPress={handleContinue}
+            onPress={() => navigation.navigate('ChooseLocation')}
             activeOpacity={0.85}
           >
             <Text style={styles.continueText}>{String.ChooseTree_Continue}</Text>
