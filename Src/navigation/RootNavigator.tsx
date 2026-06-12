@@ -4,22 +4,16 @@ import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
 import SignInScreen from '../screens/SignIn/SignInScreen';
 import OtpScreen from '../screens/Otp/Otp';
 import ChooseTreeScreen from '../screens/ChooseTree/ChooseTree';
-<<<<<<< Updated upstream
 import HomeScreen from '../screens/Home/HomeScreen';
-=======
 import ChooseLocationScreen from '../screens/ChooseLocation/ChooseLocation';
->>>>>>> Stashed changes
 
 export type RootStackParamList = {
   AppOpening: undefined;
   SignIn: undefined;
   Otp: { phoneNumber: string };
   ChooseTree: undefined;
-<<<<<<< Updated upstream
   Home: undefined;
-=======
   ChooseLocation: undefined;
->>>>>>> Stashed changes
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,11 +21,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function RootNavigator() {
   return (
     <Stack.Navigator
-<<<<<<< Updated upstream
       initialRouteName="Home"
-=======
-      initialRouteName="ChooseLocation"
->>>>>>> Stashed changes
       screenOptions={{
         headerShown: false,
       }}
@@ -40,11 +30,8 @@ export default function RootNavigator() {
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="Otp" component={OtpScreen} />
       <Stack.Screen name="ChooseTree" component={ChooseTreeScreen} />
-<<<<<<< Updated upstream
       <Stack.Screen name="Home" component={HomeScreen} />
-=======
       <Stack.Screen name="ChooseLocation" component={ChooseLocationScreen} />
->>>>>>> Stashed changes
     </Stack.Navigator>
   );
 }
