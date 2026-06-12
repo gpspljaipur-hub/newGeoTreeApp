@@ -99,7 +99,9 @@ const MarginHW = {
     PaddingH100: hp(12.8),
 
     PaddingW3: wp(0.8),
+    PaddingW4: wp(1.0),
     PaddingW5: wp(1.25),
+    PaddingW6: wp(1.5),
     PaddingW8: wp(2.0),
     PaddingW10: wp(2.6),
     PaddingW12: wp(3.1),

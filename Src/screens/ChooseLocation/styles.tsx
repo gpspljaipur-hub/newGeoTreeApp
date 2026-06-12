@@ -15,134 +15,9 @@ export const styles = StyleSheet.create({
   scrollContainer: {
     paddingBottom: MarginHW.PaddingH20,
   },
-  headerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: MarginHW.PaddingW16,
-    paddingTop: MarginHW.PaddingH10,
-    paddingBottom: MarginHW.PaddingH10,
-    backgroundColor: '#FAFBFB',
-  },
-  backButton: {
-    padding: MarginHW.PaddingW8,
-  },
-  backIcon: {
-    width: ImageSize.ImageW20,
-    height: ImageSize.ImageH20,
-    tintColor: Colors.black,
-  },
-  headerTitle: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size16,
-    color: Colors.black,
-  },
-  coinBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: Colors.white,
-    paddingHorizontal: MarginHW.PaddingW12,
-    paddingVertical: MarginHW.PaddingH5,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#E8EFEA',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
-  },
-  coinIconContainer: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: MarginHW.MarginW6,
-  },
-  coinIcon: {
-    width: 14,
-    height: 14,
-    tintColor: Colors.white,
-  },
-  coinTextContainer: {
-    alignItems: 'flex-start',
-  },
-  coinAmount: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size12,
-    color: Colors.black,
-    lineHeight: 14,
-  },
-  coinLabel: {
-    fontFamily: fonts.OpenSans_Regular,
-    fontSize: 8,
-    color: Colors.bannerTextDesc,
-    lineHeight: 10,
-  },
-  stepperContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: MarginHW.PaddingW16,
-    marginVertical: MarginHW.MarginH16,
-    position: 'relative',
-  },
-  stepperLine: {
-    position: 'absolute',
-    left: MarginHW.PaddingW30,
-    right: MarginHW.PaddingW30,
-    top: 14,
-    height: 2,
-    backgroundColor: '#E0E5E2',
-    zIndex: 1,
-  },
-  stepItem: {
-    alignItems: 'center',
-    flex: 1,
-    zIndex: 2,
-  },
-  stepCircle: {
-    width: ImageSize.ImageH22,
-    height: ImageSize.ImageH22,
-    borderRadius: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: MarginHW.MarginH5,
-  },
-  stepCircleActive: {
-    backgroundColor: Colors.tint,
-  },
-  stepCircleCompleted: {
-    backgroundColor: Colors.tint,
-  },
-  stepCircleInactive: {
-    backgroundColor: '#D1DCD6',
-  },
-  stepNumber: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size12,
-    color: Colors.white,
-  },
-  stepCheckIcon: {
-    width: 12,
-    height: 12,
-    tintColor: Colors.white,
-  },
-  stepLabel: {
-    fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size10,
-    textAlign: 'center',
-  },
-  stepLabelActive: {
-    color: Colors.tint,
-    fontFamily: fonts.OpenSans_SemiBold,
-  },
-  stepLabelInactive: {
-    color: '#8E9A93',
-  },
+
   heroCard: {
-    marginHorizontal: MarginHW.MarginW16,
+    marginHorizontal: 0,
     marginBottom: MarginHW.MarginH8,
     overflow: 'hidden',
   },
@@ -152,8 +27,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   heroImageRadius: {
-    width: '60%',
-    left: '43%',
+    width: '100%',
+    left: 0,
   },
   heroOverlay: {
     position: 'absolute',
@@ -244,11 +119,7 @@ export const styles = StyleSheet.create({
     color: Colors.tint,
     marginRight: 4,
   },
-  changeStatePencil: {
-    width: 12,
-    height: 12,
-    tintColor: Colors.tint,
-  },
+
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -364,11 +235,7 @@ export const styles = StyleSheet.create({
     borderColor: Colors.tint,
     backgroundColor: Colors.tint,
   },
-  selectionInnerCheck: {
-    width: 10,
-    height: 10,
-    tintColor: Colors.white,
-  },
+
   locationPinRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -439,24 +306,24 @@ export const styles = StyleSheet.create({
     color: Colors.tint,
   },
   bannerCard: {
-    backgroundColor: '#EFF5F0',
+    backgroundColor: Colors.bgGreenLight,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#E2ECE5',
+    borderColor: Colors.borderGreenLight,
     marginHorizontal: MarginHW.MarginW16,
     marginTop: MarginHW.MarginH1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     overflow: 'hidden',
-    height: 76,
+    paddingVertical: MarginHW.PaddingH8,
   },
   bannerLeft: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    paddingLeft: 14,
-    paddingRight: 10,
+    paddingLeft: MarginHW.PaddingW14,
+    paddingRight: MarginHW.PaddingW10,
   },
   bannerShieldContainer: {
     width: 40,
@@ -467,12 +334,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 12,
     borderWidth: 1,
-    borderColor: '#EFF4EF',
+    borderColor: Colors.borderGreenUltraLight,
   },
   bannerShieldIcon: {
     width: ImageSize.ImageH20,
     height: ImageSize.ImageH20,
-    tintColor: '#1A6836',
+    tintColor: Colors.shieldIconColor,
   },
   bannerText: {
     fontFamily: fonts.OpenSans_SemiBold,
@@ -481,15 +348,10 @@ export const styles = StyleSheet.create({
     lineHeight: 14,
     flex: 1,
   },
-  bannerRight: {
-    flex: 1,
-    height: 48,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-  },
+
   bannerHandImage: {
-    width: 90,
-    height: 80,
+    width: ImageSize.ImageW90,
+    height: ImageSize.ImageH80,
   },
   footerContainer: {
     flexDirection: 'row',
