@@ -12,6 +12,9 @@ export const Colors = {
     lightGreen: '#99b949',
     tintColorDrak: '#135928',
     listBg: '#f7f8ef',
+    listBgLight: '#f7f9f1',
+
+
 
     // Heading
     darkGreen: '#354826',

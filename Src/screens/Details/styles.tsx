@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
 
   heroCard: {
     marginHorizontal: 0,
-    marginBottom: MarginHW.MarginH8,
     overflow: 'hidden',
   },
   heroImage: {
@@ -48,20 +47,22 @@ export const styles = StyleSheet.create({
   },
   heroTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size22,
-    lineHeight: 25,
+    fontSize: FontsSize.size20,
+    lineHeight: 24,
     color: Colors.textDark,
   },
   heroSubtitle: {
     marginTop: MarginHW.MarginH4,
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size13,
+    fontSize: FontsSize.size12,
     lineHeight: FontsSize.size16,
-    color: Colors.textMuted,
+    color: Colors.black,
   },
   highlightGreen: {
     color: Colors.tint,
     fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size20,
+    lineHeight: 24,
   },
   sectionHeader: {
     marginHorizontal: MarginHW.MarginW16,
@@ -74,14 +75,15 @@ export const styles = StyleSheet.create({
     color: Colors.textDark,
   },
   summaryCard: {
-    backgroundColor: Colors.bannerBgGreen,
+    marginTop: -20,
+    backgroundColor: Colors.listBg,
     borderWidth: 1,
     borderColor: Colors.bannerBorder,
-    borderRadius: 16,
-    marginHorizontal: MarginHW.MarginW16,
-    paddingTop: MarginHW.PaddingH10,
-    paddingBottom: MarginHW.PaddingH12,
-    paddingHorizontal: MarginHW.PaddingW14,
+    borderRadius: 10,
+    marginHorizontal: MarginHW.MarginW10,
+    paddingVertical: MarginHW.PaddingH8,
+    paddingHorizontal: MarginHW.PaddingW10,
+
   },
   summaryCardTitle: {
     fontFamily: fonts.OpenSans_Bold,
@@ -91,24 +93,25 @@ export const styles = StyleSheet.create({
   },
   summaryRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  },
+  summaryCol1: {
+    flex: 0.8,
+    flexDirection: 'row',
   },
   summaryCol2: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    width: '47%',
+    marginHorizontal: 2,
   },
   summaryDivider2: {
     width: 1,
-    height: ImageSize.ImageH20,
+    alignSelf: 'stretch',
     backgroundColor: Colors.dividerGreen,
   },
   summaryRowDivider: {
     height: 1,
     backgroundColor: Colors.dividerGreen,
     marginVertical: MarginHW.MarginH8,
-    width: '100%',
   },
   summaryIconContainer: {
     width: ImageSize.ImageW32,
@@ -126,18 +129,22 @@ export const styles = StyleSheet.create({
   },
   summaryTextContainer: {
     flex: 1,
+    flexShrink: 1,
+
   },
   summaryLabel: {
     fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size14,
+    fontSize: FontsSize.size12,
     color: Colors.textMuted,
+    flexShrink: 1,
   },
   summaryValue: {
-    fontFamily: fonts.OpenSans_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size12,
     color: Colors.tint,
     marginTop: MarginHW.MarginH2,
-    lineHeight: 14,
+    lineHeight: 16,
+    flexShrink: 1,
   },
   formContainer: {
     // marginTop: MarginHW.MarginH4,
@@ -164,11 +171,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1.5,
     borderColor: Colors.borderLight,
-    borderRadius: 14,
+    borderRadius: 10,
     backgroundColor: Colors.white,
     paddingHorizontal: MarginHW.PaddingW12,
     marginHorizontal: MarginHW.MarginW16,
-    height: HWSize.H_Height52,
+
   },
   inputWrapperActive: {
     borderColor: Colors.tint,
@@ -181,6 +188,7 @@ export const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
+    height: 42,
     fontFamily: fonts.OpenSans_Regular,
     fontSize: FontsSize.size13,
     color: Colors.textDark,
@@ -239,7 +247,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderWidth: 1.5,
     borderColor: Colors.borderLight,
-    borderRadius: 16,
+    borderRadius: 10,
     padding: MarginHW.PaddingW12,
     marginHorizontal: MarginHW.MarginW16,
     marginBottom: MarginHW.MarginH10,
@@ -256,9 +264,9 @@ export const styles = StyleSheet.create({
     paddingRight: MarginHW.PaddingW12,
   },
   bellIconContainer: {
-    width: ImageSize.ImageW38,
-    height: ImageSize.ImageH38,
-    borderRadius: ImageSize.ImageW38 / 2,
+    width: 38,
+    height: 38,
+    borderRadius: 38 / 2,
     backgroundColor: Colors.badgeGreenBg,
     justifyContent: 'center',
     alignItems: 'center',
@@ -296,7 +304,7 @@ export const styles = StyleSheet.create({
   },
   bannerCard: {
     backgroundColor: Colors.bgGreenLight,
-    borderRadius: 16,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: Colors.borderGreenLight,
     marginHorizontal: MarginHW.MarginW16,
@@ -305,7 +313,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     overflow: 'hidden',
-    paddingVertical: MarginHW.PaddingH8,
   },
   bannerLeft: {
     flexDirection: 'row',
@@ -315,9 +322,9 @@ export const styles = StyleSheet.create({
     paddingRight: MarginHW.PaddingW10,
   },
   bannerShieldContainer: {
-    width: ImageSize.ImageW40,
-    height: ImageSize.ImageH40,
-    borderRadius: ImageSize.ImageW40 / 2,
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
     backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
@@ -349,8 +356,8 @@ export const styles = StyleSheet.create({
   },
 
   bannerHandImage: {
-    width: ImageSize.ImageW90,
-    height: ImageSize.ImageH80,
+    width: 70,
+    height: 70,
   },
   footerContainer: {
     flexDirection: 'row',
@@ -361,9 +368,10 @@ export const styles = StyleSheet.create({
   },
   continueButton: {
     flex: 1,
+    marginTop: 10,
     backgroundColor: Colors.continue,
-    paddingVertical: MarginHW.PaddingH8,
-    borderRadius: HWSize.H_Height60 / 2,
+    paddingVertical: MarginHW.PaddingH12,
+    borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -376,7 +384,7 @@ export const styles = StyleSheet.create({
   },
   continueText: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size20,
+    fontSize: FontsSize.size16,
     color: Colors.white,
   },
   continueArrow: {

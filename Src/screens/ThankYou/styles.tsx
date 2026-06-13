@@ -16,14 +16,14 @@ export const styles = StyleSheet.create({
   },
   heroImageBackground: {
     width: '100%',
-    paddingBottom: MarginHW.PaddingH24,
+    paddingBottom: MarginHW.PaddingH20,
   },
   heroContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: MarginHW.PaddingW8,
+    paddingHorizontal: MarginHW.PaddingW16,
     marginTop: MarginHW.MarginH10,
-    minHeight: HWSize.H_Height180,
+
     position: 'relative',
   },
   heroLeft: {
@@ -50,7 +50,6 @@ export const styles = StyleSheet.create({
   heroLocationContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginTop: MarginHW.MarginH10,
     // backgroundColor: 'rgba(30, 107, 70, 0.06)',
     paddingVertical: MarginHW.PaddingH8,
     paddingRight: MarginHW.PaddingW10,
@@ -69,6 +68,7 @@ export const styles = StyleSheet.create({
     fontSize: FontsSize.size12,
     color: Colors.tint,
     lineHeight: 18,
+    left: 5,
   },
   bubbleTreeContainer: {
     position: 'absolute',
@@ -84,12 +84,14 @@ export const styles = StyleSheet.create({
     height: HWSize.H_Height190,
   },
   card: {
+
     backgroundColor: Colors.white,
     borderWidth: 1.5,
     borderColor: Colors.bannerBorder,
-    borderRadius: 24,
+    borderRadius: 10,
+
     marginHorizontal: MarginHW.MarginW16,
-    paddingVertical: MarginHW.PaddingH18,
+    paddingVertical: MarginHW.PaddingH6,
     paddingHorizontal: MarginHW.PaddingW14,
     marginBottom: MarginHW.MarginH10,
     shadowColor: Colors.black,
@@ -121,45 +123,42 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   gridCol: {
-    width: '23%',
+    width: '24%',
     alignItems: 'center',
+    paddingHorizontal: 2,
   },
   gridIconContainer: {
-    width: ImageSize.ImageH40,
-    height: ImageSize.ImageH40,
-    borderRadius: 19,
+    width: 28,
+    height: 28,
+    borderRadius: 28 / 2,
     backgroundColor: Colors.iconBgLight,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   gridIcon: {
-    width: ImageSize.ImageH30,
-    height: ImageSize.ImageH30,
+    width: 14,
+    height: 14,
     tintColor: Colors.tint,
   },
   gridLabel: {
     fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size12,
-
+    fontSize: FontsSize.size11,
     color: Colors.textLabelGrey,
+    textAlign: 'center',
+  },
+  gridValue: {
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size12,
+    color: Colors.tint,
     textAlign: 'center',
     lineHeight: 16,
   },
-  gridValue: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size16,
-    color: Colors.tint,
-    textAlign: 'center',
-    marginTop: MarginHW.MarginH4,
-    lineHeight: 20,
-  },
   gridDivider: {
     width: 1.2,
-    height: 38,
+    alignSelf: 'stretch',
     backgroundColor: Colors.dividerGreen,
-    alignSelf: 'flex-start',
-    marginTop: MarginHW.MarginH18,
+    marginVertical: 2,
   },
   gridCol2: {
     width: '47%',
@@ -178,16 +177,17 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   checkIconValue: {
-    width: 20,
-    height: 20,
+    width: 16,
+    height: 16,
     tintColor: Colors.tint,
-    marginTop: MarginHW.MarginH4,
+    marginTop: MarginHW.MarginH6,
     alignSelf: 'center',
   },
   certificateSplit: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: 5,
   },
   certificateLeft: {
     flex: 1.4,
@@ -222,7 +222,7 @@ export const styles = StyleSheet.create({
   certificateBtn: {
     borderWidth: 1.2,
     borderColor: Colors.tint,
-    borderRadius: 10,
+    borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 5,
     alignSelf: 'flex-start',
@@ -261,18 +261,18 @@ export const styles = StyleSheet.create({
   timelineRight: {
     flex: 0.9,
     backgroundColor: Colors.bgGreenLight,
-    borderRadius: 16,
+    borderRadius: 10,
     padding: 10,
-    alignItems: 'center',
+    alignSelf: 'flex-start',
     justifyContent: 'center',
     borderWidth: 1.2,
     borderColor: Colors.borderGreenLight,
-    height: HWSize.H_Height168,
+
   },
   timelineRightImage: {
     width: '100%',
     height: HWSize.H_Height80,
-    borderRadius: 10,
+    borderRadius: 8,
   },
   timelineRightText: {
     fontFamily: fonts.OpenSans_SemiBold,
@@ -284,7 +284,7 @@ export const styles = StyleSheet.create({
   },
   timelineStep: {
     flexDirection: 'row',
-    minHeight: HWSize.H_Height44,
+
   },
   timelineIndicatorContainer: {
     alignItems: 'center',
@@ -397,7 +397,7 @@ export const styles = StyleSheet.create({
   },
   bannerCard: {
     backgroundColor: Colors.bgGreenLight,
-    borderRadius: 16,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: Colors.borderGreenLight,
     marginHorizontal: MarginHW.MarginW16,
@@ -454,8 +454,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bannerHandImage: {
-    width: ImageSize.ImageW90,
-    height: ImageSize.ImageH80,
+    width: 70,
+    height: 70,
   },
   footerContainer: {
     paddingHorizontal: MarginHW.PaddingW20,
@@ -464,8 +464,8 @@ export const styles = StyleSheet.create({
   },
   trackButton: {
     backgroundColor: Colors.continue,
-    height: HWSize.H_Height52,
-    borderRadius: 26,
+    height: 50,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: Colors.btnShadow,
@@ -488,8 +488,8 @@ export const styles = StyleSheet.create({
     tintColor: Colors.white,
   },
   plantAnotherButton: {
-    height: HWSize.H_Height48,
-    borderRadius: 24,
+    height: 50,
+    borderRadius: 10,
     borderWidth: 1.5,
     borderColor: Colors.tint,
     flexDirection: 'row',
