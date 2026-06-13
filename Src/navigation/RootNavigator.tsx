@@ -11,6 +11,7 @@ import StateScreen from '../screens/StateScreen/StateScreen';
 import DetailsScreen from '../screens/Details/Details';
 import PaymentScreen from '../screens/Payment/Payment';
 import ThankYouScreen from '../screens/ThankYou/ThankYou';
+import ExploreStatesScreen from '../screens/ExploreStates/ExploreStatesScreen';
 
 export type RootStackParamList = {
   AppOpening: undefined;
@@ -24,6 +25,7 @@ export type RootStackParamList = {
   Payment: undefined;
   Home: undefined;
   ThankYou: undefined;
+  ExploreStates: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -31,7 +33,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function RootNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="ChooseTree"
+      initialRouteName="ExploreStates"
       screenOptions={{
         headerShown: false,
       }}
@@ -47,6 +49,7 @@ export default function RootNavigator() {
       <Stack.Screen name="Details" component={DetailsScreen} />
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
+      <Stack.Screen name="ExploreStates" component={ExploreStatesScreen} />
     </Stack.Navigator>
   );
 }
