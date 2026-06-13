@@ -33,7 +33,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function RootNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="ExploreStates"
+      initialRouteName="ChooseLocation"
       screenOptions={{
         headerShown: false,
       }}
