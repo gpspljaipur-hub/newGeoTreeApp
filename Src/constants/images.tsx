@@ -65,7 +65,6 @@ const Images = {
   StateBg: require('../assets/Images/StateBg.png'),
   nature: require('../assets/Images/nature.png'),
   ipl_banner: require('../assets/Images/ipl_banner.png'),
-  BGWord: require('../assets/Images/BGWord.png')
 };
 
 export type ImageKey = keyof typeof Images;
