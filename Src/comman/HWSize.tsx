@@ -58,6 +58,12 @@ const HWSize = {
     W_Width220: wp(55.99),
     W_Width250: wp(63.66),
     W_Width350: wp(89.3),
-    W_Width375: wp(95.55)
+    W_Width375: wp(95.55),
+    H_Height190: hp(24.32),
+    W_Width130: wp(33.0),
+    H_Height168: hp(21.5),
+    H_Height52: hp(6.67),
+    H_Height48: hp(6.15),
+    H_Height44: hp(5.63),
 }
 export default HWSize

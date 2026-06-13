@@ -1,3 +1,5 @@
+import { BackHandler } from "react-native";
+
 const Images = {
   logo: require('../assets/Images/logo.png'),
   SinginGeotree: require('../assets/Images/SinginGeotree.png'),
@@ -26,7 +28,6 @@ const Images = {
   Leaf: require('../assets/Images/leaf.png'),
   Globe: require('../assets/Images/globe.png'),
   logoGeotree: require('../assets/Images/logoGeotree.png'),
-  notification: require('../assets/Images/notification.png'),
   settings: require('../assets/Images/setting.png'),
   group: require('../assets/Images/group.png'),
   neem_tree: require('../assets/Images/neem_tree.png'),
@@ -65,6 +66,18 @@ const Images = {
   StateBg: require('../assets/Images/StateBg.png'),
   nature: require('../assets/Images/nature.png'),
   ipl_banner: require('../assets/Images/ipl_banner.png'),
+  detailbg: require('../assets/Images/detailbg.png'),
+  calendar: require('../assets/Images/calendar.png'),
+  gift: require('../assets/Images/gift.png'),
+  bank: require('../assets/Images/bank.png'),
+  creditcard: require('../assets/Images/credit-card.png'),
+  wallet: require('../assets/Images/wallet.png'),
+  // edit: require('../assets/Images/edit.png'),
+  lock: require('../assets/Images/padlock.png'),
+  hastag: require('../assets/Images/hastag.png'),
+  leaf1: require('../assets/Images/leaf1.png'),
+  check: require('../assets/Images/check.png'),
+
 };
 
 export type ImageKey = keyof typeof Images;

@@ -12,108 +12,111 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFBFB',
   },
-  scrollView: {
-    flex: 1,
-  },
+
   bottomBanner: {
-    backgroundColor: Colors.bannerBg,
+    backgroundColor: Colors.bgGreenLight,
     borderWidth: 1,
-    borderColor: Colors.bannerBg,
+    borderColor: Colors.borderGreenLight,
     borderRadius: 18,
     marginHorizontal: MarginHW.MarginW16,
-    paddingVertical: 0,
-    paddingRight: MarginHW.PaddingW12,
-    paddingLeft: MarginHW.PaddingW3,
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: ImageSize.ImageH60,
-    overflow: 'hidden',
+    paddingHorizontal: MarginHW.PaddingW14,
+    paddingBottom: MarginHW.MarginH10,
+    marginBottom: MarginHW.MarginH12,
   },
 
   bannerLeftSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
-    height: '100%',
+    width: '100%',
   },
 
   bannerHandImage: {
-    width: ImageSize.ImageW75,
-    height: '100%',
+    width: ImageSize.ImageW80,
+    height: ImageSize.ImageW80,
   },
 
   bannerTextContainer: {
     flex: 1,
     flexShrink: 1,
-    justifyContent: 'center',
-    paddingLeft: MarginHW.PaddingW8,
+    paddingLeft: MarginHW.PaddingW12,
   },
 
   bannerTextTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size12,
-    color: Colors.black,
+    fontSize: FontsSize.size14,
+    color: Colors.textGreenDark,
   },
 
   bannerTextDesc: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size9,
+    fontSize: FontsSize.size12,
     color: Colors.bannerTextDesc,
     marginTop: MarginHW.MarginH2,
+    lineHeight: 14,
   },
 
-  benefitsBanner: {
-    backgroundColor: Colors.bannerBg,
-    borderWidth: 1,
-    borderColor: Colors.bannerBg,
-    borderRadius: 18,
-    marginTop: MarginHW.MarginH2,
-    marginHorizontal: MarginHW.MarginW16,
-    marginBottom: 0,
-    paddingVertical: MarginHW.PaddingH10,
-    paddingHorizontal: MarginHW.PaddingW8,
-    flexDirection: 'row',
-    alignItems: 'center',
+  bannerDivider: {
+    height: 1,
+    backgroundColor: Colors.dividerGreen,
+    // marginVertical: MarginHW.MarginH10,
+    width: '100%',
   },
 
-  bannerRightSection: {
-    flex: 1,
+  benefitsGrid: {
+    width: '100%',
+  },
+
+  benefitsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: MarginHW.MarginH4,
+  },
+
+  benefitGridItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    flexShrink: 1,
+    width: '48%',
   },
-  benefitItem: {
-    flex: 1,
-    alignItems: 'center',
+
+  benefitIconWrapper: {
+    width: ImageSize.ImageW30,
+    height: ImageSize.ImageW30,
+    borderRadius: 15,
+    backgroundColor: Colors.white,
     justifyContent: 'center',
-    paddingHorizontal: MarginHW.PaddingW3,
+    alignItems: 'center',
+    marginRight: MarginHW.MarginW8,
+    borderWidth: 1,
+    borderColor: Colors.borderGreenUltraLight,
   },
-  benefitIcon: {
+
+  benefitGridIcon: {
     width: ImageSize.ImageW20,
-    height: ImageSize.ImageH20,
+    height: ImageSize.ImageW20,
     tintColor: Colors.tint,
-    marginBottom: MarginHW.MarginH3,
   },
 
-  benefitLabel: {
-    fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size10,
-    color: Colors.black,
-    textAlign: 'center',
+  benefitTextCol: {
+    flex: 1,
   },
 
-  benefitValue: {
+  benefitGridLabel: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size10,
+    fontSize: FontsSize.size12,
+    color: Colors.bannerBenefitLabel,
+  },
+
+  benefitGridValue: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size12,
     color: Colors.tint,
-    textAlign: 'center',
   },
   footerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: MarginHW.PaddingW20,
-    paddingBottom: MarginHW.PaddingH24,
+    paddingBottom: MarginHW.PaddingH5,
     paddingTop: MarginHW.PaddingH10,
     backgroundColor: Colors.lightgray,
 
@@ -124,16 +127,7 @@ export const styles = StyleSheet.create({
     flex: 1.3,
     marginRight: MarginHW.MarginW8,
   },
-  footerCheckIconContainer: {
-    width: ImageSize.ImageH16,
-    height: ImageSize.ImageH16,
-    borderRadius: 8,
-    borderWidth: 1.5,
-    borderColor: Colors.tint,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: MarginHW.MarginW4,
-  },
+
   footerCheckIcon: {
     width: ImageSize.ImageH20,
     height: ImageSize.ImageH20,
@@ -142,7 +136,7 @@ export const styles = StyleSheet.create({
   },
   footerText: {
     fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size10,
+    fontSize: FontsSize.size12,
     color: Colors.footertextgray,
     flex: 1,
   },
@@ -174,140 +168,21 @@ export const styles = StyleSheet.create({
   scrollContainer: {
     paddingBottom: MarginHW.PaddingH20,
   },
-  headerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: MarginHW.PaddingW16,
-    paddingTop: MarginHW.PaddingH10,
-    paddingBottom: MarginHW.PaddingH10,
-    backgroundColor: '#FAFBFB',
-  },
-  backButton: {
-    padding: MarginHW.PaddingW8,
-  },
-  backIcon: {
-    width: ImageSize.ImageW20,
-    height: ImageSize.ImageH20,
-    tintColor: Colors.black,
-  },
-  headerTitle: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size16,
-    color: Colors.black,
-  },
-  coinBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: Colors.white,
-    paddingHorizontal: MarginHW.PaddingW12,
-    paddingVertical: MarginHW.PaddingH5,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#E8EFEA',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
-  },
-  coinIconContainer: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: MarginHW.MarginW6,
-  },
-  coinIcon: {
-    width: 14,
-    height: 14,
-    tintColor: Colors.white,
-  },
-  coinTextContainer: {
-    alignItems: 'flex-start',
-  },
-  coinAmount: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size12,
-    color: Colors.black,
-    lineHeight: 14,
-  },
-  coinLabel: {
-    fontFamily: fonts.OpenSans_Regular,
-    fontSize: 8,
-    color: Colors.bannerTextDesc,
-    lineHeight: 10,
-  },
-  stepperContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: MarginHW.PaddingW16,
-    marginVertical: MarginHW.MarginH16,
-    position: 'relative',
-  },
-  stepperLine: {
-    position: 'absolute',
-    left: MarginHW.PaddingW30,
-    right: MarginHW.PaddingW30,
-    top: 14,
-    height: 2,
-    backgroundColor: '#E0E5E2',
-    zIndex: 1,
-  },
-  stepItem: {
-    alignItems: 'center',
-    flex: 1,
-    zIndex: 2,
-  },
-  stepCircle: {
-    width: ImageSize.ImageH22,
-    height: ImageSize.ImageH22,
-    borderRadius: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: MarginHW.MarginH5,
-  },
-  stepCircleActive: {
-    backgroundColor: Colors.tint,
-  },
-  stepCircleInactive: {
-    backgroundColor: '#D1DCD6',
-  },
-  stepNumber: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size12,
-    color: Colors.white,
-  },
-  stepLabel: {
-    fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size10,
-    textAlign: 'center',
-  },
-  stepLabelActive: {
-    color: Colors.tint,
-    fontFamily: fonts.OpenSans_SemiBold,
-  },
-  stepLabelInactive: {
-    color: '#8E9A93',
-  },
+
   heroCard: {
-    marginHorizontal: MarginHW.MarginW16,
-    marginBottom: MarginHW.MarginH40,
-    borderRadius: 24,
+    marginHorizontal: 0,
+    marginBottom: MarginHW.MarginH20,
+    borderRadius: 0,
     overflow: 'visible',
     backgroundColor: Colors.white,
   },
 
   heroImage: {
     width: '100%',
-    height: HWSize.H_Height250,
     justifyContent: 'space-between',
   },
 
   heroContent: {
-    flex: 1,
     paddingHorizontal: MarginHW.PaddingW20,
     paddingTop: MarginHW.PaddingH16,
     paddingBottom: MarginHW.PaddingH50,
@@ -400,7 +275,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: -MarginHW.MarginH24,
+    bottom: -MarginHW.MarginH12,
   },
 
   tabsScrollView: {
@@ -411,7 +286,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: HWSize.H_Height46,
+    paddingVertical: MarginHW.PaddingH8,
     paddingHorizontal: MarginHW.PaddingW18,
     borderRadius: 24,
     marginRight: MarginHW.MarginW10,
@@ -425,7 +300,6 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: Colors.borderLight,
-
     shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
@@ -442,10 +316,7 @@ export const styles = StyleSheet.create({
     marginRight: MarginHW.MarginW8,
   },
 
-  tabEmoji: {
-    fontSize: FontsSize.size16,
-    marginRight: MarginHW.MarginW8,
-  },
+
 
   tabText: {
     fontFamily: fonts.OpenSans_SemiBold,
@@ -461,20 +332,11 @@ export const styles = StyleSheet.create({
   },
 
   heroImageRadius: {
-    borderTopRightRadius: 24,
-    borderBottomRightRadius: 24,
     width: '65%',
     left: '35%',
   },
 
-  heroOverlay: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: 'transparent',
-  },
+
 
   heroBottomContent: {
     flexDirection: 'row',
@@ -488,11 +350,10 @@ export const styles = StyleSheet.create({
   treeCard: {
     backgroundColor: Colors.white,
     borderRadius: 24,
-    padding: MarginHW.PaddingW12,
     flexDirection: 'row',
     marginBottom: MarginHW.MarginH8,
     borderWidth: 1,
-    borderColor: '#F0F4F1',
+    borderColor: Colors.borderLight,
     shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
@@ -501,12 +362,15 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.04,
     shadowRadius: 10,
     elevation: 3,
+    overflow: 'hidden',
   },
   treeImageContainer: {
-    position: 'relative',
+    position: 'absolute',
+    left: 6,
+    top: 6,
+    bottom: 6,
+    borderRadius: 22,
     width: ImageSize.ImageW100,
-    height: ImageSize.ImageW100,
-    borderRadius: 18,
     overflow: 'hidden',
   },
   treeImage: {
@@ -527,7 +391,7 @@ export const styles = StyleSheet.create({
     color: Colors.white,
   },
   nativeBadge: {
-    backgroundColor: '#1E6B46',
+    backgroundColor: Colors.tint,
   },
   fruitBadge: {
     backgroundColor: '#F58220',
@@ -537,7 +401,10 @@ export const styles = StyleSheet.create({
   },
   treeDetailsContainer: {
     flex: 1,
+    marginLeft: ImageSize.ImageW100,
     paddingLeft: MarginHW.PaddingW12,
+    paddingRight: MarginHW.PaddingW12,
+    paddingVertical: MarginHW.PaddingW12,
     justifyContent: 'space-between',
   },
   treeHeaderRow: {
@@ -558,22 +425,17 @@ export const styles = StyleSheet.create({
     fontSize: FontsSize.size18,
     color: Colors.textDark,
   },
-  treeTitleLeafIcon: {
-    width: ImageSize.ImageW14,
-    height: ImageSize.ImageH14,
-    tintColor: '#8CC63F',
-    marginLeft: MarginHW.MarginW4,
-  },
+
   scientificName: {
     fontFamily: fonts.OpenSans_Regular,
     fontStyle: 'italic',
-    fontSize: FontsSize.size11,
+    fontSize: FontsSize.size12,
     color: Colors.textMuted,
     marginTop: MarginHW.MarginH2,
   },
   treeDescription: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size10,
+    fontSize: FontsSize.size12,
     color: Colors.textMuted,
     lineHeight: FontsSize.size14,
     marginTop: MarginHW.MarginH4,
@@ -632,12 +494,12 @@ export const styles = StyleSheet.create({
   },
   pointsValue: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size11,
+    fontSize: FontsSize.size12,
     color: '#1E6B46',
   },
   pointsLabel: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size9,
+    fontSize: FontsSize.size10,
     color: Colors.bannerTextDesc,
     marginTop: MarginHW.MarginH2,
     textAlign: 'center',
