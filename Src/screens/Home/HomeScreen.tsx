@@ -114,7 +114,7 @@ const HomeScreen = () => {
         />
         <View style={styles.headerRight}>
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
-            <Image source={Images.notification} style={styles.iconImg} resizeMode="contain" />
+            <Image source={Images.bell} style={styles.iconImg} resizeMode="contain" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
             <Image source={Images.settings} style={styles.iconImg} resizeMode="contain" />

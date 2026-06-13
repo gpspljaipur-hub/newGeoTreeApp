@@ -78,7 +78,11 @@ const Images = {
   hastag: require('../assets/Images/hastag.png'),
   leaf1: require('../assets/Images/leaf1.png'),
   check: require('../assets/Images/check.png'),
-
+  selectfootertree: require('../assets/Images/selectfootertree.png'),
+  treemap: require('../assets/Images/treemap.png'),
+  folder: require('../assets/Images/folder.png'),
+  filter: require('../assets/Images/filter.png'),
+  sort: require('../assets/Images/sort.png'),
 };
 
 export type ImageKey = keyof typeof Images;
