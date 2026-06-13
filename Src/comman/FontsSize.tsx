@@ -14,7 +14,10 @@ export function normalize(size: number) {
 }
 
 const FontsSize = {
+    size7: 7,
+    size8: 8,
     size9: 9,
+    size9_5: 9.5,
     size10: 10,
     size11: 11,
     size12: 12,

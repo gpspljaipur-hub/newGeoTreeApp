@@ -25,8 +25,8 @@ const UserDashboardScreen = () => {
     {
       id: '1',
       value: '28',
-      label: 'Trees Planted',
-      subtext: '↑ 4 This Month',
+      label: String.Dashboard_StatTreesLabel,
+      subtext: String.Dashboard_StatTreesSubtext,
       isGreenSub: true,
       icon: Images.treeIcon,
       bgColor: '#EEF5EE',
@@ -35,8 +35,8 @@ const UserDashboardScreen = () => {
     {
       id: '2',
       value: '256 kg',
-      label: 'CO₂ Offset',
-      subtext: '↑ 36 kg This Month',
+      label: String.Dashboard_StatCO2Label,
+      subtext: String.Dashboard_StatCO2Subtext,
       isGreenSub: true,
       icon: Images.Emission,
       bgColor: '#EEF5EE',
@@ -45,8 +45,8 @@ const UserDashboardScreen = () => {
     {
       id: '3',
       value: '5',
-      label: 'Locations',
-      subtext: 'Across India',
+      label: String.Dashboard_StatLocLabel,
+      subtext: String.Dashboard_StatLocSubtext,
       isGreenSub: false,
       icon: Images.geolocation,
       bgColor: '#EEF5EE',
@@ -55,8 +55,8 @@ const UserDashboardScreen = () => {
     {
       id: '4',
       value: '1,250',
-      label: 'Green Points',
-      subtext: 'View Rewards >',
+      label: String.Dashboard_StatPointsLabel,
+      subtext: String.Dashboard_StatPointsSubtext,
       isGreenSub: true,
       icon: Images.shield, // Using shield as points/award icon
       bgColor: '#FEF4E8',
@@ -67,26 +67,26 @@ const UserDashboardScreen = () => {
   const JOURNEY_DATA = [
     {
       id: '1',
-      title: 'Plant More\nTrees',
-      subtitle: 'Grow more green',
+      title: String.Dashboard_JourneyPlantTitle,
+      subtitle: String.Dashboard_JourneyPlantSub,
       image: Images.handtree,
     },
     {
       id: '2',
-      title: 'Offset\nCarbon',
-      subtitle: 'Reduce your\ncarbon footprint',
+      title: String.Dashboard_JourneyCarbonTitle,
+      subtitle: String.Dashboard_JourneyCarbonSub,
       image: Images.carbon_cal,
     },
     {
       id: '3',
-      title: 'Gift\nTrees',
-      subtitle: 'Give the gift of a\ngreener future',
+      title: String.Dashboard_JourneyGiftTitle,
+      subtitle: String.Dashboard_JourneyGiftSub,
       image: Images.gift_tree,
     },
     {
       id: '4',
-      title: 'Sponsor\nPlantation',
-      subtitle: 'Support large scale\ngreen initiatives',
+      title: String.Dashboard_JourneySponsorTitle,
+      subtitle: String.Dashboard_JourneySponsorSub,
       image: Images.sponsor_plant,
     },
   ];
@@ -94,35 +94,35 @@ const UserDashboardScreen = () => {
   const STATE_CARDS = [
     {
       id: '1',
-      name: 'Rajasthan',
-      trees: '1.2M+ Trees',
+      name: String.Home_ProjRajasthan,
+      trees: '1.2M+ ' + String.Dashboard_TreesSuffix,
       image: Images.rajasthan,
     },
     {
       id: '2',
-      name: 'Uttarakhand',
-      trees: '850K+ Trees',
+      name: String.Home_ProjUttarakhand,
+      trees: '850K+ ' + String.Dashboard_TreesSuffix,
       image: Images.uttarakhand,
     },
     {
       id: '3',
-      name: 'Karnataka',
-      trees: '650K+ Trees',
+      name: String.Home_ProjKarnataka,
+      trees: '650K+ ' + String.Dashboard_TreesSuffix,
       image: Images.karnataka,
     },
     {
       id: '4',
-      name: 'Tamil Nadu',
-      trees: '420K+ Trees',
+      name: String.Home_ProjTamilNadu,
+      trees: '420K+ ' + String.Dashboard_TreesSuffix,
       image: Images.tamil_nadu,
     },
   ];
 
   const COMMUNITY_STATS = [
-    { id: '1', label: 'Trees Planted', value: '1.2M+', icon: Images.treeIcon },
-    { id: '2', label: 'Tons CO₂ Offset', value: '12.5K+', icon: Images.Emission },
-    { id: '3', label: 'Active Users', value: '52K+', icon: Images.group },
-    { id: '4', label: 'States Covered', value: '28', icon: Images.geolocation },
+    { id: '1', label: String.Dashboard_CommTrees, value: '1.2M+', icon: Images.treeIcon },
+    { id: '2', label: String.Dashboard_CommCO2, value: '12.5K+', icon: Images.Emission },
+    { id: '3', label: String.Dashboard_CommUsers, value: '52K+', icon: Images.group },
+    { id: '4', label: String.Dashboard_CommStates, value: '28', icon: Images.geolocation },
   ];
 
   return (
@@ -155,13 +155,14 @@ const UserDashboardScreen = () => {
           </View>
           <View style={styles.greetingContainer}>
             <View style={styles.greetingTextSection}>
-              <Text style={styles.greetingSub}>Good Morning, Aarav! 🌿</Text>
-              <Text style={styles.greetingMain}>Every Action{'\n'}Creates Impact</Text>
+              <Text style={styles.greetingSub}>{String.Dashboard_GreetingSub}</Text>
+              <Text style={styles.greetingMain}>{String.Dashboard_GreetingMain}</Text>
               <Text style={styles.greetingDesc}>
-                Keep going, a <Text style={styles.greenText}>greener</Text> tomorrow{'\n'}is in your hands.
+                {String.Dashboard_GreetingDescPart1}
+                <Text style={styles.greenText}>{String.Dashboard_GreetingDescPart2}</Text>
+                {String.Dashboard_GreetingDescPart3}
               </Text>
             </View>
-
           </View>
         </ImageBackground>
 
@@ -170,7 +171,6 @@ const UserDashboardScreen = () => {
           <View style={styles.impactCard}>
             <View style={styles.impactTitleRow}>
               <Text style={styles.impactCardTitle}>{String.Dashboard_YourGreenImpact}</Text>
-              <Text style={styles.leafIcon}>🍃</Text>
             </View>
 
             <View style={styles.statsGrid}>
@@ -235,25 +235,27 @@ const UserDashboardScreen = () => {
                 <Image source={Images.neem_tree} style={styles.myTreeImage} resizeMode="cover" />
                 <View style={styles.liveBadge}>
                   <View style={styles.liveDot} />
-                  <Text style={styles.liveBadgeText}>Live</Text>
+                  <Text style={styles.liveBadgeText}>{String.Dashboard_Live}</Text>
                 </View>
               </View>
               <View style={styles.myTreeInfo}>
                 <View style={styles.myTreeTitleRow}>
-                  <Text style={styles.myTreeTitle}>Neem Tree #GT2394</Text>
+                  <Text style={styles.myTreeTitle}>
+                    {String.ChooseTree_TreeNeemName} {String.Dashboard_TreeLabel} #GT2394
+                  </Text>
                   <Image source={Images.edit} style={styles.editIconImage} resizeMode="contain" />
                 </View>
                 <View style={styles.myTreeLocationRow}>
                   <Image source={Images.geolocation} style={styles.smallLocationIcon} tintColor={Colors.legacyGreen} resizeMode="contain" />
-                  <Text style={styles.myTreeLocation}>Jaipur, Rajasthan</Text>
+                  <Text style={styles.myTreeLocation}>{String.Dashboard_JaipurRajasthan}</Text>
                 </View>
                 <View style={styles.myTreeBadgesRow}>
                   <View style={styles.treeBadgeOutline}>
-                    <Text style={styles.treeBadgeText}>Healthy</Text>
+                    <Text style={styles.treeBadgeText}>{String.Dashboard_Healthy}</Text>
                   </View>
                   <View style={styles.treeBadgeOutline}>
                     <Image source={Images.geolocation} style={styles.badgeLocationIcon} resizeMode="contain" />
-                    <Text style={styles.treeBadgeText}>GPS Verified</Text>
+                    <Text style={styles.treeBadgeText}>{String.Dashboard_GPSVerified}</Text>
                   </View>
                 </View>
               </View>
@@ -262,18 +264,18 @@ const UserDashboardScreen = () => {
             <View style={styles.myTreeHorizontalDivider} />
             <View style={styles.myTreeStatsRow}>
               <View style={styles.myTreeStatCol}>
-                <Text style={styles.myTreeStatLabel}>Height</Text>
+                <Text style={styles.myTreeStatLabel}>{String.Dashboard_Height}</Text>
                 <Text style={styles.myTreeStatVal}>72 cm</Text>
               </View>
               <View style={styles.myTreeStatDivider} />
               <View style={styles.myTreeStatCol}>
-                <Text style={styles.myTreeStatLabel}>Planted On</Text>
-                <Text style={styles.myTreeStatVal}>12 May 2025</Text>
+                <Text style={styles.myTreeStatLabel}>{String.Dashboard_PlantedOn}</Text>
+                <Text style={styles.myTreeStatVal}>{String.Dashboard_MockPlantedDate}</Text>
               </View>
               <View style={styles.myTreeStatDivider} />
               <View style={styles.myTreeStatCol}>
-                <Text style={styles.myTreeStatLabel}>Last Updated</Text>
-                <Text style={styles.myTreeStatVal}>3 Days Ago</Text>
+                <Text style={styles.myTreeStatLabel}>{String.Dashboard_LastUpdated}</Text>
+                <Text style={styles.myTreeStatVal}>{String.Dashboard_ThreeDaysAgo}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -305,7 +307,7 @@ const UserDashboardScreen = () => {
                     <Image source={item.image} style={styles.stateCardImage} resizeMode="cover" />
                     {isSelected && (
                       <View style={styles.selectedBadge}>
-                        <Text style={styles.selectedBadgeText}>Selected</Text>
+                        <Text style={styles.selectedBadgeText}>{String.Dashboard_Selected}</Text>
                       </View>
                     )}
                   </View>
@@ -332,9 +334,9 @@ const UserDashboardScreen = () => {
                   <Image source={Images.geolocation} style={styles.bannerPinIcon} tintColor={Colors.legacyGreen} resizeMode="contain" />
                 </View>
                 <View style={styles.bannerTextWrapper}>
-                  <Text style={styles.bannerStateName}>Rajasthan</Text>
+                  <Text style={styles.bannerStateName}>{String.Home_ProjRajasthan}</Text>
                   <Text style={styles.bannerStateDesc}>
-                    Explore verified plantation projects{'\n'}across Rajasthan.
+                    {String.Dashboard_BannerDesc}
                   </Text>
                 </View>
               </View>
@@ -345,7 +347,7 @@ const UserDashboardScreen = () => {
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                 >
-                  <Text style={styles.exploreBtnText}>Explore Projects</Text>
+                  <Text style={styles.exploreBtnText}>{String.Dashboard_ExploreProjects}</Text>
                   <Text style={styles.exploreBtnArrow}>→</Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -355,7 +357,6 @@ const UserDashboardScreen = () => {
           <View style={styles.sectionHeader}>
             <View style={styles.sectionTitleRow}>
               <Text style={styles.sectionTitle}>{String.Dashboard_CommunityImpact}</Text>
-              <Text style={styles.leafIcon}>🍃</Text>
             </View>
           </View>
 
@@ -382,14 +383,14 @@ const UserDashboardScreen = () => {
               <View style={styles.challengeTextWrapper}>
                 <Text style={styles.challengeTitle}>{String.Dashboard_JuneChallenge} 🔥</Text>
                 <Text style={styles.challengeSubtitle}>
-                  Plant 3 Trees this month and earn 200 Green Coins!
+                  {String.Dashboard_ChallengeSubtitle}
                 </Text>
               </View>
             </View>
 
             <View style={styles.challengeProgressRow}>
               <View style={styles.progressBarContainer}>
-                <Text style={styles.progressBarLabel}>Progress</Text>
+                <Text style={styles.progressBarLabel}>{String.Dashboard_Progress}</Text>
                 <View style={styles.progressBarTrack}>
                   <View style={[styles.progressBarFill, { width: '66.7%' }]} />
                 </View>
@@ -400,7 +401,7 @@ const UserDashboardScreen = () => {
                 <Text style={styles.coinIcon}>🪙</Text>
                 <View>
                   <Text style={styles.coinVal}>200</Text>
-                  <Text style={styles.coinLabel}>Green Coins</Text>
+                  <Text style={styles.coinLabel}>{String.Dashboard_GreenCoins}</Text>
                 </View>
               </View>
             </View>

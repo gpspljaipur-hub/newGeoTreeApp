@@ -7,6 +7,7 @@ import ChooseTreeScreen from '../screens/ChooseTree/ChooseTree';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ChooseLocationScreen from '../screens/ChooseLocation/ChooseLocation';
 import UserDashboardScreen from '../screens/UserDashboard/UserDashboardScreen';
+import StateScreen from '../screens/StateScreen/StateScreen';
 import DetailsScreen from '../screens/Details/Details';
 import PaymentScreen from '../screens/Payment/Payment';
 import ThankYouScreen from '../screens/ThankYou/ThankYou';
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   Otp: { phoneNumber: string };
   ChooseTree: undefined;
   UserDashboard: undefined;
+  StateScreen: undefined;
   ChooseLocation: undefined;
   Details: undefined;
   Payment: undefined;
@@ -41,6 +43,7 @@ export default function RootNavigator() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="ChooseLocation" component={ChooseLocationScreen} />
       <Stack.Screen name="UserDashboard" component={UserDashboardScreen} />
+      <Stack.Screen name="StateScreen" component={StateScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
