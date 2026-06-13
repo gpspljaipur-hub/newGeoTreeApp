@@ -93,7 +93,6 @@ export const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-
     fontFamily: fonts.OpenSans_Regular,
     fontSize: FontsSize.size14,
     color: Colors.textDark,
