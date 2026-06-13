@@ -6,6 +6,7 @@ const MarginHW = {
     MarginH3: hp(0.4),
     MarginH4: hp(0.5),
     MarginH5: hp(0.65),
+    MarginH6: hp(0.78),
     MarginH8: hp(1.01),
     MarginH10: hp(1.3),
     MarginH12: hp(1.55),
@@ -72,6 +73,7 @@ const MarginHW = {
 
     PaddingH3: hp(0.4),
     PaddingH5: hp(0.65),
+    PaddingH6: hp(0.78),
     PaddingH8: hp(1.01),
     PaddingH10: hp(1.3),
     PaddingH12: hp(1.55),
@@ -100,6 +102,7 @@ const MarginHW = {
 
     PaddingW3: wp(0.8),
     PaddingW5: wp(1.25),
+    PaddingW6: wp(1.5),
     PaddingW8: wp(2.0),
     PaddingW10: wp(2.6),
     PaddingW12: wp(3.1),

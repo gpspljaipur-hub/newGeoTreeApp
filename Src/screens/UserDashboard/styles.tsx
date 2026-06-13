@@ -1,8 +1,8 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import { Colors } from '../../comman/Colors';
 import FontsSize from '../../comman/FontsSize';
-import MarginHW from '../../comman/MarginHW';
 import fonts from '../../comman/fonts';
+import MarginHW from '../../comman/MarginHW';
 
 const { width } = Dimensions.get('window');
 
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: MarginHW.PaddingH16,
     marginVertical: 20,
 
   },
@@ -40,15 +40,15 @@ export const styles = StyleSheet.create({
   headerLogo: {
     width: 150,
     height: 150,
-    marginRight: 8,
+    marginRight: MarginHW.MarginW8,
   },
   headerTitleText: {
-    fontSize: 18,
+    fontSize: FontsSize.size18,
     fontFamily: fonts.OpenSans_Bold,
     color: '#22391f',
   },
   headerSubtitleText: {
-    fontSize: 7,
+    fontSize: FontsSize.size7,
     fontFamily: fonts.OpenSans_Bold,
     color: '#8E9A93',
     letterSpacing: 0.8,
@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 10,
+    marginLeft: MarginHW.MarginW10,
     borderWidth: 1,
     borderColor: '#ECEFEF',
     shadowColor: '#000000',
@@ -85,29 +85,29 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: MarginHW.PaddingH16,
     marginVertical: 14,
   },
   greetingTextSection: {
     flex: 1,
   },
   greetingSub: {
-    fontSize: 13,
+    fontSize: FontsSize.size13,
     fontFamily: fonts.OpenSans_Medium,
     color: '#22391f',
   },
   greetingMain: {
-    fontSize: 26,
+    fontSize: FontsSize.size26,
     fontFamily: fonts.OpenSans_Bold,
     color: '#22391f',
     lineHeight: 32,
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
   },
   greetingDesc: {
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Regular,
     color: '#8E9A93',
-    marginTop: 6,
+    marginTop: MarginHW.MarginH6,
     lineHeight: 16,
   },
   greenText: {
@@ -130,7 +130,7 @@ export const styles = StyleSheet.create({
 
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
-    marginHorizontal: 10,
+    marginHorizontal: MarginHW.MarginW10,
     padding: 16,
     borderWidth: 1,
     borderColor: '#E7ECE8',
@@ -139,22 +139,22 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.04,
     shadowRadius: 12,
     elevation: 4,
-    marginBottom: 2,
+    marginBottom: MarginHW.MarginH2,
   },
   impactTitleRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: MarginHW.MarginH10,
   },
   impactCardTitle: {
-    fontSize: 12,
+    fontSize: FontsSize.size12,
     fontFamily: fonts.OpenSans_Bold,
     color: '#22391f',
     letterSpacing: 0.5,
   },
   leafIcon: {
-    fontSize: 12,
-    marginLeft: 6,
+    fontSize: FontsSize.size12,
+    marginLeft: MarginHW.MarginW6,
   },
   statsGrid: {
     flexDirection: 'row',
@@ -170,28 +170,28 @@ export const styles = StyleSheet.create({
     borderRadius: 18,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: MarginHW.MarginH8,
   },
   statIcon: {
     width: 18,
     height: 18,
   },
   statValue: {
-    fontSize: 15,
+    fontSize: FontsSize.size15,
     fontFamily: fonts.OpenSans_Bold,
     color: '#111827',
   },
   statLabel: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Medium,
     color: '#8E9A93',
-    marginTop: 2,
+    marginTop: MarginHW.MarginH2,
     textAlign: 'center',
   },
   statSubtext: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Bold,
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
     textAlign: 'center',
   },
   statSubtextGreen: {
@@ -213,22 +213,22 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    marginTop: 10,
-    marginBottom: 12,
+    paddingHorizontal: MarginHW.PaddingW16,
+    marginTop: MarginHW.MarginH10,
+    marginBottom: MarginHW.MarginH12,
   },
   sectionTitleRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   sectionTitle: {
-    fontSize: 12,
+    fontSize: FontsSize.size12,
     fontFamily: fonts.OpenSans_Bold,
     color: '#22391f',
     letterSpacing: 0.5,
   },
   viewAllText: {
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Bold,
     color: '#2F9E67',
   },
@@ -237,7 +237,7 @@ export const styles = StyleSheet.create({
   journeyList: {
     paddingLeft: 16,
     paddingRight: 8,
-    marginBottom: 1,
+    marginBottom: MarginHW.MarginH1,
   },
   journeyCard: {
     backgroundColor: Colors.listBg,
@@ -246,7 +246,7 @@ export const styles = StyleSheet.create({
     borderColor: '#E7ECE8',
     width: 130,
     padding: 10,
-    marginRight: 10,
+    marginRight: MarginHW.MarginW10,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.03,
@@ -269,16 +269,16 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   journeyCardTitle: {
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Bold,
     color: '#111827',
     lineHeight: 14,
   },
   journeyCardSubtitle: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Medium,
     color: '#8E9A93',
-    marginTop: 2,
+    marginTop: MarginHW.MarginH2,
     lineHeight: 10,
   },
   journeyArrowCircle: {
@@ -289,11 +289,11 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-end',
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
   },
   journeyArrow: {
     color: '#FFFFFF',
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontWeight: 'bold',
   },
 
@@ -303,14 +303,14 @@ export const styles = StyleSheet.create({
     borderRadius: 14,
     borderWidth: 1,
     borderColor: '#E7ECE8',
-    marginHorizontal: 16,
+    marginHorizontal: MarginHW.MarginW16,
     padding: 12,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.04,
     shadowRadius: 12,
     elevation: 3,
-    marginBottom: 5,
+    marginBottom: MarginHW.MarginH5,
   },
   myTreeTopRow: {
     flexDirection: 'row',
@@ -345,7 +345,7 @@ export const styles = StyleSheet.create({
     marginRight: 4,
   },
   liveBadgeText: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Bold,
     color: '#2F9E67',
   },
@@ -358,34 +358,34 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   myTreeTitle: {
-    fontSize: 13,
+    fontSize: FontsSize.size13,
     fontFamily: fonts.OpenSans_Bold,
     color: '#111827',
   },
   editIconImage: {
     width: 12,
     height: 12,
-    marginLeft: 6,
+    marginLeft: MarginHW.MarginW6,
     tintColor: Colors.legacyGreen,
   },
   myTreeLocationRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
   },
   smallLocationIcon: {
     width: 10,
     height: 10,
-    marginRight: 4,
+    marginRight: MarginHW.MarginW4,
   },
   myTreeLocation: {
-    fontSize: 10,
+    fontSize: FontsSize.size10,
     fontFamily: fonts.OpenSans_Medium,
     color: '#5B665F',
   },
   myTreeBadgesRow: {
     flexDirection: 'row',
-    marginTop: 8,
+    marginTop: MarginHW.MarginH8,
   },
   treeBadgeOutline: {
     borderWidth: 1,
@@ -394,7 +394,7 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 8,
     paddingVertical: 3,
-    marginRight: 6,
+    marginRight: MarginHW.MarginW6,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -405,7 +405,7 @@ export const styles = StyleSheet.create({
     tintColor: Colors.legacyGreen
   },
   treeBadgeText: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Bold,
     color: Colors.legacyGreen,
   },
@@ -436,15 +436,15 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E7ECE8',
   },
   myTreeStatLabel: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Medium,
     color: '#8E9A93',
   },
   myTreeStatVal: {
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Bold,
     color: '#22391f',
-    marginTop: 2,
+    marginTop: MarginHW.MarginH2,
   },
 
   // State Selector
@@ -459,7 +459,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E7ECE8',
     width: 115,
-    marginRight: 10,
+    marginRight: MarginHW.MarginW10,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.03,
@@ -485,11 +485,11 @@ export const styles = StyleSheet.create({
     left: 6,
     backgroundColor: Colors.legacyGreen,
     borderRadius: 4,
-    paddingHorizontal: 6,
+    paddingHorizontal: MarginHW.PaddingW6,
     paddingVertical: 2,
   },
   selectedBadgeText: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
   },
@@ -497,7 +497,7 @@ export const styles = StyleSheet.create({
     padding: 8,
   },
   stateCardName: {
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Bold,
     color: '#111827',
   },
@@ -505,19 +505,19 @@ export const styles = StyleSheet.create({
     color: Colors.legacyGreen,
   },
   stateCardTrees: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Medium,
     color: Colors.legacyGreen,
-    marginTop: 2,
+    marginTop: MarginHW.MarginH2,
   },
 
   // Banner Section
   bannerContainer: {
-    marginHorizontal: 16,
+    marginHorizontal: MarginHW.MarginW16,
     height: 90,
     borderRadius: 10,
     overflow: 'hidden',
-    marginBottom: 20,
+    marginBottom: MarginHW.MarginH20,
     borderWidth: 1,
     borderColor: '#E7ECE8',
   },
@@ -538,7 +538,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 14,
+    paddingHorizontal: MarginHW.PaddingW14,
   },
   bannerLeft: {
     flexDirection: 'row',
@@ -552,7 +552,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 10,
+    marginRight: MarginHW.MarginW10,
   },
   bannerPinIcon: {
     width: 16,
@@ -562,32 +562,32 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   bannerStateName: {
-    fontSize: 13,
+    fontSize: FontsSize.size13,
     fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
   },
   bannerStateDesc: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Medium,
     color: '#ECEFEF',
-    marginTop: 2,
+    marginTop: MarginHW.MarginH2,
     lineHeight: 12,
   },
   exploreBtn: {
     borderRadius: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: MarginHW.PaddingW10,
     paddingVertical: 7,
     flexDirection: 'row',
     alignItems: 'center',
   },
   exploreBtnText: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
-    marginRight: 4,
+    marginRight: MarginHW.MarginW4,
   },
   exploreBtnArrow: {
-    fontSize: 10,
+    fontSize: FontsSize.size10,
     color: '#FFFFFF',
     fontWeight: 'bold',
   },
@@ -596,19 +596,19 @@ export const styles = StyleSheet.create({
   communityContainer: {
     backgroundColor: Colors.listBg,
     borderRadius: 8,
-    marginHorizontal: 16,
+    marginHorizontal: MarginHW.MarginW16,
     paddingVertical: 15,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginBottom: 20,
+    marginBottom: MarginHW.MarginH20,
   },
   communityStatItem: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 6,
+    paddingHorizontal: MarginHW.PaddingW6,
   },
   communityIconBg: {
     width: 26,
@@ -617,7 +617,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E6EFEA',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 6,
+    marginRight: MarginHW.MarginW6,
   },
   communityIcon: {
     width: 14,
@@ -627,12 +627,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   communityVal: {
-    fontSize: 11,
+    fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Bold,
     color: '#111827',
   },
   communityLabel: {
-    fontSize: 7,
+    fontSize: FontsSize.size7,
     fontFamily: fonts.OpenSans_Medium,
     color: '#000',
   },
@@ -648,7 +648,7 @@ export const styles = StyleSheet.create({
   challengeCard: {
     backgroundColor: Colors.bgColor,
     borderRadius: 14,
-    marginHorizontal: 16,
+    marginHorizontal: MarginHW.MarginW16,
     padding: 14,
 
     shadowColor: '#000000',
@@ -668,7 +668,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 10,
+    marginRight: MarginHW.MarginW10,
   },
   challengeMedalImage: {
     width: 28,
@@ -678,32 +678,32 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   challengeTitle: {
-    fontSize: 13,
+    fontSize: FontsSize.size13,
     fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
   },
   challengeSubtitle: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Medium,
     color: '#AAB4AD',
-    marginTop: 2,
+    marginTop: MarginHW.MarginH2,
     lineHeight: 12,
   },
   challengeProgressRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 14,
+    marginTop: MarginHW.MarginH14,
     paddingTop: 12,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.08)',
   },
   progressBarContainer: {
     flex: 1,
-    marginRight: 16,
+    marginRight: MarginHW.MarginW16,
   },
   progressBarLabel: {
-    fontSize: 8,
+    fontSize: FontsSize.size8,
     fontFamily: fonts.OpenSans_Bold,
     color: '#AAB4AD',
     textTransform: 'uppercase',
@@ -712,7 +712,7 @@ export const styles = StyleSheet.create({
     height: 6,
     backgroundColor: 'rgba(255, 255, 255, 0.15)',
     borderRadius: 3,
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
     overflow: 'hidden',
   },
   progressBarFill: {
@@ -721,30 +721,30 @@ export const styles = StyleSheet.create({
     borderRadius: 3,
   },
   progressCount: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
   },
   coinBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: MarginHW.PaddingW8,
     paddingVertical: 4,
   },
   coinIcon: {
-    fontSize: 16,
-    marginRight: 6,
+    fontSize: FontsSize.size16,
+    marginRight: MarginHW.MarginW6,
   },
   coinVal: {
-    fontSize: 10,
+    fontSize: FontsSize.size10,
     fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
   },
   coinLabel: {
-    fontSize: 7,
+    fontSize: FontsSize.size7,
     fontFamily: fonts.OpenSans_Medium,
     color: '#AAB4AD',
   },
@@ -783,10 +783,10 @@ export const styles = StyleSheet.create({
     tintColor: '#2F9E67',
   },
   navText: {
-    fontSize: 9,
+    fontSize: FontsSize.size9,
     fontFamily: fonts.OpenSans_Medium,
     color: '#8E9A93',
-    marginTop: 4,
+    marginTop: MarginHW.MarginH4,
   },
   navTextActive: {
     color: '#2F9E67',

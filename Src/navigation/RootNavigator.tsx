@@ -7,6 +7,7 @@ import ChooseTreeScreen from '../screens/ChooseTree/ChooseTree';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ChooseLocationScreen from '../screens/ChooseLocation/ChooseLocation';
 import UserDashboardScreen from '../screens/UserDashboard/UserDashboardScreen';
+import StateScreen from '../screens/StateScreen/StateScreen';
 
 export type RootStackParamList = {
   AppOpening: undefined;
@@ -16,6 +17,7 @@ export type RootStackParamList = {
   Home: undefined;
   ChooseLocation: undefined;
   UserDashboard: undefined;
+  StateScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -35,6 +37,7 @@ export default function RootNavigator() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="ChooseLocation" component={ChooseLocationScreen} />
       <Stack.Screen name="UserDashboard" component={UserDashboardScreen} />
+      <Stack.Screen name="StateScreen" component={StateScreen} />
     </Stack.Navigator>
   );
 }
