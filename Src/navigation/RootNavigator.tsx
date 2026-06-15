@@ -15,13 +15,11 @@ import PaymentScreen from '../screens/Payment/Payment';
 import ThankYouScreen from '../screens/ThankYou/ThankYou';
 import ExploreStatesScreen from '../screens/ExploreStates/ExploreStatesScreen';
 import SettingScreen from '../screens/Setting/SettingScreen';
-
 import Images from '../constants/images';
 import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store/Store';
 import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
-
 
 export type RootStackParamList = {
   AppOpening: undefined;
