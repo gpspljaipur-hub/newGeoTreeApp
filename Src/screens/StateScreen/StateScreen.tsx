@@ -66,10 +66,17 @@ const StateScreen = () => {
     navigation.goBack();
   };
 
+  const stateNameMap: { [key: string]: string } = {
+    rajasthan: 'Rajasthan',
+    uttarakhand: 'Uttarakhand',
+    karnataka: 'Karnataka',
+    maharashtra: 'Maharashtra',
+    tamil_nadu: 'Tamil Nadu',
+  };
+
   const handleContinue = () => {
-    console.log('Selected State:', selectedStateId);
-    // Move forward in flow
-    navigation.navigate('ChooseTree');
+    const stateName = stateNameMap[selectedStateId] || 'Rajasthan';
+    navigation.navigate('Statewise', { stateName });
   };
 
   return (

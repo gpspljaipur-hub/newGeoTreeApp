@@ -20,12 +20,14 @@ import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store/Store';
 import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
+import ChoicetreeplantationScreen from '../screens/Choicetreeplantation/Choicetreeplantation';
 
 export type RootStackParamList = {
   AppOpening: undefined;
   SignIn: undefined;
   Otp: { phoneNumber: string; otp?: string | number; fcmToken?: string };
   ChooseTree: undefined;
+  Choicetreeplantation: { stateName?: string; selectedProjId?: string } | undefined;
   UserDashboard: undefined;
   StateScreen: undefined;
   ChooseLocation: undefined;
@@ -119,7 +121,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={isAuthenticated ? "Home" : "AppOpening"}
+      initialRouteName={isAuthenticated ? "Choicetreeplantation" : "AppOpening"}
       screenOptions={{
         headerShown: false,
       }}
@@ -137,6 +139,7 @@ export default function RootNavigator() {
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
       <Stack.Screen name="ExploreStates" component={ExploreStatesScreen} />
       <Stack.Screen name="Statewise" component={StatewiseScreen} />
+      <Stack.Screen name="Choicetreeplantation" component={ChoicetreeplantationScreen} />
     </Stack.Navigator>
 
   );

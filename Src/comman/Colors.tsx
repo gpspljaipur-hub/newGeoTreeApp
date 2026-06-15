@@ -13,6 +13,7 @@ export const Colors = {
     tintColorDrak: '#135928',
     listBg: '#f7f8ef',
     listBgLight: '#f7f9f1',
+    TextColorLightGreen: '#056213',
 
 
 
