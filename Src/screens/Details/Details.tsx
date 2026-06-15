@@ -65,7 +65,7 @@ const DetailsScreen = () => {
               resizeMode="stretch"
             >
               <LinearGradient
-                colors={['#FFFFFF', '#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
+                colors={['#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 locations={[0, 0.38, 0.58, 1]}
@@ -93,7 +93,7 @@ const DetailsScreen = () => {
             {/* Row 1: Tree & Location */}
             <View style={styles.summaryRow}>
               {/* Tree */}
-              <View style={styles.summaryCol2}>
+              <View style={styles.summaryCol1}>
                 <View style={styles.summaryIconContainer}>
                   <Image source={Images.leaf} style={styles.summaryIcon} resizeMode="contain" />
                 </View>
@@ -102,10 +102,7 @@ const DetailsScreen = () => {
                   <Text style={styles.summaryValue}>Neem</Text>
                 </View>
               </View>
-
               {/* Divider */}
-              <View style={styles.summaryDivider2} />
-
               {/* Location */}
               <View style={styles.summaryCol2}>
                 <View style={styles.summaryIconContainer}>
@@ -113,18 +110,12 @@ const DetailsScreen = () => {
                 </View>
                 <View style={styles.summaryTextContainer}>
                   <Text style={styles.summaryLabel}>Location</Text>
-                  <Text style={styles.summaryValue}>Aravalli Green Belt,{"\n"}Jaipur, Rajasthan</Text>
+                  <Text numberOfLines={2} style={styles.summaryValue}>Aravalli Green Belt,{"\n"}Jaipur, Rajasthan</Text>
                 </View>
               </View>
-            </View>
 
-            {/* Row Divider */}
-            <View style={styles.summaryRowDivider} />
-
-            {/* Row 2: Planted By */}
-            <View style={styles.summaryRow}>
               {/* Planted By */}
-              <View style={[styles.summaryCol2, { width: '100%' }]}>
+              <View style={styles.summaryCol1}>
                 <View style={styles.summaryIconContainer}>
                   <Image source={Images.calendar} style={styles.summaryIcon} resizeMode="contain" />
                 </View>
@@ -134,6 +125,12 @@ const DetailsScreen = () => {
                 </View>
               </View>
             </View>
+
+
+            {/* Row Divider */}
+
+            {/* Row 2: Planted By */}
+
           </View>
 
           {/* Form Details Section */}
@@ -256,11 +253,11 @@ const DetailsScreen = () => {
           activeOpacity={0.85}
         >
           <Text style={styles.continueText}>Continue to Payment</Text>
-          <Image
+          {/* <Image
             source={Images.back}
             style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}
             resizeMode="contain"
-          />
+          /> */}
         </TouchableOpacity>
       </View>
 

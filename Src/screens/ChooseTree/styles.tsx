@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     borderColor: Colors.borderGreenLight,
     borderRadius: 18,
     marginHorizontal: MarginHW.MarginW16,
-    paddingHorizontal: MarginHW.PaddingW14,
+    paddingHorizontal: MarginHW.PaddingW4,
     paddingBottom: MarginHW.MarginH10,
     marginBottom: MarginHW.MarginH12,
   },
@@ -68,21 +68,26 @@ export const styles = StyleSheet.create({
 
   benefitsRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: MarginHW.MarginH4,
+    marginVertical: MarginHW.MarginH8,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+
   },
 
   benefitGridItem: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    width: '48%',
+    justifyContent: 'center'
+
   },
 
   benefitIconWrapper: {
     width: ImageSize.ImageW30,
     height: ImageSize.ImageW30,
     borderRadius: 15,
-    backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: MarginHW.MarginW8,
@@ -93,21 +98,22 @@ export const styles = StyleSheet.create({
   benefitGridIcon: {
     width: ImageSize.ImageW20,
     height: ImageSize.ImageW20,
-    tintColor: Colors.tint,
+    tintColor: Colors.tintColorDrak,
   },
 
   benefitTextCol: {
     flex: 1,
+    alignItems: 'center'
   },
 
   benefitGridLabel: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size12,
+    fontSize: FontsSize.size10,
     color: Colors.bannerBenefitLabel,
   },
 
   benefitGridValue: {
-    fontFamily: fonts.OpenSans_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size12,
     color: Colors.tint,
   },
@@ -124,13 +130,13 @@ export const styles = StyleSheet.create({
   footerTextRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1.3,
-    marginRight: MarginHW.MarginW8,
+    flex: 1,
+
   },
 
   footerCheckIcon: {
-    width: ImageSize.ImageH20,
-    height: ImageSize.ImageH20,
+    width: 20,
+    height: 20,
     tintColor: Colors.tint,
     marginRight: MarginHW.MarginW8,
   },
@@ -141,10 +147,11 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   continueButton: {
-    flex: 1,
+    flex: 0.4,
     backgroundColor: Colors.continue,
-    height: ImageSize.ImageH40,
-    borderRadius: 14,
+    height: ImageSize.ImageH35,
+    paddingHorizontal: 10,
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -201,18 +208,18 @@ export const styles = StyleSheet.create({
   },
 
   stateIconContainer: {
-    width: ImageSize.ImageW50,
-    height: ImageSize.ImageH50,
-    borderRadius: 20,
-    backgroundColor: Colors.stateIconBg,
+    width: 42,
+    height: 42,
+    borderRadius: 42 / 2,
+    backgroundColor: Colors.listBg,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: MarginHW.MarginW8,
   },
 
   stateIcon: {
-    width: ImageSize.ImageW30,
-    height: ImageSize.ImageH30,
+    width: 22,
+    height: 22,
     tintColor: Colors.tint,
   },
 
@@ -221,14 +228,14 @@ export const styles = StyleSheet.create({
   },
 
   stateLabel: {
-    fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size14,
-    color: Colors.stateLabelText,
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size10,
+    color: Colors.black,
   },
 
   stateName: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size26,
+    fontSize: FontsSize.size18,
     color: Colors.tint,
     marginTop: 0,
     lineHeight: FontsSize.size24,
@@ -242,33 +249,39 @@ export const styles = StyleSheet.create({
 
   changeStateText: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size14,
+    fontSize: FontsSize.size10,
     color: Colors.tint,
   },
 
   heroTextContainer: {
-    marginTop: MarginHW.MarginH16,
+    marginTop: MarginHW.MarginH5,
     width: '60%',
   },
 
   heroTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size22,
-    lineHeight: 28,
+    fontSize: FontsSize.size20,
+    lineHeight: 24,
     color: Colors.textDark,
   },
 
   heroSubtitle: {
     marginTop: MarginHW.MarginH8,
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size16,
+    fontSize: FontsSize.size14,
     lineHeight: 18,
-    color: Colors.textMuted,
+    color: Colors.black,
   },
 
   highlightGreen: {
     color: Colors.tint,
+    fontSize: FontsSize.size20,
     fontFamily: fonts.OpenSans_Bold,
+  },
+  greenRegular: {
+    color: Colors.tint,
+    fontSize: FontsSize.size14,
+    fontFamily: fonts.OpenSans_Regular,
   },
 
   tabsContainer: {
@@ -286,8 +299,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: MarginHW.PaddingH8,
-    paddingHorizontal: MarginHW.PaddingW18,
+    paddingVertical: MarginHW.PaddingH5,
+    paddingHorizontal: MarginHW.PaddingW10,
+    marginVertical: 2,
     borderRadius: 24,
     marginRight: MarginHW.MarginW10,
   },
@@ -311,8 +325,8 @@ export const styles = StyleSheet.create({
   },
 
   tabIcon: {
-    width: ImageSize.ImageW20,
-    height: ImageSize.ImageH20,
+    width: ImageSize.ImageW16,
+    height: ImageSize.ImageH16,
     marginRight: MarginHW.MarginW8,
   },
 
@@ -332,8 +346,7 @@ export const styles = StyleSheet.create({
   },
 
   heroImageRadius: {
-    width: '65%',
-    left: '35%',
+    width: '100%',
   },
 
 
@@ -349,12 +362,14 @@ export const styles = StyleSheet.create({
   },
   treeCard: {
     backgroundColor: Colors.white,
-    borderRadius: 24,
-    flexDirection: 'row',
-    marginBottom: MarginHW.MarginH8,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: Colors.borderLight,
     shadowColor: Colors.black,
+
     shadowOffset: {
       width: 0,
       height: 4,
@@ -365,17 +380,13 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   treeImageContainer: {
-    position: 'absolute',
-    left: 6,
-    top: 6,
-    bottom: 6,
-    borderRadius: 22,
-    width: ImageSize.ImageW100,
-    overflow: 'hidden',
+    flex: 0.5,
+
+
   },
   treeImage: {
-    width: '100%',
-    height: '100%',
+    width: 110,
+    height: 100,
   },
   categoryBadge: {
     position: 'absolute',
@@ -401,24 +412,16 @@ export const styles = StyleSheet.create({
   },
   treeDetailsContainer: {
     flex: 1,
-    marginLeft: ImageSize.ImageW100,
-    paddingLeft: MarginHW.PaddingW12,
-    paddingRight: MarginHW.PaddingW12,
-    paddingVertical: MarginHW.PaddingW12,
-    justifyContent: 'space-between',
+    left: 5,
   },
   treeHeaderRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+
   },
   treeNameContainer: {
     flex: 1,
-    paddingRight: MarginHW.PaddingW8,
   },
   treeNameRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   treeName: {
     fontFamily: fonts.OpenSans_Bold,
@@ -438,17 +441,19 @@ export const styles = StyleSheet.create({
     fontSize: FontsSize.size12,
     color: Colors.textMuted,
     lineHeight: FontsSize.size14,
-    marginTop: MarginHW.MarginH4,
+    marginTop: MarginHW.MarginH8,
+
   },
   treeFooterRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: MarginHW.MarginH8,
   },
   attributesRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
     borderTopWidth: 1,
     borderTopColor: '#F3F4F6',
@@ -457,6 +462,8 @@ export const styles = StyleSheet.create({
   },
   attributeCol: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   attributeDivider: {
     width: 1,
@@ -484,7 +491,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#EEF6F0',
     paddingHorizontal: MarginHW.PaddingW8,
     paddingVertical: MarginHW.PaddingH5,
-    borderRadius: 12,
+    borderRadius: 8,
   },
   pointsLeafIcon: {
     width: ImageSize.ImageW12,

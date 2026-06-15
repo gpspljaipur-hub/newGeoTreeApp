@@ -28,6 +28,7 @@ const Images = {
   Leaf: require('../assets/Images/leaf.png'),
   Globe: require('../assets/Images/globe.png'),
   logoGeotree: require('../assets/Images/logoGeotree.png'),
+  notification: require('../assets/Images/notification.png'),
   settings: require('../assets/Images/setting.png'),
   group: require('../assets/Images/group.png'),
   neem_tree: require('../assets/Images/neem_tree.png'),
@@ -82,6 +83,8 @@ const Images = {
   folder: require('../assets/Images/folder.png'),
   filter: require('../assets/Images/filter.png'),
   sort: require('../assets/Images/sort.png'),
+  certificate: require('../assets/Images/certificate.png'),
+  heart: require('../assets/Images/heart.png'),
 };
 
 export type ImageKey = keyof typeof Images;
