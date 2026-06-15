@@ -73,7 +73,7 @@ const ExploreStatesScreen = () => {
       projects: '25',
       tag: 'Desert Restoration',
       icon: Images.treeIcon,
-      species: 'Neem • Khejri • Rohida',
+      species: 'Neem • Khejri ',
     },
     {
       id: '2',
@@ -83,7 +83,7 @@ const ExploreStatesScreen = () => {
       projects: '18',
       tag: 'Himalayan Conservation',
       icon: Images.treeIcon,
-      species: 'Deodar • Pine • Rhododendron',
+      species: 'Deodar • Pine',
     },
     {
       id: '3',
@@ -93,7 +93,7 @@ const ExploreStatesScreen = () => {
       projects: '20',
       tag: 'Urban Forestry',
       icon: Images.treeIcon,
-      species: 'Neem • Peepal • Banyan',
+      species: 'Neem • Peepal',
     },
     {
       id: '4',
@@ -103,7 +103,7 @@ const ExploreStatesScreen = () => {
       projects: '15',
       tag: 'Coastal Plantation',
       icon: Images.treeIcon,
-      species: 'Pungan • Casuarina • Mangrove',
+      species: 'Pungan • Casuarina',
     },
     {
       id: '5',
@@ -113,7 +113,7 @@ const ExploreStatesScreen = () => {
       projects: '14',
       tag: 'Green Corridors',
       icon: Images.treeIcon,
-      species: 'Neem • Babul • Vad',
+      species: 'Neem • Babul',
     },
     {
       id: '6',
@@ -123,7 +123,7 @@ const ExploreStatesScreen = () => {
       projects: '13',
       tag: 'Rainforest Restoration',
       icon: Images.treeIcon,
-      species: 'Teak • Rosewood • Bamboo',
+      species: 'Teak • Rosewood',
     },
   ];
 
@@ -136,13 +136,13 @@ const ExploreStatesScreen = () => {
   );
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.containerBg} />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ImageBackground
             source={Images.detailbg}
             style={styles.headerBackground}
-            resizeMode="cover"
+            imageStyle={styles.heroImageRadius}
+            resizeMode='contain'
           >
             <View style={styles.headerTopRow}>
               <TouchableOpacity
@@ -218,9 +218,9 @@ const ExploreStatesScreen = () => {
                             {item.projects}
                           </Text>
                         </View>
-                        <View style={styles.popularArrowBtn}>
+                        {/* <View style={styles.popularArrowBtn}>
                           <Text style={styles.popularArrowText}>→</Text>
-                        </View>
+                        </View> */}
                       </View>
                     </View>
                   </TouchableOpacity>
@@ -264,7 +264,7 @@ const ExploreStatesScreen = () => {
                 <View style={styles.allCardContent}>
                   <View style={styles.allCardTitleRow}>
                     <Text style={styles.allCardTitle}>{item.name}</Text>
-                    <View style={{ flexDirection: 'column', alignItems: 'center', gap: 5 }}>
+                    <View style={{ position: 'absolute', right: 0, top: 2, flexDirection: 'column', alignItems: 'center', }}>
                       <View style={styles.treeBadge}>
                         <Text style={styles.treeBadgeText}>{item.trees}</Text>
                       </View>
@@ -281,7 +281,7 @@ const ExploreStatesScreen = () => {
 
                   {item.species && (
                     <Text style={styles.speciesLabel}>
-                      Native Species: <Text style={styles.speciesHighlight}>{item.species}</Text>
+                      Species: <Text style={styles.speciesHighlight}>{item.species}</Text>
                     </Text>
                   )}
 

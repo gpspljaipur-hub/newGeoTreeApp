@@ -19,18 +19,19 @@ export const styles = StyleSheet.create({
     paddingBottom: MarginHW.PaddingH35,
     width: '100%',
   },
+  heroImageRadius: {
+    width: '100%',
+    left: 40,
+  },
   headerTopRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: MarginHW.PaddingW20,
-    marginTop: MarginHW.MarginH10,
+    paddingHorizontal: MarginHW.PaddingW10,
   },
   backButton: {
     width: ImageSize.ImageW35,
     height: ImageSize.ImageH35,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   backIcon: {
     width: ImageSize.ImageW20,
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create({
     tintColor: Colors.lightGreen,
   },
   headerTextContainer: {
-    paddingHorizontal: MarginHW.PaddingW24,
+    paddingHorizontal: MarginHW.PaddingW10,
   },
   headerTitleRow: {
     flexDirection: 'row',
@@ -52,7 +53,7 @@ export const styles = StyleSheet.create({
   },
   headerTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size26,
+    fontSize: FontsSize.size22,
     color: Colors.textDarkGreen,
   },
   titleLeafIcon: {
@@ -62,8 +63,9 @@ export const styles = StyleSheet.create({
   },
   headerSubtitle: {
     fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size15,
-    color: Colors.textMuted,
+    fontSize: FontsSize.size14,
+    color: Colors.black,
+    width: '50%'
   },
   searchContainer: {
     flexDirection: 'row',
@@ -71,10 +73,10 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     marginLeft: MarginHW.MarginW10,
     width: '70%',
-    marginTop: -30,
+    marginTop: -20,
     paddingHorizontal: MarginHW.PaddingW16,
-    paddingVertical: MarginHW.PaddingH10,
-    borderRadius: FontsSize.size24,
+    paddingVertical: MarginHW.PaddingH8,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: Colors.borderLight,
     shadowColor: Colors.black,
@@ -91,6 +93,7 @@ export const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
+
     fontFamily: fonts.OpenSans_Regular,
     fontSize: FontsSize.size14,
     color: Colors.textDark,
@@ -100,7 +103,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: MarginHW.PaddingW20,
+    paddingHorizontal: MarginHW.PaddingW10,
     marginTop: MarginHW.MarginH10,
     marginBottom: MarginHW.MarginH10,
   },
@@ -119,14 +122,14 @@ export const styles = StyleSheet.create({
     marginLeft: MarginHW.MarginW6,
   },
   popularStatesList: {
-    paddingLeft: MarginHW.PaddingW20,
+    paddingLeft: MarginHW.PaddingW10,
     paddingRight: MarginHW.PaddingW10,
   },
   popularCard: {
     width: HWSize.W_Width160,
     backgroundColor: Colors.white,
-    borderRadius: FontsSize.size16,
-    marginRight: MarginHW.MarginW12,
+    borderRadius: 10,
+    marginRight: MarginHW.MarginW5,
     borderWidth: 1,
     borderColor: Colors.borderLight,
     overflow: 'hidden',
@@ -145,9 +148,9 @@ export const styles = StyleSheet.create({
 
   },
   popularCardName: {
-    fontFamily: fonts.OpenSans_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size14,
-    color: Colors.textDarkGreen,
+    color: Colors.black,
     marginBottom: MarginHW.MarginH5,
   },
   popularStatRow: {
@@ -162,8 +165,8 @@ export const styles = StyleSheet.create({
     marginRight: MarginHW.MarginW4,
   },
   popularStatText: {
-    fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size10,
     color: Colors.textLabelGrey,
   },
   popularActionRow: {
@@ -190,7 +193,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    paddingHorizontal: MarginHW.PaddingW20,
+    paddingHorizontal: MarginHW.PaddingW10,
     // paddingBottom: MarginHW.PaddingH30,
   },
   sortFilterRow: {
@@ -202,8 +205,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.white,
     paddingHorizontal: MarginHW.PaddingW10,
-    paddingVertical: MarginHW.PaddingH8,
-    borderRadius: FontsSize.size16,
+    paddingVertical: MarginHW.PaddingH5,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: Colors.borderLight,
     marginLeft: MarginHW.MarginW8,
@@ -259,11 +262,11 @@ export const styles = StyleSheet.create({
   },
   overlapIconContainer: {
     position: 'absolute',
-    bottom: -ImageSize.ImageH12,
-    left: MarginHW.MarginW12,
-    width: ImageSize.ImageW28,
-    height: ImageSize.ImageH28,
-    borderRadius: ImageSize.ImageW28 / 2,
+    bottom: 2,
+    left: 5,
+    width: 28,
+    height: 28,
+    borderRadius: 28 / 2,
     backgroundColor: Colors.white,
     borderWidth: 2,
     borderColor: Colors.borderGreenLight,
@@ -281,8 +284,8 @@ export const styles = StyleSheet.create({
     tintColor: Colors.legacyGreen,
   },
   allCardContent: {
-    paddingHorizontal: MarginHW.PaddingW10,
-    paddingTop: MarginHW.PaddingH12,
+    paddingHorizontal: MarginHW.PaddingW5,
+    top: 2,
     paddingBottom: MarginHW.PaddingH8,
   },
   allCardTitleRow: {
@@ -304,15 +307,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   treeBadgeText: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size10,
     color: Colors.legacyGreen,
   },
   treeBadgeDesc: {
     fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size12,
+    fontSize: FontsSize.size10,
     color: Colors.textLabelGrey,
-    marginTop: 2,
+
     textAlign: 'center',
   },
   allCardProjectsRow: {
@@ -327,13 +330,13 @@ export const styles = StyleSheet.create({
     marginRight: MarginHW.MarginW4,
   },
   allCardProjectsText: {
-    fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size10,
     color: Colors.textLabelGrey,
   },
   speciesLabel: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size12,
+    fontSize: FontsSize.size10,
     color: Colors.textLabelGrey,
     marginTop: MarginHW.MarginH5,
   },
@@ -351,7 +354,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.borderGreenUltraLight,
-    paddingVertical: MarginHW.PaddingH8,
+    paddingVertical: MarginHW.PaddingH5,
     borderRadius: FontsSize.size10,
   },
   exploreBtnText: {
@@ -370,7 +373,7 @@ export const styles = StyleSheet.create({
     borderColor: '#E7EBDC',
     borderWidth: 1,
     borderRadius: FontsSize.size20,
-    marginHorizontal: MarginHW.MarginW20,
+    marginHorizontal: MarginHW.MarginW10,
     marginBottom: MarginHW.MarginH10,
     paddingRight: MarginHW.PaddingW16,
     flexDirection: 'row',
