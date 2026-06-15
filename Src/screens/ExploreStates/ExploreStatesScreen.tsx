@@ -196,6 +196,7 @@ const ExploreStatesScreen = () => {
                   <TouchableOpacity
                     style={styles.popularCard}
                     activeOpacity={0.9}
+                    onPress={() => navigation.navigate('Statewise', { stateName: item.name })}
                   >
                     <Image source={item.image} style={styles.popularCardImage} resizeMode="cover" />
                     <View style={styles.popularCardContent}>
@@ -290,6 +291,7 @@ const ExploreStatesScreen = () => {
                   <TouchableOpacity
                     style={styles.exploreBtn}
                     activeOpacity={0.8}
+                    onPress={() => navigation.navigate('Statewise', { stateName: item.name })}
                   >
                     <Text style={styles.exploreBtnText}>Explore</Text>
                     <Text style={styles.exploreBtnArrow}>→</Text>

@@ -20,6 +20,8 @@ import Images from '../constants/images';
 import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store/Store';
+import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
+
 
 export type RootStackParamList = {
   AppOpening: undefined;
@@ -34,7 +36,9 @@ export type RootStackParamList = {
   Home: undefined;
   ThankYou: undefined;
   ExploreStates: undefined;
+  Statewise: { stateName: string } | undefined;
 };
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -134,7 +138,9 @@ export default function RootNavigator() {
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
       <Stack.Screen name="ExploreStates" component={ExploreStatesScreen} />
+      <Stack.Screen name="Statewise" component={StatewiseScreen} />
     </Stack.Navigator>
+
   );
 }
 
