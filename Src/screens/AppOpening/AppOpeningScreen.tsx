@@ -23,7 +23,7 @@ const Logo = () => {
       <Image
         source={Images.logo}
         style={styles.logoImage}
-        resizeMode="contain"
+        resizeMode='cover'
       />
     </View>
   );
@@ -33,7 +33,7 @@ const AppOpeningScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <ImageBackground
-      source={Images.background}
+      source={Images.AppBg}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
@@ -44,10 +44,10 @@ const AppOpeningScreen = () => {
           <Logo />
           <View style={styles.titleContainer}>
             <Text style={styles.titleDark}>{String.AppOpening_PlantTitle}</Text>
-            <Text style={styles.titleDark}>{String.AppOpening_TrackTitle}</Text>
+            <Text style={[styles.titleDark, { marginTop: -8, }]}>{String.AppOpening_TrackTitle}</Text>
             <GradientText
               colors={['#217545', '#9eb657', '#9eb657', '#2a978a', '#2a978a']}
-              style={styles.titleGreen}
+              style={[styles.titleGreen, { marginTop: -8, }]}
             >
               {String.AppOpening_ImpactTitle}
             </GradientText>
@@ -55,15 +55,19 @@ const AppOpeningScreen = () => {
           <View style={styles.subtitleContainer}>
             <Text style={styles.subtitleText}>
               {String.AppOpening_Subtitle1}{'\n'}
-              {String.AppOpening_Subtitle2}{'\n'}
-              {String.AppOpening_Subtitle3}
+              {String.AppOpening_Subtitle2}
+            </Text>
+            <View style={styles.subtitleRow}>
+              <Text style={styles.subtitleText}>
+                {String.AppOpening_Subtitle3}
+              </Text>
               <GradientText
-                colors={['#238563', '#9eb657',]}
+                colors={['#238563', '#9eb657']}
                 style={styles.subtitleLegacy}
               >
                 {String.AppOpening_SubtitleLegacy}
               </GradientText>
-            </Text>
+            </View>
           </View>
 
           {/* Glass Stats Card */}
@@ -85,6 +89,7 @@ const AppOpeningScreen = () => {
                 </View>
 
                 <View style={styles.divider} />
+
                 <View style={styles.cardRow}>
                   <View style={styles.iconWrapper}>
                     <Image
@@ -100,6 +105,7 @@ const AppOpeningScreen = () => {
                 </View>
 
                 <View style={styles.divider} />
+
                 <View style={styles.cardRow}>
                   <View style={styles.iconWrapper}>
                     <Image
@@ -115,14 +121,16 @@ const AppOpeningScreen = () => {
                 </View>
               </View>
             </View>
+            <View>
+              <Loader_button
+                isGradient
+                showArrow
+                title={String.AppOpening_GetStarted}
+                buttonTextStyle={styles.buttonText}
+                Onclick={() => navigation.navigate('SignIn')}
+              />
+            </View>
 
-            <Loader_button
-              isGradient
-              showArrow
-              title={String.AppOpening_GetStarted}
-              buttonTextStyle={styles.buttonText}
-              Onclick={() => navigation.navigate('SignIn')}
-            />
             <View style={styles.signInContainer}>
               <Text style={styles.signInText}>
                 {String.AppOpening_AlreadyHaveAccount}

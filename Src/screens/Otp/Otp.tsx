@@ -21,6 +21,15 @@ import String from '../../comman/String';
 import Loader_button from '../../comman/Loader_button';
 import MarginHW from '../../comman/MarginHW';
 
+import { useDispatch } from 'react-redux';
+import { Auth_Api } from '../../redux/userapi/Requests';
+import ApiUrl from '../../Lib/ApiUrl';
+import Helper from '../../comman/Helper';
+import AsyncStorageHelper from '../../Lib/AsyncStorageHelper';
+import Config from '../../comman/Config';
+import { loginSuccess } from '../../redux/Reducers/Userslice';
+import { handleNavigation } from '../../navigation/RootNavigator';
+
 type OtpScreenRouteProp = RouteProp<RootStackParamList, 'Otp'>;
 
 const Logo = () => {
@@ -39,14 +48,21 @@ const Logo = () => {
 const OtpScreen = () => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const route = useRoute<OtpScreenRouteProp>();
+    const dispatch = useDispatch();
+
     const rawPhoneNumber = route.params?.phoneNumber || '';
+    const initialOtp = route.params?.otp ? `${route.params.otp}` : '';
+    const fcmToken = route.params?.fcmToken || '';
+
     const formattedPhoneNumber = rawPhoneNumber.startsWith('+91')
         ? `+91 ${rawPhoneNumber.replace('+91', '').replace(/\s+/g, '').trim()}`
         : rawPhoneNumber;
 
-    const [code, setCode] = useState('');
+    const [code, setCode] = useState(initialOtp);
     const [secondsLeft, setSecondsLeft] = useState(59);
+    const [loader, setLoader] = useState(false);
     const textInputRef = useRef<TextInput>(null);
+
     useEffect(() => {
         const timer = setTimeout(() => {
             textInputRef.current?.focus();
@@ -67,17 +83,60 @@ const OtpScreen = () => {
         textInputRef.current?.focus();
     };
 
-    const handleResendOTP = () => {
+    const handleResendOTP = async () => {
         if (secondsLeft === 0) {
-            console.log('Resending OTP to:', rawPhoneNumber);
-            setSecondsLeft(59);
-            setCode('');
+            try {
+                setLoader(true);
+                const mobileNum = rawPhoneNumber.replace('+91', '').replace(/\s+/g, '').trim();
+                const userData = { mobile: mobileNum, device_token: fcmToken };
+                const response: any = await (dispatch as any)(Auth_Api(ApiUrl.CheckNumber, userData));
+                const userinfo = response?.data?.data?.data;
+                if (!userinfo) {
+                    Helper.showToast("Server error, please try again");
+                    setLoader(false);
+                    return;
+                }
+                Helper.showToast("OTP resent successfully");
+                setSecondsLeft(59);
+                if (userinfo?.otp) {
+                    setCode(`${userinfo.otp}`);
+                } else {
+                    setCode('');
+                }
+            } catch (e) {
+                console.log('Resend OTP error:', e);
+            } finally {
+                setLoader(false);
+            }
         }
     };
 
-    const handleVerifyOTP = () => {
-        if (code.length === 6) {
-            console.log('Verifying OTP code:', code);
+    const handleVerifyOTP = async () => {
+        if (code.length < 6) return;
+        try {
+            setLoader(true);
+            const mobileNum = rawPhoneNumber.replace('+91', '').replace(/\s+/g, '').trim();
+            const verifyData = { mobile: mobileNum, otp: code, device_token: fcmToken };
+            const response: any = await (dispatch as any)(Auth_Api(ApiUrl.VERIFY_OTP, verifyData));
+            const userinfo = response?.data?.data?.data;
+            if (!userinfo) {
+                Helper.showToast("Verification failed, please try again");
+                setLoader(false);
+                return;
+            }
+            if (!userinfo?.token) {
+                Helper.showToast("Verification failed, invalid token");
+                setLoader(false);
+                return;
+            }
+            setLoader(false);
+            await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
+            dispatch(loginSuccess(userinfo));
+            handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+        } catch (e) {
+            console.log('Error verifying OTP:', e);
+        } finally {
+            setLoader(false);
         }
     };
 
@@ -203,6 +262,7 @@ const OtpScreen = () => {
                                         textcolor="#fff"
                                         title={String.Otp_VerifyTitle}
                                         disabled={code.length < 6}
+                                        loader={loader}
                                         Onclick={handleVerifyOTP}
                                         containerStyle={{ marginHorizontal: 0, marginTop: MarginHW.MarginH24 }}
                                     />

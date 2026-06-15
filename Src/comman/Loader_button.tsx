@@ -106,7 +106,7 @@ const Loader_button: React.FC<LoaderButtonProps> = props => {
 export default Loader_button
 
 const styles = StyleSheet.create({
-    Buttonview: { height: MarginHW.MarginH40, marginVertical: MarginHW.MarginH5, alignItems: 'center', justifyContent: 'center', transform: [{ scale: 1 }] },
+    Buttonview: { height: MarginHW.MarginH35, marginVertical: MarginHW.MarginH5, alignItems: 'center', justifyContent: 'center', transform: [{ scale: 1 }] },
     ButtonBlackview: { borderWidth: 0.5, padding: 10, height: MarginHW.MarginH55, marginVertical: MarginHW.MarginH5, alignItems: 'center', justifyContent: 'center', transform: [{ scale: 1 }] },
     imageStyle: { width: 20, height: 20, marginBottom: MarginHW.MarginH5, marginRight: MarginHW.MarginW10 },
     ButtonText: { fontSize: FontsSize.size18 },
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     Wait_Text: { fontFamily: fonts.OpenSans_ExtraBold, fontSize: FontsSize.size12, marginLeft: 8 },
     LeftArrow: { height: 24, width: 24 },
     LeftView: { position: 'absolute', right: 20, top: 0, bottom: 0, justifyContent: 'center' },
-    
+
     // Gradient styles matching AppOpening Screen
     gradientButtonContainer: {
         marginHorizontal: MarginHW.MarginW24,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         elevation: 6,
     },
     gradientStyle: {
-        height: HWSize.H_Height50,
+        height: HWSize.H_Height45,
         borderRadius: FontsSize.size12,
         flexDirection: 'row',
         alignItems: 'center',

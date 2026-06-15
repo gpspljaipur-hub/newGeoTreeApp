@@ -1,5 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image } from 'react-native';
 import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
 import SignInScreen from '../screens/SignIn/SignInScreen';
 import OtpScreen from '../screens/Otp/Otp';
@@ -12,13 +14,19 @@ import DetailsScreen from '../screens/Details/Details';
 import PaymentScreen from '../screens/Payment/Payment';
 import ThankYouScreen from '../screens/ThankYou/ThankYou';
 import ExploreStatesScreen from '../screens/ExploreStates/ExploreStatesScreen';
+import SettingScreen from '../screens/Setting/SettingScreen';
+
+import Images from '../constants/images';
+import { Colors } from '../comman/Colors';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/Store/Store';
 import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
 
 
 export type RootStackParamList = {
   AppOpening: undefined;
   SignIn: undefined;
-  Otp: { phoneNumber: string };
+  Otp: { phoneNumber: string; otp?: string | number; fcmToken?: string };
   ChooseTree: undefined;
   UserDashboard: undefined;
   StateScreen: undefined;
@@ -33,11 +41,87 @@ export type RootStackParamList = {
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator();
+
+function HomeTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarActiveTintColor: Colors.legacyGreen,
+        tabBarInactiveTintColor: '#8E9A93',
+        tabBarStyle: {
+          height: 64,
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 1,
+          borderTopColor: '#ECEFEF',
+          paddingBottom: 8,
+          paddingTop: 8,
+          shadowColor: '#000000',
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.05,
+          shadowRadius: 10,
+          elevation: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontFamily: 'OpenSans-Medium',
+        },
+        tabBarIcon: ({ focused, color }) => {
+          let iconSource;
+          if (route.name === 'HomeTab') {
+            iconSource = Images.home;
+          } else if (route.name === 'PlantTab') {
+            iconSource = Images.plant;
+          } else if (route.name === 'ImpactTab') {
+            iconSource = Images.impact;
+          } else if (route.name === 'SettingTab') {
+            iconSource = Images.profile;
+          }
+          return (
+            <Image
+              source={iconSource}
+              style={{
+                width: 22,
+                height: 22,
+                tintColor: color,
+              }}
+              resizeMode="contain"
+            />
+          );
+        },
+      })}
+    >
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeScreen}
+        options={{ tabBarLabel: 'Home' }}
+      />
+      <Tab.Screen
+        name="PlantTab"
+        component={ChooseTreeScreen}
+        options={{ tabBarLabel: 'Plant' }}
+      />
+      <Tab.Screen
+        name="ImpactTab"
+        component={UserDashboardScreen}
+        options={{ tabBarLabel: 'Impact' }}
+      />
+      <Tab.Screen
+        name="SettingTab"
+        component={SettingScreen}
+        options={{ tabBarLabel: 'Profile' }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 export default function RootNavigator() {
+  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
+
   return (
     <Stack.Navigator
-      initialRouteName="ChooseLocation"
+      initialRouteName={isAuthenticated ? "Home" : "AppOpening"}
       screenOptions={{
         headerShown: false,
       }}
@@ -46,7 +130,7 @@ export default function RootNavigator() {
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="Otp" component={OtpScreen} />
       <Stack.Screen name="ChooseTree" component={ChooseTreeScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={HomeTabs} />
       <Stack.Screen name="ChooseLocation" component={ChooseLocationScreen} />
       <Stack.Screen name="UserDashboard" component={UserDashboardScreen} />
       <Stack.Screen name="StateScreen" component={StateScreen} />

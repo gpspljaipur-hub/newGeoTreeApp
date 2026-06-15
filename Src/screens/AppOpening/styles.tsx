@@ -25,8 +25,8 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH5,
   },
   logoImage: {
-    width: ImageSize.ImageW180,
-    height: ImageSize.ImageH80,
+    width: 210,
+    height: 100,
   },
   titleContainer: {
     paddingHorizontal: MarginHW.PaddingW30,
@@ -53,10 +53,15 @@ export const styles = StyleSheet.create({
   },
   subtitleLegacy: {
     fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size14,
     color: Colors.legacyGreen,
   },
+  subtitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   cardContainer: {
-    marginVertical: MarginHW.MarginH30,
+    marginVertical: MarginHW.MarginH10,
     paddingHorizontal: MarginHW.PaddingW24,
   },
   glassCard: {
@@ -64,7 +69,7 @@ export const styles = StyleSheet.create({
     borderRadius: FontsSize.size24,
     borderWidth: 1.5,
     borderColor: Colors.glassBorder,
-    paddingVertical: MarginHW.PaddingH14,
+    paddingVertical: MarginHW.PaddingH5,
     paddingHorizontal: MarginHW.PaddingW20,
     shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 8 },
@@ -97,7 +102,7 @@ export const styles = StyleSheet.create({
   },
   cardValue: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size19,
+    fontSize: FontsSize.size14,
     color: Colors.darkGreen,
   },
   cardLabel: {
