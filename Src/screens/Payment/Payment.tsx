@@ -108,10 +108,10 @@ const PaymentScreen = () => {
               source={Images.detailbg}
               style={styles.heroImage}
               imageStyle={styles.heroImageRadius}
-              resizeMode="stretch"
+              resizeMode='contain'
             >
               <LinearGradient
-                colors={['#FFFFFF', '#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
+                colors={['#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 locations={[0, 0.38, 0.58, 1]}
@@ -144,9 +144,10 @@ const PaymentScreen = () => {
 
             {/* Row 1: Tree & Location */}
             <View style={styles.summaryContentRow}>
+
               <View style={styles.summaryItemLeft}>
                 <View style={styles.summaryIconContainer}>
-                  <Image source={Images.leaf} style={styles.summaryIcon} resizeMode="contain" />
+                  <Image source={Images.tree} style={styles.summaryIcon} resizeMode="contain" />
                 </View>
                 <View style={styles.summaryTextContainer}>
                   <Text style={styles.summaryLabel}>Tree</Text>
@@ -158,11 +159,11 @@ const PaymentScreen = () => {
 
               <View style={styles.summaryItemRight}>
                 <View style={styles.summaryIconContainer}>
-                  <Image source={Images.location} style={styles.summaryIcon} resizeMode="contain" />
+                  <Image source={Images.geolocation} style={styles.summaryIcon} resizeMode="contain" />
                 </View>
                 <View style={styles.summaryTextContainer}>
                   <Text style={styles.summaryLabel}>Location</Text>
-                  <Text style={styles.summaryValue}>Aravalli Green Belt,{"\n"}Jaipur, Rajasthan</Text>
+                  <Text style={styles.summaryValue}>Aravalli Green Belt Jaipur, Rajasthan</Text>
                 </View>
               </View>
             </View>
@@ -173,23 +174,24 @@ const PaymentScreen = () => {
             <View style={styles.summaryContentRow}>
               <View style={styles.summaryItemLeft}>
                 <View style={styles.summaryIconContainer}>
-                  <Image source={Images.gift} style={styles.summaryIcon} resizeMode="contain" />
+                  <Image source={Images.profile} style={styles.summaryIcon} resizeMode="contain" />
                 </View>
                 <View style={styles.summaryTextContainer}>
-                  <Text style={styles.summaryLabel}>Dedicated To</Text>
-                  <Text style={styles.summaryValue}>In memory of{"\n"}My Grandfather</Text>
+                  <Text style={styles.summaryLabel}>Planted By</Text>
+                  <Text style={styles.summaryValue}>You</Text>
                 </View>
+
               </View>
 
               <View style={styles.summaryDivider} />
 
               <View style={styles.summaryItemRight}>
                 <View style={styles.summaryIconContainer}>
-                  <Image source={Images.profile} style={styles.summaryIcon} resizeMode="contain" />
+                  <Image source={Images.gift} style={styles.summaryIcon} resizeMode="contain" />
                 </View>
                 <View style={styles.summaryTextContainer}>
-                  <Text style={styles.summaryLabel}>Planted By</Text>
-                  <Text style={styles.summaryValue}>You</Text>
+                  <Text style={styles.summaryLabel}>Dedicated To</Text>
+                  <Text style={styles.summaryValue}>In memory of My Grandfather</Text>
                 </View>
               </View>
             </View>
@@ -249,7 +251,7 @@ const PaymentScreen = () => {
             {/* Custom Amount Input Field */}
             {selectedPackageId === 'other' && (
               <View style={{ marginHorizontal: 16, marginTop: 12, marginBottom: 4 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1.5, borderColor: '#1E6B46', borderRadius: 14, backgroundColor: '#FFFFFF', paddingHorizontal: 12, height: 50 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1.5, borderColor: '#1E6B46', borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 12, height: 50 }}>
                   <Text style={{ fontFamily: 'OpenSans-Bold', fontSize: 16, color: '#1E6B46', marginRight: 6 }}>₹</Text>
                   <TextInput
                     style={{ flex: 1, fontFamily: 'OpenSans-Regular', fontSize: 15, color: '#111827', paddingVertical: 0 }}
@@ -387,11 +389,11 @@ const PaymentScreen = () => {
               (After applying Green Points)
             </Text>
           )}
-          <Image
+          {/* <Image
             source={Images.back}
             style={[styles.payArrow, { transform: [{ rotate: '180deg' }] }]}
             resizeMode="contain"
-          />
+          /> */}
         </TouchableOpacity>
       </View>
     </SafeAreaView>

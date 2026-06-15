@@ -84,11 +84,11 @@ const ChooseLocationScreen = () => {
             source={Images.location_hero_bg}
             style={styles.heroImage}
             imageStyle={styles.heroImageRadius}
-            resizeMode="stretch"
+            resizeMode='contain'
           >
             {/* White Fade Overlay */}
             <LinearGradient
-              colors={['#FFFFFF', '#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
+              colors={['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               locations={[0, 0.38, 0.58, 1]}
@@ -112,12 +112,14 @@ const ChooseLocationScreen = () => {
         <View style={styles.stateSelectorCard}>
           <View style={styles.stateLeftSection}>
             <View style={styles.stateIconContainer}>
-              <Image source={Images.bubbletree} style={styles.stateIcon} resizeMode="cover" />
+              <Image source={Images.bubbletree} style={styles.stateIcon} resizeMode='cover' />
             </View>
+
             <View style={styles.stateTextContainer}>
               <Text style={styles.stateLabelText}>Selected State</Text>
               <Text style={styles.stateValueText}>Rajasthan</Text>
             </View>
+
           </View>
           <TouchableOpacity style={styles.changeStateButton} activeOpacity={0.8}>
             <Text style={styles.changeStateText}>Change State</Text>
@@ -132,7 +134,7 @@ const ChooseLocationScreen = () => {
           </View>
           <TouchableOpacity style={styles.viewMapButton} activeOpacity={0.8}>
             <Text style={styles.viewMapText}>View on Map</Text>
-            <Image source={Images.location} style={styles.viewMapIcon} resizeMode="contain" />
+            {/* <Image source={Images.location} style={styles.viewMapIcon} resizeMode="contain" /> */}
           </TouchableOpacity>
         </View>
 

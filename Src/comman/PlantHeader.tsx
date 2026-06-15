@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFBFB',
   },
   backButton: {
-    padding: MarginHW.PaddingW8,
+
   },
   backIcon: {
     width: ImageSize.ImageW20,
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.white,
-    paddingHorizontal: MarginHW.PaddingW12,
-    paddingVertical: MarginHW.PaddingH5,
+    paddingHorizontal: MarginHW.PaddingW10,
+    paddingVertical: MarginHW.PaddingH3,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#E8EFEA',
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     marginRight: MarginHW.MarginW6,
   },
   coinIcon: {
-    width: 14,
-    height: 14,
+    width: 10,
+    height: 10,
     tintColor: Colors.white,
   },
   coinTextContainer: {

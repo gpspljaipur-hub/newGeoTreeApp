@@ -19,16 +19,32 @@ export const Stepper: React.FC<StepperProps> = ({ currentStep }) => {
     { number: 4, label: 'Payment' },
   ];
 
+  const getProgressStyle = () => {
+    switch (currentStep) {
+      case 1:
+        return { width: 0 };
+      case 2:
+        return { right: '61.7%' };
+      case 3:
+        return { right: '38.3%' };
+      case 4:
+        return { right: '15%' };
+      default:
+        return { width: 0 };
+    }
+  };
+
   return (
     <View style={styles.stepperContainer}>
       <View style={styles.stepperLine} />
+      <View style={[styles.stepperLineActive, getProgressStyle() as any]} />
       {steps.map((step) => {
         const isCompleted = step.number < currentStep;
         const isActive = step.number === currentStep;
 
         const itemStyle =
           step.number === 1
-            ? [styles.stepItem, { marginLeft: -6 }]
+            ? [styles.stepItem, { marginLeft: -10 }]
             : step.number === 4
               ? [styles.stepItem, { marginRight: -6 }]
               : styles.stepItem;
@@ -47,12 +63,19 @@ export const Stepper: React.FC<StepperProps> = ({ currentStep }) => {
             >
               {isCompleted ? (
                 <Image
-                  source={Images.verified}
+                  source={Images.check}
                   style={styles.stepCheckIcon}
                   resizeMode="contain"
                 />
               ) : (
-                <Text style={styles.stepNumber}>{step.number}</Text>
+                <Text
+                  style={[
+                    styles.stepNumber,
+                    !isActive && { color: '#8E9A93' }
+                  ]}
+                >
+                  {step.number}
+                </Text>
               )}
             </View>
             <Text
@@ -83,12 +106,20 @@ const styles = StyleSheet.create({
   },
   stepperLine: {
     position: 'absolute',
-    left: MarginHW.PaddingW30,
-    right: MarginHW.PaddingW30,
+    left: '15%',
+    right: '15%',
     top: 14,
     height: 2,
     backgroundColor: '#E0E5E2',
     zIndex: 1,
+  },
+  stepperLineActive: {
+    position: 'absolute',
+    left: '15%',
+    top: 14,
+    height: 2,
+    backgroundColor: Colors.tint,
+    zIndex: 1.5,
   },
   stepItem: {
     alignItems: 'center',
@@ -98,7 +129,7 @@ const styles = StyleSheet.create({
   stepCircle: {
     width: ImageSize.ImageH22,
     height: ImageSize.ImageH22,
-    borderRadius: 14,
+    borderRadius: 999,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: MarginHW.MarginH5,
@@ -123,7 +154,7 @@ const styles = StyleSheet.create({
     tintColor: Colors.white,
   },
   stepLabel: {
-    fontFamily: fonts.OpenSans_Regular,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size10,
     textAlign: 'center',
   },
