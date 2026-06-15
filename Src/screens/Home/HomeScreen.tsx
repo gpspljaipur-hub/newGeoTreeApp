@@ -16,8 +16,10 @@ import String from '../../comman/String';
 import LinearGradient from 'react-native-linear-gradient';
 import GradientText from '../../comman/GradientText';
 import { Colors } from '../../comman/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation<any>();
   const QUICK_ACTIONS = [
     {
       id: '1',
@@ -116,7 +118,7 @@ const HomeScreen = () => {
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
             <Image source={Images.bell} style={styles.iconImg} resizeMode="contain" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7} onPress={() => navigation.navigate('SettingTab')}>
             <Image source={Images.settings} style={styles.iconImg} resizeMode="contain" />
           </TouchableOpacity>
         </View>
@@ -162,7 +164,7 @@ const HomeScreen = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
               >
-                <Text style={{ fontSize: 16, marginRight: 8 }}>🌱</Text>
+                <Image source={Images.plant_img} style={{ width: 18, height: 18, marginRight: 8 }} resizeMode="contain" />
                 <Text style={styles.heroBtnTextWhite}>{String.Home_BtnPlantFirstTree}</Text>
               </LinearGradient>
             </TouchableOpacity>
@@ -170,7 +172,7 @@ const HomeScreen = () => {
             {/* Carbon Calculator button */}
             <TouchableOpacity style={styles.heroBtnWhite} activeOpacity={0.9}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, marginRight: 8 }}>🍃</Text>
+                <Image source={Images.carbon_img} style={{ width: 18, height: 18, marginRight: 8 }} resizeMode="contain" />
                 <View>
                   <Text style={styles.heroBtnTextDark}>{String.Home_BtnCarbonCalculator}</Text>
                   <Text style={styles.heroBtnSubtext}>{String.Home_BtnCarbonCalculatorSub}</Text>

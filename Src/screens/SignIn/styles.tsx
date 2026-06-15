@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   },
   cardContainer: {
     paddingHorizontal: MarginHW.PaddingW24,
-    marginBottom: MarginHW.MarginH10,
+    marginTop: 150,
   },
   glassCard: {
     backgroundColor: Colors.glassBorder,

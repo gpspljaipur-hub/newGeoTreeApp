@@ -15,10 +15,12 @@ import Images from '../../constants/images';
 import String from '../../comman/String';
 import { Colors } from '../../comman/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
 const UserDashboardScreen = () => {
+  const navigation = useNavigation<any>();
   const [selectedState, setSelectedState] = React.useState('1');
 
   const STATS_DATA = [
@@ -148,7 +150,7 @@ const UserDashboardScreen = () => {
               <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
                 <Image source={Images.bell} style={styles.iconImg} resizeMode="contain" />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
+              <TouchableOpacity style={styles.iconButton} activeOpacity={0.7} onPress={() => navigation.navigate('SettingTab')}>
                 <Image source={Images.profile} style={styles.iconImg} resizeMode="contain" />
               </TouchableOpacity>
             </View>
