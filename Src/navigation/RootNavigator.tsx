@@ -25,6 +25,10 @@ import DedicatePlantationScreen from '../screens/DedicatePlantation/DedicatePlan
 import MyTreeJourneyScreen from '../screens/MyTreeJourney/MyTreeJourney';
 import PlantationJourneyScreen from '../screens/PlantationJourney/PlantationJourney';
 import ReviewPlantationScreen from '../screens/ReviewPlantation/ReviewPlantation';
+import ProjectSelectScreen from '../screens/ProjectSelect/ProjectSelectScreen';
+import ChooseSpeciesScreen from '../screens/ChooseSpecies/ChooseSpeciesScreen';
+import DedicateTreeScreen from '../screens/DedicateTree/DedicateTreeScreen';
+import StatePaymentScreen from '../screens/StatePayment/StatePaymentScreen';
 
 export type RootStackParamList = {
   AppOpening: undefined;
@@ -46,6 +50,20 @@ export type RootStackParamList = {
   ThankYou: undefined;
   ExploreStates: undefined;
   Statewise: { stateName: string } | undefined;
+  ProjectSelect: { project: any } | undefined;
+  ChooseSpecies: { project: any; selectedTreeId?: string } | undefined;
+  DedicateTree: { project: any; selectedSpecies: any } | undefined;
+  StatePayment: {
+    project: any;
+    selectedSpecies: any;
+    quantity: number;
+    recipientName: string;
+    occasion: string;
+    occasionDate: string;
+    email: string;
+    personalMessage: string;
+    sendCertificate: boolean;
+  } | undefined;
 };
 
 
@@ -155,6 +173,10 @@ export default function RootNavigator() {
       <Stack.Screen name="PlantationJourneyScreen" component={PlantationJourneyScreen} />
       <Stack.Screen name="ReviewPlantation" component={ReviewPlantationScreen} />
 
+      <Stack.Screen name="ProjectSelect" component={ProjectSelectScreen} />
+      <Stack.Screen name="ChooseSpecies" component={ChooseSpeciesScreen} />
+      <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
+      <Stack.Screen name="StatePayment" component={StatePaymentScreen} />
     </Stack.Navigator>
 
   );

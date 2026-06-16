@@ -135,14 +135,15 @@ const ExploreStatesScreen = () => {
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
+      <StatusBar barStyle="dark-content" translucent={true} backgroundColor="transparent" />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ImageBackground
             source={Images.detailbg}
             style={styles.headerBackground}
-            imageStyle={styles.heroImageRadius}
-            resizeMode='contain'
+            // imageStyle={styles.headerImageStyle}
+            resizeMode="cover"
           >
             <View style={styles.headerTopRow}>
               <TouchableOpacity

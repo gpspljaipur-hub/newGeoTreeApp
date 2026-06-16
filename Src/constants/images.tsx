@@ -93,6 +93,13 @@ const Images = {
   five_trees_plant: require('../assets/Images/five_trees_plant.png'),
   ten_trees_plant: require('../assets/Images/ten_trees_plant.png'),
   twenty_five_trees_plant: require('../assets/Images/twenty_five_trees_plant.png'),
+  drop: require('../assets/Images/drop.png'),
+  maintaince: require('../assets/Images/maintaince.png'),
+  share: require('../assets/Images/share.png'),
+  soiltype: require('../assets/Images/soiltype.png'),
+  video: require('../assets/Images/video.png'),
+  species: require('../assets/Images/species.png'),
+  email: require('../assets/Images/email.png'),
 };
 
 export type ImageKey = keyof typeof Images;

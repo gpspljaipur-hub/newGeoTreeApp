@@ -32,6 +32,9 @@ export const styles = StyleSheet.create({
   backButton: {
     width: ImageSize.ImageW35,
     height: ImageSize.ImageH35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: MarginHW.MarginH30
   },
   backIcon: {
     width: ImageSize.ImageW20,

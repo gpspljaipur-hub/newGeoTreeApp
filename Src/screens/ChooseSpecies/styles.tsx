@@ -1,0 +1,406 @@
+import { StyleSheet } from 'react-native';
+import { Colors } from '../../comman/Colors';
+import FontsSize from '../../comman/FontsSize';
+import MarginHW from '../../comman/MarginHW';
+import ImageSize from '../../comman/ImageSize';
+import HWSize from '../../comman/HWSize';
+import fonts from '../../comman/fonts';
+
+export const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: Colors.containerBg,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: Colors.containerBg,
+  },
+  scrollContent: {
+    paddingBottom: MarginHW.PaddingH3,
+  },
+  headerSection: {
+    paddingHorizontal: MarginHW.PaddingW20,
+    paddingTop: MarginHW.PaddingH50,
+    paddingBottom: 40,
+    position: 'relative',
+  },
+  headerTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    zIndex: 10,
+    marginBottom: MarginHW.MarginH10,
+  },
+  backButton: {
+    width: ImageSize.ImageW30,
+    height: ImageSize.ImageH30,
+    borderRadius: ImageSize.ImageW40 / 2,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  backIcon: {
+    width: ImageSize.ImageW16,
+    height: ImageSize.ImageH16,
+    tintColor: Colors.textDark,
+  },
+  headerContentRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  headerTextContainer: {
+    flex: 1,
+  },
+  headerTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  headerTitle: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size24,
+    color: Colors.textDarkGreen,
+  },
+  headerTitleLeaf: {
+    width: ImageSize.ImageW18,
+    height: ImageSize.ImageH18,
+    marginLeft: MarginHW.MarginW6,
+  },
+  headerSubtitle: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size16,
+    color: Colors.textMuted,
+    marginTop: MarginHW.MarginH4,
+    lineHeight: 18,
+  },
+  projectHighlight: {
+    fontFamily: fonts.OpenSans_Bold,
+    color: Colors.legacyGreen,
+  },
+  gpsBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.bgGreenLight,
+    borderWidth: 1,
+    borderColor: Colors.borderGreenLight,
+    paddingHorizontal: MarginHW.PaddingW10,
+    paddingVertical: 4,
+    borderRadius: FontsSize.size12,
+    alignSelf: 'flex-start',
+    marginTop: MarginHW.MarginH10,
+  },
+  gpsIcon: {
+    width: ImageSize.ImageW16,
+    height: ImageSize.ImageH16,
+    tintColor: Colors.legacyGreen,
+    marginRight: MarginHW.MarginW4,
+  },
+  gpsText: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size12,
+    color: Colors.textDarkGreen,
+  },
+  quickStatsContainer: {
+    marginHorizontal: MarginHW.MarginW20,
+    marginTop: -30,
+    backgroundColor: Colors.white,
+    borderRadius: FontsSize.size16,
+    paddingVertical: MarginHW.PaddingH12,
+    paddingHorizontal: MarginHW.PaddingW10,
+    borderWidth: 1,
+    borderColor: '#F2F4F3',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 3,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  quickStatCol: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  quickStatIcon: {
+    width: ImageSize.ImageW18,
+    height: ImageSize.ImageH18,
+    tintColor: Colors.legacyGreen,
+    marginBottom: 4,
+  },
+  quickStatValue: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size14,
+    color: Colors.textDarkGreen,
+  },
+  quickStatLabel: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size10,
+    color: Colors.textLabelGrey,
+  },
+  quickStatDivider: {
+    width: 1,
+    height: '60%',
+    backgroundColor: '#E5E7EB',
+  },
+  listSection: {
+    marginHorizontal: MarginHW.MarginW20,
+    marginTop: MarginHW.MarginH10,
+  },
+  listHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  listTitle: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size18,
+    color: Colors.textDarkGreen,
+  },
+  listSubtitle: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size13,
+    color: Colors.textLabelGrey,
+    marginBottom: MarginHW.MarginH8,
+  },
+  speciesCard: {
+    backgroundColor: Colors.white,
+    borderRadius: FontsSize.size16,
+    borderWidth: 1,
+    borderColor: '#F2F4F3',
+    padding: MarginHW.PaddingH12,
+    marginBottom: MarginHW.MarginH10,
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.03,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  speciesCardSelected: {
+    borderColor: Colors.legacyGreen,
+    borderWidth: 1.5,
+    shadowOpacity: 0.08,
+    shadowColor: Colors.legacyGreen,
+  },
+  cardTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  cardLeftContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  speciesImage: {
+    width: ImageSize.ImageW80,
+    height: ImageSize.ImageH80,
+    borderRadius: FontsSize.size12,
+    marginRight: MarginHW.MarginW12,
+  },
+  speciesMeta: {
+    flex: 1,
+  },
+  speciesNameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  speciesName: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size18,
+    color: Colors.textDarkGreen,
+  },
+  nativeBadge: {
+    backgroundColor: '#EEF6F2',
+    paddingHorizontal: MarginHW.PaddingW8,
+    paddingVertical: 2,
+    borderRadius: FontsSize.size8,
+    marginLeft: MarginHW.MarginW8,
+  },
+  nativeText: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size11,
+    color: Colors.legacyGreen,
+  },
+  speciesScientific: {
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size12,
+    color: Colors.textLabelGrey,
+    fontStyle: 'italic',
+    marginTop: 2,
+  },
+  radioButton: {
+    width: ImageSize.ImageW20,
+    height: ImageSize.ImageH20,
+    borderRadius: ImageSize.ImageW20 / 2,
+    borderWidth: 2,
+    borderColor: '#D1D5DB',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  radioButtonSelected: {
+    borderColor: Colors.legacyGreen,
+  },
+  radioDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: Colors.legacyGreen,
+  },
+  cardDivider: {
+    height: 1,
+    backgroundColor: '#F3F4F6',
+    marginVertical: MarginHW.MarginH10,
+  },
+  cardBottomRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  detailCol: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  detailIcon: {
+    width: ImageSize.ImageW20,
+    height: ImageSize.ImageH20,
+    tintColor: Colors.legacyGreen,
+    marginRight: MarginHW.MarginW6,
+  },
+  detailLabelContainer: {
+    flex: 1,
+  },
+  detailLabel: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size11,
+    color: Colors.textLabelGrey,
+  },
+  detailValue: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size10,
+    color: Colors.textDarkGreen,
+    marginTop: 1,
+  },
+  impactSection: {
+    marginHorizontal: MarginHW.MarginW20,
+    marginTop: MarginHW.MarginH1,
+  },
+  impactCard: {
+    backgroundColor: '#EEF6F2',
+    borderRadius: FontsSize.size16,
+    padding: MarginHW.PaddingH10,
+    borderWidth: 1,
+    borderColor: '#DCECE3',
+  },
+  impactHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
+  impactTitle: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size14,
+    color: Colors.textDarkGreen,
+  },
+  impactSubtitle: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size11,
+    color: Colors.textLabelGrey,
+  },
+  impactGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  impactCol: {
+    alignItems: 'center',
+    width: '48%',
+  },
+  impactIcon: {
+    width: ImageSize.ImageW26,
+    height: ImageSize.ImageH26,
+    tintColor: Colors.legacyGreen,
+    marginVertical: MarginHW.MarginH4,
+  },
+  impactValue: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size12,
+    color: Colors.textDarkGreen,
+  },
+  impactLabel: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size11,
+    color: Colors.textLabelGrey,
+    marginTop: 2,
+    textAlign: 'center',
+  },
+  impactDivider: {
+    width: 1,
+    height: '70%',
+    backgroundColor: '#D4E8DC',
+  },
+  footerContainer: {
+    borderTopWidth: 1,
+    borderTopColor: '#F3F4F6',
+    backgroundColor: '#FAFBFB',
+    paddingHorizontal: MarginHW.PaddingW20,
+    paddingVertical: MarginHW.PaddingH12,
+  },
+  footerTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerSelectedInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    marginRight: MarginHW.MarginW12,
+  },
+  footerThumbnail: {
+    width: ImageSize.ImageW60,
+    height: ImageSize.ImageH60,
+    borderRadius: FontsSize.size8,
+    marginRight: MarginHW.MarginW10,
+  },
+  footerTextCol: {
+    flex: 1,
+  },
+  footerLabel: {
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size14,
+    color: Colors.textLabelGrey,
+  },
+  footerName: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size12,
+    color: Colors.textDarkGreen,
+  },
+  proceedButton: {
+    backgroundColor: Colors.legacyGreen,
+    paddingVertical: MarginHW.PaddingH10,
+    paddingHorizontal: MarginHW.PaddingW16,
+    borderRadius: FontsSize.size12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 0.9,
+  },
+  proceedButtonText: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size16,
+    color: Colors.white,
+  },
+  proceedButtonArrow: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size18,
+    color: Colors.white,
+  },
+});

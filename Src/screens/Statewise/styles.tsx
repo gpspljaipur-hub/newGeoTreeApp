@@ -19,10 +19,9 @@ export const styles = StyleSheet.create({
     paddingBottom: MarginHW.PaddingH80,
   },
   headerBackground: {
-    width: '100%',
-    justifyContent: 'space-between',
-    marginTop: MarginHW.MarginH30,
-    paddingBottom: MarginHW.PaddingH24,
+    paddingBottom: MarginHW.PaddingH35,
+    width: '107%',
+
   },
   headerOverlay: {
     ...StyleSheet.absoluteFill,
