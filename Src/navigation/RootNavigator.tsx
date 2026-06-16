@@ -20,6 +20,10 @@ import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store/Store';
 import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
+import ProjectSelectScreen from '../screens/ProjectSelect/ProjectSelectScreen';
+import ChooseSpeciesScreen from '../screens/ChooseSpecies/ChooseSpeciesScreen';
+import DedicateTreeScreen from '../screens/DedicateTree/DedicateTreeScreen';
+import StatePaymentScreen from '../screens/StatePayment/StatePaymentScreen';
 
 export type RootStackParamList = {
   AppOpening: undefined;
@@ -35,6 +39,20 @@ export type RootStackParamList = {
   ThankYou: undefined;
   ExploreStates: undefined;
   Statewise: { stateName: string } | undefined;
+  ProjectSelect: { project: any } | undefined;
+  ChooseSpecies: { project: any; selectedTreeId?: string } | undefined;
+  DedicateTree: { project: any; selectedSpecies: any } | undefined;
+  StatePayment: {
+    project: any;
+    selectedSpecies: any;
+    quantity: number;
+    recipientName: string;
+    occasion: string;
+    occasionDate: string;
+    email: string;
+    personalMessage: string;
+    sendCertificate: boolean;
+  } | undefined;
 };
 
 
@@ -119,7 +137,8 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={isAuthenticated ? "Home" : "AppOpening"}
+      // initialRouteName={isAuthenticated ? "Home" : "AppOpening"}
+      initialRouteName='ExploreStates'
       screenOptions={{
         headerShown: false,
       }}
@@ -137,6 +156,10 @@ export default function RootNavigator() {
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
       <Stack.Screen name="ExploreStates" component={ExploreStatesScreen} />
       <Stack.Screen name="Statewise" component={StatewiseScreen} />
+      <Stack.Screen name="ProjectSelect" component={ProjectSelectScreen} />
+      <Stack.Screen name="ChooseSpecies" component={ChooseSpeciesScreen} />
+      <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
+      <Stack.Screen name="StatePayment" component={StatePaymentScreen} />
     </Stack.Navigator>
 
   );
