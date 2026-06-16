@@ -88,6 +88,13 @@ const Images = {
   sort: require('../assets/Images/sort.png'),
   certificate: require('../assets/Images/certificate.png'),
   heart: require('../assets/Images/heart.png'),
+  drop: require('../assets/Images/drop.png'),
+  maintaince: require('../assets/Images/maintaince.png'),
+  share: require('../assets/Images/share.png'),
+  soiltype: require('../assets/Images/soiltype.png'),
+  video: require('../assets/Images/video.png'),
+  species: require('../assets/Images/species.png'),
+  email: require('../assets/Images/email.png'),
 };
 
 export type ImageKey = keyof typeof Images;
