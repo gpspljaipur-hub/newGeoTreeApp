@@ -391,9 +391,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   projectCard: {
-    width: width * 0.72,
+    width: width / 2,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#E5E7EB',
     marginRight: 12,
@@ -449,6 +449,7 @@ export const styles = StyleSheet.create({
   },
   projectContent: {
     padding: 12,
+    minHeight: 110,
   },
   projectTitleRow: {
     flexDirection: 'row',
@@ -468,7 +469,7 @@ export const styles = StyleSheet.create({
   projectLocIcon: {
     width: 10,
     height: 10,
-    tintColor: '#6B7280',
+    tintColor: Colors.legacyGreen,
     marginRight: 4,
   },
   projectLocation: {
@@ -609,8 +610,8 @@ export const styles = StyleSheet.create({
   },
   actionButton: {
     width: '100%',
-    height: 52,
-    borderRadius: 12,
+    height: 45,
+    borderRadius: 10,
     overflow: 'hidden',
   },
   gradientBtn: {

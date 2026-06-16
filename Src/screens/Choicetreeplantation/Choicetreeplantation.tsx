@@ -90,7 +90,13 @@ const ChoicetreeplantationScreen = () => {
     };
 
     const handleProceed = () => {
-        navigation.navigate('Details');
+        navigation.navigate('DedicatePlantation', {
+            qty,
+            co2,
+            projectName: projects.find(p => p.id === selectedProjId)?.title || 'Aravalli Restoration Project',
+            stateName,
+            treeName: 'Neem Tree',
+        });
     };
 
     return (
@@ -201,7 +207,7 @@ const ChoicetreeplantationScreen = () => {
                 {/* Quantity Selection Section */}
                 <View style={styles.sectionContainer}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>How many trees would you like to plant? 🍃</Text>
+                        <Text style={styles.sectionTitle}>How many trees would you like to plant?</Text>
                     </View>
 
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.quantityList}>
@@ -288,9 +294,9 @@ const ChoicetreeplantationScreen = () => {
                 {/* Project Selection Section */}
                 <View style={styles.sectionContainer}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>Where would you like to plant? 🍃</Text>
+                        <Text style={styles.sectionTitle}>Where would you like to plant?</Text>
                         <TouchableOpacity activeOpacity={0.7}>
-                            <Text style={styles.viewAllLink}>View All Projects →</Text>
+                            <Text style={styles.viewAllLink}>View All Projects</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -316,12 +322,12 @@ const ChoicetreeplantationScreen = () => {
                                         </View>
                                     </View>
 
-                                    <View style={project.id === 'aravalli' ? [styles.projectContent, { minHeight: 110 }] : styles.projectContent}>
+                                    <View style={styles.projectContent}>
                                         <View style={styles.projectTitleRow}>
                                             <Text style={styles.projectTitle}>{project.title}</Text>
                                         </View>
                                         <View style={styles.projectLocationRow}>
-                                            <Image source={Images.location} style={styles.projectLocIcon} resizeMode="contain" />
+                                            <Image source={Images.geolocation} style={styles.projectLocIcon} resizeMode="contain" />
                                             <Text style={styles.projectLocation}>{project.location}</Text>
                                         </View>
                                         <Text style={styles.projectDesc}>{project.desc}</Text>
@@ -345,7 +351,7 @@ const ChoicetreeplantationScreen = () => {
 
                 {/* Impact summary grid details */}
                 <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>Your Impact for This Planting 🍃</Text>
+                    <Text style={styles.sectionTitle}>Your Impact for This Planting</Text>
 
                     <View style={styles.impactCardContainer}>
                         <View style={styles.impactCol}>
@@ -419,7 +425,7 @@ const ChoicetreeplantationScreen = () => {
                 <View style={styles.footerContainer}>
                     <TouchableOpacity style={styles.actionButton} onPress={handleProceed} activeOpacity={0.95}>
                         <LinearGradient
-                            colors={['#1E6B46', '#2F9E67']}
+                            colors={['#024e18', '#024e18']}
                             style={styles.gradientBtn}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
