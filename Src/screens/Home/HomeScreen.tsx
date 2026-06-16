@@ -157,7 +157,7 @@ const HomeScreen = () => {
 
           <View style={styles.heroButtonRow}>
             {/* Plant your first tree button */}
-            <TouchableOpacity  >
+            <TouchableOpacity onPress={() => navigation.navigate('StateScreen')} activeOpacity={0.85}>
               <LinearGradient
                 colors={['#27702d', '#4a8d21', '#68a212']}
                 style={styles.heroBtnGreenGradient}
@@ -231,7 +231,7 @@ const HomeScreen = () => {
             <View style={styles.stateTitleContainer}>
               <Text style={styles.stateSectionTitle}>{String.Home_SelectStateTitle}</Text>
             </View>
-            <TouchableOpacity activeOpacity={0.7} style={styles.viewAllStatesContainer}>
+            <TouchableOpacity activeOpacity={0.7} style={styles.viewAllStatesContainer} onPress={() => navigation.navigate('ExploreStates')}>
               <Text style={styles.viewAllStatesLink}>{String.Home_ViewAllStates}</Text>
             </TouchableOpacity>
           </View>
@@ -248,7 +248,10 @@ const HomeScreen = () => {
                 <TouchableOpacity
                   style={[styles.stateCard, isSelected && styles.stateCardSelected]}
                   activeOpacity={0.9}
-                  onPress={() => setSelectedState(item.id)}
+                  onPress={() => {
+                    setSelectedState(item.id);
+                    navigation.navigate('Statewise', { stateName: item.name });
+                  }}
                 >
                   <Image source={item.image} style={styles.stateCardImage} resizeMode="cover" />
                   <View style={styles.stateCardFooter}>
@@ -271,7 +274,20 @@ const HomeScreen = () => {
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.quickActionsScroll}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.quickActionCard} activeOpacity={0.9}>
+            <TouchableOpacity
+              style={styles.quickActionCard}
+              activeOpacity={0.9}
+              onPress={() => {
+                if (item.id === '1') {
+                  navigation.navigate('StateScreen');
+                } else if (item.id === '2') {
+                  // Fallback to StateScreen for custom donation species selection
+                  navigation.navigate('StateScreen');
+                } else if (item.id === '4') {
+                  navigation.navigate('StateScreen');
+                }
+              }}
+            >
               <Image source={item.image} style={styles.cardImage} resizeMode="cover" />
               <Text style={styles.cardTitle}>{item.title}</Text>
               <View style={styles.cardFooterRow}>
@@ -289,7 +305,7 @@ const HomeScreen = () => {
           <View style={styles.sectionTitleRow}>
             <Text style={styles.sectionTitle}>{String.Home_SectionTitle} </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('ExploreStates')}>
             <Text style={styles.viewAllLink}>{String.Home_ViewAll}</Text>
           </TouchableOpacity>
         </View>
@@ -303,7 +319,11 @@ const HomeScreen = () => {
           style={styles.projectsScroll}
           contentContainerStyle={{ paddingRight: 30 }}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.projectCard} activeOpacity={0.9}>
+            <TouchableOpacity
+              style={styles.projectCard}
+              activeOpacity={0.9}
+              onPress={() => navigation.navigate('Statewise', { stateName: item.location })}
+            >
               <View style={styles.projectImgContainer}>
                 <Image source={item.image} style={styles.projectImage} resizeMode="cover" />
                 <View style={styles.projectBadge}>

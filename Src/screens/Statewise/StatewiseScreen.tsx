@@ -51,7 +51,7 @@ interface StateData {
   locations: LocationItem[];
 }
 
-const PROJECTS_DATA: { [key: string]: StateData } = {
+export const PROJECTS_DATA: { [key: string]: StateData } = {
   Rajasthan: {
     bannerImage: Images.rajasthan,
     subtitle: 'Restore desert ecosystems and create greener landscapes across Rajasthan.',
@@ -518,6 +518,7 @@ const StatewiseScreen = () => {
           <TouchableOpacity
             style={styles.bottomBannerButton}
             activeOpacity={0.8}
+            onPress={() => navigation.navigate('Choicetreeplantation', { stateName, selectedProjId: stateData.locations[0]?.id })}
           >
             <Text style={styles.bottomBannerArrow}>→</Text>
           </TouchableOpacity>

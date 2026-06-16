@@ -13,13 +13,14 @@ export const Colors = {
     tintColorDrak: '#135928',
     listBg: '#f7f8ef',
     listBgLight: '#f7f9f1',
-
-
+    TextColorLightGreen: '#056213',
+    TextColorGreenDark: '#276328',
 
     // Heading
     darkGreen: '#354826',
     greenMint: '#39B89A',
     legacyGreen: '#0D684D',
+    greenLight: '#1e5f20',
     green: '#22391f',
 
     // Card

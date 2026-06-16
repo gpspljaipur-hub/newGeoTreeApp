@@ -303,7 +303,10 @@ const UserDashboardScreen = () => {
                 <TouchableOpacity
                   style={[styles.stateCard, isSelected && styles.stateCardSelected]}
                   activeOpacity={0.9}
-                  onPress={() => setSelectedState(item.id)}
+                  onPress={() => {
+                    setSelectedState(item.id);
+                    navigation.navigate('Statewise', { stateName: item.name });
+                  }}
                 >
                   <View style={styles.stateCardImageWrapper}>
                     <Image source={item.image} style={styles.stateCardImage} resizeMode="cover" />
@@ -342,7 +345,7 @@ const UserDashboardScreen = () => {
                   </Text>
                 </View>
               </View>
-              <TouchableOpacity activeOpacity={0.8}>
+              <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('Statewise', { stateName: 'Rajasthan' })}>
                 <LinearGradient
                   colors={['#196427', '#3c8012']}
                   style={styles.exploreBtn}

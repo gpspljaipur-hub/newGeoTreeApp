@@ -20,6 +20,11 @@ import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store/Store';
 import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
+import ChoicetreeplantationScreen from '../screens/Choicetreeplantation/Choicetreeplantation';
+import DedicatePlantationScreen from '../screens/DedicatePlantation/DedicatePlantation';
+import MyTreeJourneyScreen from '../screens/MyTreeJourney/MyTreeJourney';
+import PlantationJourneyScreen from '../screens/PlantationJourney/PlantationJourney';
+import ReviewPlantationScreen from '../screens/ReviewPlantation/ReviewPlantation';
 import ProjectSelectScreen from '../screens/ProjectSelect/ProjectSelectScreen';
 import ChooseSpeciesScreen from '../screens/ChooseSpecies/ChooseSpeciesScreen';
 import DedicateTreeScreen from '../screens/DedicateTree/DedicateTreeScreen';
@@ -30,10 +35,16 @@ export type RootStackParamList = {
   SignIn: undefined;
   Otp: { phoneNumber: string; otp?: string | number; fcmToken?: string };
   ChooseTree: undefined;
+  Choicetreeplantation: { stateName?: string; selectedProjId?: string } | undefined;
   UserDashboard: undefined;
   StateScreen: undefined;
   ChooseLocation: undefined;
   Details: undefined;
+  DedicatePlantation: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
+  DedicatePlantationScreen: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
+  MyTreeJourneyScreen: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
+  PlantationJourneyScreen: undefined;
+  ReviewPlantation: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
   Payment: undefined;
   Home: undefined;
   ThankYou: undefined;
@@ -137,8 +148,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      // initialRouteName={isAuthenticated ? "Home" : "AppOpening"}
-      initialRouteName='ExploreStates'
+      initialRouteName={'ReviewPlantation'}
       screenOptions={{
         headerShown: false,
       }}
@@ -152,10 +162,17 @@ export default function RootNavigator() {
       <Stack.Screen name="UserDashboard" component={UserDashboardScreen} />
       <Stack.Screen name="StateScreen" component={StateScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="DedicatePlantation" component={DedicatePlantationScreen} />
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
       <Stack.Screen name="ExploreStates" component={ExploreStatesScreen} />
       <Stack.Screen name="Statewise" component={StatewiseScreen} />
+      <Stack.Screen name="Choicetreeplantation" component={ChoicetreeplantationScreen} />
+      <Stack.Screen name="DedicatePlantationScreen" component={DedicatePlantationScreen} />
+      <Stack.Screen name="MyTreeJourneyScreen" component={MyTreeJourneyScreen} />
+      <Stack.Screen name="PlantationJourneyScreen" component={PlantationJourneyScreen} />
+      <Stack.Screen name="ReviewPlantation" component={ReviewPlantationScreen} />
+
       <Stack.Screen name="ProjectSelect" component={ProjectSelectScreen} />
       <Stack.Screen name="ChooseSpecies" component={ChooseSpeciesScreen} />
       <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
