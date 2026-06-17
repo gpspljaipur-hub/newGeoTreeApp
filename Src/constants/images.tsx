@@ -48,6 +48,7 @@ const Images = {
   plant: require('../assets/Images/growth.png'),
   community: require('../assets/Images/friends.png'),
   location_hero_bg: require('../assets/Images/location_hero_bg.png'),
+  PlantConfiram: require('../assets/Images/PlantConfiram.png'),
   aravali_belt: require('../assets/Images/aravali_belt.png'),
   sariska_reserve: require('../assets/Images/sariska_reserve.png'),
   thar_desert: require('../assets/Images/thar_desert.png'),
@@ -71,6 +72,7 @@ const Images = {
   nature: require('../assets/Images/nature.png'),
   ipl_banner: require('../assets/Images/ipl_banner.png'),
   detailbg: require('../assets/Images/detailbg.png'),
+  PlantBg: require('../assets/Images/PlantBg.png'),
   calendar: require('../assets/Images/calendar.png'),
   gift: require('../assets/Images/gift.png'),
   bank: require('../assets/Images/bank.png'),
@@ -100,6 +102,7 @@ const Images = {
   video: require('../assets/Images/video.png'),
   species: require('../assets/Images/species.png'),
   email: require('../assets/Images/email.png'),
+  camera: require('../assets/Images/camera.png'),
 };
 
 export type ImageKey = keyof typeof Images;

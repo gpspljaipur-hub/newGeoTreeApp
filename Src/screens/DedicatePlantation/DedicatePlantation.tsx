@@ -174,7 +174,7 @@ const DedicatePlantationScreen = () => {
 
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
                 {/* Top Navigation Row & Stepper Indicator inside Hero ImageBackground */}
-                <ImageBackground source={Images.detailbg} style={styles.headerHeroBg} imageStyle={styles.heroImageRadius} resizeMode='center'>
+                <ImageBackground source={Images.location_hero_bg} style={styles.headerHeroBg} imageStyle={styles.heroImageRadius} resizeMode='center'>
 
                     {/* Hero section title */}
                     <View style={styles.heroSection}>

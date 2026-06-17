@@ -29,6 +29,9 @@ import ProjectSelectScreen from '../screens/ProjectSelect/ProjectSelectScreen';
 import ChooseSpeciesScreen from '../screens/ChooseSpecies/ChooseSpeciesScreen';
 import DedicateTreeScreen from '../screens/DedicateTree/DedicateTreeScreen';
 import StatePaymentScreen from '../screens/StatePayment/StatePaymentScreen';
+import WhichtreeShouldIPlantScreen from '../screens/WhichtreeShouldIPlant/WhichtreeShouldIPlant';
+import PlantationConfirmedScreen from '../screens/PlantationConfirmed/PlantationConfirmed';
+import PortfolioScreen from '../screens/Portfolio/Portfolio';
 
 export type RootStackParamList = {
   AppOpening: undefined;
@@ -64,6 +67,9 @@ export type RootStackParamList = {
     personalMessage: string;
     sendCertificate: boolean;
   } | undefined;
+  WhichtreeShouldIPlant: undefined;
+  PlantationConfirmed: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
+  Portfolio: undefined;
 };
 
 
@@ -148,7 +154,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'ReviewPlantation'}
+      initialRouteName={'Portfolio'}
       screenOptions={{
         headerShown: false,
       }}
@@ -172,7 +178,9 @@ export default function RootNavigator() {
       <Stack.Screen name="MyTreeJourneyScreen" component={MyTreeJourneyScreen} />
       <Stack.Screen name="PlantationJourneyScreen" component={PlantationJourneyScreen} />
       <Stack.Screen name="ReviewPlantation" component={ReviewPlantationScreen} />
-
+      <Stack.Screen name="WhichtreeShouldIPlant" component={WhichtreeShouldIPlantScreen} />
+      <Stack.Screen name="PlantationConfirmed" component={PlantationConfirmedScreen} />
+      <Stack.Screen name="Portfolio" component={PortfolioScreen} />
       <Stack.Screen name="ProjectSelect" component={ProjectSelectScreen} />
       <Stack.Screen name="ChooseSpecies" component={ChooseSpeciesScreen} />
       <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />

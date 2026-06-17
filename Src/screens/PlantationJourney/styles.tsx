@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   headerBg: {
     width: '100%',
-    height: 250,
+    height: 200,
     position: 'relative',
   },
   headerBgImg: {
