@@ -1,0 +1,661 @@
+import { StyleSheet, Dimensions } from 'react-native';
+import { Colors } from '../../comman/Colors';
+import fonts from '../../comman/fonts';
+import MarginHW from '../../comman/MarginHW';
+
+const { width } = Dimensions.get('window');
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FAFBFB',
+  },
+  scrollContent: {
+    paddingBottom: 40,
+  },
+  // Top Header Row
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 10,
+    backgroundColor: '#FAFBFB',
+  },
+  logoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  logoPin: {
+    width: 24,
+    height: 24,
+    tintColor: '#056213',
+  },
+  logoText: {
+    fontSize: 18,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#056213',
+    marginLeft: 6,
+    letterSpacing: -0.3,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  actionCircle: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 3,
+    elevation: 2,
+    position: 'relative',
+  },
+  bellBadge: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 7,
+    height: 7,
+    borderRadius: 3.5,
+    backgroundColor: '#DC2626',
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
+  },
+  heroImageBackground: {
+    width: '100%',
+    paddingBottom: 20,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    overflow: 'hidden',
+  },
+  heroHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 4,
+  },
+  backCircle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  backIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#111827',
+  },
+  // Title section
+  heroSection: {
+    paddingHorizontal: 30,
+    marginTop: 24,
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  heroTitle: {
+    fontSize: 20,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#000000',
+    textAlign: 'center',
+  },
+  heroSubtitle: {
+    fontSize: 12,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#4B5563',
+    marginTop: 6,
+    textAlign: 'center',
+  },
+  // Green Impact Banner
+  impactCard: {
+    backgroundColor: '#056213',
+    borderRadius: 14,
+    marginHorizontal: 16,
+    paddingVertical: 10,
+
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  impactMetric: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  impactTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  impactMetricIcon: {
+    width: 15,
+    height: 15,
+    marginRight: 6,
+    tintColor: '#FFFFFF',
+  },
+  impactLabel: {
+    fontSize: 10,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#FFFFFF',
+  },
+  impactVal: {
+    fontSize: 18,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#FFFFFF',
+    marginTop: 10,
+  },
+  impactValSub: {
+    fontSize: 10.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#FFFFFF',
+  },
+  impactDividerV: {
+    width: 1,
+    height: 32,
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+  },
+  // Section Headers
+  sectionHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    marginTop: 15,
+    marginBottom: 10,
+  },
+  sectionTitle: {
+    fontSize: 14,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0A1C14',
+  },
+  sectionLink: {
+    fontSize: 12,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#056213',
+  },
+  // White card general layout
+  card: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#EAEAEA',
+    marginHorizontal: 16,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.02,
+    shadowRadius: 4,
+    elevation: 1,
+  },
+  // Project detail card
+  projectCardBody: {
+    padding: 16,
+  },
+  projectHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+  projectTitle: {
+    fontSize: 17,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0A1C14',
+  },
+  activeBadge: {
+    backgroundColor: '#E6EFE8',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+  },
+  activeBadgeText: {
+    fontSize: 11,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#056213',
+  },
+  locationRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+  locationIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#1F2937',
+    marginRight: 4,
+  },
+  locationText: {
+    fontSize: 11.5,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#374151',
+  },
+  projectLandscape: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  projectImage: {
+    width: 110,
+    height: 110,
+    borderRadius: 12,
+    backgroundColor: '#F3F4F6',
+  },
+  projectInfoCol: {
+    flex: 1,
+    marginLeft: 14,
+    paddingVertical: 2,
+  },
+  infoField: {
+    marginBottom: 4,
+  },
+  infoLabel: {
+    fontSize: 11,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#6B7280',
+  },
+  infoValueOrange: {
+    fontSize: 13,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#D97706',
+    marginTop: 2,
+  },
+  infoDivider: {
+    height: 1,
+    backgroundColor: '#EFF2F0',
+    marginVertical: 6,
+  },
+  expectedDateRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 4,
+  },
+  expectedDateIcon: {
+    width: 18,
+    height: 18,
+    tintColor: '#111827',
+    marginRight: 8,
+  },
+  expectedDateTextCol: {
+    flexDirection: 'column',
+  },
+  infoValueDate: {
+    fontSize: 13,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#111827',
+    marginTop: 1,
+  },
+  progressBarContainer: {
+    marginTop: 8,
+  },
+  progressBarRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  progressBarBg: {
+    flex: 1,
+    height: 6,
+    backgroundColor: '#EBF0EB',
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  progressBarFill: {
+    height: '100%',
+    width: '60%',
+    backgroundColor: '#056213',
+    borderRadius: 3,
+  },
+  progressText: {
+    fontSize: 11,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#056213',
+    marginLeft: 8,
+  },
+  projectCardFooter: {
+    backgroundColor: '#f5f5f5',
+    borderTopWidth: 1,
+    borderTopColor: '#EFF2F0',
+    borderBottomLeftRadius: 14,
+    borderBottomRightRadius: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+  },
+  projectFooterDivider: {
+    height: 1,
+    backgroundColor: '#EFF2F0',
+    marginTop: 14,
+  },
+  projectFooterActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 4,
+  },
+  projectFooterBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+  },
+  projectFooterIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#1F2937',
+    marginRight: 6,
+  },
+  projectFooterText: {
+    fontSize: 11,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1F2937',
+  },
+  projectFooterDividerV: {
+    width: 1,
+    height: 20,
+    backgroundColor: '#EFF2F0',
+  },
+  // Timeline styles
+  timelineItem: {
+    flexDirection: 'row',
+    position: 'relative',
+  },
+  timelineLeft: {
+    width: 32,
+    alignItems: 'center',
+  },
+  timelineLine: {
+    position: 'absolute',
+    top: 28,
+    bottom: -14,
+    width: 2,
+    backgroundColor: '#056213',
+    zIndex: 1,
+  },
+  timelineLinePending: {
+    backgroundColor: 'transparent',
+    borderStyle: 'dashed',
+    borderWidth: 1.2,
+    borderColor: '#BDBDBD',
+    width: 0,
+  },
+  timelineNode: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 2,
+    backgroundColor: '#EAEAEA',
+  },
+  timelineNodeCompleted: {
+    backgroundColor: '#056213',
+  },
+  timelineNodeActive: {
+    backgroundColor: '#D97706',
+  },
+  timelineNodePending: {
+    backgroundColor: '#EFF2F0',
+  },
+  timelineCheckIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#FFFFFF',
+  },
+  timelineActiveIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#FFFFFF',
+  },
+  timelinePendingIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#6B7280',
+  },
+  timelineRight: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: 14,
+    paddingVertical: 14,
+  },
+  timelineTextCol: {
+    flex: 1,
+  },
+  timelineTitle: {
+    fontSize: 14,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1F2937',
+  },
+  timelineTitleCompleted: {
+    color: '#056213',
+  },
+  timelineTitleActive: {
+    color: '#D97706',
+  },
+  timelineDesc: {
+    fontSize: 12,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#6B7280',
+    marginTop: 2,
+  },
+  timelineChevron: {
+    width: 14,
+    height: 14,
+    tintColor: '#9CA3AF',
+  },
+
+  // Tree Details Card
+  treeDetailsContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  treeImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 12,
+    backgroundColor: '#EFF5F0',
+  },
+  treeInfoCol: {
+    flex: 1,
+    marginLeft: 14,
+  },
+  treeHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  treeName: {
+    fontSize: 15.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0A1C14',
+  },
+  qtyPill: {
+    backgroundColor: '#EEF4EF',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    marginLeft: 8,
+  },
+  qtyPillText: {
+    fontSize: 10,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#056213',
+  },
+  featureCheckRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 6,
+  },
+  featureCheckIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#056213',
+    marginRight: 6,
+  },
+  featureText: {
+    fontSize: 12,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#4B5563',
+  },
+  treeInfoDivider: {
+    height: 1,
+    backgroundColor: '#EFF2F0',
+    marginVertical: 10,
+  },
+  treeBatchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 6,
+  },
+  treeBatchText: {
+    fontSize: 11.5,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#4B5563',
+  },
+  treeBatchVal: {
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#111827',
+  },
+  treeCopyIcon: {
+    width: 13,
+    height: 13,
+    tintColor: '#056213',
+  },
+  // Latest Updates Card
+  updatesContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  updatesText: {
+    flex: 1.3,
+    fontSize: 12,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#4B5563',
+    lineHeight: 18,
+    paddingRight: 10,
+  },
+  updatesIllustrationContainer: {
+    width: 80,
+    height: 80,
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 0.8,
+  },
+  updatesIllustration: {
+    width: '100%',
+    height: '100%',
+  },
+  // Action Links Row (4 in a row)
+  actionRow: {
+    marginTop: 6,
+  },
+  actionListContent: {
+    paddingHorizontal: 12,
+    marginVertical: 10,
+  },
+  actionCard: {
+    width: (width - 32 - 24) / 3.5,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#EAEAEA',
+    paddingVertical: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 4,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.01,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  actionCardIcon: {
+    width: 22,
+    height: 22,
+    tintColor: '#056213',
+    marginBottom: 6,
+  },
+  actionCardTitle: {
+    fontSize: 10.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1F2937',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  actionCardArrow: {
+    fontSize: 16,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#056213',
+  },
+  // Bottom Callout Banner
+  badgeCallout: {
+    backgroundColor: '#056213', // Nice dark green matching mockup
+    borderRadius: 14,
+    marginHorizontal: 16,
+    marginTop: 10,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
+    marginBottom: 20,
+  },
+  badgeCalloutTextCol: {
+    flex: 1.3,
+    paddingRight: 10,
+  },
+  badgeCalloutTitle: {
+    fontSize: 14,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#FFFFFF',
+  },
+  badgeCalloutDesc: {
+    fontSize: 11.5,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#E6EFE8',
+    marginTop: 4,
+    lineHeight: 15,
+  },
+  badgeCalloutImgContainer: {
+    width: 80,
+    height: 80,
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+    flex: 0.8,
+  },
+  badgeCalloutImg: {
+    width: '90%',
+    height: '90%',
+  },
+});

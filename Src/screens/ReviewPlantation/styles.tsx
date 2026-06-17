@@ -15,22 +15,24 @@ export const styles = StyleSheet.create({
   },
   headerHeroBg: {
     width: '100%',
-    paddingBottom: 24,
+    height: 230,
     position: 'relative',
   },
   headerBgImg: {
     width: '100%',
+    height: '100%',
   },
   headerTopBar: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: MarginHW.PaddingW16,
-    paddingTop: 16,
-    paddingBottom: 12,
+    paddingTop: 25, // More top margin/padding to give it space
+    paddingBottom: 16,
   },
   backButton: {
     width: 36,
     height: 36,
+    top: -8, // Adjust to align center with larger step circles
     borderRadius: 18,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
@@ -52,25 +54,25 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginLeft: 16,
+    marginLeft: 28, // Increase spacing from back button to stepper
     position: 'relative',
-    height: 48,
+    height: 52,
   },
   stepperLine: {
     position: 'absolute',
-    left: '8%',
-    right: '8%',
-    top: 13,
-    height: 2,
+    left: 16, // Connect exact center of the first step circle (half of 32px circle)
+    right: 16, // Connect exact center of the last step circle (half of 32px circle)
+    top: 16, // Center vertically on 32px circle
+    height: 1,
     backgroundColor: '#E2ECE5',
     zIndex: 1,
   },
   stepperLineActive: {
     position: 'absolute',
-    left: '8%',
-    width: '84%',
-    top: 13,
-    height: 2,
+    left: 16,
+    right: 16,
+    top: 16,
+    height: 1,
     backgroundColor: Colors.legacyGreen,
     zIndex: 1.5,
   },
@@ -81,48 +83,60 @@ export const styles = StyleSheet.create({
   },
   stepCircleContainer: {
     position: 'relative',
-    width: 26,
-    height: 26,
+    width: 32,
+    height: 32,
   },
   stepCircle: {
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    backgroundColor: '#EFF5F0',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#FFFFFF', // White background for all steps
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#EFF2F0', // light grey border outline
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.04,
+    shadowRadius: 2,
+    elevation: 1,
   },
   stepCircleActive: {
-    backgroundColor: Colors.legacyGreen,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1.5,
+    borderColor: Colors.legacyGreen, // Green border for active step
   },
   stepCircleCompleted: {
-    backgroundColor: Colors.legacyGreen,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#EFF2F0',
   },
   stepIcon: {
-    width: 12,
-    height: 12,
+    width: 14,
+    height: 14,
     tintColor: '#8E9A93',
   },
   stepIconActive: {
-    tintColor: '#FFFFFF',
+    tintColor: Colors.legacyGreen, // Green active step icon
   },
   stepIconCompleted: {
-    width: 12,
-    height: 12,
-    tintColor: '#FFFFFF',
+    width: 14,
+    height: 14,
+    tintColor: Colors.legacyGreen, // Green completed step icon
   },
   checkmarkBadge: {
     position: 'absolute',
-    top: -4,
-    right: -4,
-    backgroundColor: Colors.greenMint,
-    width: 11,
-    height: 11,
-    borderRadius: 5.5,
+    bottom: -2, // Position at the bottom right of the circle
+    right: -2,
+    backgroundColor: Colors.TextColorLightGreen, // Rich green background matching layout
+    width: 12,
+    height: 12,
+    borderRadius: 6,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1.2,
     borderColor: '#FFFFFF',
+    zIndex: 3,
   },
   checkmarkBadgeIcon: {
     width: 6,
@@ -131,13 +145,13 @@ export const styles = StyleSheet.create({
   },
   stepLabel: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: 9,
+    fontSize: 9.5,
     color: '#8E9A93',
-    marginTop: 4,
+    marginTop: 6,
     textAlign: 'center',
   },
   stepLabelActive: {
-    color: Colors.legacyGreen,
+    color: Colors.TextColorLightGreen, // Active step label in green
   },
   // Hero section titles
   heroSection: {
@@ -165,18 +179,18 @@ export const styles = StyleSheet.create({
   heroSubtitle: {
     fontSize: 12,
     fontFamily: fonts.OpenSans_Regular,
-    color: '#4B5563',
+    color: Colors.black,
     marginTop: 6,
   },
   // Summary card (Neem Tree)
   cardContainer: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    marginHorizontal: MarginHW.PaddingW16,
+    borderRadius: 10,
+    marginHorizontal: MarginHW.PaddingW10,
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: -20,
     borderWidth: 1,
     borderColor: '#EFF2F0',
     shadowColor: '#000000',
@@ -188,7 +202,7 @@ export const styles = StyleSheet.create({
   treeImgContainer: {
     width: 80,
     height: 80,
-    borderRadius: 12,
+    borderRadius: 5,
     backgroundColor: '#F3FAF6',
     overflow: 'hidden',
   },
@@ -196,9 +210,16 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  summaryDivider: {
+    width: 1,
+    height: 70,
+    backgroundColor: '#E2ECE5',
+    marginHorizontal: 8,
+    alignSelf: 'center',
+  },
   detailsCol: {
-    flex: 1,
-    marginLeft: 12,
+    flex: 1.4,
+    paddingLeft: 10,
   },
   titleRow: {
     flexDirection: 'row',
@@ -273,19 +294,21 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   impactCol: {
-    alignItems: 'flex-end',
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: 6,
   },
   impactLabel: {
     fontSize: 8,
     fontFamily: fonts.OpenSans_Regular,
     color: '#6B7280',
+    textAlign: 'center',
   },
   impactValueRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 2,
+    justifyContent: 'center',
+    marginTop: 4,
   },
   impactValue: {
     fontSize: 11,
@@ -300,8 +323,8 @@ export const styles = StyleSheet.create({
   },
   // Section layout
   sectionContainer: {
-    marginTop: 18,
-    paddingHorizontal: MarginHW.PaddingW16,
+    marginTop: 14,
+    paddingHorizontal: MarginHW.PaddingW10,
   },
   sectionTitleRow: {
     flexDirection: 'row',
@@ -312,6 +335,7 @@ export const styles = StyleSheet.create({
   sectionTitleLeft: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginLeft: 5,
   },
   sectionTitleIcon: {
     width: 14,
@@ -324,33 +348,48 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.OpenSans_Bold,
     color: Colors.textDark,
   },
-  // Dedication Card
+  // Dedication Card (Unified containing card)
   dedicationCard: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#EFF2F0',
-    padding: 12,
+    padding: 16,
+  },
+  dedicationHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  dedicationHeaderIcon: {
+    width: 18,
+    height: 18,
+    tintColor: Colors.TextColorLightGreen,
+    marginRight: 8,
+  },
+  dedicationHeaderTitle: {
+    fontSize: 13.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: Colors.textDark,
+  },
+  dedicationContentRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  dedicationColumn: {
-    flex: 1,
-    paddingRight: 8,
+  dedicationCol1: {
+    flex: 0.8,
   },
-  dedicationColumnRight: {
+  dedicationCol2: {
     flex: 1.2,
-    borderLeftWidth: 1,
-    borderLeftColor: '#F3FAF6',
-    paddingLeft: 12,
   },
-  dedicationLabel: {
-    fontSize: 8.5,
-    fontFamily: fonts.OpenSans_Bold,
-    color: '#9CA3AF',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    marginBottom: 6,
+  dedicationCol3: {
+    flex: 1.6,
+  },
+  dedicationColLabel: {
+    fontSize: 10,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#4B5563', // medium-weight gray
+    marginBottom: 5,
   },
   dedicationUserRow: {
     flexDirection: 'row',
@@ -363,109 +402,133 @@ export const styles = StyleSheet.create({
     marginRight: 6,
   },
   dedicationValue: {
-    fontSize: 11,
+    fontSize: 11.5,
     fontFamily: fonts.OpenSans_Bold,
     color: Colors.textDark,
   },
   messageRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginTop: 2,
+    marginTop: 0,
+    paddingRight: 6,
   },
   quoteIcon: {
-    width: 10,
-    height: 10,
-    tintColor: Colors.TextColorLightGreen,
+    fontSize: 15,
+    lineHeight: 18,
+    fontFamily: fonts.OpenSans_Bold,
+    color: Colors.TextColorLightGreen,
     marginRight: 4,
-    marginTop: 2,
+    marginTop: -2,
   },
   messageText: {
-    fontSize: 9.5,
+    fontSize: 10.5,
     fontFamily: fonts.OpenSans_Medium,
-    color: '#4B5563',
-    lineHeight: 13,
+    color: '#374151',
+    lineHeight: 14,
     flex: 1,
+  },
+  dedicationDivider: {
+    width: 1,
+    height: 55,
+    backgroundColor: '#E2ECE5',
+    marginHorizontal: 12,
+    alignSelf: 'center',
   },
   allocationItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 5,
+    marginBottom: 6,
   },
   allocationLeft: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  allocationDot: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
-    backgroundColor: Colors.TextColorLightGreen,
+  allocationUserIcon: {
+    width: 12,
+    height: 12,
+    tintColor: Colors.TextColorLightGreen,
     marginRight: 6,
   },
   allocationName: {
-    fontSize: 9.5,
+    fontSize: 10.5,
     fontFamily: fonts.OpenSans_Medium,
-    color: '#4B5563',
+    color: '#111827',
+  },
+  allocationDash: {
+    fontSize: 10.5,
+    color: '#9CA3AF',
+    marginHorizontal: 4,
   },
   allocationQty: {
-    fontSize: 9.5,
+    fontSize: 10.5,
     fontFamily: fonts.OpenSans_Bold,
-    color: Colors.TextColorLightGreen,
+    color: Colors.textDark,
   },
   viewDetailsLink: {
-    fontSize: 9.5,
+    fontSize: 10.5,
     fontFamily: fonts.OpenSans_Bold,
     color: Colors.TextColorLightGreen,
-    marginTop: 4,
+    marginTop: 8,
   },
-  // Environmental Impact scroll items
-  impactScroll: {
-    paddingRight: 8,
-  },
-  impactItemCard: {
-    width: 82,
-    height: 86,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
+  // Environmental Impact card layout
+  impactCard: {
+    backgroundColor: '#f8f8f5',
+    borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#EFF2F0',
-    padding: 8,
-    marginRight: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: '#E6EFE8',
+    paddingVertical: 14,
+    paddingHorizontal: 10,
   },
-  impactItemIconBg: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    backgroundColor: '#EEF6F2',
-    justifyContent: 'center',
+  impactCardTitle: {
+    fontSize: 13.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: Colors.TextColorLightGreen,
+    marginBottom: 16,
+    paddingHorizontal: 4,
+  },
+  impactRow: {
+    flexGrow: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 6,
+  },
+  impactItem: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    minWidth: 46,
   },
   impactItemIcon: {
-    width: 14,
-    height: 14,
+    width: 22,
+    height: 22,
     tintColor: Colors.TextColorLightGreen,
+    marginBottom: 6,
   },
   impactItemValue: {
-    fontSize: 9,
+    fontSize: 10,
     fontFamily: fonts.OpenSans_Bold,
     color: Colors.textDark,
     textAlign: 'center',
   },
   impactItemLabel: {
-    fontSize: 6.5,
+    fontSize: 8,
     fontFamily: fonts.OpenSans_Medium,
-    color: '#6B7280',
+    color: '#374151',
     textAlign: 'center',
     marginTop: 2,
+  },
+  verticalSeparator: {
+    width: 1,
+    height: 35,
+    backgroundColor: '#E0E6E2',
+    alignSelf: 'center',
   },
   // Cost breakdown
   costCard: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#EFF2F0',
     padding: 14,
@@ -539,7 +602,7 @@ export const styles = StyleSheet.create({
   },
   paymentContainer: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#EFF2F0',
     overflow: 'hidden',
@@ -655,8 +718,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F4F7F4',
     borderWidth: 1,
     borderColor: '#EAF1EC',
-    borderRadius: 12,
-    marginHorizontal: MarginHW.PaddingW16,
+    borderRadius: 10,
+    marginHorizontal: MarginHW.PaddingW10,
     marginTop: 20,
     padding: 10,
   },
@@ -709,7 +772,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: Colors.TextColorLightGreen,
+    backgroundColor: Colors.TextColorGreenDark,
     marginHorizontal: 12,
     marginTop: 10,
     borderRadius: 10,
