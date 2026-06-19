@@ -105,7 +105,10 @@ const DedicatePlantationScreen = () => {
     }, [isMeToggle]);
 
     const handleProceed = () => {
-        navigation.navigate('Payment');
+        navigation.navigate('Payment', {
+            name: recipientName || 'You',
+            dedication: personalMessage || 'In memory of My Grandfather',
+        });
     };
 
     return (

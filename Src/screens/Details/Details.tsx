@@ -53,16 +53,20 @@ const DetailsScreen = () => {
       >
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
           {/* Header */}
+
           <PlantHeader />
           {/* Stepper */}
-          <Stepper currentStep={3} />
+          <View style={{ backgroundColor: '#FAFBFB', position: 'absolute', top: 38, left: 0, right: 0, }}>
+            <Stepper currentStep={3} />
+          </View>
+
           {/* Hero Card */}
           <View style={styles.heroCard}>
             <ImageBackground
-              source={Images.detailbg}
+              source={Images.BgChoose}
               style={styles.heroImage}
               imageStyle={styles.heroImageRadius}
-              resizeMode="stretch"
+              resizeMode='cover'
             >
               <LinearGradient
                 colors={['#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
@@ -249,7 +253,7 @@ const DetailsScreen = () => {
       <View style={styles.footerContainer}>
         <TouchableOpacity
           style={styles.continueButton}
-          onPress={() => navigation.navigate('Payment')}
+          onPress={() => navigation.navigate('Payment', { name: name || 'You', dedication: dedication || 'In memory of My Grandfather' })}
           activeOpacity={0.85}
         >
           <Text style={styles.continueText}>Continue to Payment</Text>

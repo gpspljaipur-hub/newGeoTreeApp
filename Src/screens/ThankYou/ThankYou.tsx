@@ -24,15 +24,17 @@ const ThankYouScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
 
         {/* Header */}
-        <PlantHeader
-          title=""
-        />
+
         {/* Hero Section Container */}
         <ImageBackground
-          source={Images.detailbg}
+          source={Images.BgChoose}
           style={styles.heroImageBackground}
-          resizeMode='contain'
+          resizeMode='cover'
         >
+          <PlantHeader
+            title=""
+            backgroundColor='transparent'
+          />
           {/* Hero Content */}
           <View style={styles.heroContent}>
             <View style={styles.heroLeft}>
@@ -40,7 +42,7 @@ const ThankYouScreen = () => {
                 Tree Successfully{'\n'}
                 <Text style={styles.highlightGreen}>Reserved!</Text>
               </Text>
-              <Text style={styles.heroSubtitle}>
+              <Text numberOfLines={2} style={styles.heroSubtitle}>
                 Thank you for taking a step towards a greener tomorrow. Your tree plantation request has been confirmed.
               </Text>
 

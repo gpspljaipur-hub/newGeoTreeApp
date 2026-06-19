@@ -72,6 +72,8 @@ const Images = {
   nature: require('../assets/Images/nature.png'),
   ipl_banner: require('../assets/Images/ipl_banner.png'),
   detailbg: require('../assets/Images/detailbg.png'),
+  BgChoose: require('../assets/Images/BgChoose.png'),
+  BgState: require('../assets/Images/BgState.png'),
   PlantBg: require('../assets/Images/PlantBg.png'),
   calendar: require('../assets/Images/calendar.png'),
   gift: require('../assets/Images/gift.png'),
@@ -101,6 +103,7 @@ const Images = {
   soiltype: require('../assets/Images/soiltype.png'),
   video: require('../assets/Images/video.png'),
   species: require('../assets/Images/species.png'),
+  TreeBgChoose: require('../assets/Images/TreeBgChoose.png'),
   email: require('../assets/Images/email.png'),
   camera: require('../assets/Images/camera.png'),
 };

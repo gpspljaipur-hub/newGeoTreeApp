@@ -48,7 +48,7 @@ export type RootStackParamList = {
   MyTreeJourneyScreen: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
   PlantationJourneyScreen: undefined;
   ReviewPlantation: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
-  Payment: undefined;
+  Payment: { name?: string; dedication?: string } | undefined;
   Home: undefined;
   ThankYou: undefined;
   ExploreStates: undefined;
@@ -154,7 +154,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'Portfolio'}
+      initialRouteName={'DedicateTree'}
       screenOptions={{
         headerShown: false,
       }}

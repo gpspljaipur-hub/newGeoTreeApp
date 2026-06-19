@@ -101,6 +101,12 @@ const ProjectSelectScreen = () => {
       scientificName: 'Phyllanthus emblica',
       image: Images.gulmohar_tree,
     },
+    {
+      id: 'babul',
+      name: 'Babul',
+      scientificName: 'Vachellia nilotica',
+      image: Images.peepal_tree,
+    },
   ];
   const treeSpeciesList = project?.availableSpecies || fallbackSpeciesList;
   return (
@@ -149,6 +155,7 @@ const ProjectSelectScreen = () => {
                   <Image source={Images.share} style={styles.headerTopButtonIcon} resizeMode="contain" />
                 </TouchableOpacity>
               </View>
+
             </View>
 
             {/* Header Text Content */}
@@ -158,6 +165,7 @@ const ProjectSelectScreen = () => {
                 <Text style={styles.verifiedBadgeText}>GPS Verified Project</Text>
               </View>
 
+
               <Text style={styles.headerTitle}>{projectName}</Text>
 
               <View style={styles.headerLocationRow}>
@@ -165,7 +173,7 @@ const ProjectSelectScreen = () => {
                 <Text style={styles.headerLocationText}>{projectCity}</Text>
               </View>
 
-              <Text style={styles.headerDescription}>
+              <Text numberOfLines={2} style={styles.headerDescription}>
                 {projectDescription}
               </Text>
             </View>
@@ -173,40 +181,51 @@ const ProjectSelectScreen = () => {
             {/* Overlapping Stats Floating Card */}
             <View style={styles.statsOverlayCard}>
               <View style={styles.statsCardColumn}>
-                <Image source={Images.treeIcon} style={styles.statsCardIcon} resizeMode="contain" />
-                <Text style={styles.statsCardValue}>{treesPlantedText}</Text>
-                <Text style={styles.statsCardLabel}>Trees Planted</Text>
+                {/* <Image source={Images.treeIcon} style={styles.statsCardIcon} resizeMode="contain" /> */}
+                <View style={styles.statsCardTextCol}>
+                  <Text style={styles.statsCardValue}>{treesPlantedText}</Text>
+                  <Text style={styles.statsCardLabel}>Trees Planted</Text>
+                </View>
               </View>
 
               <View style={styles.statsCardDivider} />
 
               <View style={styles.statsCardColumn}>
-                <Image source={Images.check} style={styles.statsCardIcon} resizeMode="contain" />
-                <Text style={styles.statsCardValue}>{survivalRateText}</Text>
-                <Text style={styles.statsCardLabel}>Survival Rate</Text>
+                {/* <Image source={Images.check} style={styles.statsCardIcon} resizeMode="contain" /> */}
+                <View style={styles.statsCardTextCol}>
+                  <Text style={styles.statsCardValue}>{survivalRateText}</Text>
+                  <Text style={styles.statsCardLabel}>Survival Rate</Text>
+                </View>
               </View>
             </View>
+
+            {/* Overlapping Stats Floating Card */}
+
           </ImageBackground>
 
           {/* Main Content Area */}
           <View style={styles.mainContent}>
-            {/* Quick Info / Stats Row */}
-            <View style={styles.quickStatsRow}>
+            {/* Quick Info / Stats Card */}
+            <View style={styles.quickStatsCard}>
               <View style={styles.quickStatCol}>
                 <View style={styles.quickStatIconBg}>
-                  <Image source={Images.leaf} style={styles.quickStatIcon} resizeMode="contain" />
+                  <Image source={Images.shield} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
                 <Text style={styles.quickStatValue}>{projectCategory}</Text>
                 <Text style={styles.quickStatLabel}>Project Focus</Text>
               </View>
 
+              <View style={styles.quickStatDivider} />
+
               <View style={styles.quickStatCol}>
                 <View style={styles.quickStatIconBg}>
-                  <Image source={Images.plant} style={styles.quickStatIcon} resizeMode="contain" />
+                  <Image source={Images.leaf} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
                 <Text style={styles.quickStatValue}>{areaCoveredText}</Text>
                 <Text style={styles.quickStatLabel}>Area Covered</Text>
               </View>
+
+              <View style={styles.quickStatDivider} />
 
               <View style={styles.quickStatCol}>
                 <View style={styles.quickStatIconBg}>
@@ -215,6 +234,8 @@ const ProjectSelectScreen = () => {
                 <Text style={styles.quickStatValue}>{projectSinceText}</Text>
                 <Text style={styles.quickStatLabel}>Project Since</Text>
               </View>
+
+              <View style={styles.quickStatDivider} />
 
               <View style={styles.quickStatCol}>
                 <View style={styles.quickStatIconBg}>
@@ -227,22 +248,25 @@ const ProjectSelectScreen = () => {
 
             {/* About Section */}
             <View style={styles.aboutSection}>
-              <Text style={styles.sectionTitle}>About This Project</Text>
               <View style={styles.aboutContentRow}>
                 <View style={styles.aboutLeftTextContainer}>
+                  <Text style={styles.sectionTitle}>About This Project</Text>
+
                   <Text
                     style={styles.aboutText}
-                    numberOfLines={isExpanded ? undefined : 3}
+                    numberOfLines={isExpanded ? undefined : 2}
                   >
                     {projectAbout}
                   </Text>
                   <TouchableOpacity
                     style={styles.readMoreBtn}
+                    activeOpacity={0.7}
                     onPress={() => setIsExpanded(!isExpanded)}
                   >
                     <Text style={styles.readMoreText}>
                       {isExpanded ? 'Read Less' : 'Read More'}
                     </Text>
+
                   </TouchableOpacity>
                 </View>
 
@@ -272,14 +296,14 @@ const ProjectSelectScreen = () => {
                 style={styles.galleryScroll}
               >
                 {galleryImages.map((img: any, index: number) => {
-                  const maxVisible = 4;
+                  const maxVisible = 5;
                   const showOverlay = galleryImages.length > maxVisible && index === maxVisible - 1;
                   if (galleryImages.length > maxVisible && index >= maxVisible) {
                     return null;
                   }
 
                   if (showOverlay) {
-                    const remainingCount = galleryImages.length - 3;
+                    const remainingCount = galleryImages.length - 4;
                     return (
                       <TouchableOpacity
                         key={index}
@@ -318,46 +342,45 @@ const ProjectSelectScreen = () => {
             {/* Project Impact */}
             <View style={styles.impactSection}>
               <Text style={styles.sectionTitle}>Project Impact</Text>
-              <View style={styles.impactRow}>
-                <View style={styles.impactCard}>
+              <View style={styles.impactStatsCard}>
+                <View style={styles.impactStatCol}>
                   <View style={styles.impactIconBg}>
                     <Image source={Images.treeIcon} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.impactTextCol}>
-                    <Text style={styles.impactValue}>{treesPlantedText}</Text>
-                    <Text style={styles.impactLabel}>Trees Planted</Text>
-                  </View>
+                  <Text style={styles.impactValue}>{treesPlantedText}</Text>
+                  <Text style={styles.impactLabel}>Trees Planted</Text>
                 </View>
 
-                <View style={styles.impactCard}>
+                <View style={styles.impactStatDivider} />
+
+                <View style={styles.impactStatCol}>
                   <View style={styles.impactIconBg}>
                     <Image source={Images.co2Cloud} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.impactTextCol}>
-                    <Text style={styles.impactValue}>{co2OffsetVal} Offset (Est.)</Text>
-                    <Text style={styles.impactLabel}>Carbon Impact</Text>
-                  </View>
+                  <Text style={styles.impactValue}>{co2OffsetVal}</Text>
+                  <Text style={styles.impactLabel}>CO₂ Offset (Est.)</Text>
                 </View>
 
-                <View style={styles.impactCard}>
+                <View style={styles.impactStatDivider} />
+
+                <View style={styles.impactStatCol}>
                   <View style={styles.impactIconBg}>
                     <Image source={Images.group} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.impactTextCol}>
-                    <Text style={styles.impactValue}>{nativeSpeciesCountVal}</Text>
-                    <Text style={styles.impactLabel}>Native Species</Text>
-                  </View>
+                  <Text style={styles.impactValue}>{nativeSpeciesCountVal}</Text>
+                  <Text style={styles.impactLabel}>Native Species</Text>
                 </View>
 
-                <View style={styles.impactCard}>
+                <View style={styles.impactStatDivider} />
+
+                <View style={styles.impactStatCol}>
                   <View style={styles.impactIconBg}>
                     <Image source={Images.drop} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.impactTextCol}>
-                    <Text style={styles.impactValue}>{waterSavedVal}</Text>
-                    <Text style={styles.impactLabel}>Water Saved/Year</Text>
-                  </View>
+                  <Text style={styles.impactValue}>{waterSavedVal}</Text>
+                  <Text style={styles.impactLabel}>Water Saved/Year</Text>
                 </View>
+
               </View>
             </View>
 
@@ -368,10 +391,12 @@ const ProjectSelectScreen = () => {
                   <Text style={styles.sectionTitle}>Available Tree Species</Text>
                 </View>
                 <TouchableOpacity style={styles.viewAllSpeciesLink} activeOpacity={0.7}>
-                  <Text style={styles.viewAllSpeciesText}>View All Species</Text>
-                  <Text style={styles.viewAllSpeciesArrow}>→</Text>
+                  <Text style={styles.viewAllSpeciesText}>View All</Text>
                 </TouchableOpacity>
               </View>
+              <Text style={styles.speciesSubtitle}>
+                Choose from native species suitable for this location.
+              </Text>
 
               <ScrollView
                 horizontal
@@ -387,16 +412,18 @@ const ProjectSelectScreen = () => {
                       activeOpacity={0.9}
                       onPress={() => setSelectedTreeId(tree.id)}
                     >
-                      <Image source={tree.image} style={styles.speciesImage} resizeMode="cover" />
+                      <View style={styles.speciesImageWrapper}>
+                        <Image source={tree.image} style={styles.speciesImage} resizeMode="cover" />
+                        {isSelected && (
+                          <View style={styles.selectedCheckBadge}>
+                            <Image source={Images.check} style={styles.selectedCheckIcon} resizeMode="contain" />
+                          </View>
+                        )}
+                      </View>
                       <View style={styles.speciesContent}>
                         <Text style={styles.speciesName}>{tree.name}</Text>
                         <Text style={styles.speciesScientific}>{tree.scientificName}</Text>
                       </View>
-                      {isSelected && (
-                        <View style={styles.selectedCheckBadge}>
-                          <Image source={Images.check} style={styles.selectedCheckIcon} resizeMode="contain" />
-                        </View>
-                      )}
                     </TouchableOpacity>
                   );
                 })}
@@ -407,61 +434,67 @@ const ProjectSelectScreen = () => {
             <View style={styles.detailsSection}>
               <Text style={styles.sectionTitle}>Project Details</Text>
               <View style={styles.detailsGrid}>
-                <View style={styles.detailsItem}>
+                {/* Location - Row item */}
+                <View style={styles.detailsItemRow}>
                   <View style={styles.detailsIconBg}>
                     <Image source={Images.location} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.detailsTextCol}>
-                    <Text style={styles.detailsLabel}>Location</Text>
-                    <Text style={styles.detailsValue}>{projectCity}</Text>
+                  <View style={styles.detailsTextColRow}>
+                    <Text style={styles.detailsLabelRow}>Location</Text>
+                    <Text style={styles.detailsValueRow}>{projectCity}</Text>
                   </View>
                 </View>
 
-                <View style={styles.detailsItem}>
+                {/* Project Partner - Col item */}
+                <View style={styles.detailsItemCol}>
                   <View style={styles.detailsIconBg}>
                     <Image source={Images.group} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.detailsTextCol}>
+                  <View style={styles.detailsTextColCol}>
                     <Text style={styles.detailsLabel}>Project Partner</Text>
                     <Text style={styles.detailsValue}>{projectPartnerText}</Text>
                   </View>
                 </View>
 
-                <View style={styles.detailsItem}>
+                {/* Soil Type - Row item */}
+                <View style={styles.detailsItemRow}>
                   <View style={styles.detailsIconBg}>
                     <Image source={Images.soiltype} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.detailsTextCol}>
-                    <Text style={styles.detailsLabel}>Soil Type</Text>
-                    <Text style={styles.detailsValue}>{soilTypeText}</Text>
+                  <View style={styles.detailsTextColRow}>
+                    <Text style={styles.detailsLabelRow}>Soil Type</Text>
+                    <Text style={styles.detailsValueRow}>{soilTypeText}</Text>
                   </View>
                 </View>
 
-                <View style={styles.detailsItem}>
+                {/* Plantation Method - Col item */}
+                <View style={styles.detailsItemCol}>
                   <View style={styles.detailsIconBg}>
                     <Image source={Images.treeIcon} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.detailsTextCol}>
+                  <View style={styles.detailsTextColCol}>
                     <Text style={styles.detailsLabel}>Plantation Method</Text>
                     <Text style={styles.detailsValue}>{plantationMethodText}</Text>
                   </View>
                 </View>
 
-                <View style={styles.detailsItem}>
+                {/* Rainfall - Row item */}
+                <View style={styles.detailsItemRow}>
                   <View style={styles.detailsIconBg}>
                     <Image source={Images.drop} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.detailsTextCol}>
-                    <Text style={styles.detailsLabel}>Rainfall</Text>
-                    <Text style={styles.detailsValue}>{rainfallText}</Text>
+                  <View style={styles.detailsTextColRow}>
+                    <Text style={styles.detailsLabelRow}>Rainfall</Text>
+                    <Text style={styles.detailsValueRow}>{rainfallText}</Text>
                   </View>
                 </View>
 
-                <View style={styles.detailsItem}>
+                {/* Maintenance - Col item */}
+                <View style={styles.detailsItemCol}>
                   <View style={styles.detailsIconBg}>
                     <Image source={Images.maintaince} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
-                  <View style={styles.detailsTextCol}>
+                  <View style={styles.detailsTextColCol}>
                     <Text style={styles.detailsLabel}>Maintenance</Text>
                     <Text style={styles.detailsValue}>{maintenanceText}</Text>
                   </View>
@@ -479,15 +512,13 @@ const ProjectSelectScreen = () => {
                 Choose a tree and continue your plantation journey.
               </Text>
             </View>
-          </View>
-          <View style={styles.bannerBtnContainer}>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.bannerBtn}
               activeOpacity={0.8}
               onPress={() => navigation.navigate('ChooseSpecies', { project, selectedTreeId })}
             >
               <Text style={styles.bannerBtnText}>Choose Tree Species →</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </ScrollView>
 

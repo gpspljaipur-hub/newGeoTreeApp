@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   heroImage: {
     width: '100%',
-    height: HWSize.H_Height168,
+    height: 220,
     justifyContent: 'center',
   },
   heroImageRadius: {
@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: MarginHW.PaddingW20,
     justifyContent: 'center',
+    top: 10,
   },
   heroTextContainer: {
     width: '60%',

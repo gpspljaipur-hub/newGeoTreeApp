@@ -327,14 +327,13 @@ const StatewiseScreen = () => {
   };
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
-      <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
           {/* Header Image Background */}
           <ImageBackground
-            source={Images.location_hero_bg}
+            source={Images.BgState}
             style={styles.headerBackground}
-            resizeMode="cover"
+            resizeMode='cover'
           >
             <View style={styles.headerOverlay} />
             {/* Top row actions */}
@@ -350,7 +349,7 @@ const StatewiseScreen = () => {
 
             {/* Header titles */}
             <View style={styles.headerTextContainer}>
-              <Text style={styles.headerTitle}>{stateName} {'\n'}Plantation Projects</Text>
+              <Text style={styles.headerTitle}>{stateName} Plantation  {'\n'}Projects</Text>
               <Text style={styles.headerSubtitle}>{stateData.subtitle}</Text>
             </View>
           </ImageBackground>
@@ -359,31 +358,37 @@ const StatewiseScreen = () => {
           <View style={styles.statsCardContainer}>
             <View style={styles.statsCard}>
               <View style={styles.statColumn}>
-                <View style={styles.statIconBadge}>
-                  <Image source={Images.leaf} style={styles.statIcon} resizeMode="contain" />
+                <View style={[styles.statIconBadge, { backgroundColor: '#EFF5F0' }]}>
+                  <Image source={Images.treeIcon} style={[styles.statIcon, { tintColor: '#056213' }]} resizeMode="contain" />
                 </View>
-                <Text style={styles.statValue}>{stateData.treesPlanted}</Text>
-                <Text style={styles.statLabel}>Trees Planted</Text>
+                <View style={styles.statTextCol}>
+                  <Text style={styles.statValue}>{stateData.treesPlanted}</Text>
+                  <Text style={styles.statLabel}>Trees Planted</Text>
+                </View>
               </View>
 
               <View style={styles.statDivider} />
 
               <View style={styles.statColumn}>
-                <View style={[styles.statIconBadge, { backgroundColor: '#EEF6F2' }]}>
-                  <Image source={Images.location} style={[styles.statIcon, { tintColor: '#1E6B46' }]} resizeMode="contain" />
+                <View style={[styles.statIconBadge, { backgroundColor: '#EFF5F0' }]}>
+                  <Image source={Images.location} style={[styles.statIcon, { tintColor: '#056213' }]} resizeMode="contain" />
                 </View>
-                <Text style={styles.statValue}>{stateData.locationsCovered}</Text>
-                <Text style={styles.statLabel}>Locations Covered</Text>
+                <View style={styles.statTextCol}>
+                  <Text style={styles.statValue}>{stateData.locationsCovered}</Text>
+                  <Text style={styles.statLabel}>Locations Covered</Text>
+                </View>
               </View>
 
               <View style={styles.statDivider} />
 
               <View style={styles.statColumn}>
-                <View style={[styles.statIconBadge, { backgroundColor: '#EEF6F2' }]}>
-                  <Image source={Images.co2Cloud} style={[styles.statIcon, { tintColor: '#1E6B46' }]} resizeMode="contain" />
+                <View style={[styles.statIconBadge, { backgroundColor: '#EFF5F0' }]}>
+                  <Image source={Images.co2Cloud} style={[styles.statIcon, { tintColor: '#056213' }]} resizeMode="contain" />
                 </View>
-                <Text style={styles.statValue}>{stateData.co2Offset}</Text>
-                <Text style={styles.statLabel}>Tons CO₂ Offset</Text>
+                <View style={styles.statTextCol}>
+                  <Text style={styles.statValue}>{stateData.co2Offset}</Text>
+                  <Text style={styles.statLabel}>Tons CO₂ Offset</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -408,6 +413,7 @@ const StatewiseScreen = () => {
                     <ImageBackground
                       source={loc.image}
                       style={styles.horizontalCardImage}
+                      imageStyle={{ borderRadius: 4 }}
                       resizeMode="cover"
                     >
                       <View style={styles.horizontalLocationBadge}>
@@ -417,9 +423,7 @@ const StatewiseScreen = () => {
                     </ImageBackground>
                   </View>
 
-                  {/* Right Column: Content */}
                   <View style={styles.horizontalCardContent}>
-                    {/* Title and Favorite Row */}
                     <View style={styles.horizontalTitleRow}>
                       <Text style={styles.horizontalCardTitle}>
                         {loc.name}
@@ -438,7 +442,7 @@ const StatewiseScreen = () => {
                     </View>
 
                     {/* Description */}
-                    <Text style={styles.horizontalCardDesc}>
+                    <Text numberOfLines={1} style={styles.horizontalCardDesc}>
                       {loc.description}
                     </Text>
 
@@ -449,26 +453,20 @@ const StatewiseScreen = () => {
                     <View style={styles.horizontalSpecsRow}>
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.tree} style={styles.horizontalSpecIcon} resizeMode="contain" />
-                        <View style={styles.horizontalSpecTextContainer}>
-                          <Text style={styles.horizontalSpecValue}>{loc.treesPlanted}</Text>
-                          <Text style={styles.horizontalSpecLabel}>Trees Planted</Text>
-                        </View>
+                        <Text style={styles.horizontalSpecValue}>{loc.treesPlanted}</Text>
+                        <Text style={styles.horizontalSpecLabel}>Trees Planted</Text>
                       </View>
 
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.verified} style={styles.horizontalSpecIcon} resizeMode="contain" />
-                        <View style={styles.horizontalSpecTextContainer}>
-                          <Text style={styles.horizontalSpecValue}>GPS</Text>
-                          <Text style={styles.horizontalSpecLabel}>Verified</Text>
-                        </View>
+                        <Text style={styles.horizontalSpecValue}>GPS</Text>
+                        <Text style={styles.horizontalSpecLabel}>Verified</Text>
                       </View>
 
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.check} style={styles.horizontalSpecIcon} resizeMode="contain" />
-                        <View style={styles.horizontalSpecTextContainer}>
-                          <Text style={styles.horizontalSpecValue}>{loc.survivalRate}</Text>
-                          <Text style={styles.horizontalSpecLabel}>Tree Survival Rate</Text>
-                        </View>
+                        <Text style={styles.horizontalSpecValue}>{loc.survivalRate}</Text>
+                        <Text style={styles.horizontalSpecLabel}>Tree Survival Rate</Text>
                       </View>
                     </View>
 
@@ -480,49 +478,44 @@ const StatewiseScreen = () => {
                     >
                       <View style={{ width: 12 }} />
                       <Text style={styles.horizontalExploreButtonText}>Explore Project</Text>
-                      <Text style={styles.horizontalExploreButtonArrow}>→</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
               );
             })}
 
-            {/* Why Choose Section */}
             <View style={styles.whySection}>
               <View style={styles.whyHeaderRow}>
                 <Text style={styles.whyTitle}>Why Choose Our Plantation Projects?</Text>
-                <Image source={Images.leaf} style={styles.whyTitleLeaf} resizeMode="contain" />
+                {/* <Image source={Images.leaf} style={styles.whyTitleLeaf} resizeMode="contain" /> */}
               </View>
 
               <View style={styles.whyGrid}>
-                {WHY_CHOOSE_DATA.map((item) => (
-                  <View key={item.id} style={styles.whyGridItem}>
-                    <View style={styles.whyIconBadge}>
-                      <Image source={item.icon} style={styles.whyGridIcon} resizeMode="contain" />
+                {WHY_CHOOSE_DATA.map((item, index) => (
+                  <React.Fragment key={item.id}>
+                    {index > 0 && <View style={styles.whyDivider} />}
+                    <View style={styles.whyGridItem}>
+                      <View style={styles.whyIconBadge}>
+                        <Image source={item.icon} style={styles.whyGridIcon} resizeMode="contain" />
+                      </View>
+                      <Text style={styles.whyItemTitle}>{item.title}</Text>
+                      <Text style={styles.whyItemDesc}>{item.desc}</Text>
                     </View>
-                    <Text style={styles.whyItemTitle}>{item.title}</Text>
-                    <Text style={styles.whyItemDesc}>{item.desc}</Text>
-                  </View>
+                  </React.Fragment>
                 ))}
               </View>
+            </View>
+
+          </View>
+
+          <View style={styles.bottomBanner}>
+            <Image source={Images.handtree} style={styles.bottomBannerIcon} resizeMode="cover" />
+            <View style={styles.bottomBannerTextContainer}>
+              <Text style={styles.bottomBannerText}>Select a Project to Plant Your Tree</Text>
             </View>
           </View>
         </ScrollView>
 
-        {/* Sticky Select Banner at Bottom */}
-        <View style={styles.bottomBanner}>
-          <Image source={Images.handtree} style={styles.bottomBannerIcon} resizeMode="cover" />
-          <View style={styles.bottomBannerTextContainer}>
-            <Text style={styles.bottomBannerText}>Select a Project to Plant Your Tree</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.bottomBannerButton}
-            activeOpacity={0.8}
-            onPress={() => navigation.navigate('Choicetreeplantation', { stateName, selectedProjId: stateData.locations[0]?.id })}
-          >
-            <Text style={styles.bottomBannerArrow}>→</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </SafeAreaView>
   );
