@@ -47,8 +47,8 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   backIcon: {
-    width: ImageSize.ImageW16,
-    height: ImageSize.ImageH16,
+    width: 20,
+    height: 20,
     tintColor: Colors.textDark,
   },
   headerContentRow: {

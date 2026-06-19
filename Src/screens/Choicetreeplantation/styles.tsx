@@ -18,13 +18,13 @@ export const styles = StyleSheet.create({
   },
   // Top Header navigation row
   headerRow: {
+
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: MarginHW.PaddingW16,
     paddingTop: 10,
-    backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    backgroundColor: 'transparent',
+
   },
   backButton: {
     width: 36,
@@ -39,18 +39,37 @@ export const styles = StyleSheet.create({
     height: 16,
     tintColor: Colors.textDark,
   },
-  // Stepper UI
   stepperContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     marginLeft: 10,
-    paddingVertical: 10
+    paddingVertical: 10,
+    position: 'relative',
+  },
+  stepperLine: {
+    position: 'absolute',
+    left: 20,
+    right: 20,
+    top: 22,
+    height: 1,
+    backgroundColor: '#E2ECE5',
+    zIndex: 1,
+  },
+  stepperLineActive: {
+    position: 'absolute',
+    left: 20,
+    right: '50%',
+    top: 22,
+    height: 1,
+    backgroundColor: Colors.legacyGreen,
+    zIndex: 1.5,
   },
   stepItem: {
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 2,
   },
   stepCircle: {
     width: 24,
@@ -102,7 +121,7 @@ export const styles = StyleSheet.create({
     ...StyleSheet.absoluteFill,
 
     paddingHorizontal: MarginHW.PaddingW16,
-    paddingTop: 24,
+    paddingTop: 50,
     justifyContent: 'space-between',
   },
   heroTextContainer: {

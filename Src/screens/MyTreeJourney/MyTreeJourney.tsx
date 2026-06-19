@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import Images from '../../constants/images';
 import { Colors } from '../../comman/Colors';
 import { styles } from './styles';
@@ -172,7 +172,8 @@ const MyTreeJourneyScreen = () => {
     ];
 
     const handleSharePlatform = (platform: string) => {
-        Alert.alert('Share', `Sharing your environmental impact on ${platform}!`);
+        handleNavigation({ type: 'setRoot', navigation, page: 'Home' })
+        // Alert.alert('Share', `Sharing your environmental impact on ${platform}!`);
     };
 
     const handleDownloadInvoice = () => {
@@ -203,7 +204,7 @@ const MyTreeJourneyScreen = () => {
 
                         <View style={styles.headerRightCol}>
                             <View style={styles.headerActions}>
-                                <TouchableOpacity
+                                {/* <TouchableOpacity
                                     style={styles.actionButtonCircle}
                                     onPress={() => handleSharePlatform('Generic Share')}
                                     activeOpacity={0.7}
@@ -215,7 +216,7 @@ const MyTreeJourneyScreen = () => {
                                         <View style={[styles.shareLine, { width: 7, left: 3, top: 3.5, transform: [{ rotate: '-30deg' }] }]} />
                                         <View style={[styles.shareLine, { width: 7, left: 3, top: 8, transform: [{ rotate: '30deg' }] }]} />
                                     </View>
-                                </TouchableOpacity>
+                                </TouchableOpacity> */}
 
                                 <TouchableOpacity
                                     style={styles.actionButtonCircle}
@@ -588,6 +589,8 @@ const MyTreeJourneyScreen = () => {
                         <Text style={styles.stickyButtonRightText}>Share My Impact</Text>
                     </TouchableOpacity>
                 </View>
+
+
 
                 {/* Bottom tab bar simulation */}
                 {/* <View style={styles.tabBarContainer}>

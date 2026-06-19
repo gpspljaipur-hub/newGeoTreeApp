@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: MarginHW.PaddingW16,
-    marginVertical: 15,
+    marginTop: 25,
     backgroundColor: 'transparent',
   },
   headerLeftCol: {
@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
   },
   headerTitle: {
-    fontSize: FontsSize.size14,
+    fontSize: FontsSize.size16,
     fontFamily: fonts.OpenSans_Bold,
     color: '#111827',
   },

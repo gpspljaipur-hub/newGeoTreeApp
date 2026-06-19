@@ -13,7 +13,7 @@ import Images from '../../constants/images';
 import { Colors } from '../../comman/Colors';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type StatewiseScreenRouteProp = RouteProp<RootStackParamList, 'Statewise'>;
@@ -325,6 +325,11 @@ const StatewiseScreen = () => {
   const handleBack = () => {
     navigation.goBack();
   };
+
+  const ProjectToPlan = () => {
+    handleNavigation({ type: 'push', page: 'ProjectSelect', navigation });
+
+  }
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
       <View style={styles.container}>
@@ -508,12 +513,12 @@ const StatewiseScreen = () => {
 
           </View>
 
-          <View style={styles.bottomBanner}>
+          <TouchableOpacity onPress={() => { ProjectToPlan() }} style={styles.bottomBanner}>
             <Image source={Images.handtree} style={styles.bottomBannerIcon} resizeMode="cover" />
             <View style={styles.bottomBannerTextContainer}>
               <Text style={styles.bottomBannerText}>Select a Project to Plant Your Tree</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
 
       </View>

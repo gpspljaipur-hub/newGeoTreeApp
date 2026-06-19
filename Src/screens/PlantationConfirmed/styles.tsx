@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 30,
+    top: 25,
     left: 16,
     width: 36,
     height: 36,

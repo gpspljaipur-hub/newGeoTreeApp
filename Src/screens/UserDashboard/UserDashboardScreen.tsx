@@ -127,6 +127,10 @@ const UserDashboardScreen = () => {
     { id: '4', label: String.Dashboard_CommStates, value: '28', icon: Images.geolocation },
   ];
 
+  const StartYourJourney = () => {
+    navigation.navigate('PlantationJourneyScreen')
+  }
+
   return (
 
     <View style={styles.container}>
@@ -211,7 +215,7 @@ const UserDashboardScreen = () => {
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.journeyList}
             renderItem={({ item }) => (
-              <TouchableOpacity style={styles.journeyCard} activeOpacity={0.9}>
+              <TouchableOpacity onPress={() => { StartYourJourney() }} style={styles.journeyCard} activeOpacity={0.9}>
                 <View style={styles.journeyImageContainer}>
                   <Image source={item.image} style={styles.journeyImage} resizeMode="cover" />
                 </View>

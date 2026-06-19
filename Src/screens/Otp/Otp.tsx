@@ -112,32 +112,34 @@ const OtpScreen = () => {
     };
 
     const handleVerifyOTP = async () => {
+        handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+
         if (code.length < 6) return;
-        try {
-            setLoader(true);
-            const mobileNum = rawPhoneNumber.replace('+91', '').replace(/\s+/g, '').trim();
-            const verifyData = { mobile: mobileNum, otp: code, device_token: fcmToken };
-            const response: any = await (dispatch as any)(Auth_Api(ApiUrl.VERIFY_OTP, verifyData));
-            const userinfo = response?.data?.data?.data;
-            if (!userinfo) {
-                Helper.showToast("Verification failed, please try again");
-                setLoader(false);
-                return;
-            }
-            if (!userinfo?.token) {
-                Helper.showToast("Verification failed, invalid token");
-                setLoader(false);
-                return;
-            }
-            setLoader(false);
-            await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
-            dispatch(loginSuccess(userinfo));
-            handleNavigation({ type: 'setRoot', page: 'Home', navigation });
-        } catch (e) {
-            console.log('Error verifying OTP:', e);
-        } finally {
-            setLoader(false);
-        }
+        // try {
+        //     setLoader(true);
+        //     const mobileNum = rawPhoneNumber.replace('+91', '').replace(/\s+/g, '').trim();
+        //     const verifyData = { mobile: mobileNum, otp: code, device_token: fcmToken };
+        //     const response: any = await (dispatch as any)(Auth_Api(ApiUrl.VERIFY_OTP, verifyData));
+        //     const userinfo = response?.data?.data?.data;
+        //     if (!userinfo) {
+        //         Helper.showToast("Verification failed, please try again");
+        //         setLoader(false);
+        //         return;
+        //     }
+        //     if (!userinfo?.token) {
+        //         Helper.showToast("Verification failed, invalid token");
+        //         setLoader(false);
+        //         return;
+        //     }
+        //     setLoader(false);
+        //     await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
+        //     dispatch(loginSuccess(userinfo));
+        //     handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+        // } catch (e) {
+        //     console.log('Error verifying OTP:', e);
+        // } finally {
+        //     setLoader(false);
+        // }
     };
 
     const handleTermsPress = () => {

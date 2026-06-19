@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import Images from '../../constants/images';
@@ -395,6 +395,10 @@ const StatePaymentScreen = () => {
             <TouchableOpacity
               style={styles.paymentButton}
               activeOpacity={0.9}
+              onPress={() => {
+                handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+                // navigation.navigate('PlantationConfirmed')
+              }}
             >
               <Image
                 source={Images.handtree}

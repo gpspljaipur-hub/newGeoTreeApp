@@ -68,9 +68,19 @@ const PlantationConfirmedScreen = () => {
     const projectName = route.params?.projectName ?? 'Aravalli Restoration Project';
     const co2 = route.params?.co2 ?? (qty * 22);
 
+    const handleGoToJourney = () => {
+        navigation.navigate('MyTreeJourneyScreen', {
+            qty,
+            treeName,
+            stateName,
+            projectName,
+            co2
+        });
+    };
+
     const handleTrackTrees = () => {
         // Navigate back to Home tabs
-        navigation.navigate('Home');
+        navigation.navigate('Portfolio');
     };
 
     const handleDownloadReceipt = () => {
@@ -363,9 +373,10 @@ const PlantationConfirmedScreen = () => {
                     <View style={styles.shareDivider} />
 
                     {/* Track and Receipt Action Buttons */}
-                    <TouchableOpacity style={styles.primaryBtn} onPress={handleTrackTrees} activeOpacity={0.9}>
-                        <Text style={styles.primaryBtnText}>Track My Trees</Text>
-                        <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold', marginLeft: 4 }}>→</Text>
+
+
+                    <TouchableOpacity style={styles.secondaryBtn} onPress={handleTrackTrees} activeOpacity={0.8}>
+                        <Text style={styles.secondaryBtnText}>Track My Trees</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.secondaryBtn} onPress={handleDownloadReceipt} activeOpacity={0.8}>
