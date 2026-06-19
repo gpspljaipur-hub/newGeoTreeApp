@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Colors } from '../../comman/Colors';
 import FontsSize from '../../comman/FontsSize';
@@ -20,30 +20,31 @@ export const styles = StyleSheet.create({
     paddingBottom: MarginHW.MarginH100,
   },
   headerSection: {
-    width: wp(100),
-    alignSelf: 'stretch',
-    paddingHorizontal: MarginHW.PaddingW12,
-    paddingTop: MarginHW.PaddingH60,
-    paddingBottom: MarginHW.PaddingH40,
-    position: 'relative',
+    width: '100%',
+    height: 240,
+    paddingBottom: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerImageStyle: {
-    width: '130%',
-    height: '160%',
-    left: 25,
-    top: 10,
+
+
   },
   headerTopRow: {
+    position: 'absolute',
+    top: 30,
+    left: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     zIndex: 10,
     marginBottom: MarginHW.MarginH6,
+
   },
   backButton: {
-    width: ImageSize.ImageW30,
-    height: ImageSize.ImageH30,
-    borderRadius: ImageSize.ImageW30 / 2,
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
     backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
@@ -62,6 +63,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    marginHorizontal: MarginHW.MarginW10,
+    marginTop: MarginHW.MarginH30,
   },
   headerTextContainer: {
     flex: 1,
@@ -88,7 +91,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.85)',
-    borderRadius: 30,
+    borderRadius: 10,
     paddingHorizontal: MarginHW.PaddingW10,
     paddingVertical: 5,
     marginTop: MarginHW.MarginH10,
@@ -107,23 +110,24 @@ export const styles = StyleSheet.create({
     marginHorizontal: MarginHW.MarginW8,
   },
   headerBadgeIcon: {
-    width: 16,
-    height: 16,
+    width: 10,
+    height: 10,
     tintColor: Colors.legacyGreen,
     marginRight: 4,
   },
   headerBadgeText: {
-    fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size10,
     color: Colors.textGreenDark,
   },
 
   // Floating summary Card
   card: {
     backgroundColor: Colors.white,
-    borderRadius: 16,
-    padding: MarginHW.PaddingW12,
-    marginHorizontal: MarginHW.MarginW20,
+    borderRadius: 10,
+    paddingVertical: MarginHW.PaddingW8,
+    paddingHorizontal: MarginHW.PaddingW10,
+    marginHorizontal: MarginHW.MarginW10,
     marginTop: -30,
     borderWidth: 1,
     borderColor: '#F2F4F3',
@@ -150,12 +154,12 @@ export const styles = StyleSheet.create({
   },
   summaryContent: {
     flexDirection: 'row',
-    alignItems: 'stretch',
+
   },
   summaryImage: {
-    width: wp(26),
-    height: hp(18),
-    borderRadius: 12,
+    width: '100%',
+    height: Dimensions.get("window").height / 4.8,
+    borderRadius: 10,
     marginRight: MarginHW.MarginW12,
   },
   summaryDetails: {
@@ -163,9 +167,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   detailRow: {
+    height: 70,
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    marginBottom: MarginHW.MarginH8,
+    alignItems: 'center',
+
   },
   detailCircle: {
     width: 24,
@@ -240,11 +245,11 @@ export const styles = StyleSheet.create({
 
   // Impact Preview
   impactPreviewCard: {
-    backgroundColor: Colors.white,
-    borderRadius: 16,
-    padding: MarginHW.PaddingW12,
-    marginHorizontal: MarginHW.MarginW20,
-    marginTop: MarginHW.MarginH12,
+    backgroundColor: Colors.listBg,
+    borderRadius: 10,
+    paddingHorizontal: MarginHW.PaddingW3,
+    marginHorizontal: MarginHW.MarginW10,
+    marginTop: MarginHW.MarginH10,
     borderWidth: 1,
     borderColor: '#F2F4F3',
   },
@@ -255,6 +260,7 @@ export const styles = StyleSheet.create({
     marginTop: MarginHW.MarginH4,
   },
   impactItem: {
+    flex: 1,
     alignItems: 'center',
     paddingHorizontal: 2,
   },
@@ -265,29 +271,28 @@ export const styles = StyleSheet.create({
     marginBottom: 6,
   },
   impactItemValue: {
-    fontFamily: fonts.OpenSans_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size12,
     color: Colors.textDarkGreen,
     textAlign: 'center',
   },
   impactItemLabel: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size11,
+    fontSize: 8,
     color: Colors.textLabelGrey,
     textAlign: 'center',
     marginTop: 2,
-    lineHeight: 12,
+    lineHeight: 8,
   },
   impactDivider: {
     width: 1,
+    height: 45,
     backgroundColor: '#E5E7EB',
-    alignSelf: 'stretch',
-    marginVertical: MarginHW.MarginH6,
   },
 
   // Two columns on grid - changed to stacked vertical cards
   splitGrid: {
-    marginHorizontal: MarginHW.MarginW20,
+    marginHorizontal: MarginHW.MarginW10,
     marginTop: MarginHW.MarginH6,
   },
   leftCol: {
@@ -297,7 +302,7 @@ export const styles = StyleSheet.create({
   },
   cardInner: {
     backgroundColor: Colors.white,
-    borderRadius: 16,
+    borderRadius: 10,
     padding: MarginHW.PaddingW12,
     borderWidth: 1,
     borderColor: '#F2F4F3',
@@ -477,7 +482,7 @@ export const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#F3F4F6',
     backgroundColor: Colors.white,
-    paddingHorizontal: MarginHW.PaddingW20,
+    paddingHorizontal: MarginHW.PaddingW10,
     paddingTop: MarginHW.PaddingH5,
     paddingBottom: MarginHW.PaddingH10,
     position: 'absolute',

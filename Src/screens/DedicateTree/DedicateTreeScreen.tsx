@@ -62,11 +62,11 @@ const DedicateTreeScreen = () => {
 
   // Form States
   const [selectedOptionId, setSelectedOptionId] = useState('myself');
-  const [recipientName, setRecipientName] = useState('');
-  const [occasion, setOccasion] = useState('');
-  const [occasionDate, setOccasionDate] = useState('');
-  const [email, setEmail] = useState('');
-  const [personalMessage, setPersonalMessage] = useState('');
+  const [recipientName, setRecipientName] = useState('Aarav Sharma');
+  const [occasion, setOccasion] = useState('Birthday');
+  const [occasionDate, setOccasionDate] = useState('12 June 2010');
+  const [email, setEmail] = useState('aarav.sharma@gmail.com');
+  const [personalMessage, setPersonalMessage] = useState('Happy Birthday Aarav 🌱\n\nMay this tree grow stronger every year, just like your dreams.');
   const [quantity, setQuantity] = useState(1);
 
   // Checkbox States
@@ -169,13 +169,12 @@ const DedicateTreeScreen = () => {
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
-      <StatusBar barStyle="dark-content" translucent={true} backgroundColor="transparent" />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
 
           {/* Header section with background */}
           <ImageBackground
-            source={Images.species}
+            source={Images.DedicatedBg}
             style={styles.headerSection}
             resizeMode="cover"
           >
@@ -188,48 +187,50 @@ const DedicateTreeScreen = () => {
                 <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
               </TouchableOpacity>
             </View>
+            <View style={{ paddingHorizontal: 14, paddingTop: 75 }}>
 
-            <View style={styles.headerContentRow}>
-              <View style={styles.headerTextContainer}>
-                <View style={styles.headerTitleRow}>
-                  <Text style={styles.headerTitle}>{"Dedicate Your Tree"}</Text>
+              <View style={styles.headerContentRow}>
+                <View style={styles.headerTextContainer}>
+                  <View style={styles.headerTitleRow}>
+                    <Text style={styles.headerTitle}>{"Dedicate Your Tree"}</Text>
+                  </View>
+                  <Text style={styles.headerSubtitle}>
+                    Make this plantation meaningful {'\n'}by dedicating it to someone special.
+                  </Text>
                 </View>
-                <Text style={styles.headerSubtitle}>
-                  Make this plantation meaningful {'\n'}by dedicating it to someone special.
-                </Text>
+              </View>
+
+              {/* Floating Selected Tree & Project Summary Card */}
+              <View style={styles.summaryCard}>
+                <View style={[styles.summaryCol, styles.summaryColLeft]}>
+                  <Image source={currentSpecies.image} style={styles.thumbnail} resizeMode="cover" />
+                  <View style={styles.summaryTextContainer}>
+                    <Text style={styles.summaryValue}>{currentSpecies.name}</Text>
+                    <Text style={styles.summarySub}>{currentSpecies.scientificName}</Text>
+                    {/* <View style={styles.nativeBadge}>
+                      <View style={styles.nativeDot} />
+                      <Text style={styles.nativeText}>Native Species</Text>
+                    </View> */}
+                  </View>
+                </View>
+
+                <View style={styles.summaryDivider} />
+
+                <View style={[styles.summaryCol, styles.summaryColRight]}>
+                  <Text style={styles.summaryValue}>{currentProject.name}</Text>
+                  <View style={styles.locationContainer}>
+                    <Image source={Images.location} style={styles.locationIcon} resizeMode="contain" />
+                    <Text style={styles.locationText}>{currentProject.city}</Text>
+                  </View>
+                  {/* <View style={styles.gpsBadge}>
+                    <Image source={Images.verified} style={styles.gpsIcon} resizeMode="contain" />
+                    <Text style={styles.gpsText}>GPS Verified</Text>
+                  </View> */}
+                </View>
               </View>
             </View>
+
           </ImageBackground>
-
-          {/* Floating Selected Tree & Project Summary Card */}
-          <View style={styles.summaryCard}>
-            <View style={[styles.summaryCol, styles.summaryColLeft]}>
-              <Image source={currentSpecies.image} style={styles.thumbnail} resizeMode="cover" />
-              <View style={styles.summaryTextContainer}>
-                <Text style={styles.summaryLabel}>Selected Tree</Text>
-                <Text style={styles.summaryValue}>{currentSpecies.name}</Text>
-                <Text style={styles.summarySub}>{currentSpecies.scientificName}</Text>
-                <View style={styles.nativeBadge}>
-                  <Text style={styles.nativeText}>Native Species</Text>
-                </View>
-              </View>
-            </View>
-
-            <View style={styles.summaryDivider} />
-
-            <View style={[styles.summaryCol, styles.summaryColRight]}>
-              <Text style={styles.summaryLabel}>Project</Text>
-              <Text style={styles.summaryValue}>{currentProject.name}</Text>
-              <View style={styles.locationContainer}>
-                <Image source={Images.location} style={styles.locationIcon} resizeMode="contain" />
-                <Text style={styles.locationText}>{currentProject.city}</Text>
-              </View>
-              <View style={styles.gpsBadge}>
-                <Image source={Images.verified} style={styles.gpsIcon} resizeMode="contain" />
-                <Text style={styles.gpsText}>GPS Verified</Text>
-              </View>
-            </View>
-          </View>
 
           {/* Who is this tree for? */}
           <View style={styles.section}>
@@ -263,7 +264,7 @@ const DedicateTreeScreen = () => {
                       style={[styles.optionIcon, isSelected && styles.optionIconSelected]}
                       resizeMode="contain"
                     />
-                    <Text style={styles.optionTitle}>{opt.title}</Text>
+                    <Text style={[styles.optionTitle, isSelected && { color: '#056213' }]}>{opt.title}</Text>
                     <Text style={styles.optionSubtitle}>{opt.subtitle}</Text>
                   </TouchableOpacity>
                 );
@@ -321,7 +322,9 @@ const DedicateTreeScreen = () => {
               {/* Occasion Date */}
               <View style={styles.inputCol}>
                 <View style={styles.inputLabelRow}>
-                  <Text style={styles.inputLabel}>Occasion Date</Text>
+                  <Text style={styles.inputLabel}>
+                    {occasion ? `${occasion} Date` : 'Occasion Date'}
+                  </Text>
                   <Text style={styles.requiredStar}>*</Text>
                 </View>
                 <TouchableOpacity
@@ -358,8 +361,7 @@ const DedicateTreeScreen = () => {
             </View>
           </View>
 
-          {/* Personal Message */}
-          <View style={[styles.section, { marginTop: -MarginHW.MarginH4 }]}>
+          <View style={styles.messageSection}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>Personal Message</Text>
               <Image source={Images.leaf} style={styles.sectionTitleLeaf} resizeMode="contain" />
@@ -378,11 +380,11 @@ const DedicateTreeScreen = () => {
             </View>
           </View>
 
-          {/* Impact Summary and Checklist Grid */}
-          <View style={[styles.section, { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'stretch' }]}>
 
-            {/* Left: Checklist options */}
-            <View style={{ width: '48%' }}>
+          {/* Two-Column Row Container */}
+          <View style={styles.twoColumnRow}>
+
+            <View style={styles.specialOptionsSection}>
               <View style={styles.sectionHeader}>
                 <Text style={styles.sectionTitle}>Special Options</Text>
                 <Image source={Images.leaf} style={styles.sectionTitleLeaf} resizeMode="contain" />
@@ -455,68 +457,15 @@ const DedicateTreeScreen = () => {
                   <View style={styles.checkboxDetails}>
                     <View style={styles.checkboxHeaderRow}>
                       <Image source={Images.folder} style={styles.checkboxListIcon} resizeMode="contain" />
-                      <Text style={styles.checkboxLabel}>Add Tree to Portfolio</Text>
+                      <Text style={styles.checkboxLabel}>Add Tree to My Impact Portfolio</Text>
                     </View>
                     <Text style={styles.checkboxSublabel}>Track and showcase your green impact</Text>
                   </View>
                 </TouchableOpacity>
               </View>
-
-              {/* Number of Trees Section */}
-              <View style={{ marginTop: MarginHW.MarginH1 }}>
-                {/* Heading */}
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: MarginHW.MarginH6 }}>
-                  <Text style={[styles.sectionTitle, { fontSize: FontsSize.size14 }]}>Number of Trees</Text>
-                </View>
-                <View style={{ alignItems: 'center', marginBottom: MarginHW.MarginH8 }}>
-                  <View style={styles.counterContainer}>
-                    <TouchableOpacity style={styles.counterButton} onPress={decrementQuantity}>
-                      <Text style={styles.counterButtonText}>−</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.counterValue}>{quantity} {quantity === 1 ? 'Tree' : 'Trees'}</Text>
-                    <TouchableOpacity style={styles.counterButton} onPress={incrementQuantity}>
-                      <Text style={styles.counterButtonText}>+</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-                <View>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: MarginHW.MarginH4 }}>
-                    <TouchableOpacity
-                      style={[styles.quickSelectBtn, quantity === 1 && styles.quickSelectBtnSelected]}
-                      onPress={() => setQuantity(1)}
-                    >
-                      <Text style={[styles.quickSelectText, quantity === 1 && styles.quickSelectTextSelected]}>1 Tree</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                      style={[styles.quickSelectBtn, quantity === 5 && styles.quickSelectBtnSelected]}
-                      onPress={() => setQuantity(5)}
-                    >
-                      <Text style={[styles.quickSelectText, quantity === 5 && styles.quickSelectTextSelected]}>5 Trees</Text>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <TouchableOpacity
-                      style={[styles.quickSelectBtn, quantity === 10 && styles.quickSelectBtnSelected]}
-                      onPress={() => setQuantity(10)}
-                    >
-                      <Text style={[styles.quickSelectText, quantity === 10 && styles.quickSelectTextSelected]}>10 Trees</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                      style={[styles.quickSelectBtn, (quantity !== 1 && quantity !== 5 && quantity !== 10) && styles.quickSelectBtnSelected]}
-                      onPress={() => { }}
-                    >
-                      <Text style={[styles.quickSelectText, (quantity !== 1 && quantity !== 5 && quantity !== 10) && styles.quickSelectTextSelected]}>Custom</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
             </View>
 
-            {/* Right: Impact summary card */}
-            <View style={{ width: '48%' }}>
+            <View style={styles.rightColumn}>
               <View style={styles.sectionHeader}>
                 <Text style={styles.sectionTitle}>Impact Summary</Text>
                 <Image source={Images.leaf} style={styles.sectionTitleLeaf} resizeMode="contain" />
@@ -574,49 +523,99 @@ const DedicateTreeScreen = () => {
                     </View>
                   </View>
                 </View>
-
-                {/* Banner bottom */}
-                <View style={styles.greenBanner}>
-                  <Image source={Images.leaf} style={styles.greenBannerIcon} resizeMode="contain" />
-                  <Text style={styles.greenBannerText}>
-                    <Text style={styles.greenBannerStrong}>You are making a real impact!</Text>{'\n'}
-                    Thank you for contributing to a greener tomorrow.
-                  </Text>
-                </View>
               </View>
             </View>
           </View>
+          <View style={styles.greenBanner}>
+            <Image source={Images.leaf} style={styles.greenBannerIcon} resizeMode="contain" />
+            <Text style={styles.greenBannerText}>
+              <Text style={styles.greenBannerStrong}>You are making a real impact!</Text>{'\n'}
+              Thank you for contributing to a greener tomorrow.
+            </Text>
+          </View>
 
+          <View style={styles.numberTreesSection}>
+            <View style={styles.numberTreesHeaderRow}>
+              <View style={styles.sectionHeader}>
+                <Text style={styles.sectionTitle}>Number of Trees</Text>
+                <Image source={Images.leaf} style={styles.sectionTitleLeaf} resizeMode="contain" />
+              </View>
+              <View style={styles.counterContainer}>
+                <TouchableOpacity style={styles.counterButton} onPress={decrementQuantity}>
+                  <Text style={styles.counterButtonText}>−</Text>
+                </TouchableOpacity>
+                <Text style={styles.counterValue}>{quantity} {quantity === 1 ? 'Tree' : 'Trees'}</Text>
+                <TouchableOpacity style={styles.counterButton} onPress={incrementQuantity}>
+                  <Text style={styles.counterButtonText}>+</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
 
+            <FlatList
+              numColumns={4}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.quickSelectRow}
+              data={[
+                { id: '1', label: '1 Tree', value: 1 },
+                { id: '5', label: '5 Trees', value: 5 },
+                { id: '10', label: '10 Trees', value: 10 },
+                { id: 'custom', label: 'Custom', value: null }
+              ]}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => {
+                const isSelected = item.value !== null ? quantity === item.value : (quantity !== 1 && quantity !== 5 && quantity !== 10);
+                return (
+                  <TouchableOpacity
+                    style={[styles.quickSelectBtn, isSelected && styles.quickSelectBtnSelected]}
+                    onPress={() => {
+                      if (item.value !== null) {
+                        setQuantity(item.value);
+                      }
+                    }}
+                  >
+                    <Text style={[styles.quickSelectText, isSelected && styles.quickSelectTextSelected]}>
+                      {item.label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+          </View>
+
+          <View style={styles.footerContainer}>
+            <TouchableOpacity
+              style={styles.paymentButton}
+              activeOpacity={0.9}
+              onPress={() => navigation.navigate('StatePayment', {
+                project: currentProject,
+                selectedSpecies: currentSpecies,
+                quantity,
+                recipientName,
+                occasion,
+                occasionDate,
+                email,
+                personalMessage,
+                sendCertificate,
+              })}
+            >
+              <Image
+                source={Images.handtree}
+                style={styles.paymentButtonLeftImg}
+                resizeMode="contain"
+              />
+              <View style={styles.paymentButtonContent}>
+                <Text style={styles.paymentButtonText}>Continue to Payment</Text>
+              </View>
+            </TouchableOpacity>
+            <View style={styles.secureRow}>
+              <Image source={Images.lock} style={styles.secureIcon} resizeMode="contain" />
+              <Text style={styles.secureText}>Secure Payment  •  SSL Encrypted  •  Trusted by Thousands</Text>
+            </View>
+          </View>
         </ScrollView>
 
         {/* Sticky Footer Continue to Payment */}
-        <View style={styles.footerContainer}>
-          <TouchableOpacity
-            style={styles.paymentButton}
-            activeOpacity={0.9}
-            onPress={() => navigation.navigate('StatePayment', {
-              project: currentProject,
-              selectedSpecies: currentSpecies,
-              quantity,
-              recipientName,
-              occasion,
-              occasionDate,
-              email,
-              personalMessage,
-              sendCertificate,
-            })}
-          >
-            <Image
-              source={Images.handtree}
-              style={styles.paymentButtonLeftImg}
-              resizeMode="contain"
-            />
-            <View style={styles.paymentButtonContent}>
-              <Text style={styles.paymentButtonText}>Continue to Payment →</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+
 
         {/* Occasion Selection Modal */}
         <Modal

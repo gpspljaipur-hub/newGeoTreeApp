@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Colors } from '../../comman/Colors';
 import FontsSize from '../../comman/FontsSize';
@@ -17,15 +17,16 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.containerBg,
   },
   scrollContent: {
-    paddingBottom: MarginHW.MarginH70,
+    paddingBottom: 120,
   },
   headerSection: {
-    paddingHorizontal: MarginHW.PaddingW12,
-    paddingTop: MarginHW.PaddingH50,
-    paddingBottom: 40,
-    position: 'relative',
+    width: '100%',
+    paddingBottom: 15,
   },
   headerTopRow: {
+    position: 'absolute',
+    top: 30,
+    left: 15,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -33,9 +34,9 @@ export const styles = StyleSheet.create({
     marginBottom: MarginHW.MarginH10,
   },
   backButton: {
-    width: ImageSize.ImageW30,
-    height: ImageSize.ImageH30,
-    borderRadius: ImageSize.ImageW30 / 2,
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
     backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
@@ -54,7 +55,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    // marginTop: MarginHW.MarginH4,
   },
   headerTextContainer: {
     flex: 1,
@@ -66,57 +66,62 @@ export const styles = StyleSheet.create({
   },
   headerTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size22,
+    fontSize: FontsSize.size20,
     color: Colors.textDarkGreen,
-    lineHeight: 28,
+    lineHeight: 26,
   },
   headerSubtitle: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size13,
+    fontSize: FontsSize.size12,
     color: Colors.textMuted,
-    marginTop: MarginHW.MarginH4,
-    lineHeight: 18,
+    marginTop: 2,
+    lineHeight: 16,
+  },
+  headerTitleLeaf: {
+    width: 24,
+    height: 24,
+    marginLeft: 6,
   },
 
   // Floating Summary Card
   summaryCard: {
-    marginHorizontal: MarginHW.MarginW20,
-    marginTop: -30,
+    width: '70%',
+    marginTop: 10,
     backgroundColor: Colors.white,
-    borderRadius: FontsSize.size16,
-    paddingVertical: MarginHW.PaddingH12,
-    paddingHorizontal: MarginHW.PaddingW12,
+    borderRadius: 8,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
     borderWidth: 1,
     borderColor: '#F2F4F3',
     shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 3,
+    shadowRadius: 4,
+    elevation: 2,
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
   summaryCol: {
     flex: 1,
-    paddingVertical: 2,
   },
   summaryColLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight: MarginHW.PaddingW10,
+    paddingRight: 3,
   },
   summaryColRight: {
-    paddingLeft: MarginHW.PaddingW12,
+    paddingLeft: MarginHW.PaddingW8,
     justifyContent: 'center',
   },
   summaryDivider: {
     width: 1,
+    height: 40,
     backgroundColor: '#E5E7EB',
   },
   thumbnail: {
-    width: wp(16),
-    height: wp(16),
-    borderRadius: 8,
+    width: wp(12),
+    height: wp(12),
+    borderRadius: 6,
     marginRight: MarginHW.MarginW8,
   },
   summaryTextContainer: {
@@ -130,21 +135,19 @@ export const styles = StyleSheet.create({
   },
   summaryValue: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size14,
+    fontSize: FontsSize.size12,
     color: Colors.textDarkGreen,
     marginTop: 1,
   },
   summarySub: {
-    fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size8,
     color: Colors.textLabelGrey,
     fontStyle: 'italic',
-    marginTop: 1,
   },
   locationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 2,
   },
   locationIcon: {
     width: ImageSize.ImageW14,
@@ -154,16 +157,25 @@ export const styles = StyleSheet.create({
   },
   locationText: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size12,
+    fontSize: FontsSize.size8,
     color: Colors.textLabelGrey,
   },
   nativeBadge: {
     backgroundColor: '#EEF6F2',
     paddingHorizontal: MarginHW.PaddingW6,
-    paddingVertical: 1,
+    paddingVertical: 2,
     borderRadius: 4,
     alignSelf: 'flex-start',
     marginTop: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  nativeDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#056213',
+    marginRight: 4,
   },
   nativeText: {
     fontFamily: fonts.OpenSans_Bold,
@@ -191,7 +203,7 @@ export const styles = StyleSheet.create({
   // Sections
   section: {
     marginTop: MarginHW.MarginH8,
-    paddingHorizontal: MarginHW.PaddingW20,
+    paddingHorizontal: MarginHW.PaddingW14,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -200,32 +212,34 @@ export const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size16,
+    fontSize: FontsSize.size14,
     color: Colors.textDarkGreen,
   },
   sectionTitleLeaf: {
     width: ImageSize.ImageW24,
     height: ImageSize.ImageH24,
     marginLeft: MarginHW.MarginW6,
+    tintColor: Colors.legacyGreen,
   },
 
-  // Options cards list
   optionsContainer: {
-    paddingLeft: MarginHW.PaddingW20,
+    paddingLeft: MarginHW.PaddingW14,
     marginTop: MarginHW.MarginH8,
+    overflow: 'visible',
   },
   optionsScroll: {
-    paddingRight: MarginHW.PaddingW20,
+    paddingTop: 8,
+    overflow: 'visible',
   },
   optionCard: {
-    width: wp(28),
-    height: hp(12.5),
+    width: wp(25),
+    height: hp(11.5),
     backgroundColor: Colors.white,
-    borderRadius: 12,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#E7ECE8',
-    padding: MarginHW.PaddingW8,
-    marginRight: MarginHW.MarginW10,
+    paddingHorizontal: MarginHW.PaddingW5,
+    marginRight: MarginHW.MarginW6,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
@@ -247,12 +261,12 @@ export const styles = StyleSheet.create({
   optionTitle: {
     fontFamily: fonts.OpenSans_Bold,
     fontSize: FontsSize.size12,
-    color: Colors.textGreenDark,
+    color: Colors.textDark,
     textAlign: 'center',
   },
   optionSubtitle: {
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size10,
+    fontSize: FontsSize.size8,
     color: Colors.textLabelGrey,
     textAlign: 'center',
     marginTop: 2,
@@ -260,12 +274,12 @@ export const styles = StyleSheet.create({
   },
   checkBadge: {
     position: 'absolute',
-    top: 5,
-    right: 5,
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: Colors.legacyGreen,
+    top: -6,
+    right: -6,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: '#056213',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 10,
@@ -296,8 +310,8 @@ export const styles = StyleSheet.create({
   },
   inputLabel: {
     fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size13,
-    color: Colors.textGreenDark,
+    fontSize: FontsSize.size10,
+    color: Colors.textDark,
   },
   requiredStar: {
     color: '#E44746',
@@ -306,7 +320,7 @@ export const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: '#FAFBFB',
     borderWidth: 1,
     borderColor: '#E5E7EB',
     borderRadius: 8,
@@ -377,8 +391,9 @@ export const styles = StyleSheet.create({
   // Impact Summary Card
   impactCard: {
     backgroundColor: '#EEF6F2',
-    borderRadius: 16,
-    padding: MarginHW.PaddingH14,
+    borderRadius: 10,
+    paddingVertical: MarginHW.PaddingH8,
+    paddingHorizontal: MarginHW.PaddingW6,
     borderWidth: 1,
     borderColor: '#DCECE3',
   },
@@ -428,7 +443,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#E6F3EC',
     borderRadius: 8,
-    padding: MarginHW.PaddingW10,
+    marginHorizontal: 14,
+    paddingHorizontal: MarginHW.PaddingW10,
+    paddingVertical: MarginHW.PaddingH14,
     marginTop: MarginHW.MarginH4,
   },
   greenBannerText: {
@@ -456,12 +473,9 @@ export const styles = StyleSheet.create({
   checkboxRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    backgroundColor: Colors.white,
-    borderRadius: 10,
-    padding: MarginHW.PaddingW10,
-    marginBottom: MarginHW.MarginH8,
-    borderWidth: 1,
-    borderColor: '#F3F4F6',
+    marginVertical: MarginHW.PaddingW3,
+    paddingVertical: MarginHW.PaddingH8,
+
   },
   checkbox: {
     width: 18,
@@ -497,8 +511,8 @@ export const styles = StyleSheet.create({
     marginRight: MarginHW.MarginW6,
   },
   checkboxLabel: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size13,
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size12,
     color: Colors.textGreenDark,
   },
   checkboxSublabel: {
@@ -539,14 +553,46 @@ export const styles = StyleSheet.create({
     fontSize: FontsSize.size13,
     color: Colors.textDarkGreen,
   },
-  quickSelectRow: {
+  twoColumnRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: MarginHW.PaddingW14,
+    marginTop: MarginHW.MarginH8,
+  },
+  leftColumn: {
+    width: '56%',
+  },
+  rightColumn: {
+    width: '46%',
+  },
+  messageSection: {
+    marginHorizontal: 14,
+  },
+  specialOptionsSection: {
+    width: '49%',
+  },
+
+  numberTreesSection: {
+    marginTop: MarginHW.MarginH16,
+    marginHorizontal: 14
+  },
+  numberTreesHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: MarginHW.MarginH8,
+  },
+  quickSelectRow: {
+
+    flexDirection: 'row',
     marginTop: MarginHW.MarginH10,
+    gap: 6,
   },
   quickSelectBtn: {
-    width: '48%',
+    width: Dimensions.get('window').width / 4 - 10,
     height: 36,
+    paddingHorizontal: 10,
+    marginRight: 4,
     backgroundColor: Colors.white,
     borderWidth: 1,
     borderColor: '#E5E7EB',
@@ -589,8 +635,8 @@ export const styles = StyleSheet.create({
   },
   paymentButton: {
     backgroundColor: '#073E2E', // Dark green matching mockup
-    height: 52,
-    borderRadius: 12,
+    height: 50,
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

@@ -154,7 +154,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'DedicateTree'}
+      initialRouteName={'Statewise'}
       screenOptions={{
         headerShown: false,
       }}
@@ -172,7 +172,6 @@ export default function RootNavigator() {
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="ThankYou" component={ThankYouScreen} />
       <Stack.Screen name="ExploreStates" component={ExploreStatesScreen} />
-      <Stack.Screen name="Statewise" component={StatewiseScreen} />
       <Stack.Screen name="Choicetreeplantation" component={ChoicetreeplantationScreen} />
       <Stack.Screen name="DedicatePlantationScreen" component={DedicatePlantationScreen} />
       <Stack.Screen name="MyTreeJourneyScreen" component={MyTreeJourneyScreen} />
@@ -181,6 +180,7 @@ export default function RootNavigator() {
       <Stack.Screen name="WhichtreeShouldIPlant" component={WhichtreeShouldIPlantScreen} />
       <Stack.Screen name="PlantationConfirmed" component={PlantationConfirmedScreen} />
       <Stack.Screen name="Portfolio" component={PortfolioScreen} />
+      <Stack.Screen name="Statewise" component={StatewiseScreen} />
       <Stack.Screen name="ProjectSelect" component={ProjectSelectScreen} />
       <Stack.Screen name="ChooseSpecies" component={ChooseSpeciesScreen} />
       <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
