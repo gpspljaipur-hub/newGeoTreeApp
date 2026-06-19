@@ -448,11 +448,11 @@ export const styles = StyleSheet.create({
   bottomBanner: {
     backgroundColor: '#eff3e3',
     marginHorizontal: MarginHW.MarginW10,
-    borderRadius: 16,
+    borderRadius: 10,
     height: 125,
     position: 'relative',
     overflow: 'hidden',
-    marginTop: 15,
+    marginTop: 10,
     marginBottom: 20,
     borderWidth: 1,
     borderColor: '#e2ecd1',

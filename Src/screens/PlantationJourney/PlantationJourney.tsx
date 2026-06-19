@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import Images from '../../constants/images';
 import { Colors } from '../../comman/Colors';
 import { styles } from './styles';
@@ -290,7 +290,8 @@ const PlantationJourneyScreen = () => {
                             key={cat.id}
                             style={styles.categoryCard}
                             onPress={() => {
-                                Alert.alert('Category Info', `${cat.title} selected!`);
+                                handleNavigation({ type: 'push', navigation, page: 'WhichtreeShouldIPlant' })
+                                // Alert.alert('Category Info', `${cat.title} selected!`);
                             }}
                             activeOpacity={0.8}
                         >

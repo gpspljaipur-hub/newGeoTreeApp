@@ -102,49 +102,53 @@ const ChoicetreeplantationScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             {/* Top Navigation Row & Stepper Indicator */}
-            <View style={styles.headerRow}>
-                <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()} activeOpacity={0.7}>
-                    <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
-                </TouchableOpacity>
-
-                {/* Stepper indicator */}
-                <View style={styles.stepperContainer}>
-                    <View style={styles.stepItem}>
-                        <View style={[styles.stepCircle, styles.stepCircleCompleted]}>
-                            <Image source={Images.geolocation} style={styles.stepIconCompleted} resizeMode="contain" />
-                        </View>
-                        <Text style={[styles.stepLabel, styles.stepLabelActive]}>State</Text>
-                    </View>
-                    <View style={styles.stepItem}>
-                        <View style={[styles.stepCircle, styles.stepCircleCompleted]}>
-                            <Image source={Images.projectIcon} style={styles.stepIconCompleted} resizeMode="contain" />
-                        </View>
-                        <Text style={[styles.stepLabel, styles.stepLabelActive]}>Project</Text>
-                    </View>
-                    <View style={styles.stepItem}>
-                        <View style={[styles.stepCircle, styles.stepCircleActive]}>
-                            <Image source={Images.treeIcon} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
-                        </View>
-                        <Text style={[styles.stepLabel, styles.stepLabelActive]}>Tree</Text>
-                    </View>
-                    <View style={styles.stepItem}>
-                        <View style={styles.stepCircle}>
-                            <Image source={Images.profile} style={styles.stepIcon} resizeMode="contain" />
-                        </View>
-                        <Text style={styles.stepLabel}>Dedication</Text>
-                    </View>
-                    <View style={styles.stepItem}>
-                        <View style={styles.stepCircle}>
-                            <Image source={Images.lock} style={styles.stepIcon} resizeMode="contain" />
-                        </View>
-                        <Text style={styles.stepLabel}>Payment</Text>
-                    </View>
-                </View>
-            </View>
 
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
                 {/* Hero Banner nature view with overlays */}
                 <ImageBackground source={Images.detailbg} style={styles.heroSection} resizeMode="cover">
+                    <View style={styles.headerRow}>
+                        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+                            <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
+                        </TouchableOpacity>
+
+                        {/* Stepper indicator */}
+                        <View style={styles.stepperContainer}>
+                            <View style={styles.stepperLine} />
+                            <View style={styles.stepperLineActive} />
+                            <View style={styles.stepItem}>
+                                <View style={[styles.stepCircle, styles.stepCircleActive]}>
+                                    <Image source={Images.geolocation} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
+                                </View>
+                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>State</Text>
+                            </View>
+                            <View style={styles.stepItem}>
+                                <View style={[styles.stepCircle, styles.stepCircleActive]}>
+                                    <Image source={Images.projectIcon} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
+                                </View>
+                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>Project</Text>
+                            </View>
+                            <View style={styles.stepItem}>
+                                <View style={[styles.stepCircle, styles.stepCircleActive]}>
+                                    <Image source={Images.treeIcon} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
+                                </View>
+                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>Tree</Text>
+                            </View>
+                            <View style={styles.stepItem}>
+                                <View style={styles.stepCircle}>
+                                    <Image source={Images.profile} style={styles.stepIcon} resizeMode="contain" />
+                                </View>
+                                <Text style={styles.stepLabel}>Dedication</Text>
+                            </View>
+                            <View style={styles.stepItem}>
+                                <View style={styles.stepCircle}>
+                                    <Image source={Images.lock} style={styles.stepIcon} resizeMode="contain" />
+                                </View>
+                                <Text style={styles.stepLabel}>Payment</Text>
+                            </View>
+                        </View>
+                    </View>
+
+
                     <View
                         style={styles.heroOverlay}
                     >

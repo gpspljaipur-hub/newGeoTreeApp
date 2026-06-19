@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation, CommonActions } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import { styles } from './styles';
 import Images from '../../constants/images';
 import PlantHeader from '../../comman/PlantHeader';
@@ -18,6 +18,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ThankYouScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+
+  const handleTrackTree = () => {
+    navigation.navigate("MyTreeJourneyScreen")
+  }
+  const handlePlantAnother = () => {
+    handleNavigation({ type: 'setRoot', navigation, page: 'Home' })
+  }
+
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -285,7 +294,7 @@ const ThankYouScreen = () => {
       <View style={styles.footerContainer}>
         <TouchableOpacity
           style={styles.trackButton}
-          // onPress={handleTrackTree}
+          onPress={handleTrackTree}
           activeOpacity={0.85}
         >
           <Text style={styles.trackButtonText}>Track My Tree</Text>
@@ -298,7 +307,7 @@ const ThankYouScreen = () => {
 
         <TouchableOpacity
           style={styles.plantAnotherButton}
-          // onPress={handlePlantAnother}
+          onPress={handlePlantAnother}
           activeOpacity={0.85}
         >
           <Image source={Images.notification} style={styles.plantAnotherIcon} resizeMode="contain" />

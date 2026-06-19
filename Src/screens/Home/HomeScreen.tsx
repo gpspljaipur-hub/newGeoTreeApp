@@ -157,7 +157,7 @@ const HomeScreen = () => {
 
           <View style={styles.heroButtonRow}>
             {/* Plant your first tree button */}
-            <TouchableOpacity onPress={() => navigation.navigate('StateScreen')} activeOpacity={0.85}>
+            <TouchableOpacity onPress={() => navigation.navigate('ChooseTreeScreen')} activeOpacity={0.85}>
               <LinearGradient
                 colors={['#27702d', '#4a8d21', '#68a212']}
                 style={styles.heroBtnGreenGradient}

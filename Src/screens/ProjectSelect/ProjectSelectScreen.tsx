@@ -109,6 +109,11 @@ const ProjectSelectScreen = () => {
     },
   ];
   const treeSpeciesList = project?.availableSpecies || fallbackSpeciesList;
+
+  const SpeciesAll = () => {
+    navigation.navigate('ChooseSpecies')
+  }
+
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
@@ -390,7 +395,7 @@ const ProjectSelectScreen = () => {
                 <View style={styles.speciesTitleContainer}>
                   <Text style={styles.sectionTitle}>Available Tree Species</Text>
                 </View>
-                <TouchableOpacity style={styles.viewAllSpeciesLink} activeOpacity={0.7}>
+                <TouchableOpacity onPress={() => { SpeciesAll() }} style={styles.viewAllSpeciesLink} activeOpacity={0.7}>
                   <Text style={styles.viewAllSpeciesText}>View All</Text>
                 </TouchableOpacity>
               </View>
@@ -512,14 +517,16 @@ const ProjectSelectScreen = () => {
                 Choose a tree and continue your plantation journey.
               </Text>
             </View>
-            {/* <TouchableOpacity
-              style={styles.bannerBtn}
-              activeOpacity={0.8}
-              onPress={() => navigation.navigate('ChooseSpecies', { project, selectedTreeId })}
-            >
-              <Text style={styles.bannerBtnText}>Choose Tree Species →</Text>
-            </TouchableOpacity> */}
+
           </View>
+
+          <TouchableOpacity
+            style={styles.bannerBtn}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('DedicateTree',)}
+          >
+            <Text style={styles.bannerBtnText}>Choose Tree Species</Text>
+          </TouchableOpacity>
         </ScrollView>
 
         {/* Fullscreen Gallery Modal */}

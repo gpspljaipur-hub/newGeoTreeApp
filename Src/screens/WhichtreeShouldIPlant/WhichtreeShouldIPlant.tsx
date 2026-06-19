@@ -52,13 +52,7 @@ const WhichtreeShouldIPlantScreen = () => {
     };
 
     const handlePlantTree = (treeName: string, co2Val: number, project: string) => {
-        navigation.navigate('DedicatePlantation', {
-            treeName: treeName,
-            qty: 10,
-            projectName: project,
-            stateName: selectedState,
-            co2: co2Val,
-        });
+        navigation.navigate('Choicetreeplantation');
     };
 
     const handleChangeState = () => {

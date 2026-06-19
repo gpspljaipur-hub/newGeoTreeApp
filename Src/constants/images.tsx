@@ -106,6 +106,7 @@ const Images = {
   TreeBgChoose: require('../assets/Images/TreeBgChoose.png'),
   email: require('../assets/Images/email.png'),
   camera: require('../assets/Images/camera.png'),
+  DedicatedBg: require('../assets/Images/DedicatedBg.png'),
 };
 
 export type ImageKey = keyof typeof Images;

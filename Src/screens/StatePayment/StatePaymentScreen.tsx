@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/RootNavigator';
+import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import Images from '../../constants/images';
@@ -62,22 +62,23 @@ const StatePaymentScreen = () => {
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
 
-          {/* Header Section with Forest Background */}
+          <View style={styles.headerTopRow}>
+            <TouchableOpacity
+              style={styles.backButton}
+              activeOpacity={0.7}
+              onPress={() => navigation.goBack()}
+            >
+              <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
+            </TouchableOpacity>
+          </View>
+
           <ImageBackground
-            source={Images.location_hero_bg}
+            source={Images.DedicatedBg}
             style={styles.headerSection}
-            imageStyle={styles.headerImageStyle}
+            // imageStyle={styles.headerImageStyle}
             resizeMode="cover"
           >
-            <View style={styles.headerTopRow}>
-              <TouchableOpacity
-                style={styles.backButton}
-                activeOpacity={0.7}
-                onPress={() => navigation.goBack()}
-              >
-                <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
-              </TouchableOpacity>
-            </View>
+
 
             <View style={styles.headerContentRow}>
               <View style={styles.headerTextContainer}>
@@ -120,14 +121,16 @@ const StatePaymentScreen = () => {
 
             <View style={styles.summaryContent}>
               {/* Tree Image */}
-              <Image source={currentSpecies.image} style={styles.summaryImage} resizeMode="cover" />
+              <View style={{ flex: 0.5, marginRight: 5, alignItems: 'center', marginTop: 10, }}>
+                <Image source={currentSpecies.image} style={styles.summaryImage} resizeMode="cover" />
+              </View>
 
               {/* Details List (Split into 2 Columns) */}
               <View style={styles.summaryDetails}>
 
                 {/* Left Column */}
-                <View style={{ flex: 1, marginRight: MarginHW.MarginW10 }}>
-                  {/* 1. Tree Species */}
+                <View style={{ flex: 1, }}>
+
                   <View style={styles.detailRow}>
                     <View style={styles.detailCircle}>
                       <Image source={Images.leaf} style={styles.detailIcon} resizeMode="contain" />
@@ -139,7 +142,6 @@ const StatePaymentScreen = () => {
                     </View>
                   </View>
 
-                  {/* 2. Location */}
                   <View style={styles.detailRow}>
                     <View style={styles.detailCircle}>
                       <Image source={Images.location} style={styles.detailIcon} resizeMode="contain" />
@@ -151,7 +153,6 @@ const StatePaymentScreen = () => {
                     </View>
                   </View>
 
-                  {/* 3. Quantity */}
                   <View style={styles.detailRow}>
                     <View style={styles.detailCircle}>
                       <Text style={{ fontSize: FontsSize.size10, fontFamily: fonts.OpenSans_Bold, color: Colors.legacyGreen }}>#</Text>
@@ -163,9 +164,7 @@ const StatePaymentScreen = () => {
                   </View>
                 </View>
 
-                {/* Right Column */}
                 <View style={{ flex: 1 }}>
-                  {/* 4. Project */}
                   <View style={styles.detailRow}>
                     <View style={styles.detailCircle}>
                       <Image source={Images.treeIcon} style={styles.detailIcon} resizeMode="contain" />
@@ -176,7 +175,6 @@ const StatePaymentScreen = () => {
                     </View>
                   </View>
 
-                  {/* 5. Dedication */}
                   <View style={styles.detailRow}>
                     <View style={styles.detailCircle}>
                       <Image source={Images.gift} style={styles.detailIcon} resizeMode="contain" />
@@ -188,7 +186,6 @@ const StatePaymentScreen = () => {
                     </View>
                   </View>
 
-                  {/* 6. GPS Status */}
                   <View style={styles.detailRow}>
                     <View style={styles.detailCircle}>
                       <Image source={Images.verified} style={styles.detailIcon} resizeMode="contain" />
@@ -213,115 +210,98 @@ const StatePaymentScreen = () => {
             </View>
 
             <View style={styles.impactRow}>
-              {/* Left Column */}
-              <View style={{ flex: 1 }}>
-                {/* 1. Trees planted */}
-                <View style={styles.impactItem}>
-                  <Image source={Images.treeIcon} style={styles.impactItemIcon} resizeMode="contain" />
-                  <Text style={styles.impactItemValue}>{treeQuantity}</Text>
-                  <Text style={styles.impactItemLabel}>{treeQuantity === 1 ? 'Tree Planted' : 'Trees Planted'}</Text>
-                </View>
-
-                <View style={{ height: MarginHW.MarginH10 }} />
-
-                {/* 2. CO2 offset */}
-                <View style={styles.impactItem}>
-                  <Image source={Images.co2Cloud} style={styles.impactItemIcon} resizeMode="contain" />
-                  <Text style={styles.impactItemValue}>
-                    {treeQuantity * (parseFloat(currentSpecies.co2) || 22)} KG
-                  </Text>
-                  <Text style={styles.impactItemLabel}>CO₂ Offset / Year</Text>
-                </View>
-
-                <View style={{ height: MarginHW.MarginH10 }} />
-
-                {/* 3. Water Contribution */}
-                <View style={styles.impactItem}>
-                  <Image source={Images.drop} style={styles.impactItemIcon} resizeMode="contain" />
-                  <Text style={styles.impactItemValue}>Water</Text>
-                  <Text style={styles.impactItemLabel}>Conservation Contribution</Text>
-                </View>
+              {/* 1. Trees planted */}
+              <View style={styles.impactItem}>
+                <Image source={Images.treeIcon} style={styles.impactItemIcon} resizeMode="contain" />
+                <Text style={styles.impactItemValue}>{treeQuantity}</Text>
+                <Text style={styles.impactItemLabel}>{treeQuantity === 1 ? 'Tree Planted' : 'Trees Planted'}</Text>
               </View>
 
               <View style={styles.impactDivider} />
 
-              {/* Right Column */}
-              <View style={{ flex: 1 }}>
-                {/* 4. Digital Certificate */}
-                <View style={styles.impactItem}>
-                  <Image source={Images.certificate} style={styles.impactItemIcon} resizeMode="contain" />
-                  <Text style={styles.impactItemValue}>
-                    {sendCertificate !== false ? 'Included' : 'Optional'}
-                  </Text>
-                  <Text style={styles.impactItemLabel}>Digital Certificate Included</Text>
-                </View>
+              {/* 2. CO2 offset */}
+              <View style={styles.impactItem}>
+                <Image source={Images.co2Cloud} style={styles.impactItemIcon} resizeMode="contain" />
+                <Text style={styles.impactItemValue}>
+                  {treeQuantity * (parseFloat(currentSpecies.co2) || 22)} KG
+                </Text>
+                <Text style={styles.impactItemLabel}>CO₂ Offset / Year</Text>
+              </View>
 
-                <View style={{ height: MarginHW.MarginH10 }} />
+              <View style={styles.impactDivider} />
 
-                {/* 5. GPS Tracking */}
-                <View style={styles.impactItem}>
-                  <Image source={Images.location} style={styles.impactItemIcon} resizeMode="contain" />
-                  <Text style={styles.impactItemValue}>Included</Text>
-                  <Text style={styles.impactItemLabel}>GPS Tracking Included</Text>
-                </View>
+              {/* 3. Water Contribution */}
+              <View style={styles.impactItem}>
+                <Image source={Images.drop} style={[styles.impactItemIcon, { tintColor: '#1D70B8' }]} resizeMode="contain" />
+                <Text style={styles.impactItemValue}>Water</Text>
+                <Text style={styles.impactItemLabel}>{"Conservation\nContribution"}</Text>
+              </View>
+
+              <View style={styles.impactDivider} />
+
+              {/* 4. Digital Certificate */}
+              <View style={styles.impactItem}>
+                <Image source={Images.certificate} style={styles.impactItemIcon} resizeMode="contain" />
+                <Text style={styles.impactItemValue}>
+                  {sendCertificate !== false ? 'Digital' : 'No'}
+                </Text>
+                <Text style={styles.impactItemLabel}>
+                  {sendCertificate !== false ? "Certificate\nIncluded" : "Certificate\nRequested"}
+                </Text>
+              </View>
+
+              <View style={styles.impactDivider} />
+
+              {/* 5. GPS Tracking */}
+              <View style={styles.impactItem}>
+                <Image source={Images.location} style={styles.impactItemIcon} resizeMode="contain" />
+                <Text style={styles.impactItemValue}>GPS Tracking</Text>
+                <Text style={styles.impactItemLabel}>Included</Text>
               </View>
             </View>
           </View>
 
-          {/* Container for Payment Options & Donation Breakdown */}
           <View style={styles.splitGrid}>
 
-            {/* Payment Options (Full Width) */}
             <View style={styles.rightCol}>
               <View style={styles.cardInner}>
                 <View style={styles.sectionTitleRow}>
                   <Text style={styles.sectionTitle}>Choose Payment Method</Text>
                 </View>
 
-                {/* UPI list */}
                 <Text style={styles.paymentSubheading}>UPI</Text>
                 <View style={styles.logoGrid}>
-                  {/* Google Pay */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 10, color: '#4285F4' }}>G</Text>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 8, color: '#34A853' }}>Pay</Text>
                   </TouchableOpacity>
-                  {/* PhonePe */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 8, color: '#5f259f' }}>PhonePe</Text>
                   </TouchableOpacity>
-                  {/* Paytm */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 8, color: '#00baf2' }}>Paytm</Text>
                   </TouchableOpacity>
-                  {/* BHIM */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 8, color: '#f58220' }}>BHIM</Text>
                   </TouchableOpacity>
                 </View>
 
-                {/* Cards list */}
                 <Text style={styles.paymentSubheading}>Cards</Text>
                 <View style={styles.logoGrid}>
-                  {/* Visa */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 10, color: '#1A1F71' }}>VISA</Text>
                   </TouchableOpacity>
-                  {/* Mastercard */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 8, color: '#EB001B' }}>MasterCard</Text>
                   </TouchableOpacity>
-                  {/* RuPay */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 9, color: '#114D9C', fontStyle: 'italic' }}>RuPay</Text>
                   </TouchableOpacity>
-                  {/* Amex */}
                   <TouchableOpacity style={styles.logoWrapper} activeOpacity={0.7}>
                     <Text style={{ fontFamily: fonts.OpenSans_Bold, fontSize: 8, color: '#0070CD' }}>AMEX</Text>
                   </TouchableOpacity>
                 </View>
 
-                {/* Net Banking & Wallets */}
                 <Text style={styles.paymentSubheading}>Net Banking</Text>
                 <TouchableOpacity style={styles.listSelectorRow} activeOpacity={0.7}>
                   <View style={styles.listSelectorLeft}>
@@ -343,7 +323,6 @@ const StatePaymentScreen = () => {
               </View>
             </View>
 
-            {/* Donation Breakdown (Full Width) */}
             <View style={styles.leftCol}>
               <View style={styles.cardInner}>
                 <View style={styles.sectionTitleRow}>
@@ -412,34 +391,40 @@ const StatePaymentScreen = () => {
             </View>
           </View>
 
+          <View style={styles.footerContainer}>
+            <TouchableOpacity
+              style={styles.paymentButton}
+              activeOpacity={0.9}
+              onPress={() => {
+                handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+                // navigation.navigate('PlantationConfirmed')
+              }}
+            >
+              <Image
+                source={Images.handtree}
+                style={styles.paymentButtonLeftImg}
+                resizeMode="contain"
+              />
+              <View style={styles.paymentButtonContent}>
+                <Text style={styles.paymentButtonText}>Pay ₹{totalAmount} Securely →</Text>
+              </View>
+            </TouchableOpacity>
+
+            <View style={styles.termsRow}>
+              <Image source={Images.check} style={styles.termsIcon} resizeMode="contain" />
+              <Text style={styles.termsText}>
+                By proceeding, you agree to our <Text style={styles.termsLink}>Terms & Conditions</Text>
+              </Text>
+            </View>
+          </View>
+
         </ScrollView>
 
         {/* Sticky Footer Pay Securly */}
-        <View style={styles.footerContainer}>
-          <TouchableOpacity
-            style={styles.paymentButton}
-            activeOpacity={0.9}
-          >
-            <Image
-              source={Images.handtree}
-              style={styles.paymentButtonLeftImg}
-              resizeMode="contain"
-            />
-            <View style={styles.paymentButtonContent}>
-              <Text style={styles.paymentButtonText}>Pay ₹{totalAmount} Securely →</Text>
-            </View>
-          </TouchableOpacity>
 
-          <View style={styles.termsRow}>
-            <Image source={Images.check} style={styles.termsIcon} resizeMode="contain" />
-            <Text style={styles.termsText}>
-              By proceeding, you agree to our <Text style={styles.termsLink}>Terms & Conditions</Text>
-            </Text>
-          </View>
-        </View>
 
-      </View>
-    </SafeAreaView>
+      </View >
+    </SafeAreaView >
   );
 };
 

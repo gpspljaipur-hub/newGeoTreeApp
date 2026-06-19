@@ -50,7 +50,7 @@ const SignInScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const dispatch = useDispatch();
 
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('7742817188');
   const [fcmToken, setFCMToken] = useState('');
   const [loader, setLoader] = useState(false);
 
@@ -88,45 +88,55 @@ const SignInScreen = () => {
   };
 
   const handleSendOTP = async () => {
-    if (!checkValidation()) return;
-    try {
-      setLoader(true);
-      const userData = { mobile: phoneNumber, device_token: fcmToken };
-      const response: any = await (dispatch as any)(Auth_Api(ApiUrl.CheckNumber, userData));
-      const userinfo = response?.data?.data?.data;
-      if (!userinfo) {
-        Helper.showToast("Server error, please try again");
-        setLoader(false);
-        return;
-      }
-      if (!userinfo?.number_verified) {
-        const apiOtp = userinfo?.otp;
-        setLoader(false);
-        handleNavigation({
-          type: 'push',
-          page: 'Otp',
-          navigation,
-          passProps: {
-            phoneNumber: `+91 ${phoneNumber}`,
-            otp: apiOtp,
-            fcmToken: fcmToken,
-          },
-        });
-      } else {
-        if (!userinfo?.token) {
-          setLoader(false);
-          return;
-        }
-        setLoader(false);
-        await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
-        dispatch(loginSuccess(userinfo));
-        handleNavigation({ type: 'setRoot', page: 'Home', navigation });
-      }
-    } catch (e) {
-      console.log('Login error:', e);
-    } finally {
-      setLoader(false);
-    }
+    handleNavigation({
+      type: 'push',
+      page: 'Otp',
+      navigation,
+      passProps: {
+        phoneNumber: `+91 ${phoneNumber}`,
+        otp: '123456',
+        fcmToken: fcmToken,
+      },
+    });
+    // if (!checkValidation()) return;
+    // try {
+    //   setLoader(true);
+    //   const userData = { mobile: phoneNumber, device_token: fcmToken };
+    //   const response: any = await (dispatch as any)(Auth_Api(ApiUrl.CheckNumber, userData));
+    //   const userinfo = response?.data?.data?.data;
+    //   if (!userinfo) {
+    //     Helper.showToast("Server error, please try again");
+    //     setLoader(false);
+    //     return;
+    //   }
+    //   if (!userinfo?.number_verified) {
+    //     const apiOtp = userinfo?.otp;
+    //     setLoader(false);
+    //     handleNavigation({
+    //       type: 'push',
+    //       page: 'Otp',
+    //       navigation,
+    //       passProps: {
+    //         phoneNumber: `+91 ${phoneNumber}`,
+    //         otp: apiOtp,
+    //         fcmToken: fcmToken,
+    //       },
+    //     });
+    //   } else {
+    //     if (!userinfo?.token) {
+    //       setLoader(false);
+    //       return;
+    //     }
+    //     setLoader(false);
+    //     await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
+    //     dispatch(loginSuccess(userinfo));
+    //     handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+    //   }
+    // } catch (e) {
+    //   console.log('Login error:', e);
+    // } finally {
+    //   setLoader(false);
+    // }
   };
 
   return (
@@ -152,7 +162,7 @@ const SignInScreen = () => {
                   <Text style={styles.cardSubtitle}>
                     {String.SignIn_Subtitle}
                   </Text>
- 
+
                   <View style={styles.inputContainer}>
                     <TouchableOpacity style={styles.countryPicker} activeOpacity={0.7}>
                       <Text style={styles.flagEmoji}>🇮🇳</Text>

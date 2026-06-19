@@ -200,6 +200,10 @@ const PortfolioScreen = () => {
         navigation.navigate('MyTreeJourneyScreen');
     };
 
+    const handleGoToJourney = () => {
+        navigation.navigate('MyTreeJourneyScreen');
+    };
+
     const handleNavigateProject = () => {
         navigation.navigate('Details');
     };
@@ -211,7 +215,7 @@ const PortfolioScreen = () => {
 
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
                 {/* Hero section wrapped in ImageBackground */}
-                <ImageBackground source={Images.Deshbordbg} style={styles.heroImageBackground} resizeMode="cover">
+                <ImageBackground source={Images.detailbg} style={styles.heroImageBackground} resizeMode="cover">
                     {/* Header Row for Back Icon */}
                     <View style={styles.heroHeaderRow}>
                         <TouchableOpacity onPress={() => navigation.goBack()} activeOpacity={0.7} style={styles.backCircle}>
@@ -302,6 +306,11 @@ const PortfolioScreen = () => {
                                 </View>
                             </View>
                         </View>
+
+                        <TouchableOpacity style={styles.primaryBtn} onPress={handleGoToJourney} activeOpacity={0.9}>
+                            <Text style={styles.primaryBtnText}>View Tree Journey</Text>
+                            <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold', marginLeft: 4 }}>→</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.projectCardFooter}>
