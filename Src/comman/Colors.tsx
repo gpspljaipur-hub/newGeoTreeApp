@@ -8,6 +8,9 @@ export const Colors = {
 
     // Text
     white: '#FFFFFF',
+    bgWhite: '#f9faf6',
+    lightWhite: '#fefefe',
+    LigtBlack: '#212121',
     black: '#000000',
     lightGreen: '#99b949',
     tintColorDrak: '#135928',

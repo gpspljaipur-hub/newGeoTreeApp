@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
   },
   card: {
 
-    backgroundColor: Colors.white,
+    backgroundColor: '#f9faf7',
     borderWidth: 1.5,
     borderColor: Colors.bannerBorder,
     borderRadius: 10,

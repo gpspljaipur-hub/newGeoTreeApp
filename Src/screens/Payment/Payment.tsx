@@ -12,7 +12,7 @@ import {
   UIManager,
   KeyboardAvoidingView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import { styles } from './styles';
@@ -24,6 +24,10 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const PaymentScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'Payment'>>();
+  const plantedBy = route.params?.name || 'You';
+  const dedicatedTo = route.params?.dedication || 'In memory of My Grandfather';
+
   const [selectedPackageId, setSelectedPackageId] = useState('1');
   const [customAmount, setCustomAmount] = useState('');
   const [selectedMethodId, setSelectedMethodId] = useState('upi');
@@ -75,16 +79,18 @@ const PaymentScreen = () => {
     switch (id) {
       case 'upi':
         return (
-          <Text style={{ fontSize: 9.5, fontWeight: '900', color: '#0F7F1B', fontStyle: 'italic' }}>
-            UPI
-          </Text>
+          <View style={{ borderWidth: 1.2, borderColor: '#C4D4CB', borderRadius: 4, paddingHorizontal: 4, paddingVertical: 1 }}>
+            <Text style={{ fontSize: 7, fontFamily: 'OpenSans-ExtraBold', color: '#5B665F', fontStyle: 'italic' }}>
+              UPI
+            </Text>
+          </View>
         );
       case 'card':
-        return <Image source={Images.creditcard} style={styles.methodIcon} resizeMode="contain" />;
+        return <Image source={Images.creditcard} style={{ width: 20, height: 20, tintColor: '#5B665F' }} resizeMode="contain" />;
       case 'netbanking':
-        return <Image source={Images.bank} style={styles.methodIcon} resizeMode="contain" />;
+        return <Image source={Images.bank} style={{ width: 20, height: 20, tintColor: '#5B665F' }} resizeMode="contain" />;
       case 'wallet':
-        return <Image source={Images.wallet} style={styles.methodIcon} resizeMode="contain" />;
+        return <Image source={Images.wallet} style={{ width: 20, height: 20, tintColor: '#5B665F' }} resizeMode="contain" />;
       default:
         return null;
     }
@@ -101,11 +107,14 @@ const PaymentScreen = () => {
           {/* Header */}
           <PlantHeader />
           {/* Stepper */}
-          <Stepper currentStep={4} />
+          <View style={{ backgroundColor: '#FAFBFB', position: 'absolute', top: 50, left: 0, right: 0, }}>
+
+            <Stepper currentStep={4} />
+          </View>
           {/* Hero Card */}
           <View style={styles.heroCard}>
             <ImageBackground
-              source={Images.detailbg}
+              source={Images.BgChoose}
               style={styles.heroImage}
               imageStyle={styles.heroImageRadius}
               resizeMode='contain'
@@ -124,7 +133,7 @@ const PaymentScreen = () => {
                     Complete Your Impact{'\n'}
                     with a <Text style={styles.highlightGreen}>Payment</Text>
                   </Text>
-                  <Text style={styles.heroSubtitle}>
+                  <Text numberOfLines={2} style={styles.heroSubtitle}>
                     Your contribution helps us plant, protect, and monitor trees for a greener tomorrow.
                   </Text>
                 </View>
@@ -142,56 +151,55 @@ const PaymentScreen = () => {
               </TouchableOpacity>
             </View>
 
-            {/* Row 1: Tree & Location */}
-            <View style={styles.summaryContentRow}>
-
-              <View style={styles.summaryItemLeft}>
-                <View style={styles.summaryIconContainer}>
-                  <Image source={Images.tree} style={styles.summaryIcon} resizeMode="contain" />
+            {/* Horizontal 4-Column Summary Layout */}
+            <View style={styles.summaryHorizontalRow}>
+              {/* Item 1: Tree */}
+              <View style={[styles.summaryItem, { flex: 0.75 }]}>
+                <View style={styles.summaryIconCircle}>
+                  <Image source={Images.leaf} style={styles.summaryItemIcon} resizeMode="contain" />
                 </View>
-                <View style={styles.summaryTextContainer}>
-                  <Text style={styles.summaryLabel}>Tree</Text>
-                  <Text style={styles.summaryValue} numberOfLines={1}>Neem</Text>
+                <View style={styles.summaryItemTextCol}>
+                  <Text style={styles.summaryItemLabel}>Tree</Text>
+                  <Text style={styles.summaryItemValue} numberOfLines={1}>Neem</Text>
+                </View>
+              </View>
+
+              <View style={styles.summaryVerticalDivider} />
+
+              {/* Item 2: Location */}
+              <View style={[styles.summaryItem, { flex: 1.45 }]}>
+                <View style={styles.summaryIconCircle}>
+                  <Image source={Images.geolocation} style={styles.summaryItemIcon} resizeMode="contain" />
+                </View>
+                <View style={styles.summaryItemTextCol}>
+                  <Text style={styles.summaryItemLabel}>Location</Text>
+                  <Text style={styles.summaryItemValue} numberOfLines={3}>Aravalli Green Belt, Jaipur, Rajasthan</Text>
                 </View>
               </View>
 
-              <View style={styles.summaryDivider} />
+              <View style={styles.summaryVerticalDivider} />
 
-              <View style={styles.summaryItemRight}>
-                <View style={styles.summaryIconContainer}>
-                  <Image source={Images.geolocation} style={styles.summaryIcon} resizeMode="contain" />
+              {/* Item 3: Dedicated To */}
+              <View style={[styles.summaryItem, { flex: 1.3 }]}>
+                <View style={styles.summaryIconCircle}>
+                  <Image source={Images.gift} style={styles.summaryItemIcon} resizeMode="contain" />
                 </View>
-                <View style={styles.summaryTextContainer}>
-                  <Text style={styles.summaryLabel}>Location</Text>
-                  <Text style={styles.summaryValue}>Aravalli Green Belt Jaipur, Rajasthan</Text>
+                <View style={styles.summaryItemTextCol}>
+                  <Text style={styles.summaryItemLabel}>Dedicated To</Text>
+                  <Text style={styles.summaryItemValue} numberOfLines={3}>{dedicatedTo}</Text>
                 </View>
               </View>
-            </View>
 
-            <View style={styles.summaryRowDivider} />
+              <View style={styles.summaryVerticalDivider} />
 
-            {/* Row 2: Dedicated To & Planted By */}
-            <View style={styles.summaryContentRow}>
-              <View style={styles.summaryItemLeft}>
-                <View style={styles.summaryIconContainer}>
-                  <Image source={Images.profile} style={styles.summaryIcon} resizeMode="contain" />
+              {/* Item 4: Planted By */}
+              <View style={[styles.summaryItem, { flex: 0.8 }]}>
+                <View style={styles.summaryIconCircle}>
+                  <Image source={Images.profile} style={styles.summaryItemIcon} resizeMode="contain" />
                 </View>
-                <View style={styles.summaryTextContainer}>
-                  <Text style={styles.summaryLabel}>Planted By</Text>
-                  <Text style={styles.summaryValue}>You</Text>
-                </View>
-
-              </View>
-
-              <View style={styles.summaryDivider} />
-
-              <View style={styles.summaryItemRight}>
-                <View style={styles.summaryIconContainer}>
-                  <Image source={Images.gift} style={styles.summaryIcon} resizeMode="contain" />
-                </View>
-                <View style={styles.summaryTextContainer}>
-                  <Text style={styles.summaryLabel}>Dedicated To</Text>
-                  <Text style={styles.summaryValue}>In memory of My Grandfather</Text>
+                <View style={styles.summaryItemTextCol}>
+                  <Text style={styles.summaryItemLabel}>Planted By</Text>
+                  <Text style={styles.summaryItemValue} numberOfLines={1}>{plantedBy}</Text>
                 </View>
               </View>
             </View>
@@ -202,7 +210,7 @@ const PaymentScreen = () => {
             <Text style={styles.sectionTitle}>Contribution Amount</Text>
             <Text style={styles.sectionSubtitle}>Your support makes a real difference!</Text>
           </View>
-
+ 
           <View>
             <ScrollView
               horizontal
@@ -211,7 +219,7 @@ const PaymentScreen = () => {
             >
               {contributionPackages.map((pkg) => {
                 const isSelected = selectedPackageId === pkg.id;
-
+ 
                 return (
                   <TouchableOpacity
                     key={pkg.id}
@@ -224,10 +232,10 @@ const PaymentScreen = () => {
                   >
                     {isSelected && (
                       <View style={styles.amountBadge}>
-                        <View style={{ width: 8, height: 5, borderLeftWidth: 1.5, borderBottomWidth: 1.5, borderColor: '#FFFFFF', transform: [{ rotate: '-45deg' }], marginTop: -1 }} />
+                        <Image source={Images.check} style={{ width: 10, height: 10, tintColor: '#FFFFFF' }} resizeMode="contain" />
                       </View>
                     )}
-
+ 
                     <View style={styles.amountIconContainer}>
                       <Image
                         source={pkg.isCustom ? Images.leaf : Images.tree}
@@ -235,11 +243,11 @@ const PaymentScreen = () => {
                         resizeMode="contain"
                       />
                     </View>
-
+ 
                     <Text style={styles.amountValueText}>
                       {pkg.isCustom ? 'Other' : `₹${pkg.amount}`}
                     </Text>
-
+ 
                     <Text style={styles.amountSubtext}>
                       {pkg.text}
                     </Text>
@@ -247,14 +255,14 @@ const PaymentScreen = () => {
                 );
               })}
             </ScrollView>
-
+ 
             {/* Custom Amount Input Field */}
             {selectedPackageId === 'other' && (
-              <View style={{ marginHorizontal: 16, marginTop: 12, marginBottom: 4 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1.5, borderColor: '#1E6B46', borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 12, height: 50 }}>
-                  <Text style={{ fontFamily: 'OpenSans-Bold', fontSize: 16, color: '#1E6B46', marginRight: 6 }}>₹</Text>
+              <View style={styles.customAmountContainer}>
+                <View style={styles.customAmountInputWrapper}>
+                  <Text style={styles.customAmountCurrency}>₹</Text>
                   <TextInput
-                    style={{ flex: 1, fontFamily: 'OpenSans-Regular', fontSize: 15, color: '#111827', paddingVertical: 0 }}
+                    style={styles.customAmountInput}
                     placeholder="Enter custom amount"
                     placeholderTextColor="#8E9A93"
                     keyboardType="numeric"
@@ -265,7 +273,7 @@ const PaymentScreen = () => {
               </View>
             )}
           </View>
-
+ 
           {/* 100% Contribution Banner */}
           <View style={styles.impactBanner}>
             <View style={styles.impactLeft}>
@@ -276,52 +284,61 @@ const PaymentScreen = () => {
                 100% of your contribution goes towards verified tree plantation and long-term care.
               </Text>
             </View>
-            <View style={styles.impactRight}>
-              <Image source={Images.shield} style={styles.impactShieldIcon} resizeMode="contain" />
-              <Text style={styles.impactSecureText}>Secure &{'\n'}Transparent</Text>
+            <View style={styles.secureBadgeContainer}>
+              <Image source={Images.shield} style={styles.secureBadgeIcon} resizeMode="contain" />
+              <View>
+                <Text style={styles.secureBadgeText}>Secure &</Text>
+                <Text style={styles.secureBadgeText}>Transparent</Text>
+              </View>
             </View>
           </View>
 
           {/* Payment Methods Section */}
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Payment Methods</Text>
-            <Text style={styles.sectionSubtitle}>🔒 All payments are secure and encrypted.</Text>
+            <View style={styles.secureBannerRow}>
+              <Image source={Images.lock} style={styles.secureBannerLockIcon} resizeMode="contain" />
+              <Text style={styles.secureBannerText}>All payments are secure and encrypted.</Text>
+            </View>
           </View>
 
-          <View>
-            {paymentMethods.map((method) => {
+          <View style={styles.paymentMethodsContainer}>
+            {paymentMethods.map((method, index) => {
               const isSelected = selectedMethodId === method.id;
+              const isLast = index === paymentMethods.length - 1;
 
               return (
-                <TouchableOpacity
-                  key={method.id}
-                  activeOpacity={0.85}
-                  onPress={() => setSelectedMethodId(method.id)}
-                  style={[styles.paymentMethodRow, isSelected && styles.paymentMethodRowSelected]}
-                >
-                  <View style={styles.paymentMethodLeft}>
-                    <View style={styles.methodIconWrapper}>
-                      {renderMethodIcon(method.id)}
-                    </View>
-                    <View style={{ flex: 1 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Text style={styles.methodTitle}>{method.name}</Text>
-                        {method.recommended && (
-                          <View style={styles.recommendedBadge}>
-                            <Text style={styles.recommendedText}>Recommended</Text>
-                          </View>
-                        )}
+                <View key={method.id}>
+                  <TouchableOpacity
+                    activeOpacity={0.85}
+                    onPress={() => setSelectedMethodId(method.id)}
+                    style={styles.paymentMethodRowCustom}
+                  >
+                    <View style={styles.paymentMethodLeft}>
+                      <View style={styles.methodIconWrapperCustom}>
+                        {renderMethodIcon(method.id)}
                       </View>
-                      <Text style={styles.methodSubtext} numberOfLines={1}>
-                        {method.subtext}
-                      </Text>
+                      <View style={styles.methodTextRow}>
+                        <Text style={styles.methodTitleCustom}>{method.name}</Text>
+                        <Text style={styles.methodSubtextCustom} numberOfLines={1}>
+                          {method.subtext}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
 
-                  <View style={[styles.radioButtonOuter, isSelected && styles.radioButtonOuterSelected]}>
-                    {isSelected && <View style={styles.radioButtonInner} />}
-                  </View>
-                </TouchableOpacity>
+                    <View style={styles.paymentMethodRight}>
+                      {method.recommended && (
+                        <View style={styles.recommendedBadgeCustom}>
+                          <Text style={styles.recommendedTextCustom}>Recommended</Text>
+                        </View>
+                      )}
+                      <View style={[styles.radioButtonOuterCustom, isSelected && styles.radioButtonOuterSelectedCustom]}>
+                        {isSelected && <View style={styles.radioButtonInnerCustom} />}
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                  {!isLast && <View style={styles.paymentMethodDivider} />}
+                </View>
               );
             })}
           </View>
@@ -345,7 +362,7 @@ const PaymentScreen = () => {
                 style={[
                   styles.customSwitchContainer,
                   {
-                    backgroundColor: applyPoints ? '#1E6B46' : '#D1DCD6',
+                    backgroundColor: applyPoints ? '#056213' : '#D1DCD6',
                     alignItems: applyPoints ? 'flex-end' : 'flex-start',
                   },
                 ]}

@@ -80,11 +80,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: MarginHW.PaddingW16,
-    paddingBottom: MarginHW.PaddingH10,
     backgroundColor: '#FAFBFB',
+    marginVertical: 5,
   },
   backButton: {
-
   },
   backIcon: {
     width: ImageSize.ImageW20,
@@ -112,8 +111,8 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   coinIconContainer: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   coinAmount: {
-    fontFamily: fonts.OpenSans_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size12,
     color: Colors.black,
     lineHeight: 14,

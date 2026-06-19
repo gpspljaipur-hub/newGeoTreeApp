@@ -136,7 +136,6 @@ const ExploreStatesScreen = () => {
   );
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
-      <StatusBar barStyle="dark-content" translucent={true} backgroundColor="transparent" />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <ImageBackground
@@ -163,19 +162,20 @@ const ExploreStatesScreen = () => {
                 Choose a state and discover verified plantation projects.
               </Text>
             </View>
+            <View style={styles.searchContainer}>
+              <Image source={Images.geolocation} style={styles.searchIcon} resizeMode="contain" />
+              <TextInput
+                style={styles.searchInput}
+                placeholder="Search State"
+                placeholderTextColor={Colors.placeholderColor}
+                value={searchQuery}
+                onChangeText={setSearchQuery}
+                autoCapitalize="words"
+              />
+            </View>
           </ImageBackground>
 
-          <View style={styles.searchContainer}>
-            <Image source={Images.geolocation} style={styles.searchIcon} resizeMode="contain" />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search State"
-              placeholderTextColor={Colors.placeholderColor}
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-              autoCapitalize="words"
-            />
-          </View>
+
 
           {/* Popular States Section */}
           {filteredPopular.length > 0 && (
@@ -183,7 +183,6 @@ const ExploreStatesScreen = () => {
               <View style={styles.sectionHeader}>
                 <View style={styles.sectionTitleRow}>
                   <Text style={styles.sectionTitle}>Popular States</Text>
-                  <Image source={Images.leaf1} style={styles.sectionTitleLeaf} resizeMode="contain" />
                 </View>
               </View>
 
@@ -209,7 +208,7 @@ const ExploreStatesScreen = () => {
                       </View>
                       <View style={styles.popularStatRow}>
                         <Image source={Images.treeIcon} style={styles.popularStatIcon} resizeMode="contain" />
-                        <Text style={styles.popularStatText} numberOfLines={1}>
+                        <Text style={styles.popularStatValue} numberOfLines={1}>
                           {item.trees}
                         </Text>
                       </View>
@@ -220,9 +219,9 @@ const ExploreStatesScreen = () => {
                             {item.projects}
                           </Text>
                         </View>
-                        {/* <View style={styles.popularArrowBtn}>
-                          <Text style={styles.popularArrowText}>→</Text>
-                        </View> */}
+                        <View style={styles.popularArrowBtn}>
+                          <Image source={Images.back} style={styles.popularArrowIcon} resizeMode="contain" />
+                        </View>
                       </View>
                     </View>
                   </TouchableOpacity>

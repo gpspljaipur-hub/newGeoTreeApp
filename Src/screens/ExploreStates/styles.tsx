@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
   headerBackground: {
     paddingBottom: MarginHW.PaddingH35,
     width: '100%',
+    height: 220,
   },
   heroImageRadius: {
     width: '100%',
@@ -34,7 +35,7 @@ export const styles = StyleSheet.create({
     height: ImageSize.ImageH35,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: MarginHW.MarginH30
+    marginTop: MarginHW.MarginH16
   },
   backIcon: {
     width: ImageSize.ImageW20,
@@ -76,7 +77,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     marginLeft: MarginHW.MarginW10,
     width: '70%',
-    marginTop: -20,
+    marginTop: 10,
     paddingHorizontal: MarginHW.PaddingW16,
     paddingVertical: MarginHW.PaddingH8,
     borderRadius: 20,
@@ -96,6 +97,7 @@ export const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
+
     fontFamily: fonts.OpenSans_Regular,
     fontSize: FontsSize.size14,
     color: Colors.textDark,
@@ -128,12 +130,13 @@ export const styles = StyleSheet.create({
     paddingRight: MarginHW.PaddingW10,
   },
   popularCard: {
-    width: HWSize.W_Width160,
+    width: 145,
+    height: 195,
     backgroundColor: Colors.white,
-    borderRadius: 10,
-    marginRight: MarginHW.MarginW5,
+    borderRadius: 14,
+    marginRight: 12,
     borderWidth: 1,
-    borderColor: Colors.borderLight,
+    borderColor: '#ECEFEF',
     overflow: 'hidden',
     shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
@@ -143,53 +146,58 @@ export const styles = StyleSheet.create({
   },
   popularCardImage: {
     width: '100%',
-    height: ImageSize.ImageH80,
+    height: 95,
   },
   popularCardContent: {
-    padding: MarginHW.PaddingH10,
-
+    padding: 12,
+    flex: 1,
+    justifyContent: 'space-between',
   },
   popularCardName: {
-    fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size14,
-    color: Colors.black,
-    marginBottom: MarginHW.MarginH5,
+    fontFamily: fonts.OpenSans_SemiBold,
+    fontSize: 13.5,
+    color: '#111827',
+    marginBottom: MarginHW.MarginH2,
   },
   popularStatRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: MarginHW.MarginH4,
+    marginBottom: MarginHW.MarginH2,
   },
   popularStatIcon: {
     width: ImageSize.ImageW14,
     height: ImageSize.ImageH14,
-    tintColor: Colors.legacyGreen,
+    tintColor: '#056213',
     marginRight: MarginHW.MarginW4,
   },
   popularStatText: {
-    fontFamily: fonts.OpenSans_Medium,
-    fontSize: FontsSize.size10,
-    color: Colors.textLabelGrey,
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: 11,
+    color: '#5B665F',
+  },
+  popularStatValue: {
+    fontFamily: fonts.OpenSans_SemiBold,
+    fontSize: 11,
+    color: '#111827',
   },
   popularActionRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: MarginHW.MarginH4,
   },
   popularArrowBtn: {
-    width: ImageSize.ImageW18,
-    height: ImageSize.ImageH18,
-    borderRadius: ImageSize.ImageW18 / 2,
-    backgroundColor: Colors.tint,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#056213',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  popularArrowText: {
-    color: Colors.white,
-    fontSize: FontsSize.size9,
-    fontFamily: fonts.OpenSans_Bold,
-    lineHeight: FontsSize.size11,
+  popularArrowIcon: {
+    width: 10,
+    height: 10,
+    tintColor: Colors.white,
+    transform: [{ rotate: '180deg' }],
   },
   allStatesList: {
     flexDirection: 'row',

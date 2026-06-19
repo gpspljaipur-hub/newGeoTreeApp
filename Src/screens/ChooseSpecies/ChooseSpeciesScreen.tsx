@@ -107,22 +107,37 @@ const ChooseSpeciesScreen = () => {
         biodiversity: 'High',
       },
     },
+    {
+      id: 'babul',
+      name: 'Babul',
+      scientificName: 'Vachellia nilotica',
+      image: Images.neem_tree,
+      co2: '12 Kg/Year',
+      lifespan: '50+ Years',
+      waterNeed: 'Very Low',
+      impact: {
+        co2: '12 Kg/Year',
+        oxygen: '90 Kg/Year',
+        waterSaved: '700+ Liters/Year',
+        biodiversity: 'High',
+      },
+    },
   ];
 
   // Currently selected species object
   const selectedSpecies = speciesList.find(s => s.id === selectedSpeciesId) || speciesList[0];
+  const areaCoveredVal = areaCoveredText.includes(' ') ? areaCoveredText.split(' ')[0] : areaCoveredText;
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
-      <StatusBar barStyle="dark-content" translucent={true} backgroundColor="transparent" />
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
 
           {/* Header section */}
           <ImageBackground
-            source={Images.species}
+            source={Images.TreeBgChoose}
             style={styles.headerSection}
-            resizeMode="cover"
+            resizeMode='cover'
           >
             <View style={styles.headerTopRow}>
               <TouchableOpacity
@@ -137,14 +152,12 @@ const ChooseSpeciesScreen = () => {
             <View style={styles.headerContentRow}>
               <View style={styles.headerTextContainer}>
                 <View style={styles.headerTitleRow}>
-                  <Text style={styles.headerTitle}>{"Choose a Tree\nSpecies"}</Text>
+                  <Text style={styles.headerTitle}>Choose a Tree Species</Text>
                 </View>
-                <Text style={styles.headerSubtitle}>
-                  {"Select a native tree species\nto plant at "}
-                  <Text style={styles.projectHighlight}>
-                    {projectName}, {projectCity.split(',')[0]}
-                  </Text>
-                </Text>
+                <View style={styles.headerSubtitleRow}>
+                  <Text style={styles.headerSubtitle}>Select a native tree species to plant at</Text>
+                  <Text style={styles.projectHighlight}>{projectName}, {projectCity.split(',')[0]}  </Text>
+                </View>
 
                 <View style={styles.gpsBadge}>
                   <Image source={Images.shield} style={styles.gpsIcon} resizeMode="contain" />
@@ -159,25 +172,25 @@ const ChooseSpeciesScreen = () => {
             <View style={styles.quickStatCol}>
               <Image source={Images.treeIcon} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{treesPlantedText}</Text>
-              <Text style={styles.quickStatLabel}>Planted</Text>
+              <Text style={styles.quickStatLabel}>Trees Planted</Text>
             </View>
             <View style={styles.quickStatDivider} />
             <View style={styles.quickStatCol}>
-              <Image source={Images.globe} style={styles.quickStatIcon} resizeMode="contain" />
-              <Text style={styles.quickStatValue}>{areaCoveredText.split(' ')[0]}</Text>
-              <Text style={styles.quickStatLabel}>Acres</Text>
+              <Image source={Images.soiltype} style={styles.quickStatIcon} resizeMode="contain" />
+              <Text style={styles.quickStatValue}>{areaCoveredVal}</Text>
+              <Text style={styles.quickStatLabel}>Acres Covered</Text>
             </View>
             <View style={styles.quickStatDivider} />
             <View style={styles.quickStatCol}>
-              <Image source={Images.check} style={styles.quickStatIcon} resizeMode="contain" />
+              <Image source={Images.verified} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{survivalRateText}</Text>
-              <Text style={styles.quickStatLabel}>Survival</Text>
+              <Text style={styles.quickStatLabel}>Survival Rate</Text>
             </View>
             <View style={styles.quickStatDivider} />
             <View style={styles.quickStatCol}>
               <Image source={Images.calendar} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{projectSinceText}</Text>
-              <Text style={styles.quickStatLabel}>Since</Text>
+              <Text style={styles.quickStatLabel}>Project Since</Text>
             </View>
           </View>
 
@@ -185,7 +198,6 @@ const ChooseSpeciesScreen = () => {
           <View style={styles.listSection}>
             <View style={styles.listHeader}>
               <Text style={styles.listTitle}>Available Tree Species</Text>
-              <Image source={Images.leaf} style={styles.headerTitleLeaf} resizeMode="contain" />
             </View>
             <Text style={styles.listSubtitle}>Choose a species that you want to plant.</Text>
 
@@ -199,50 +211,55 @@ const ChooseSpeciesScreen = () => {
                   activeOpacity={0.9}
                   onPress={() => setSelectedSpeciesId(species.id)}
                 >
-                  <View style={styles.cardTopRow}>
-                    <View style={styles.cardLeftContent}>
-                      <Image source={species.image} style={styles.speciesImage} resizeMode="cover" />
-                      <View style={styles.speciesMeta}>
-                        <View style={styles.speciesNameRow}>
-                          <Text style={styles.speciesName}>{species.name}</Text>
-                          <View style={styles.nativeBadge}>
-                            <Text style={styles.nativeText}>Native</Text>
+                  <View style={styles.cardContentRow}>
+                    {/* Left image of tree */}
+                    <Image source={species.image} style={styles.speciesImage} resizeMode="cover" />
+
+                    {/* Right column with title, subtitle, badge, radio button and details */}
+                    <View style={styles.speciesInfoCol}>
+                      {/* Name row with radio button */}
+                      <View style={styles.speciesHeaderRow}>
+                        <Text style={styles.speciesName}>{species.name}</Text>
+
+                        {/* Radio Button selector */}
+                        <View style={[styles.radioButton, isSelected && styles.radioButtonSelected]}>
+                          {isSelected && <View style={styles.radioDot} />}
+                        </View>
+                      </View>
+
+                      {/* Scientific name and Native badge */}
+                      <View style={styles.scientificRow}>
+                        <Text style={styles.speciesScientific}>{species.scientificName}</Text>
+                        <View style={styles.nativeBadge}>
+                          <Image source={Images.leaf} style={styles.nativeBadgeLeaf} resizeMode="contain" />
+                          <Text style={styles.nativeText}>Native</Text>
+                        </View>
+                      </View>
+
+                      {/* Attribute columns row */}
+                      <View style={styles.cardBottomRow}>
+                        <View style={styles.detailCol}>
+                          <View style={styles.detailLabelContainer}>
+                            <Image source={Images.co2Cloud} style={styles.detailIcon} resizeMode="contain" />
+                            <Text style={styles.detailLabel}>CO₂ Absorption</Text>
+                            <Text style={styles.detailValue}>{species.co2}</Text>
                           </View>
                         </View>
-                        <Text style={styles.speciesScientific}>{species.scientificName}</Text>
-                      </View>
-                    </View>
+                        <View style={styles.detailCol}>
+                          <View style={styles.detailLabelContainer}>
+                            <Image source={Images.maintaince} style={styles.detailIcon} resizeMode="contain" />
+                            <Text style={styles.detailLabel}>Lifespan</Text>
+                            <Text style={styles.detailValue}>{species.lifespan}</Text>
+                          </View>
+                        </View>
 
-                    {/* Radio Button selector */}
-                    <View style={[styles.radioButton, isSelected && styles.radioButtonSelected]}>
-                      {isSelected && <View style={styles.radioDot} />}
-                    </View>
-                  </View>
-
-                  <View style={styles.cardDivider} />
-                  <View style={styles.cardBottomRow}>
-                    {/* CO2 attribute */}
-                    <View style={styles.detailCol}>
-                      <Image source={Images.co2Cloud} style={styles.detailIcon} resizeMode="contain" />
-                      <View style={styles.detailLabelContainer}>
-                        <Text style={styles.detailLabel}>CO₂ Absorption</Text>
-                        <Text style={styles.detailValue}>{species.co2}</Text>
-                      </View>
-                    </View>
-                    {/* Lifespan attribute */}
-                    <View style={styles.detailCol}>
-                      <Image source={Images.calendar} style={styles.detailIcon} resizeMode="contain" />
-                      <View style={styles.detailLabelContainer}>
-                        <Text style={styles.detailLabel}>Lifespan</Text>
-                        <Text style={styles.detailValue}>{species.lifespan}</Text>
-                      </View>
-                    </View>
-                    {/* Water Need attribute */}
-                    <View style={styles.detailCol}>
-                      <Image source={Images.drop} style={styles.detailIcon} resizeMode="contain" />
-                      <View style={styles.detailLabelContainer}>
-                        <Text style={styles.detailLabel}>Water Need</Text>
-                        <Text style={styles.detailValue}>{species.waterNeed}</Text>
+                        <View style={styles.detailCol}>
+                          <View style={styles.detailLabelContainer}>
+                            <Image source={Images.drop} style={styles.detailIcon} resizeMode="contain" />
+                            <Text style={styles.detailLabel}>Water Need</Text>
+                            <Text style={styles.detailValue}>{species.waterNeed}</Text>
+                          </View>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -260,58 +277,78 @@ const ChooseSpeciesScreen = () => {
               </View>
               <Text style={styles.impactSubtitle}>See the positive change your tree will create.</Text>
 
-              <View style={styles.cardDivider} />
-
               <View style={styles.impactGrid}>
                 <View style={styles.impactCol}>
-                  <Image source={Images.co2Cloud} style={styles.impactIcon} resizeMode="contain" />
-                  <Text style={styles.impactValue}>{selectedSpecies.impact.co2}</Text>
+                  <View style={styles.impactIconBg}>
+                    <Image source={Images.co2Cloud} style={styles.impactIcon} resizeMode="contain" />
+                  </View>
                   <Text style={styles.impactLabel}>CO₂ Absorption (Est.)</Text>
+                  <Text style={styles.impactValue}>{selectedSpecies.impact.co2}</Text>
                 </View>
+                <View style={styles.impactDivider} />
                 <View style={styles.impactCol}>
-                  <Image source={Images.leaf} style={styles.impactIcon} resizeMode="contain" />
-                  <Text style={styles.impactValue}>{selectedSpecies.impact.oxygen}</Text>
+                  <View style={styles.impactIconBg}>
+                    <Image source={Images.leaf} style={styles.impactIcon} resizeMode="contain" />
+                  </View>
                   <Text style={styles.impactLabel}>Oxygen Generated</Text>
+                  <Text style={styles.impactValue}>{selectedSpecies.impact.oxygen}</Text>
                 </View>
+                <View style={styles.impactDivider} />
                 <View style={styles.impactCol}>
-                  <Image source={Images.drop} style={styles.impactIcon} resizeMode="contain" />
-                  <Text style={styles.impactValue}>{selectedSpecies.impact.waterSaved}</Text>
+                  <View style={styles.impactIconBgDrop}>
+                    <Image source={Images.drop} style={styles.impactIconDrop} resizeMode="contain" />
+                  </View>
                   <Text style={styles.impactLabel}>Water Saved</Text>
+                  <Text style={styles.impactValue}>{selectedSpecies.impact.waterSaved}</Text>
                 </View>
+                <View style={styles.impactDivider} />
                 <View style={styles.impactCol}>
-                  <Image source={Images.globe} style={styles.impactIcon} resizeMode="contain" />
-                  <Text style={styles.impactValue}>{selectedSpecies.impact.biodiversity}</Text>
+                  <View style={styles.impactIconBg}>
+                    <Image source={Images.bird} style={styles.impactIcon} resizeMode="contain" />
+                  </View>
                   <Text style={styles.impactLabel}>Supports Biodiversity</Text>
+                  <Text style={styles.impactValue}>{selectedSpecies.impact.biodiversity}</Text>
                 </View>
               </View>
             </View>
           </View>
-        </ScrollView>
 
-        {/* Sticky Footer Area */}
-        <View style={styles.footerContainer}>
-          <View style={styles.footerTopRow}>
-
+          <View style={styles.footerContainer}>
             {/* Selected Species Summary */}
             <View style={styles.footerSelectedInfo}>
               <Image source={selectedSpecies.image} style={styles.footerThumbnail} resizeMode="cover" />
               <View style={styles.footerTextCol}>
                 <Text style={styles.footerLabel}>Selected Species</Text>
                 <Text style={styles.footerName}>{selectedSpecies.name}</Text>
+                <Text style={styles.footerScientific}>{selectedSpecies.scientificName}</Text>
+                <TouchableOpacity
+                  style={styles.footerChangeBtn}
+                  activeOpacity={0.7}
+                  onPress={() => {
+                    // Action to trigger change
+                  }}
+                >
+                  <Text style={styles.footerChangeText}>Change</Text>
+                  <Image source={Images.edit} style={styles.footerChangeIcon} resizeMode="contain" />
+                </TouchableOpacity>
               </View>
             </View>
 
-            {/* Action Proceed Button */}
-            <TouchableOpacity
-              style={styles.proceedButton}
-              activeOpacity={0.8}
-              onPress={() => navigation.navigate('DedicateTree', { project, selectedSpecies })}
-            >
-              <Text style={styles.proceedButtonText}>Proceed to Dedication</Text>
-              <Text style={styles.proceedButtonArrow}>→</Text>
-            </TouchableOpacity>
+            <View style={styles.footerActionCol}>
+              <TouchableOpacity
+                style={styles.proceedButton}
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate('DedicateTree', { project, selectedSpecies })}
+              >
+                <Text style={styles.proceedButtonText}>Proceed to Dedication</Text>
+              </TouchableOpacity>
+
+            </View>
           </View>
-        </View>
+        </ScrollView>
+
+        {/* Sticky Footer Area */}
+
 
       </View>
     </SafeAreaView>

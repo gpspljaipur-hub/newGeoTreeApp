@@ -13,8 +13,8 @@ interface StepperProps {
 
 export const Stepper: React.FC<StepperProps> = ({ currentStep }) => {
   const steps = [
-    { number: 1, label: 'Choose Tree' },
-    { number: 2, label: 'Choose Location' },
+    { number: 1, label: 'Tree' },
+    { number: 2, label: 'Location' },
     { number: 3, label: 'Details' },
     { number: 4, label: 'Payment' },
   ];
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: '15%',
     right: '15%',
-    top: 14,
+    top: 10,
     height: 2,
     backgroundColor: '#E0E5E2',
     zIndex: 1,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   stepperLineActive: {
     position: 'absolute',
     left: '15%',
-    top: 14,
+    top: 10,
     height: 2,
     backgroundColor: Colors.tint,
     zIndex: 1.5,
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   stepCircle: {
-    width: ImageSize.ImageH22,
-    height: ImageSize.ImageH22,
+    width: 18,
+    height: 18,
     borderRadius: 999,
     justifyContent: 'center',
     alignItems: 'center',
@@ -144,13 +144,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#D1DCD6',
   },
   stepNumber: {
-    fontFamily: fonts.OpenSans_Bold,
+    fontFamily: fonts.OpenSans_Medium,
     fontSize: FontsSize.size12,
     color: Colors.white,
   },
   stepCheckIcon: {
-    width: 12,
-    height: 12,
+    width: 10,
+    height: 10,
     tintColor: Colors.white,
   },
   stepLabel: {
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   stepLabelActive: {
     color: Colors.tint,
-    fontFamily: fonts.OpenSans_SemiBold,
+    fontFamily: fonts.OpenSans_Medium,
   },
   stepLabelInactive: {
     color: '#8E9A93',
