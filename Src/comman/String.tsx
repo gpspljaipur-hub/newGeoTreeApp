@@ -277,7 +277,7 @@ const translations: Record<'en' | 'hi', Record<string, string>> = {
 		ProjectSelect_ChooseTreeJourney: 'Choose a tree and continue your plantation journey.',
 		ProjectSelect_ChooseTreeSpecies: 'Choose Tree Species',
 
-		ChooseLocation_TitleLeft: 'Choose a Location \nin ',
+		ChooseLocation_TitleLeft: 'Choose a Location in \n ',
 		ChooseLocation_Subtitle: 'Select the best location for your tree. All our plantations are verified and managed by local partners.',
 		ChooseLocation_VerifiedLocations: 'Verified Plantation Locations',
 		ChooseLocation_ChooseSpecific: 'Choose a specific location for your tree plantation.',

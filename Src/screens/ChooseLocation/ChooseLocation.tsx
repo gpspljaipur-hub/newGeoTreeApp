@@ -99,7 +99,7 @@ const ChooseLocationScreen = () => {
               <View style={styles.heroTextContainer}>
                 <Text style={styles.heroTitle}>
                   {String.ChooseLocation_TitleLeft}{'\n'}
-                  in <Text style={styles.highlightGreen}>{String.ChooseTree_Rajasthan}</Text>
+                  <Text style={styles.highlightGreen}>{String.ChooseTree_Rajasthan}</Text>
                 </Text>
                 <Text style={styles.heroSubtitle}>
                   {String.ChooseLocation_Subtitle}

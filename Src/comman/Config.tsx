@@ -3,13 +3,13 @@ const Config = {
     // imageurl: 'https://sanskar.geotree.xyz',
     // baseurlCertificate: "https://sanskar.geotree.xyz",
 
-    // baseurl: 'https://geotree-backend-8vxt.onrender.com/',
-    // imageurl: 'https://geotree-backend-8vxt.onrender.com',
-    // baseurlCertificate: "https://geotree-backend-8vxt.onrender.com",
+    baseurl: 'https://geotree-backend-8vxt.onrender.com/',
+    imageurl: 'https://geotree-backend-8vxt.onrender.com',
+    baseurlCertificate: "https://geotree-backend-8vxt.onrender.com",
 
-    baseurl: 'http://192.168.0.17:5030/',
-    imageurl: 'http://192.168.0.17:5030',
-    baseurlCertificate: "http://192.168.0.17:5030",
+    // baseurl: 'http://192.168.0.17:5030/',
+    // imageurl: 'http://192.168.0.17:5030',
+    // baseurlCertificate: "http://192.168.0.17:5030",
 
     GOOGLE_API_KEY: 'AIzaSyCzyLYJDu7RKQ3DPQaYxWPrSqdndmjwwoQ',
     // live_Key_id: 'rzp_live_SPPXqPzqvzyj1j',
