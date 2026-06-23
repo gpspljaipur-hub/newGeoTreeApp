@@ -18,6 +18,10 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
+import { stateData } from '../../api/ApiService';
+import Config from '../../comman/Config';
 interface StateItem {
   id: string;
   name: string;
@@ -32,108 +36,32 @@ interface StateItem {
 const ExploreStatesScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [searchQuery, setSearchQuery] = useState('');
+  const dispatch = useDispatch();
+  const apiStates = useSelector((state: RootState) => state.state.stateList);
 
-  const POPULAR_STATES: StateItem[] = [
-    {
-      id: '1',
-      name: 'Rajasthan',
-      image: Images.rajasthan,
-      trees: '1.2M+ Trees',
-      projects: '25 Projects',
-    },
-    {
-      id: '2',
-      name: 'Uttarakhand',
-      image: Images.uttarakhand,
-      trees: '850K+ Trees',
-      projects: '18 Projects',
-    },
-    {
-      id: '3',
-      name: 'Karnataka',
-      image: Images.karnataka,
-      trees: '650K+ Trees',
-      projects: '20 Projects',
-    },
-    {
-      id: '4',
-      name: 'Maharashtra',
-      image: Images.maharashtra,
-      trees: '1M+ Trees',
-      projects: '22 Projects',
-    },
-  ];
+  React.useEffect(() => {
+    stateData(dispatch);
+  }, [dispatch]);
 
-  const ALL_STATES: StateItem[] = [
-    {
-      id: '1',
-      name: 'Rajasthan',
-      image: Images.rajasthan,
-      trees: '1.2M+',
-      projects: '25',
-      tag: 'Desert Restoration',
-      icon: Images.treeIcon,
-      species: 'Neem • Khejri ',
-    },
-    {
-      id: '2',
-      name: 'Uttarakhand',
-      image: Images.uttarakhand,
-      trees: '850K+',
-      projects: '18',
-      tag: 'Himalayan Conservation',
-      icon: Images.treeIcon,
-      species: 'Deodar • Pine',
-    },
-    {
-      id: '3',
-      name: 'Karnataka',
-      image: Images.karnataka,
-      trees: '650K+',
-      projects: '20',
-      tag: 'Urban Forestry',
-      icon: Images.treeIcon,
-      species: 'Neem • Peepal',
-    },
-    {
-      id: '4',
-      name: 'Tamil Nadu',
-      image: Images.tamil_nadu,
-      trees: '700K+',
-      projects: '15',
-      tag: 'Coastal Plantation',
-      icon: Images.treeIcon,
-      species: 'Pungan • Casuarina',
-    },
-    {
-      id: '5',
-      name: 'Gujarat',
-      image: Images.project_aravalli,
+  const mappedAllStates = apiStates && apiStates.length > 0
+    ? apiStates.map((item: any, idx: number) => ({
+      id: item._id?.toString() || idx.toString(),
+      name: item.state_name,
+      image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.rajasthan,
       trees: '600K+',
-      projects: '14',
-      tag: 'Green Corridors',
+      projects: '10',
+      description: item.description || 'Forestry Conservation',
       icon: Images.treeIcon,
-      species: 'Neem • Babul',
-    },
-    {
-      id: '6',
-      name: 'Kerala',
-      image: Images.project_himalayas,
-      trees: '500K+',
-      projects: '13',
-      tag: 'Rainforest Restoration',
-      icon: Images.treeIcon,
-      species: 'Teak • Rosewood',
-    },
-  ];
+      species: 'Native Species',
+    }))
+    : [];
 
-  const filteredPopular = POPULAR_STATES.filter(item =>
+  console.log('mappedAllStates', mappedAllStates)
+
+  const filteredAll = mappedAllStates.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const filteredAll = ALL_STATES.filter(item =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
       <View style={styles.container}>
@@ -156,17 +84,17 @@ const ExploreStatesScreen = () => {
 
             <View style={styles.headerTextContainer}>
               <View style={styles.headerTitleRow}>
-                <Text style={styles.headerTitle}>Explore Plantation {'\n'}States</Text>
+                <Text style={styles.headerTitle}>{String.ExploreStates_Title}</Text>
               </View>
               <Text style={styles.headerSubtitle}>
-                Choose a state and discover verified plantation projects.
+                {String.ExploreStates_Subtitle}
               </Text>
             </View>
             <View style={styles.searchContainer}>
               <Image source={Images.geolocation} style={styles.searchIcon} resizeMode="contain" />
               <TextInput
                 style={styles.searchInput}
-                placeholder="Search State"
+                placeholder={String.ExploreStates_SearchPlaceholder}
                 placeholderTextColor={Colors.placeholderColor}
                 value={searchQuery}
                 onChangeText={setSearchQuery}
@@ -178,16 +106,16 @@ const ExploreStatesScreen = () => {
 
 
           {/* Popular States Section */}
-          {filteredPopular.length > 0 && (
+          {mappedAllStates.length > 0 && (
             <>
               <View style={styles.sectionHeader}>
                 <View style={styles.sectionTitleRow}>
-                  <Text style={styles.sectionTitle}>Popular States</Text>
+                  <Text style={styles.sectionTitle}>{String.ExploreStates_PopularStates}</Text>
                 </View>
               </View>
 
               <FlatList
-                data={filteredPopular}
+                data={mappedAllStates}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
@@ -232,15 +160,15 @@ const ExploreStatesScreen = () => {
 
           {/* All States Section */}
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>All States</Text>
+            <Text style={styles.sectionTitle}>{String.ExploreStates_AllStates}</Text>
             <View style={styles.sortFilterRow}>
               <TouchableOpacity style={styles.sortFilterBtn} activeOpacity={0.7}>
                 <Image source={Images.sort} style={styles.sortFilterIcon} resizeMode="contain" />
-                <Text style={styles.sortFilterText}>Sort</Text>
+                <Text style={styles.sortFilterText}>{String.ExploreStates_Sort}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.sortFilterBtn} activeOpacity={0.7}>
                 <Image source={Images.filter} style={styles.sortFilterIcon} resizeMode="contain" />
-                <Text style={styles.sortFilterText}>Filter</Text>
+                <Text style={styles.sortFilterText}>{String.ExploreStates_Filter}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -250,11 +178,11 @@ const ExploreStatesScreen = () => {
               <View key={item.id} style={styles.allCard}>
                 <View style={styles.allCardImageContainer}>
                   <Image source={item.image} style={styles.allCardImage} resizeMode="cover" />
-                  {item.tag && (
+                  {/* {item.tag && (
                     <View style={styles.tagBadge}>
                       <Text style={styles.tagBadgeText}>{item.tag}</Text>
                     </View>
-                  )}
+                  )} */}
                   {item.icon && (
                     <View style={styles.overlapIconContainer}>
                       <Image source={item.icon} style={styles.overlapIcon} resizeMode="contain" />
@@ -269,22 +197,21 @@ const ExploreStatesScreen = () => {
                       <View style={styles.treeBadge}>
                         <Text style={styles.treeBadgeText}>{item.trees}</Text>
                       </View>
-                      <Text style={styles.treeBadgeDesc}>Trees</Text>
+                      <Text style={styles.treeBadgeDesc}>{String.Dashboard_TreesSuffix}</Text>
                     </View>
                   </View>
 
                   <View style={styles.allCardProjectsRow}>
                     <Image source={Images.folder} style={styles.allCardFolderIcon} resizeMode="contain" />
                     <Text style={styles.allCardProjectsText}>
-                      {item.projects} Projects Available
+                      {item.projects} {String.ExploreStates_ProjectsAvailable}
                     </Text>
                   </View>
 
-                  {item.species && (
-                    <Text style={styles.speciesLabel}>
-                      Species: <Text style={styles.speciesHighlight}>{item.species}</Text>
-                    </Text>
-                  )}
+                  <Text style={styles.speciesLabel}>
+                    <Text style={styles.speciesHighlight}>{item.description}</Text>
+                  </Text>
+
 
                   <View style={styles.allCardDivider} />
 
@@ -293,8 +220,7 @@ const ExploreStatesScreen = () => {
                     activeOpacity={0.8}
                     onPress={() => navigation.navigate('Statewise', { stateName: item.name })}
                   >
-                    <Text style={styles.exploreBtnText}>Explore</Text>
-                    <Text style={styles.exploreBtnArrow}>→</Text>
+                    <Text style={styles.exploreBtnText}>{String.ExploreStates_Explore}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -309,13 +235,13 @@ const ExploreStatesScreen = () => {
             />
             <View style={styles.bannerLeftCol}>
               <Text style={styles.bannerTextMain}>
-                Every state. Every tree.
+                {String.ExploreStates_BannerTextMain}
               </Text>
               <Text style={styles.bannerTextSub}>
-                Every action counts.
+                {String.ExploreStates_BannerTextSub}
               </Text>
               <Text style={styles.bannerTextDesc}>
-                Your small step today creates a {'\n'} greener tomorrow.
+                {String.ExploreStates_BannerTextDesc}
               </Text>
             </View>
           </View>

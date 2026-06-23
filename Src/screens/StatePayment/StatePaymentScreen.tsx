@@ -18,10 +18,13 @@ import { Colors } from '../../comman/Colors';
 import MarginHW from '../../comman/MarginHW';
 import fonts from '../../comman/fonts';
 import FontsSize from '../../comman/FontsSize';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
 
 const StatePaymentScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'StatePayment'>>();
+  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
   const {
     project,
     selectedSpecies,
@@ -55,6 +58,14 @@ const StatePaymentScreen = () => {
     }
     return occasion || 'Personal Plantation';
   };
+
+  const paymentButton = () => {
+    if (isAuthenticated) {
+      handleNavigation({ type: 'setRoot', page: 'UserDashboard', navigation });
+    } else {
+      handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+    }
+  }
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
@@ -396,7 +407,7 @@ const StatePaymentScreen = () => {
               style={styles.paymentButton}
               activeOpacity={0.9}
               onPress={() => {
-                handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+                paymentButton()
                 // navigation.navigate('PlantationConfirmed')
               }}
             >

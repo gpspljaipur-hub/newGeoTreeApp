@@ -18,69 +18,70 @@ import String from '../../comman/String';
 import PlantHeader from '../../comman/PlantHeader';
 import Stepper from '../../comman/Stepper';
 
-const treesData = [
-  {
-    id: 'neem',
-    name: 'Neem',
-    scientificName: 'Azadirachta indica',
-    description: 'A hardy native tree known for its medicinal properties and air purifying qualities.',
-    co2: '22 kg/year',
-    growthRate: 'Medium',
-    maintenance: 'Low',
-    points: 100,
-    category: 'Native',
-    image: Images.neem_tree,
-  },
-  {
-    id: 'peepal',
-    name: 'Peepal',
-    scientificName: 'Ficus religiosa',
-    description: 'A sacred tree that produces oxygen even at night and supports biodiversity.',
-    co2: '28 kg/year',
-    growthRate: 'Fast',
-    maintenance: 'Low',
-    points: 120,
-    category: 'Native',
-    image: Images.peepal_tree,
-  },
-  {
-    id: 'mango',
-    name: 'Mango',
-    scientificName: 'Mangifera indica',
-    description: 'A popular fruit tree that provides shade and delicious fruits.',
-    co2: '25 kg/year',
-    growthRate: 'Medium',
-    maintenance: 'Medium',
-    points: 150,
-    category: 'Fruit',
-    image: Images.mango_tree,
-  },
-  {
-    id: 'gulmohar',
-    name: 'Gulmohar',
-    scientificName: 'Delonix regia',
-    description: 'A beautiful flowering tree that adds vibrant colors to the environment.',
-    co2: '20 kg/year',
-    growthRate: 'Medium',
-    maintenance: 'Low',
-    points: 120,
-    category: 'Flowering',
-    image: Images.gulmohar_tree,
-  },
-];
-
 const ChooseTreeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [selectedTab, setSelectedTab] = useState('All');
+
+  const treesData = [
+    {
+      id: 'neem',
+      name: String.ChooseTree_NeemName,
+      scientificName: 'Azadirachta indica',
+      description: String.ChooseTree_NeemDesc,
+      co2: '22 kg/year',
+      growthRate: String.ChooseTree_GrowthMedium,
+      maintenance: String.ChooseTree_MaintenanceLow,
+      points: 100,
+      category: 'Native',
+      image: Images.neem_tree,
+    },
+    {
+      id: 'peepal',
+      name: String.ChooseTree_PeepalName,
+      scientificName: 'Ficus religiosa',
+      description: String.ChooseTree_PeepalDesc,
+      co2: '28 kg/year',
+      growthRate: String.ChooseTree_GrowthFast,
+      maintenance: String.ChooseTree_MaintenanceLow,
+      points: 120,
+      category: 'Native',
+      image: Images.peepal_tree,
+    },
+    {
+      id: 'mango',
+      name: String.ChooseTree_MangoName,
+      scientificName: 'Mangifera indica',
+      description: String.ChooseTree_MangoDesc,
+      co2: '25 kg/year',
+      growthRate: String.ChooseTree_GrowthMedium,
+      maintenance: String.ChooseTree_MaintenanceMedium,
+      points: 150,
+      category: 'Fruit',
+      image: Images.mango_tree,
+    },
+    {
+      id: 'gulmohar',
+      name: String.ChooseTree_GulmoharName,
+      scientificName: 'Delonix regia',
+      description: String.ChooseTree_GulmoharDesc,
+      co2: '20 kg/year',
+      growthRate: String.ChooseTree_GrowthMedium,
+      maintenance: String.ChooseTree_MaintenanceLow,
+      points: 120,
+      category: 'Flowering',
+      image: Images.gulmohar_tree,
+    },
+  ];
+
   const filteredTrees = selectedTab === 'All'
     ? treesData
     : treesData.filter(tree => tree.category === selectedTab);
 
   const categories = [
-    { id: 'All', label: 'All Trees' },
-    { id: 'Native', label: 'Native Trees' },
-    { id: 'Fruit', label: 'Fruit Trees' },
-    { id: 'Flowering', label: 'Flowering Trees' },
+    { id: 'All', label: String.ChooseTree_TabAll },
+    { id: 'Native', label: String.ChooseTree_TabNative },
+    { id: 'Fruit', label: String.ChooseTree_TabFruit },
+    { id: 'Flowering', label: String.ChooseTree_TabFlowering },
   ];
 
   const renderTabIcon = (tabId: string, isActive: boolean) => {
@@ -133,9 +134,9 @@ const ChooseTreeScreen = () => {
 
                   <View style={styles.stateTextContainer}>
                     {/* <Text style={styles.stateLabel}>Selected State </Text> */}
-                    <Text style={styles.stateName}>Rajasthan</Text>
+                    <Text style={styles.stateName}>{String.Home_ProjRajasthan}</Text>
                     <TouchableOpacity activeOpacity={0.8} style={styles.changeStateButton} >
-                      <Text style={styles.changeStateText}>Change State </Text>
+                      <Text style={styles.changeStateText}>{String.ChooseTree_ChangeState}</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -146,13 +147,14 @@ const ChooseTreeScreen = () => {
 
                 {/* Left Side Text */}
                 <View style={styles.heroTextContainer}>
-                  <Text style={styles.heroTitle}>Choose a Tree to{'\n'}Plant in{' '}
-                    <Text style={styles.highlightGreen}>Rajasthan   </Text>
+                  <Text style={styles.heroTitle}>{String.ChooseTree_HeroTitleLeft}
+                    <Text style={styles.highlightGreen}>{String.ChooseTree_HeroTitleHighlight}</Text>
                   </Text>
 
                   <Text style={styles.heroSubtitle}>
-                    Every tree you plant contributes to a{' '}
-                    <Text style={styles.greenRegular}> greener</Text>{' '}and healthier Rajasthan </Text>
+                    {String.ChooseTree_HeroSubtitleLeft}
+                    <Text style={styles.greenRegular}>{String.ChooseTree_HeroSubtitleHighlight}</Text>
+                    {String.ChooseTree_HeroSubtitleRight}</Text>
                 </View>
               </View>
             </View>
@@ -216,7 +218,9 @@ const ChooseTreeScreen = () => {
                   <View style={styles.treeImageContainer}>
                     <ImageBackground source={tree.image} style={styles.treeImage} resizeMode='cover' imageStyle={{ borderRadius: 10, }}>
                       <View style={[styles.categoryBadge, badgeStyle]}>
-                        <Text style={styles.categoryBadgeText}>{tree.category}</Text>
+                        <Text style={styles.categoryBadgeText}>
+                          {tree.category === 'Native' ? String.ChooseTree_CategoryNative : tree.category === 'Fruit' ? String.ChooseTree_CategoryFruit : String.ChooseTree_CategoryFlowering}
+                        </Text>
                       </View>
                     </ImageBackground>
                   </View>
@@ -236,7 +240,7 @@ const ChooseTreeScreen = () => {
                             <Image source={Images.leaf} style={styles.pointsLeafIcon} resizeMode="contain" />
                             <Text style={styles.pointsValue}>{tree.points}</Text>
                           </View>
-                          <Text style={styles.pointsLabel}>Green Points</Text>
+                          <Text style={styles.pointsLabel}>{String.ChooseTree_GreenPointsLabel}</Text>
                         </View>
                       </View>
 
@@ -253,20 +257,20 @@ const ChooseTreeScreen = () => {
                   <View style={styles.attributesRow}>
 
                     <View style={styles.attributeCol}>
-                      <Text style={styles.attributeLabel}>CO₂ Absorption</Text>
+                      <Text style={styles.attributeLabel}>{String.CO2AbsorptionLabel}</Text>
                       <Text style={styles.attributeValue} numberOfLines={1}>{tree.co2}</Text>
                     </View>
 
                     <View style={styles.attributeDivider} />
                     <View style={styles.attributeCol}>
-                      <Text style={styles.attributeLabel}>Growth Rate</Text>
+                      <Text style={styles.attributeLabel}>{String.ChooseTree_GrowthRate}</Text>
                       <Text style={[styles.attributeValue, { color: growthRateColor }]} >
                         {tree.growthRate}
                       </Text>
                     </View>
                     <View style={styles.attributeDivider} />
                     <View style={styles.attributeCol}>
-                      <Text style={styles.attributeLabel}>Maintenance</Text>
+                      <Text style={styles.attributeLabel}>{String.ChooseTree_Maintenance}</Text>
                       <Text style={[styles.attributeValue, { color: maintenanceColor }]} >
                         {tree.maintenance}
                       </Text>

@@ -39,10 +39,10 @@ const ChoicetreeplantationScreen = () => {
 
     // Quantities data based on mockup
     const quantities = [
-        { id: '1', title: '1 Tree', price: 199, co2: 22, hasDiscount: false, discountText: '', image: Images.one_tree_plant },
-        { id: '5', title: '5 Trees', price: 995, co2: 110, hasDiscount: true, discountText: '5% OFF', image: Images.five_trees_plant },
-        { id: '10', title: '10 Trees', price: 1890, co2: 220, hasDiscount: true, discountText: '5% OFF', image: Images.ten_trees_plant },
-        { id: '25', title: '25 Trees', price: 4500, co2: 550, hasDiscount: true, discountText: '10% OFF', image: Images.twenty_five_trees_plant },
+        { id: '1', title: String.DedicateTree_TreeVal.replace('{{count}}', '1'), price: 199, co2: 22, hasDiscount: false, discountText: '', image: Images.one_tree_plant },
+        { id: '5', title: String.DedicateTree_TreesVal.replace('{{count}}', '5'), price: 995, co2: 110, hasDiscount: true, discountText: String.ChooseTree_CategoryNative === 'स्वदेशी' ? '5% छूट' : '5% OFF', image: Images.five_trees_plant },
+        { id: '10', title: String.DedicateTree_TreesVal.replace('{{count}}', '10'), price: 1890, co2: 220, hasDiscount: true, discountText: String.ChooseTree_CategoryNative === 'स्वदेशी' ? '5% छूट' : '5% OFF', image: Images.ten_trees_plant },
+        { id: '25', title: String.DedicateTree_TreesVal.replace('{{count}}', '25'), price: 4500, co2: 550, hasDiscount: true, discountText: String.ChooseTree_CategoryNative === 'स्वदेशी' ? '10% छूट' : '10% OFF', image: Images.twenty_five_trees_plant },
     ];
 
     // Selection states
@@ -119,31 +119,31 @@ const ChoicetreeplantationScreen = () => {
                                 <View style={[styles.stepCircle, styles.stepCircleActive]}>
                                     <Image source={Images.geolocation} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
                                 </View>
-                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>State</Text>
+                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>{String.ChoiceTree_StepState}</Text>
                             </View>
                             <View style={styles.stepItem}>
                                 <View style={[styles.stepCircle, styles.stepCircleActive]}>
                                     <Image source={Images.projectIcon} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
                                 </View>
-                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>Project</Text>
+                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>{String.ChoiceTree_StepProject}</Text>
                             </View>
                             <View style={styles.stepItem}>
                                 <View style={[styles.stepCircle, styles.stepCircleActive]}>
                                     <Image source={Images.treeIcon} style={[styles.stepIcon, styles.stepIconActive]} resizeMode="contain" />
                                 </View>
-                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>Tree</Text>
+                                <Text style={[styles.stepLabel, styles.stepLabelActive]}>{String.ChoiceTree_StepTree}</Text>
                             </View>
                             <View style={styles.stepItem}>
                                 <View style={styles.stepCircle}>
                                     <Image source={Images.profile} style={styles.stepIcon} resizeMode="contain" />
                                 </View>
-                                <Text style={styles.stepLabel}>Dedication</Text>
+                                <Text style={styles.stepLabel}>{String.ChoiceTree_StepDedication}</Text>
                             </View>
                             <View style={styles.stepItem}>
                                 <View style={styles.stepCircle}>
                                     <Image source={Images.lock} style={styles.stepIcon} resizeMode="contain" />
                                 </View>
-                                <Text style={styles.stepLabel}>Payment</Text>
+                                <Text style={styles.stepLabel}>{String.ChoiceTree_StepPayment}</Text>
                             </View>
                         </View>
                     </View>
@@ -153,10 +153,10 @@ const ChoicetreeplantationScreen = () => {
                         style={styles.heroOverlay}
                     >
                         <View style={styles.heroTextContainer}>
-                            <Text style={styles.heroTitle}>Great Choice! 🍃</Text>
-                            <Text style={styles.heroName}>Neem Tree</Text>
+                            <Text style={styles.heroTitle}>{String.ChoiceTree_HeroTitle}</Text>
+                            <Text style={styles.heroName}>{String.ChooseTree_TreeNeemName} {String.Dashboard_TreeLabel}</Text>
                             <Text style={styles.heroSubtitle}>
-                                You're about to plant a native tree that creates a real impact.
+                                {String.ChoiceTree_HeroSubtitle}
                             </Text>
                         </View>
 
@@ -166,7 +166,7 @@ const ChoicetreeplantationScreen = () => {
                                 <View style={styles.attributeItem}>
                                     <Image source={Images.location} style={styles.pillIcon} resizeMode="contain" />
                                     <View style={styles.attributeTextWrapper}>
-                                        <Text style={styles.attributeLabelText}>Native to</Text>
+                                        <Text style={styles.attributeLabelText}>{String.ChoiceTree_NativeTo}</Text>
                                         <Text style={styles.attributeValText}>{stateName}</Text>
                                     </View>
                                 </View>
@@ -174,24 +174,24 @@ const ChoicetreeplantationScreen = () => {
                                 <View style={styles.attributeItem}>
                                     <Image source={Images.Emission} style={styles.pillIcon} resizeMode="contain" />
                                     <View style={styles.attributeTextWrapper}>
-                                        <Text style={styles.attributeLabelText}>High CO₂</Text>
-                                        <Text style={styles.attributeValText}>Absorption</Text>
+                                        <Text style={styles.attributeLabelText}>{String.ChoiceTree_HighCO2}</Text>
+                                        <Text style={styles.attributeValText}>{String.ChoiceTree_Absorption}</Text>
                                     </View>
                                 </View>
                                 <View style={styles.verticalDivider} />
                                 <View style={styles.attributeItem}>
                                     <Image source={Images.leaf} style={styles.pillIcon} resizeMode="contain" />
                                     <View style={styles.attributeTextWrapper}>
-                                        <Text style={styles.attributeLabelText}>Drought</Text>
-                                        <Text style={styles.attributeValText}>Resistant</Text>
+                                        <Text style={styles.attributeLabelText}>{String.ChoiceTree_Drought}</Text>
+                                        <Text style={styles.attributeValText}>{String.ChoiceTree_Resistant}</Text>
                                     </View>
                                 </View>
                                 <View style={styles.verticalDivider} />
                                 <View style={styles.attributeItem}>
                                     <Image source={Images.treeIcon} style={styles.pillIcon} resizeMode="contain" />
                                     <View style={styles.attributeTextWrapper}>
-                                        <Text style={styles.attributeLabelText}>Long</Text>
-                                        <Text style={styles.attributeValText}>Lifespan</Text>
+                                        <Text style={styles.attributeLabelText}>{String.ChoiceTree_Long}</Text>
+                                        <Text style={styles.attributeValText}>{String.ChoiceTree_Lifespan}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -200,18 +200,17 @@ const ChoicetreeplantationScreen = () => {
                             <View style={styles.gpsBadge}>
                                 <Image source={Images.verified} style={styles.gpsIcon} resizeMode="contain" />
                                 <View style={styles.gpsTextWrapper}>
-                                    <Text style={styles.gpsText}>GPS</Text>
-                                    <Text style={styles.gpsText}>VERIFIED</Text>
+                                    <Text style={styles.gpsText}>{String.AppOpening_GPSTracked.split('\n')[0]}</Text>
+                                    <Text style={styles.gpsText}>{String.AppOpening_GPSTracked.split('\n')[1]}</Text>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </ImageBackground>
-
                 {/* Quantity Selection Section */}
                 <View style={styles.sectionContainer}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>How many trees would you like to plant?</Text>
+                        <Text style={styles.sectionTitle}>{String.ChoiceTree_QtyTitle}</Text>
                     </View>
 
                     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.quantityList}>
@@ -239,7 +238,9 @@ const ChoicetreeplantationScreen = () => {
                                             </View>
                                         )}
                                     </View>
-                                    <Text style={[styles.co2Text, isActive && styles.co2TextActive]}>{item.co2} KG CO₂ / Year</Text>
+                                    <Text style={[styles.co2Text, isActive && styles.co2TextActive]}>
+                                        {String.ChoiceTree_Co2Year.replace('{{count}}', item.co2.toString())}
+                                    </Text>
                                 </TouchableOpacity>
                             );
                         })}
@@ -263,7 +264,7 @@ const ChoicetreeplantationScreen = () => {
                                 <View style={styles.customInputContainer}>
                                     <TextInput
                                         style={styles.customTextInput}
-                                        placeholder="Enter Qty"
+                                        placeholder={String.ChoiceTree_EnterQty}
                                         placeholderTextColor="#9CA3AF"
                                         keyboardType="number-pad"
                                         value={customQtyText}
@@ -273,15 +274,15 @@ const ChoicetreeplantationScreen = () => {
                                 </View>
                             ) : (
                                 <View style={{ alignItems: 'center' }}>
-                                    <Text style={styles.quantityTitle}>Custom</Text>
-                                    <Text style={{ fontSize: 8, color: '#6B7280', marginTop: 2, textAlign: 'center' }}>Plant more trees</Text>
+                                    <Text style={styles.quantityTitle}>{String.ChoiceTree_Custom}</Text>
+                                    <Text style={{ fontSize: 8, color: '#6B7280', marginTop: 2, textAlign: 'center' }}>{String.ChoiceTree_PlantMore}</Text>
                                     <View style={styles.customChooseBtn}>
-                                        <Text style={styles.customChooseBtnText}>Choose</Text>
+                                        <Text style={styles.customChooseBtnText}>{String.ChoiceTree_Choose}</Text>
                                     </View>
                                 </View>
                             )}
                             <Text style={[styles.co2Text, isCustomActive && styles.co2TextActive]}>
-                                {customQtyText ? `${parseInt(customQtyText, 10) * 22} KG` : '--'} CO₂ / Year
+                                {customQtyText ? String.ChoiceTree_Co2Year.replace('{{count}}', (parseInt(customQtyText, 10) * 22).toString()) : '--'} / Year
                             </Text>
                         </TouchableOpacity>
                     </ScrollView>
@@ -290,7 +291,7 @@ const ChoicetreeplantationScreen = () => {
                     <View style={styles.infoStrip}>
                         <Image source={Images.leaf} style={[styles.infoStripIcon, { tintColor: '#1E6B46' }]} resizeMode="contain" />
                         <Text style={styles.infoStripText}>
-                            More trees, bigger impact! Plant in bulk and contribute to a greener tomorrow.
+                            {String.ChoiceTree_MoreImpact}
                         </Text>
                     </View>
                 </View>
@@ -298,9 +299,9 @@ const ChoicetreeplantationScreen = () => {
                 {/* Project Selection Section */}
                 <View style={styles.sectionContainer}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>Where would you like to plant?</Text>
+                        <Text style={styles.sectionTitle}>{String.ChoiceTree_WherePlant}</Text>
                         <TouchableOpacity activeOpacity={0.7}>
-                            <Text style={styles.viewAllLink}>View All Projects</Text>
+                            <Text style={styles.viewAllLink}>{String.ChoiceTree_ViewAllProjects}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -318,7 +319,7 @@ const ChoicetreeplantationScreen = () => {
                                         <Image source={project.image} style={styles.projectImage} resizeMode="cover" />
                                         <View style={styles.projectTag}>
                                             <Text style={project.tag === 'BEST MATCH' ? styles.projectTagText : [styles.projectTagText, { color: '#FFFFFF' }]}>
-                                                {project.tag}
+                                                {project.tag === 'BEST MATCH' ? String.WhichTree_BestMatch : project.tag === 'TRENDING' ? String.PlantationJourney_BadgeTrending : String.State_Popular}
                                             </Text>
                                         </View>
                                         <View style={[styles.projectSelector, isSelected && styles.projectSelectorSelected]}>
@@ -338,7 +339,7 @@ const ChoicetreeplantationScreen = () => {
                                         <View style={styles.projectFooter}>
                                             <View style={styles.plantedCountRow}>
                                                 <Image source={Images.treeIcon} style={styles.plantedIcon} resizeMode="contain" />
-                                                <Text style={styles.plantedText}>{project.treesPlanted}</Text>
+                                                <Text style={styles.plantedText}>{String.ChoiceTree_Planted.replace('{{count}}', project.treesPlanted.split(' ')[0])}</Text>
                                             </View>
                                             {isSelected && (
                                                 <View style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: Colors.legacyGreen, justifyContent: 'center', alignItems: 'center' }}>
@@ -355,37 +356,37 @@ const ChoicetreeplantationScreen = () => {
 
                 {/* Impact summary grid details */}
                 <View style={styles.sectionContainer}>
-                    <Text style={styles.sectionTitle}>Your Impact for This Planting</Text>
+                    <Text style={styles.sectionTitle}>{String.ChoiceTree_YourImpact}</Text>
 
                     <View style={styles.impactCardContainer}>
                         <View style={styles.impactCol}>
                             <Image source={Images.treeIcon} style={styles.impactIcon} resizeMode="contain" />
-                            <Text style={styles.impactValue}>{qty} Trees</Text>
-                            <Text style={styles.impactLabel}>You are planting</Text>
+                            <Text style={styles.impactValue}>{qty === 1 ? String.DedicateTree_TreeVal.replace('{{count}}', qty.toString()) : String.DedicateTree_TreesVal.replace('{{count}}', qty.toString())}</Text>
+                            <Text style={styles.impactLabel}>{String.ChoiceTree_YouArePlanting}</Text>
                         </View>
                         <View style={styles.impactDivider} />
                         <View style={styles.impactCol}>
                             <Image source={Images.Emission} style={styles.impactIcon} resizeMode="contain" />
                             <Text style={styles.impactValue}>{co2} KG</Text>
-                            <Text style={styles.impactLabel}>CO₂ offset / year</Text>
+                            <Text style={styles.impactLabel}>{String.ChoiceTree_Co2OffsetYear}</Text>
                         </View>
                         <View style={styles.impactDivider} />
                         <View style={styles.impactCol}>
                             <Image source={Images.bubbletree} style={[styles.impactIcon, { tintColor: '#3B82F6' }]} resizeMode="contain" />
-                            <Text style={styles.impactValue}>Water & Soil</Text>
-                            <Text style={styles.impactLabel}>Conservation</Text>
+                            <Text style={styles.impactValue}>{String.ChoiceTree_WaterSoil}</Text>
+                            <Text style={styles.impactLabel}>{String.ChoiceTree_Conservation}</Text>
                         </View>
                         <View style={styles.impactDivider} />
                         <View style={styles.impactCol}>
                             <Image source={Images.group} style={styles.impactIcon} resizeMode="contain" />
-                            <Text style={styles.impactValue}>Supports</Text>
-                            <Text style={styles.impactLabel}>Biodiversity</Text>
+                            <Text style={styles.impactValue}>{String.ChoiceTree_Supports}</Text>
+                            <Text style={styles.impactLabel}>{String.ChoiceTree_Biodiversity}</Text>
                         </View>
                         <View style={styles.impactDivider} />
                         <View style={styles.impactCol}>
                             <Image source={Images.shield} style={styles.impactIcon} resizeMode="contain" />
-                            <Text style={styles.impactValue}>3 Years</Text>
-                            <Text style={styles.impactLabel}>Monitoring</Text>
+                            <Text style={styles.impactValue}>{String.ChoiceTree_MonitoringVal}</Text>
+                            <Text style={styles.impactLabel}>{String.ChoiceTree_Monitoring}</Text>
                         </View>
                     </View>
                 </View>
@@ -398,8 +399,8 @@ const ChoicetreeplantationScreen = () => {
                                 <Image source={Images.verified} style={styles.trustIcon} resizeMode="contain" />
                             </View>
                             <View style={styles.trustTextCol}>
-                                <Text style={styles.trustTitle}>100% Verified & Transparent</Text>
-                                <Text numberOfLines={2} style={styles.trustDesc}>Every tree is GPS tagged, monitored for 3 years and you get regular updates.</Text>
+                                <Text style={styles.trustTitle}>{String.ChoiceTree_VerifiedTransparent}</Text>
+                                <Text numberOfLines={2} style={styles.trustDesc}>{String.ChoiceTree_VerifiedDesc}</Text>
                             </View>
                         </View>
                         <View style={styles.trustDivider} />
@@ -408,8 +409,8 @@ const ChoicetreeplantationScreen = () => {
                                 <Image source={Images.lock} style={styles.trustIcon} resizeMode="contain" />
                             </View>
                             <View style={styles.trustTextCol}>
-                                <Text style={styles.trustTitle}>Secure Payment</Text>
-                                <Text style={styles.trustDesc}>Your payment is safe & encrypted</Text>
+                                <Text style={styles.trustTitle}>{String.ChoiceTree_SecurePayment}</Text>
+                                <Text style={styles.trustDesc}>{String.ChoiceTree_SecureDesc}</Text>
                             </View>
                         </View>
                         <View style={styles.trustDivider} />
@@ -418,8 +419,8 @@ const ChoicetreeplantationScreen = () => {
                                 <Image source={Images.group} style={styles.trustIcon} resizeMode="contain" />
                             </View>
                             <View style={styles.trustTextCol}>
-                                <Text style={styles.trustTitle}>Trusted by 50K+</Text>
-                                <Text style={styles.trustDesc}>Planters across India</Text>
+                                <Text style={styles.trustTitle}>{String.ChoiceTree_TrustedBy}</Text>
+                                <Text style={styles.trustDesc}>{String.ChoiceTree_PlantersAcross}</Text>
                             </View>
                         </View>
                     </View>
@@ -434,7 +435,7 @@ const ChoicetreeplantationScreen = () => {
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                         >
-                            <Text style={styles.actionBtnText}>Proceed to Dedication</Text>
+                            <Text style={styles.actionBtnText}>{String.ChoiceTree_ProceedBtn}</Text>
                             <Text style={styles.actionBtnArrow}>→</Text>
                         </LinearGradient>
                     </TouchableOpacity>
@@ -442,10 +443,9 @@ const ChoicetreeplantationScreen = () => {
                     {/* Bottom lock indicator row */}
                     <View style={styles.secureTextRow}>
                         <Text style={styles.secureIcon}>🔒</Text>
-                        <Text style={styles.secureText}>Secure • Transparent • Trusted by 50K+ Planters</Text>
+                        <Text style={styles.secureText}>{String.ChoiceTree_SecureNote}</Text>
                     </View>
                 </View>
-
             </ScrollView>
         </SafeAreaView>
     );

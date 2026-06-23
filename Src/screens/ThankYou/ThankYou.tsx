@@ -15,16 +15,24 @@ import { styles } from './styles';
 import Images from '../../constants/images';
 import PlantHeader from '../../comman/PlantHeader';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
 
 const ThankYouScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
 
 
   const handleTrackTree = () => {
     navigation.navigate("MyTreeJourneyScreen")
   }
   const handlePlantAnother = () => {
-    handleNavigation({ type: 'setRoot', navigation, page: 'Home' })
+    if (isAuthenticated) {
+      handleNavigation({ type: 'setRoot', navigation, page: 'UserDashboard' })
+    }
+    else {
+      handleNavigation({ type: 'setRoot', navigation, page: 'Home' })
+    }
   }
 
 

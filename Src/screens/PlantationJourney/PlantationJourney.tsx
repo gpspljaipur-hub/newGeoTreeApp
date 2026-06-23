@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import Images from '../../constants/images';
+import String from '../../comman/String';
 import { Colors } from '../../comman/Colors';
 import { styles } from './styles';
 
@@ -37,78 +38,78 @@ const PlantationJourneyScreen = () => {
             id: 'aravalli',
             title: 'Aravalli Restoration',
             location: 'Jaipur, Rajasthan',
-            treesPlanted: '12,500+ Trees Planted',
+            treesPlanted: String.PlantationJourney_TreesPlantedCount.replace('{{count}}', '12,500'),
             image: Images.project_aravalli,
-            badge: 'FEATURED',
+            badge: String.PlantationJourney_BadgeFeatured,
         },
         {
             id: 'urban_jaipur',
             title: 'Urban Forest Jaipur',
             location: 'Jaipur, Rajasthan',
-            treesPlanted: '8,200+ Trees Planted',
+            treesPlanted: String.PlantationJourney_TreesPlantedCount.replace('{{count}}', '8,200'),
             image: Images.project_jaipur,
-            badge: 'TRENDING',
+            badge: String.PlantationJourney_BadgeTrending,
         },
         {
             id: 'green_belt',
             title: 'Rajasthan Green Belt',
             location: 'Alwar, Rajasthan',
-            treesPlanted: '6,300+ Trees Planted',
+            treesPlanted: String.PlantationJourney_TreesPlantedCount.replace('{{count}}', '6,300'),
             image: Images.aravali_belt,
-            badge: 'NEW',
+            badge: String.PlantationJourney_BadgeNew,
         },
     ];
 
     const categoriesList = [
         {
             id: 'native',
-            title: 'Native Trees',
-            desc: 'Best for local\nenvironment',
-            species: '20+ Species',
+            title: String.ChooseTree_CategoryNative,
+            desc: String.PlantationJourney_NativeTreesDesc,
+            species: String.PlantationJourney_SpeciesCount.replace('{{count}}', '20'),
             image: Images.peepal_tree,
         },
         {
             id: 'fruit',
-            title: 'Fruit Trees',
-            desc: 'Nourish nature\n& communities',
-            species: '15+ Species',
+            title: String.ChooseTree_CategoryFruit,
+            desc: String.PlantationJourney_FruitTreesDesc,
+            species: String.PlantationJourney_SpeciesCount.replace('{{count}}', '15'),
             image: Images.mango_tree,
         },
         {
             id: 'medicinal',
-            title: 'Medicinal Trees',
-            desc: 'Support health\n& well-being',
-            species: '10+ Species',
+            title: String.PlantationJourney_MedicinalTreesTitle,
+            desc: String.PlantationJourney_MedicinalTreesDesc,
+            species: String.PlantationJourney_SpeciesCount.replace('{{count}}', '10'),
             image: Images.neem_tree,
         },
         {
             id: 'flowering',
-            title: 'Flowering Trees',
-            desc: 'Beautify nature\n& surroundings',
-            species: '12+ Species',
+            title: String.ChooseTree_CategoryFlowering,
+            desc: String.PlantationJourney_FloweringTreesDesc,
+            species: String.PlantationJourney_SpeciesCount.replace('{{count}}', '12'),
             image: Images.gulmohar_tree,
         },
     ];
 
     const trustBadgesList = [
         {
-            title: 'GPS Verified',
-            desc: 'Every tree is\nGPS tagged',
+            title: String.Dashboard_GPSVerified,
+            desc: String.PlantationJourney_TrustGPSDesc,
             icon: Images.location,
         },
         {
-            title: 'High Survival',
-            desc: 'Carefully planted\n& monitored',
+            title: String.PlantationJourney_TrustSurvivalTitle,
+            desc: String.PlantationJourney_TrustSurvivalDesc,
             icon: Images.shield,
         },
         {
-            title: 'Transparent',
-            desc: 'Real time updates\n& tracking',
+            title: String.PlantationJourney_TrustTranspTitle,
+            desc: String.PlantationJourney_TrustTranspDesc,
             icon: Images.verified,
         },
         {
-            title: 'Trusted 50K+',
-            desc: 'Join thousands of\ngreen partners',
+            title: String.PlantationJourney_TrustTrustedTitle,
+            desc: String.PlantationJourney_TrustTrustedDesc,
             icon: Images.community,
         },
     ];
@@ -118,11 +119,15 @@ const PlantationJourneyScreen = () => {
     };
 
     const handleNotifications = () => {
-        Alert.alert('Notifications', 'No new notifications.');
+        Alert.alert(String.Alert_NotificationsTitle, String.PlantationJourney_AlertNoNotifications);
     };
 
     const handleSettings = () => {
-        Alert.alert('Settings', 'Settings screen opened.');
+        handleNavigation({
+            type: 'push',
+            page: 'Setting',
+            navigation,
+        })
     };
 
     const handleViewAllStates = () => {
@@ -130,11 +135,11 @@ const PlantationJourneyScreen = () => {
     };
 
     const handleViewAllProjects = () => {
-        Alert.alert('Projects', 'Redirecting to all verified projects...');
+        Alert.alert(String.Alert_ProjectsTitle, String.PlantationJourney_AlertProjectsRedirect);
     };
 
     const handleCategoryGuide = () => {
-        Alert.alert('Category Guide', 'Showing recommendation engine guide...');
+        Alert.alert(String.Alert_CategoryGuideTitle, String.PlantationJourney_AlertCategoryGuide);
     };
 
     const handleSelectProject = (projectId: string, title: string) => {
@@ -148,13 +153,10 @@ const PlantationJourneyScreen = () => {
 
     return (
         <SafeAreaView style={styles.container} edges={['left', 'right']}>
-            {/* <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" /> */}
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
 
-                {/* Hero ImageBackground header covering title and sapling graphics */}
                 <ImageBackground source={Images.detailbg} style={styles.headerBg} imageStyle={styles.headerBgImg} resizeMode="cover">
 
-                    {/* Header Top Row */}
                     <View style={styles.headerRow}>
                         <TouchableOpacity style={styles.backButton} onPress={handleBack} activeOpacity={0.7}>
                             <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
@@ -172,32 +174,30 @@ const PlantationJourneyScreen = () => {
                         </View>
                     </View>
 
-                    {/* Hero Content Section */}
                     <View style={styles.heroContentRow}>
                         <View style={styles.heroLeftCol}>
                             <Text style={styles.heroTitle}>
-                                Start Your{'\n'}
-                                <Text style={styles.heroTitleGreen}>Plantation Journey</Text>
+                                {String.PlantationJourney_TitleStart}{'\n'}
+                                <Text style={styles.heroTitleGreen}>{String.PlantationJourney_TitleHighlight}</Text>
                             </Text>
                             <Text style={styles.heroSubtitle}>
-                                Plant a tree today and create a greener tomorrow.
+                                {String.PlantationJourney_Subtitle}
                             </Text>
 
                             <View style={styles.heroBadge}>
-                                <Text style={styles.heroBadgeText}>✓ 100% Verified • GPS Tracked • Impactful</Text>
+                                <Text style={styles.heroBadgeText}>{String.PlantationJourney_HeroBadge}</Text>
                             </View>
                         </View>
                     </View>
                 </ImageBackground>
 
-                {/* Choose a State */}
                 <View style={styles.sectionHeaderRow}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>Choose a State</Text>
+                        <Text style={styles.sectionTitle}>{String.PlantationJourney_ChooseState}</Text>
                         <Image source={Images.geolocation} style={[styles.sectionTitleLeaf, { tintColor: Colors.TextColorGreenDark }]} resizeMode="contain" />
                     </View>
                     <TouchableOpacity style={styles.viewAllRow} onPress={handleViewAllStates} activeOpacity={0.7}>
-                        <Text style={styles.viewAllText}>View All States</Text>
+                        <Text style={styles.viewAllText}>{String.PlantationJourney_ViewAllStates}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -225,14 +225,13 @@ const PlantationJourneyScreen = () => {
                     })}
                 </ScrollView>
 
-                {/* Explore Verified Projects */}
                 <View style={styles.sectionHeaderRow}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>Explore Verified Projects</Text>
+                        <Text style={styles.sectionTitle}>{String.PlantationJourney_ExploreProjects}</Text>
                         <Image source={Images.leaf} style={styles.sectionTitleLeaf} resizeMode="contain" />
                     </View>
                     <TouchableOpacity style={styles.viewAllRow} onPress={handleViewAllProjects} activeOpacity={0.7}>
-                        <Text style={styles.viewAllText}>View All Projects</Text>
+                        <Text style={styles.viewAllText}>{String.PlantationJourney_ViewAllProjects}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -266,21 +265,19 @@ const PlantationJourneyScreen = () => {
                     ))}
                 </ScrollView>
 
-                {/* Pagination Dots */}
                 <View style={styles.paginationContainer}>
                     <View style={styles.paginationDotActive} />
                     <View style={styles.paginationDot} />
                     <View style={styles.paginationDot} />
                 </View>
 
-                {/* Choose a Tree Category */}
                 <View style={styles.sectionHeaderRow}>
                     <View style={styles.sectionTitleRow}>
-                        <Text style={styles.sectionTitle}>Choose a Tree Category</Text>
+                        <Text style={styles.sectionTitle}>{String.PlantationJourney_ChooseCategory}</Text>
                         <Image source={Images.leaf} style={styles.sectionTitleLeaf} resizeMode="contain" />
                     </View>
                     <TouchableOpacity style={styles.viewAllRow} onPress={handleCategoryGuide} activeOpacity={0.7}>
-                        <Text style={styles.viewAllText}>Which tree should I plant?</Text>
+                        <Text style={styles.viewAllText}>{String.PlantationJourney_WhichTreeGuide}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -291,7 +288,6 @@ const PlantationJourneyScreen = () => {
                             style={styles.categoryCard}
                             onPress={() => {
                                 handleNavigation({ type: 'push', navigation, page: 'WhichtreeShouldIPlant' })
-                                // Alert.alert('Category Info', `${cat.title} selected!`);
                             }}
                             activeOpacity={0.8}
                         >
@@ -305,7 +301,6 @@ const PlantationJourneyScreen = () => {
                     ))}
                 </ScrollView>
 
-                {/* Trust Badges Bar */}
                 <View style={styles.trustRow}>
                     {trustBadgesList.map((badge, idx) => (
                         <View key={idx} style={styles.trustCol}>
@@ -317,9 +312,6 @@ const PlantationJourneyScreen = () => {
                         </View>
                     ))}
                 </View>
-
-                {/* Bottom Navigation Tab Bar Simulation */}
-
             </ScrollView>
         </SafeAreaView>
     );

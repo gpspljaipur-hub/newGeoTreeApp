@@ -88,55 +88,56 @@ const SignInScreen = () => {
   };
 
   const handleSendOTP = async () => {
-    handleNavigation({
-      type: 'push',
-      page: 'Otp',
-      navigation,
-      passProps: {
-        phoneNumber: `+91 ${phoneNumber}`,
-        otp: '123456',
-        fcmToken: fcmToken,
-      },
-    });
-    // if (!checkValidation()) return;
-    // try {
-    //   setLoader(true);
-    //   const userData = { mobile: phoneNumber, device_token: fcmToken };
-    //   const response: any = await (dispatch as any)(Auth_Api(ApiUrl.CheckNumber, userData));
-    //   const userinfo = response?.data?.data?.data;
-    //   if (!userinfo) {
-    //     Helper.showToast("Server error, please try again");
-    //     setLoader(false);
-    //     return;
-    //   }
-    //   if (!userinfo?.number_verified) {
-    //     const apiOtp = userinfo?.otp;
-    //     setLoader(false);
-    //     handleNavigation({
-    //       type: 'push',
-    //       page: 'Otp',
-    //       navigation,
-    //       passProps: {
-    //         phoneNumber: `+91 ${phoneNumber}`,
-    //         otp: apiOtp,
-    //         fcmToken: fcmToken,
-    //       },
-    //     });
-    //   } else {
-    //     if (!userinfo?.token) {
-    //       setLoader(false);
-    //       return;
-    //     }
-    //     setLoader(false);
-    //     await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
-    //     dispatch(loginSuccess(userinfo));
-    //     handleNavigation({ type: 'setRoot', page: 'Home', navigation });
-    //   }
-    // } catch (e) {
-    //   console.log('Login error:', e);
-    // } finally {
-    //   setLoader(false);
-    // }
+    // handleNavigation({
+    //   type: 'push',
+    //   page: 'Otp',
+    //   navigation,
+    //   passProps: {
+    //     phoneNumber: `+91 ${phoneNumber}`,
+    //     otp: '123456',
+    //     fcmToken: fcmToken,
+    //   },
+    // });
+    if (!checkValidation()) return;
+    try {
+      setLoader(true);
+      const userData = { mobile: phoneNumber, device_token: fcmToken };
+      const response: any = await (dispatch as any)(Auth_Api(ApiUrl.CheckNumber, userData));
+      const userinfo = response?.data?.data?.data;
+      console.log('userinfo', userinfo);
+      if (!userinfo) {
+        Helper.showToast("Server error, please try again");
+        setLoader(false);
+        return;
+      }
+      if (!userinfo?.number_verified) {
+        const apiOtp = userinfo?.otp;
+        setLoader(false);
+        handleNavigation({
+          type: 'push',
+          page: 'Otp',
+          navigation,
+          passProps: {
+            phoneNumber: `+91 ${phoneNumber}`,
+            otp: apiOtp,
+            fcmToken: fcmToken,
+          },
+        });
+      } else {
+        if (!userinfo?.token) {
+          setLoader(false);
+          return;
+        }
+        setLoader(false);
+        await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
+        dispatch(loginSuccess(userinfo));
+        handleNavigation({ type: 'setRoot', page: 'UserDashboard', navigation });
+      }
+    } catch (e) {
+      console.log('Login error:', e);
+    } finally {
+      setLoader(false);
+    }
   };
 
   return (

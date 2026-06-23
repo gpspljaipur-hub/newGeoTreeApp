@@ -127,7 +127,7 @@ const AppOpeningScreen = () => {
                 showArrow
                 title={String.AppOpening_GetStarted}
                 buttonTextStyle={styles.buttonText}
-                Onclick={() => navigation.navigate('SignIn')}
+                Onclick={() => navigation.navigate('Home')}
               />
             </View>
 

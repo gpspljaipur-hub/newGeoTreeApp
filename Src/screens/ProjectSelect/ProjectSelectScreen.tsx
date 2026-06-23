@@ -16,6 +16,7 @@ import { RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import Images from '../../constants/images';
+import String from '../../comman/String';
 import { Colors } from '../../comman/Colors';
 
 interface TreeSpecies {
@@ -167,7 +168,7 @@ const ProjectSelectScreen = () => {
             <View style={styles.headerBottomContent}>
               <View style={styles.verifiedBadge}>
                 <Image source={Images.shield} style={styles.verifiedBadgeIcon} resizeMode="contain" />
-                <Text style={styles.verifiedBadgeText}>GPS Verified Project</Text>
+                <Text style={styles.verifiedBadgeText}>{String.Dashboard_GPSVerified}</Text>
               </View>
 
 
@@ -189,7 +190,7 @@ const ProjectSelectScreen = () => {
                 {/* <Image source={Images.treeIcon} style={styles.statsCardIcon} resizeMode="contain" /> */}
                 <View style={styles.statsCardTextCol}>
                   <Text style={styles.statsCardValue}>{treesPlantedText}</Text>
-                  <Text style={styles.statsCardLabel}>Trees Planted</Text>
+                  <Text style={styles.statsCardLabel}>{String.AppOpening_TreesPlanted}</Text>
                 </View>
               </View>
 
@@ -199,7 +200,7 @@ const ProjectSelectScreen = () => {
                 {/* <Image source={Images.check} style={styles.statsCardIcon} resizeMode="contain" /> */}
                 <View style={styles.statsCardTextCol}>
                   <Text style={styles.statsCardValue}>{survivalRateText}</Text>
-                  <Text style={styles.statsCardLabel}>Survival Rate</Text>
+                  <Text style={styles.statsCardLabel}>{String.AppOpening_SurvivalRate}</Text>
                 </View>
               </View>
             </View>
@@ -217,7 +218,7 @@ const ProjectSelectScreen = () => {
                   <Image source={Images.shield} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
                 <Text style={styles.quickStatValue}>{projectCategory}</Text>
-                <Text style={styles.quickStatLabel}>Project Focus</Text>
+                <Text style={styles.quickStatLabel}>{String.ProjectSelect_ProjectFocus}</Text>
               </View>
 
               <View style={styles.quickStatDivider} />
@@ -227,7 +228,7 @@ const ProjectSelectScreen = () => {
                   <Image source={Images.leaf} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
                 <Text style={styles.quickStatValue}>{areaCoveredText}</Text>
-                <Text style={styles.quickStatLabel}>Area Covered</Text>
+                <Text style={styles.quickStatLabel}>{String.ProjectSelect_AreaCovered}</Text>
               </View>
 
               <View style={styles.quickStatDivider} />
@@ -237,7 +238,7 @@ const ProjectSelectScreen = () => {
                   <Image source={Images.calendar} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
                 <Text style={styles.quickStatValue}>{projectSinceText}</Text>
-                <Text style={styles.quickStatLabel}>Project Since</Text>
+                <Text style={styles.quickStatLabel}>{String.ProjectSelect_ProjectSince}</Text>
               </View>
 
               <View style={styles.quickStatDivider} />
@@ -246,8 +247,8 @@ const ProjectSelectScreen = () => {
                 <View style={styles.quickStatIconBg}>
                   <Image source={Images.group} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
-                <Text style={styles.quickStatValue}>NGO Partner</Text>
-                <Text style={styles.quickStatLabel}>Trusted Partner</Text>
+                <Text style={styles.quickStatValue}>{String.ProjectSelect_NgoPartner}</Text>
+                <Text style={styles.quickStatLabel}>{String.ProjectSelect_TrustedPartner}</Text>
               </View>
             </View>
 
@@ -255,7 +256,7 @@ const ProjectSelectScreen = () => {
             <View style={styles.aboutSection}>
               <View style={styles.aboutContentRow}>
                 <View style={styles.aboutLeftTextContainer}>
-                  <Text style={styles.sectionTitle}>About This Project</Text>
+                  <Text style={styles.sectionTitle}>{String.ProjectSelect_AboutProject}</Text>
 
                   <Text
                     style={styles.aboutText}
@@ -269,7 +270,7 @@ const ProjectSelectScreen = () => {
                     onPress={() => setIsExpanded(!isExpanded)}
                   >
                     <Text style={styles.readMoreText}>
-                      {isExpanded ? 'Read Less' : 'Read More'}
+                      {isExpanded ? String.ProjectSelect_ReadLess : String.ProjectSelect_ReadMore}
                     </Text>
 
                   </TouchableOpacity>
@@ -286,7 +287,7 @@ const ProjectSelectScreen = () => {
                     <View style={styles.playIconBg}>
                       <Image source={Images.video} style={styles.playIcon} resizeMode="contain" />
                     </View>
-                    <Text style={styles.videoLabel}>Project Video</Text>
+                    <Text style={styles.videoLabel}>{String.ProjectSelect_ProjectVideo}</Text>
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
@@ -294,7 +295,7 @@ const ProjectSelectScreen = () => {
 
             {/* Project Gallery */}
             <View style={styles.gallerySection}>
-              <Text style={styles.sectionTitle}>Project Gallery</Text>
+              <Text style={styles.sectionTitle}>{String.ProjectSelect_ProjectGallery}</Text>
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -321,7 +322,7 @@ const ProjectSelectScreen = () => {
                           resizeMode="cover"
                         >
                           <View style={styles.galleryMoreOverlay}>
-                            <Text style={styles.galleryMoreText}>+{remainingCount} More</Text>
+                            <Text style={styles.galleryMoreText}>{String.ProjectSelect_MoreImages.replace('{{count}}', remainingCount.toString())}</Text>
                           </View>
                         </ImageBackground>
                       </TouchableOpacity>
@@ -346,14 +347,14 @@ const ProjectSelectScreen = () => {
 
             {/* Project Impact */}
             <View style={styles.impactSection}>
-              <Text style={styles.sectionTitle}>Project Impact</Text>
+              <Text style={styles.sectionTitle}>{String.ProjectSelect_ProjectImpact}</Text>
               <View style={styles.impactStatsCard}>
                 <View style={styles.impactStatCol}>
                   <View style={styles.impactIconBg}>
                     <Image source={Images.treeIcon} style={styles.impactIcon} resizeMode="contain" />
                   </View>
                   <Text style={styles.impactValue}>{treesPlantedText}</Text>
-                  <Text style={styles.impactLabel}>Trees Planted</Text>
+                  <Text style={styles.impactLabel}>{String.AppOpening_TreesPlanted}</Text>
                 </View>
 
                 <View style={styles.impactStatDivider} />
@@ -363,7 +364,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.co2Cloud} style={styles.impactIcon} resizeMode="contain" />
                   </View>
                   <Text style={styles.impactValue}>{co2OffsetVal}</Text>
-                  <Text style={styles.impactLabel}>CO₂ Offset (Est.)</Text>
+                  <Text style={styles.impactLabel}>{String.ProjectSelect_Co2OffsetEst}</Text>
                 </View>
 
                 <View style={styles.impactStatDivider} />
@@ -373,7 +374,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.group} style={styles.impactIcon} resizeMode="contain" />
                   </View>
                   <Text style={styles.impactValue}>{nativeSpeciesCountVal}</Text>
-                  <Text style={styles.impactLabel}>Native Species</Text>
+                  <Text style={styles.impactLabel}>{String.ProjectSelect_NativeSpecies}</Text>
                 </View>
 
                 <View style={styles.impactStatDivider} />
@@ -383,7 +384,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.drop} style={styles.impactIcon} resizeMode="contain" />
                   </View>
                   <Text style={styles.impactValue}>{waterSavedVal}</Text>
-                  <Text style={styles.impactLabel}>Water Saved/Year</Text>
+                  <Text style={styles.impactLabel}>{String.ProjectSelect_WaterSaved}</Text>
                 </View>
 
               </View>
@@ -393,14 +394,14 @@ const ProjectSelectScreen = () => {
             <View style={styles.speciesSection}>
               <View style={styles.speciesHeader}>
                 <View style={styles.speciesTitleContainer}>
-                  <Text style={styles.sectionTitle}>Available Tree Species</Text>
+                  <Text style={styles.sectionTitle}>{String.ProjectSelect_AvailableSpecies}</Text>
                 </View>
                 <TouchableOpacity onPress={() => { SpeciesAll() }} style={styles.viewAllSpeciesLink} activeOpacity={0.7}>
-                  <Text style={styles.viewAllSpeciesText}>View All</Text>
+                  <Text style={styles.viewAllSpeciesText}>{String.HomeDeshbord_ViewAll}</Text>
                 </TouchableOpacity>
               </View>
               <Text style={styles.speciesSubtitle}>
-                Choose from native species suitable for this location.
+                {String.ProjectSelect_ChooseNative}
               </Text>
 
               <ScrollView
@@ -437,7 +438,7 @@ const ProjectSelectScreen = () => {
 
             {/* Project Details */}
             <View style={styles.detailsSection}>
-              <Text style={styles.sectionTitle}>Project Details</Text>
+              <Text style={styles.sectionTitle}>{String.ProjectSelect_ProjectDetails}</Text>
               <View style={styles.detailsGrid}>
                 {/* Location - Row item */}
                 <View style={styles.detailsItemRow}>
@@ -445,7 +446,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.location} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
                   <View style={styles.detailsTextColRow}>
-                    <Text style={styles.detailsLabelRow}>Location</Text>
+                    <Text style={styles.detailsLabelRow}>{String.LocationLabel}</Text>
                     <Text style={styles.detailsValueRow}>{projectCity}</Text>
                   </View>
                 </View>
@@ -456,7 +457,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.group} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
                   <View style={styles.detailsTextColCol}>
-                    <Text style={styles.detailsLabel}>Project Partner</Text>
+                    <Text style={styles.detailsLabel}>{String.ProjectSelect_ProjectPartner}</Text>
                     <Text style={styles.detailsValue}>{projectPartnerText}</Text>
                   </View>
                 </View>
@@ -467,7 +468,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.soiltype} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
                   <View style={styles.detailsTextColRow}>
-                    <Text style={styles.detailsLabelRow}>Soil Type</Text>
+                    <Text style={styles.detailsLabelRow}>{String.ProjectSelect_SoilType}</Text>
                     <Text style={styles.detailsValueRow}>{soilTypeText}</Text>
                   </View>
                 </View>
@@ -478,7 +479,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.treeIcon} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
                   <View style={styles.detailsTextColCol}>
-                    <Text style={styles.detailsLabel}>Plantation Method</Text>
+                    <Text style={styles.detailsLabel}>{String.ProjectSelect_PlantationMethod}</Text>
                     <Text style={styles.detailsValue}>{plantationMethodText}</Text>
                   </View>
                 </View>
@@ -489,7 +490,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.drop} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
                   <View style={styles.detailsTextColRow}>
-                    <Text style={styles.detailsLabelRow}>Rainfall</Text>
+                    <Text style={styles.detailsLabelRow}>{String.ProjectSelect_Rainfall}</Text>
                     <Text style={styles.detailsValueRow}>{rainfallText}</Text>
                   </View>
                 </View>
@@ -500,7 +501,7 @@ const ProjectSelectScreen = () => {
                     <Image source={Images.maintaince} style={styles.detailsIcon} resizeMode="contain" />
                   </View>
                   <View style={styles.detailsTextColCol}>
-                    <Text style={styles.detailsLabel}>Maintenance</Text>
+                    <Text style={styles.detailsLabel}>{String.ProjectSelect_Maintenance}</Text>
                     <Text style={styles.detailsValue}>{maintenanceText}</Text>
                   </View>
                 </View>
@@ -512,9 +513,9 @@ const ProjectSelectScreen = () => {
           <View style={styles.bottomBanner}>
             <Image source={Images.handtree} style={styles.bannerHandImage} resizeMode="contain" />
             <View style={styles.bannerTextContainer}>
-              <Text style={styles.bannerTextTitle}>Ready to make an impact?</Text>
+              <Text style={styles.bannerTextTitle}>{String.ProjectSelect_ReadyImpact}</Text>
               <Text style={styles.bannerTextDesc}>
-                Choose a tree and continue your plantation journey.
+                {String.ProjectSelect_ChooseTreeJourney}
               </Text>
             </View>
 
@@ -525,7 +526,7 @@ const ProjectSelectScreen = () => {
             activeOpacity={0.8}
             onPress={() => navigation.navigate('DedicateTree',)}
           >
-            <Text style={styles.bannerBtnText}>Choose Tree Species</Text>
+            <Text style={styles.bannerBtnText}>{String.ProjectSelect_ChooseTreeSpecies}</Text>
           </TouchableOpacity>
         </ScrollView>
 

@@ -15,6 +15,7 @@ import PaymentScreen from '../screens/Payment/Payment';
 import ThankYouScreen from '../screens/ThankYou/ThankYou';
 import ExploreStatesScreen from '../screens/ExploreStates/ExploreStatesScreen';
 import SettingScreen from '../screens/Setting/SettingScreen';
+import SplashScreen from '../screens/Splash/SplashScreen';
 import Images from '../constants/images';
 import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
@@ -34,6 +35,7 @@ import PlantationConfirmedScreen from '../screens/PlantationConfirmed/Plantation
 import PortfolioScreen from '../screens/Portfolio/Portfolio';
 
 export type RootStackParamList = {
+  Splash: undefined;
   AppOpening: undefined;
   SignIn: undefined;
   Otp: { phoneNumber: string; otp?: string | number; fcmToken?: string };
@@ -71,6 +73,7 @@ export type RootStackParamList = {
   WhichtreeShouldIPlant: undefined;
   PlantationConfirmed: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
   Portfolio: undefined;
+  Setting: undefined;
 };
 
 
@@ -155,16 +158,17 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'AppOpening'}
+      initialRouteName={'Splash'}
       screenOptions={{
         headerShown: false,
       }}
     >
+      <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="AppOpening" component={AppOpeningScreen} />
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="Otp" component={OtpScreen} />
       <Stack.Screen name="ChooseTree" component={ChooseTreeScreen} />
-      <Stack.Screen name="Home" component={HomeTabs} />
+      <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="ChooseLocation" component={ChooseLocationScreen} />
       <Stack.Screen name="UserDashboard" component={UserDashboardScreen} />
       <Stack.Screen name="StateScreen" component={StateScreen} />
@@ -187,6 +191,7 @@ export default function RootNavigator() {
       <Stack.Screen name="ChooseSpecies" component={ChooseSpeciesScreen} />
       <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
       <Stack.Screen name="StatePayment" component={StatePaymentScreen} />
+      <Stack.Screen name="Setting" component={SettingScreen} />
     </Stack.Navigator>
 
   );
