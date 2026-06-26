@@ -17,89 +17,65 @@ import LinearGradient from 'react-native-linear-gradient';
 import GradientText from '../../comman/GradientText';
 import { Colors } from '../../comman/Colors';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
+import { categoryData, stateData } from '../../api/ApiService';
+import Config from '../../comman/Config';
+import { Get_Api } from '../../redux/userapi/Requests';
+import ApiUrl from '../../Lib/ApiUrl';
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
-  const QUICK_ACTIONS = [
-    {
-      id: '1',
-      title: String.Home_QuickPlantTitle,
-      subtitle: String.Home_QuickPlantSubtitle,
-      image: Images.handtree,
-    },
-    {
-      id: '2',
-      title: String.Home_QuickGiftTitle,
-      subtitle: String.Home_QuickGiftSubtitle,
-      image: Images.gift_tree,
-    },
-    {
-      id: '3',
-      title: String.Home_QuickCarbonTitle,
-      subtitle: String.Home_QuickCarbonSubtitle,
-      image: Images.carbon_cal,
-    },
-    {
-      id: '4',
-      title: String.Home_QuickSponsorTitle,
-      subtitle: String.Home_QuickSponsorSubtitle,
-      image: Images.sponsor_plant,
-    },
-  ];
-
-  const FEATURED_PROJECTS = [
-    {
-      id: '1',
-      title: String.Home_ProjAravalliTitle,
-      badge: String.Home_ProjBadgeRestoration,
-      location: String.Home_ProjRajasthan,
-      image: Images.project_aravalli,
-    },
-    {
-      id: '2',
-      title: String.Home_ProjJaipurTitle,
-      badge: String.Home_ProjBadgeUrban,
-      location: String.Home_ProjRajasthan,
-      image: Images.project_jaipur,
-    },
-    {
-      id: '3',
-      title: String.Home_ProjHimalayasTitle,
-      badge: String.Home_ProjBadgeHimalayan,
-      location: String.Home_ProjUttarakhand,
-      image: Images.project_himalayas,
-    },
-  ];
-
+  const dispatch = useDispatch();
+  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  const apiStates = useSelector((state: RootState) => state.state.stateList);
+  const [projectSite, setProjectSite] = React.useState<any[]>([]);
   const [selectedState, setSelectedState] = React.useState('1');
+  const [dashboardDetails, setDashboardDetails] = React.useState<any>(null);
 
-  const STATES_LIST = [
-    {
-      id: '1',
-      name: String.Home_ProjRajasthan,
-      image: Images.rajasthan,
-    },
-    {
-      id: '2',
-      name: String.Home_ProjUttarakhand,
-      image: Images.uttarakhand,
-    },
-    {
-      id: '3',
-      name: String.Home_ProjKarnataka,
-      image: Images.karnataka,
-    },
-    {
-      id: '4',
-      name: String.Home_ProjMaharashtra,
-      image: Images.maharashtra,
-    },
-    {
-      id: '5',
-      name: String.Home_ProjTamilNadu,
-      image: Images.tamil_nadu,
-    },
-  ];
+  const mappedStatesList = apiStates && apiStates.length > 0
+    ? apiStates.map((item: any, idx: number) => ({
+      id: item._id?.toString() || idx.toString(),
+      name: item.state_name,
+      image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.rajasthan,
+    }))
+    : [];
+
+  React.useEffect(() => {
+    categoryData(dispatch);
+    stateData(dispatch);
+    SiteGetApi();
+    DashboardGetApi();
+  }, [dispatch]);
+
+
+  const SiteGetApi = async () => {
+    try {
+      const response: any = await (dispatch as any)(Get_Api(ApiUrl.all_site_list));
+      console.log("response all_site_list", response?.data)
+      setProjectSite(response?.data || []);
+    } catch {
+      // ignore
+    }
+  };
+
+  const DashboardGetApi = async () => {
+    try {
+      const response: any = await (dispatch as any)(Get_Api(ApiUrl.DESHBORD_DETAILS));
+      console.log("response DESHBORD_DETAILS", response);
+      setDashboardDetails(response?.data || null);
+    } catch {
+      // ignore
+    }
+  };
+
+
+
+  console.log('categoryList in HomeScreen:', categoryList);
+
+  const CategoryHandle = (item: any) => {
+    console.log("item: ", item)
+  };
 
   return (
     <ImageBackground
@@ -118,7 +94,7 @@ const HomeScreen = () => {
           <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
             <Image source={Images.bell} style={styles.iconImg} resizeMode="contain" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7} onPress={() => navigation.navigate('SettingTab')}>
+          <TouchableOpacity style={styles.iconButton} activeOpacity={0.7} onPress={() => navigation.navigate('Setting')}>
             <Image source={Images.settings} style={styles.iconImg} resizeMode="contain" />
           </TouchableOpacity>
         </View>
@@ -191,7 +167,11 @@ const HomeScreen = () => {
             <View style={styles.statsIconBg}>
               <Image source={Images.treeIcon} style={styles.statsIcon} tintColor={Colors.tintColorDrak} resizeMode="contain" />
             </View>
-            <Text style={styles.statsValue}>{String.Home_StatsTreesVal}</Text>
+            <Text style={styles.statsValue}>
+              {dashboardDetails?.impact?.trees_planted !== undefined
+                ? dashboardDetails.impact.trees_planted.toString()
+                : String.Home_StatsTreesVal}
+            </Text>
             <Text style={styles.statsLabel}>{String.Home_StatsTreesLabel}</Text>
           </View>
 
@@ -201,7 +181,11 @@ const HomeScreen = () => {
             <View style={styles.statsIconBg}>
               <Image source={Images.Emission} style={styles.statsIcon} resizeMode="contain" />
             </View>
-            <Text style={styles.statsValue}>{String.Home_StatsCO2Val}</Text>
+            <Text style={styles.statsValue}>
+              {dashboardDetails?.impact?.carbon_offset_tonnes !== undefined
+                ? `${dashboardDetails.impact.carbon_offset_tonnes} T`
+                : String.Home_StatsCO2Val}
+            </Text>
             <Text style={styles.statsLabel}>{String.Home_StatsCO2Label}</Text>
           </View>
 
@@ -211,7 +195,11 @@ const HomeScreen = () => {
             <View style={styles.statsIconBg}>
               <Image source={Images.group} style={styles.statsIcon} tintColor={Colors.tintColorDrak} resizeMode="contain" />
             </View>
-            <Text style={styles.statsValue}>{String.Home_StatsUsersVal}</Text>
+            <Text style={styles.statsValue}>
+              {dashboardDetails?.users?.total !== undefined
+                ? dashboardDetails.users.total.toString()
+                : String.Home_StatsUsersVal}
+            </Text>
             <Text style={styles.statsLabel}>{String.Home_StatsUsersLabel}</Text>
           </View>
 
@@ -221,7 +209,11 @@ const HomeScreen = () => {
             <View style={styles.statsIconBg}>
               <Image source={Images.Location} style={styles.statsIcon} resizeMode="contain" />
             </View>
-            <Text style={styles.statsValue}>{String.Home_StatsStatesVal}</Text>
+            <Text style={styles.statsValue}>
+              {dashboardDetails?.impact?.state_wise?.length !== undefined
+                ? dashboardDetails.impact.state_wise.length.toString()
+                : String.Home_StatsStatesVal}
+            </Text>
             <Text style={styles.statsLabel}>{String.Home_StatsStatesLabel}</Text>
           </View>
         </View>
@@ -237,7 +229,7 @@ const HomeScreen = () => {
           </View>
 
           <FlatList
-            data={STATES_LIST}
+            data={mappedStatesList}
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
@@ -267,38 +259,42 @@ const HomeScreen = () => {
         </View>
 
         {/* Horizontal Quick Actions List */}
-        <FlatList
-          data={QUICK_ACTIONS}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.quickActionsScroll}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.quickActionCard}
-              activeOpacity={0.9}
-              onPress={() => {
-                if (item.id === '1') {
-                  navigation.navigate('StateScreen');
-                } else if (item.id === '2') {
-                  // Fallback to StateScreen for custom donation species selection
-                  navigation.navigate('StateScreen');
-                } else if (item.id === '4') {
-                  navigation.navigate('StateScreen');
-                }
-              }}
-            >
-              <Image source={item.image} style={styles.cardImage} resizeMode="cover" />
-              <Text style={styles.cardTitle}>{item.title}</Text>
-              <View style={styles.cardFooterRow}>
-                <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
-                <View style={styles.cardCircleArrow}>
-                  <Text style={styles.cardArrowIcon}>→</Text>
+        <View style={styles.stateSectionContainer}>
+          <View style={styles.stateHeaderRow}>
+            <View style={styles.stateTitleContainer}>
+              <Text style={styles.stateSectionTitle}>{String.HomeCatgroyTitle}</Text>
+            </View>
+
+          </View>
+          <FlatList
+            data={categoryList}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item._id}
+            contentContainerStyle={styles.quickActionsScroll}
+            renderItem={({ item }: any) => (
+              <TouchableOpacity
+                style={styles.quickActionCard}
+                activeOpacity={0.9}
+                onPress={() => {
+                  CategoryHandle(item)
+                }}
+              >
+                <Image source={{ uri: Config.imageurl + item?.category_image }} style={styles.cardImage} resizeMode='cover' />
+                <View style={{ paddingHorizontal: 10, marginBottom: 12, }}>
+                  <Text style={styles.cardTitle}>{item?.name}</Text>
+                  <View style={styles.cardFooterRow}>
+                    <Text numberOfLines={1} style={styles.cardSubtitle}>{item?.type}</Text>
+                    <View style={styles.cardCircleArrow}>
+                      <Text style={styles.cardArrowIcon}>→</Text>
+                    </View>
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
+
+              </TouchableOpacity>
+            )}
+          />
+        </View>
 
         {/* Featured Projects Header */}
         <View style={styles.sectionHeader}>
@@ -311,35 +307,45 @@ const HomeScreen = () => {
         </View>
 
         {/* Projects Horizontal List */}
-        <FlatList
-          data={FEATURED_PROJECTS}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          style={styles.projectsScroll}
-          contentContainerStyle={{ paddingRight: 30 }}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.projectCard}
-              activeOpacity={0.9}
-              onPress={() => navigation.navigate('Statewise', { stateName: item.location })}
-            >
-              <View style={styles.projectImgContainer}>
-                <Image source={item.image} style={styles.projectImage} resizeMode="cover" />
-                <View style={styles.projectBadge}>
-                  <Text style={styles.projectBadgeText}>{item.badge}</Text>
-                </View>
-              </View>
-              <View style={styles.projectInfo}>
-                <Text style={styles.projectTitle}>{item.title}</Text>
-                <View style={styles.projectLocationRow}>
-                  <Image source={Images.location} style={styles.projectLocationIcon} resizeMode="contain" />
-                  <Text style={styles.projectLocation}>{item.location}</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
+        {projectSite.length > 0 ?
+          <FlatList
+            data={projectSite}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, idx) => item._id?.toString() || item.id || idx.toString()}
+            style={styles.projectsScroll}
+            contentContainerStyle={{ paddingRight: 30 }}
+            renderItem={({ item }) => {
+              const title = item.site_name || item.site_name || item.site_name || 'Project';
+              const location = item.state_id?.state_name || item.location || 'Rajasthan';
+              const badge = item.plantation_type || 'Restoration';
+              const image = item.site_image
+                ? { uri: Config.imageurl + item.site_image }
+                : (item.image || Images.project_aravalli);
+
+              return (
+                <TouchableOpacity
+                  style={styles.projectCard}
+                  activeOpacity={0.9}
+                  onPress={() => navigation.navigate('Statewise', { stateName: location })}
+                >
+                  <View style={styles.projectImgContainer}>
+                    <Image source={typeof image === 'string' ? { uri: image } : image} style={styles.projectImage} resizeMode="cover" />
+                    <View style={styles.projectBadge}>
+                      <Text style={styles.projectBadgeText}>{badge}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.projectInfo}>
+                    <Text style={styles.projectTitle} numberOfLines={1}>{title}</Text>
+                    <View style={styles.projectLocationRow}>
+                      <Image source={Images.location} style={styles.projectLocationIcon} resizeMode="contain" />
+                      <Text style={styles.projectLocation} numberOfLines={1}>{location}</Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              );
+            }}
+          /> : null}
 
         {/* Pagination Dots */}
         <View style={styles.dotsContainer}>

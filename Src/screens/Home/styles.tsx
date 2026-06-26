@@ -278,14 +278,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   quickActionsScroll: {
-    marginHorizontal: MarginHW.PaddingW10,
+    marginHorizontal: MarginHW.PaddingW5,
     marginVertical: 10,
   },
   quickActionCard: {
     backgroundColor: Colors.white,
     borderRadius: 10,
     width: 145,
-    padding: 12,
+
     marginRight: 10,
     borderWidth: 1,
     borderColor: '#ECEFEF',
@@ -299,7 +299,7 @@ export const styles = StyleSheet.create({
   cardImage: {
     width: '100%',
     height: 90,
-    borderRadius: 10,
+    borderRadius: 6,
     marginBottom: 8,
   },
   cardTitle: {
@@ -559,7 +559,7 @@ export const styles = StyleSheet.create({
   },
   // State selection section
   stateSectionContainer: {
-    marginVertical: 15,
+    marginTop: 15,
     paddingHorizontal: MarginHW.PaddingW10,
   },
   stateHeaderRow: {

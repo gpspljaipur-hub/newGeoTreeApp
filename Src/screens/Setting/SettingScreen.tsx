@@ -31,75 +31,89 @@ const SettingScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.user);
+  const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
 
   const [pushEnabled, setPushEnabled] = React.useState(true);
 
   const handleLogout = () => {
     Alert.alert(
-      'Logout',
-      'Are you sure you want to log out?',
+      String.Logout,
+      String.logout_sure,
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: String.Cancel, style: 'cancel' },
         {
-          text: 'Logout',
+          text: String.Logout,
           style: 'destructive',
           onPress: async () => {
             await AsyncStorageHelper.setData(Config.TOKEN, '');
             dispatch(logout());
-            handleNavigation({ type: 'setRoot', page: 'SignIn', navigation });
+            handleNavigation({ type: 'setRoot', page: 'Home', navigation });
           },
         },
       ]
     );
   };
 
+  const handleLogin = () => {
+    handleNavigation({ type: 'setRoot', page: 'SignIn', navigation });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-        
+
         {/* Profile Card Header */}
         <LinearGradient
-          colors={['#1E6B46', '#2F9E67']}
+          colors={['#27702d', '#27702d', '#68a212']}
           style={styles.profileHeader}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
         >
+          {navigation.canGoBack() && (
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => handleNavigation({ type: 'pop', navigation })}
+              activeOpacity={0.7}
+            >
+              <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
+            </TouchableOpacity>
+          )}
           <View style={styles.avatarWrapper}>
             <Image source={Images.profile} style={styles.avatar} resizeMode="cover" />
           </View>
-          <Text style={styles.profilePhone}>{user?.mobile ? `+91 ${user.mobile}` : 'User Profile'}</Text>
-          <Text style={styles.profileId}>ID: {user?._id || 'N/A'}</Text>
+          <Text style={styles.profilePhone}>{user?.mobile ? `+91 ${user.mobile}` : String.UserProfile}</Text>
+          <Text style={styles.profileId}>ID: {user?._id || String.NotAvailable}</Text>
         </LinearGradient>
 
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Account Details</Text>
-          
+          <Text style={styles.sectionTitle}>{String.AccountDetails}</Text>
+
           <View style={styles.card}>
             <View style={styles.row}>
-              <Text style={styles.label}>Mobile Number</Text>
-              <Text style={styles.value}>{user?.mobile ? `+91 ${user.mobile}` : 'Not Available'}</Text>
+              <Text style={styles.label}>{String.MobileNumber}</Text>
+              <Text style={styles.value}>{user?.mobile ? `+91 ${user.mobile}` : String.NotAvailableText}</Text>
             </View>
             <View style={styles.divider} />
             <View style={styles.row}>
-              <Text style={styles.label}>Account Status</Text>
+              <Text style={styles.label}>{String.AccountStatus}</Text>
               <Text style={[styles.value, styles.verifiedText]}>
-                {user?.number_verified ? 'Verified' : 'Unverified'}
+                {user?.number_verified ? String.Verified : String.Unverified}
               </Text>
             </View>
             <View style={styles.divider} />
             <View style={styles.row}>
-              <Text style={styles.label}>Green Wallet Amount</Text>
+              <Text style={styles.label}>{String.GreenWalletAmount}</Text>
               <Text style={styles.value}>₹{user?.amount ?? '0'}</Text>
             </View>
           </View>
         </View>
 
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Preferences</Text>
-          
+          <Text style={styles.sectionTitle}>{String.Preferences}</Text>
+
           <View style={styles.card}>
             <View style={styles.row}>
-              <Text style={styles.label}>Push Notifications</Text>
+              <Text style={styles.label}>{String.PushNotifications}</Text>
               <Switch
                 value={pushEnabled}
                 onValueChange={setPushEnabled}
@@ -111,24 +125,30 @@ const SettingScreen = () => {
         </View>
 
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Support & Legal</Text>
-          
+          <Text style={styles.sectionTitle}>{String.SupportLegal}</Text>
+
           <View style={styles.card}>
             <TouchableOpacity style={styles.clickableRow} activeOpacity={0.7}>
-              <Text style={styles.clickableLabel}>Terms & Conditions</Text>
+              <Text style={styles.clickableLabel}>{String.Otp_TermsAndConditions}</Text>
               <Text style={styles.arrow}>→</Text>
             </TouchableOpacity>
             <View style={styles.divider} />
             <TouchableOpacity style={styles.clickableRow} activeOpacity={0.7}>
-              <Text style={styles.clickableLabel}>Privacy Policy</Text>
+              <Text style={styles.clickableLabel}>{String.PrivacyPolicy}</Text>
               <Text style={styles.arrow}>→</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout} activeOpacity={0.8}>
-          <Text style={styles.logoutButtonText}>Log Out</Text>
-        </TouchableOpacity>
+        {isAuthenticated ? (
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogout} activeOpacity={0.8}>
+            <Text style={styles.logoutButtonText}>{String.LogOut}</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin} activeOpacity={0.8}>
+            <Text style={styles.loginButtonText}>{String.LoginButton}</Text>
+          </TouchableOpacity>
+        )}
 
       </ScrollView>
     </SafeAreaView>
@@ -148,6 +168,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
+    position: 'relative',
+  },
+  backButton: {
+    position: 'absolute',
+    left: 16,
+    top: 16,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+  },
+  backIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#FFFFFF',
   },
   avatarWrapper: {
     width: 80,
@@ -254,6 +292,25 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   logoutButtonText: {
+    color: '#FFFFFF',
+    fontSize: FontsSize.size15,
+    fontFamily: fonts.OpenSans_Bold,
+  },
+  loginButton: {
+    marginHorizontal: MarginHW.MarginW16,
+    marginTop: 30,
+    height: 50,
+    backgroundColor: '#2F9E67',
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  loginButtonText: {
     color: '#FFFFFF',
     fontSize: FontsSize.size15,
     fontFamily: fonts.OpenSans_Bold,

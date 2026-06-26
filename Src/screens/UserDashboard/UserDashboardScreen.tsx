@@ -16,11 +16,24 @@ import String from '../../comman/String';
 import { Colors } from '../../comman/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
+import { categoryData } from '../../api/ApiService';
 
 const { width } = Dimensions.get('window');
 
 const UserDashboardScreen = () => {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
+
+  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+
+  React.useEffect(() => {
+    categoryData(dispatch);
+  }, [dispatch]);
+
+  console.log('categoryList in UserDashboard:', categoryList);
+
   const [selectedState, setSelectedState] = React.useState('1');
 
   const STATS_DATA = [
@@ -154,7 +167,7 @@ const UserDashboardScreen = () => {
               <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
                 <Image source={Images.bell} style={styles.iconImg} resizeMode="contain" />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.iconButton} activeOpacity={0.7} onPress={() => navigation.navigate('SettingTab')}>
+              <TouchableOpacity style={styles.iconButton} activeOpacity={0.7} onPress={() => navigation.navigate('Setting')}>
                 <Image source={Images.profile} style={styles.iconImg} resizeMode="contain" />
               </TouchableOpacity>
             </View>

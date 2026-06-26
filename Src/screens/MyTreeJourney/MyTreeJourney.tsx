@@ -16,10 +16,13 @@ import { handleNavigation, RootStackParamList } from '../../navigation/RootNavig
 import Images from '../../constants/images';
 import { Colors } from '../../comman/Colors';
 import { styles } from './styles';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
 
 const MyTreeJourneyScreen = () => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const route = useRoute<RouteProp<RootStackParamList, 'MyTreeJourneyScreen'>>();
+    const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
 
     // Dynamic props with defaults to match high-fidelity mockup
     const qty = route.params?.qty ?? 10;
@@ -172,8 +175,12 @@ const MyTreeJourneyScreen = () => {
     ];
 
     const handleSharePlatform = (platform: string) => {
-        handleNavigation({ type: 'setRoot', navigation, page: 'Home' })
-        // Alert.alert('Share', `Sharing your environmental impact on ${platform}!`);
+        if (isAuthenticated) {
+            handleNavigation({ type: 'setRoot', navigation, page: 'UserDashboard' })
+        }
+        else {
+            handleNavigation({ type: 'setRoot', navigation, page: 'Home' })
+        }
     };
 
     const handleDownloadInvoice = () => {
