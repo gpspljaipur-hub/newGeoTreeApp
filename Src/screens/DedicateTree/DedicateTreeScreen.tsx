@@ -15,6 +15,9 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/Store/Store';
+import { ocassionData } from '../../api/ApiService';
 import { styles } from './styles';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Images from '../../constants/images';
@@ -33,6 +36,12 @@ interface WhoForOption {
 const DedicateTreeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'DedicateTree'>>();
+  const dispatch = useDispatch();
+  const apiOccasions = useSelector((state: RootState) => state.ocassion.ocassionList);
+
+  React.useEffect(() => {
+    ocassionData(dispatch);
+  }, [dispatch]);
 
   // Extract project and species parameters with fallbacks
   const { project, selectedSpecies } = route.params || {};
@@ -119,14 +128,16 @@ const DedicateTreeScreen = () => {
     },
   ];
 
-  const occasionsList = [
-    'Birthday',
-    'Anniversary',
-    'In Memory Of',
-    'Loved One Gift',
-    'Corporate Event',
-    'Other Celebration',
-  ];
+  const occasionsList = apiOccasions && apiOccasions.length > 0
+    ? apiOccasions.map((o: any) => o.name)
+    : [
+        'Birthday',
+        'Anniversary',
+        'In Memory Of',
+        'Loved One Gift',
+        'Corporate Event',
+        'Other Celebration',
+      ];
 
   // Custom simple date items for date picker modal
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1));

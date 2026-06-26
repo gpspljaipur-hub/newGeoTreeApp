@@ -12,6 +12,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import { styles } from './styles';
 import Images from '../../constants/images';
+import String from '../../comman/String';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import Stepper from '../../comman/Stepper';
@@ -97,11 +98,11 @@ const ChooseLocationScreen = () => {
             <View style={styles.heroContent}>
               <View style={styles.heroTextContainer}>
                 <Text style={styles.heroTitle}>
-                  Choose a Location{'\n'}
-                  in <Text style={styles.highlightGreen}>Rajasthan</Text>
+                  {String.ChooseLocation_TitleLeft}{'\n'}
+                  <Text style={styles.highlightGreen}>{String.ChooseTree_Rajasthan}</Text>
                 </Text>
                 <Text style={styles.heroSubtitle}>
-                  Select the best location for your tree. All our plantations are verified and managed by local partners.
+                  {String.ChooseLocation_Subtitle}
                 </Text>
               </View>
             </View>
@@ -116,24 +117,24 @@ const ChooseLocationScreen = () => {
             </View>
 
             <View style={styles.stateTextContainer}>
-              <Text style={styles.stateLabelText}>Selected State</Text>
-              <Text style={styles.stateValueText}>Rajasthan</Text>
+              <Text style={styles.stateLabelText}>{String.ChooseTree_SelectedStateLabel}</Text>
+              <Text style={styles.stateValueText}>{String.ChooseTree_Rajasthan}</Text>
             </View>
 
           </View>
           <TouchableOpacity style={styles.changeStateButton} activeOpacity={0.8}>
-            <Text style={styles.changeStateText}>Change State</Text>
+            <Text style={styles.changeStateText}>{String.ChooseTree_ChangeState}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Verified Plantation Locations Header */}
         <View style={styles.sectionHeader}>
           <View style={styles.sectionTitleContainer}>
-            <Text style={styles.sectionTitle}>Verified Plantation Locations</Text>
-            <Text style={styles.sectionSubtitle}>Choose a specific location for your tree plantation.</Text>
+            <Text style={styles.sectionTitle}>{String.ChooseLocation_VerifiedLocations}</Text>
+            <Text style={styles.sectionSubtitle}>{String.ChooseLocation_ChooseSpecific}</Text>
           </View>
           <TouchableOpacity style={styles.viewMapButton} activeOpacity={0.8}>
-            <Text style={styles.viewMapText}>View on Map</Text>
+            <Text style={styles.viewMapText}>{String.TrackingViewFullMap}</Text>
             {/* <Image source={Images.location} style={styles.viewMapIcon} resizeMode="contain" /> */}
           </TouchableOpacity>
         </View>
@@ -154,7 +155,7 @@ const ChooseLocationScreen = () => {
                   <Image source={loc.image} style={styles.locationImage} resizeMode="cover" />
                   {loc.popular && (
                     <View style={styles.popularBadge}>
-                      <Text style={styles.popularText}>Popular</Text>
+                      <Text style={styles.popularText}>{String.State_Popular}</Text>
                     </View>
                   )}
                 </View>
@@ -195,7 +196,7 @@ const ChooseLocationScreen = () => {
                         <Image source={Images.tree} style={styles.statIcon} resizeMode="contain" />
                         <Text style={styles.statValue}>{loc.treesPlanted}</Text>
                       </View>
-                      <Text style={styles.statLabel}>Trees Planted</Text>
+                      <Text style={styles.statLabel}>{String.AppOpening_TreesPlanted}</Text>
                     </View>
                     <View style={styles.statDivider} />
                     <View style={styles.statCol}>
@@ -203,15 +204,15 @@ const ChooseLocationScreen = () => {
                         <Image source={Images.community} style={styles.statIcon} resizeMode="contain" />
                         <Text style={styles.statValue}>{loc.activeProjects}</Text>
                       </View>
-                      <Text style={styles.statLabel}>Active Projects</Text>
+                      <Text style={styles.statLabel}>{String.ChooseLocation_ActiveProjects}</Text>
                     </View>
                     <View style={styles.statDivider} />
                     <View style={styles.statCol}>
                       <View style={styles.statHeader}>
                         <Image source={Images.verified} style={[styles.statIcon, { tintColor: '#1E6B46' }]} resizeMode="contain" />
-                        <Text style={styles.verifiedLabel}>Verified</Text>
+                        <Text style={styles.verifiedLabel}>{String.Verified}</Text>
                       </View>
-                      <Text style={styles.statLabel}>by GeoTree</Text>
+                      <Text style={styles.statLabel}>{String.ChooseLocation_ByGeoTree}</Text>
                     </View>
                   </View>
                 </View>
@@ -226,7 +227,7 @@ const ChooseLocationScreen = () => {
               <Image source={Images.shield} style={styles.bannerShieldIcon} resizeMode="contain" />
             </View>
             <Text style={styles.bannerText}>
-              All locations are verified and trees are planted in partnership with local communities.
+              {String.ChooseLocation_AllLocationsVerified}
             </Text>
           </View>
           <Image source={Images.handtree} style={styles.bannerHandImage} resizeMode="cover" />
@@ -240,7 +241,7 @@ const ChooseLocationScreen = () => {
           onPress={() => navigation.navigate('Details')}
           activeOpacity={0.85}
         >
-          <Text style={styles.continueText}>Continue</Text>
+          <Text style={styles.continueText}>{String.Continue}</Text>
           <Image
             source={Images.back}
             style={[styles.continueArrow, { transform: [{ rotate: '180deg' }] }]}

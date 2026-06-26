@@ -112,7 +112,7 @@ const OtpScreen = () => {
     };
 
     const handleVerifyOTP = async () => {
-        handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+        handleNavigation({ type: 'setRoot', page: 'UserDashboard', navigation });
 
         if (code.length < 6) return;
         // try {
@@ -134,7 +134,7 @@ const OtpScreen = () => {
         //     setLoader(false);
         //     await AsyncStorageHelper.setData(Config.TOKEN, userinfo?.token);
         //     dispatch(loginSuccess(userinfo));
-        //     handleNavigation({ type: 'setRoot', page: 'Home', navigation });
+        //     handleNavigation({ type: 'setRoot', page: 'UserDashboard', navigation });
         // } catch (e) {
         //     console.log('Error verifying OTP:', e);
         // } finally {

@@ -15,6 +15,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import Images from '../../constants/images';
 import { Colors } from '../../comman/Colors';
+import String from '../../comman/String';
 
 interface SpeciesImpact {
   co2: string;
@@ -49,77 +50,77 @@ const ChooseSpeciesScreen = () => {
   const speciesList: TreeSpecies[] = [
     {
       id: 'neem',
-      name: 'Neem',
+      name: String.ChooseSpecies_NeemName,
       scientificName: 'Azadirachta indica',
       image: Images.neem_tree,
-      co2: '22 Kg/Year',
-      lifespan: '100+ Years',
-      waterNeed: 'Low',
+      co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '22'),
+      lifespan: String.ChooseSpecies_LifespanVal.replace('{{count}}', '100+'),
+      waterNeed: String.ChooseSpecies_WaterLow,
       impact: {
-        co2: '22 Kg/Year',
-        oxygen: '160 Kg/Year',
-        waterSaved: '1,000+ Liters/Year',
-        biodiversity: 'High',
+        co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '22'),
+        oxygen: String.ChooseSpecies_OxygenVal.replace('{{count}}', '160'),
+        waterSaved: String.ChooseSpecies_WaterSavedVal.replace('{{count}}', '1,000+'),
+        biodiversity: String.ChooseSpecies_BioHigh,
       },
     },
     {
       id: 'khejri',
-      name: 'Khejri',
+      name: String.ChooseSpecies_KhejriName,
       scientificName: 'Prosopis cineraria',
       image: Images.peepal_tree,
-      co2: '18 Kg/Year',
-      lifespan: '80+ Years',
-      waterNeed: 'Very Low',
+      co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '18'),
+      lifespan: String.ChooseSpecies_LifespanVal.replace('{{count}}', '80+'),
+      waterNeed: String.ChooseSpecies_WaterVeryLow,
       impact: {
-        co2: '18 Kg/Year',
-        oxygen: '130 Kg/Year',
-        waterSaved: '1,200+ Liters/Year',
-        biodiversity: 'Very High',
+        co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '18'),
+        oxygen: String.ChooseSpecies_OxygenVal.replace('{{count}}', '130'),
+        waterSaved: String.ChooseSpecies_WaterSavedVal.replace('{{count}}', '1,200+'),
+        biodiversity: String.ChooseSpecies_BioVeryHigh,
       },
     },
     {
       id: 'rohida',
-      name: 'Rohida',
+      name: String.ChooseSpecies_RohidaName,
       scientificName: 'Tecomella undulata',
       image: Images.mango_tree,
-      co2: '16 Kg/Year',
-      lifespan: '70+ Years',
-      waterNeed: 'Low',
+      co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '16'),
+      lifespan: String.ChooseSpecies_LifespanVal.replace('{{count}}', '70+'),
+      waterNeed: String.ChooseSpecies_WaterLow,
       impact: {
-        co2: '16 Kg/Year',
-        oxygen: '115 Kg/Year',
-        waterSaved: '950+ Liters/Year',
-        biodiversity: 'High',
+        co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '16'),
+        oxygen: String.ChooseSpecies_OxygenVal.replace('{{count}}', '115'),
+        waterSaved: String.ChooseSpecies_WaterSavedVal.replace('{{count}}', '950+'),
+        biodiversity: String.ChooseSpecies_BioHigh,
       },
     },
     {
       id: 'amla',
-      name: 'Amla',
+      name: String.ChooseSpecies_AmlaName,
       scientificName: 'Phyllanthus emblica',
       image: Images.gulmohar_tree,
-      co2: '14 Kg/Year',
-      lifespan: '60+ Years',
-      waterNeed: 'Low',
+      co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '14'),
+      lifespan: String.ChooseSpecies_LifespanVal.replace('{{count}}', '60+'),
+      waterNeed: String.ChooseSpecies_WaterLow,
       impact: {
-        co2: '14 Kg/Year',
-        oxygen: '100 Kg/Year',
-        waterSaved: '800+ Liters/Year',
-        biodiversity: 'High',
+        co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '14'),
+        oxygen: String.ChooseSpecies_OxygenVal.replace('{{count}}', '100'),
+        waterSaved: String.ChooseSpecies_WaterSavedVal.replace('{{count}}', '800+'),
+        biodiversity: String.ChooseSpecies_BioHigh,
       },
     },
     {
       id: 'babul',
-      name: 'Babul',
+      name: String.ChooseSpecies_BabulName,
       scientificName: 'Vachellia nilotica',
       image: Images.neem_tree,
-      co2: '12 Kg/Year',
-      lifespan: '50+ Years',
-      waterNeed: 'Very Low',
+      co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '12'),
+      lifespan: String.ChooseSpecies_LifespanVal.replace('{{count}}', '50+'),
+      waterNeed: String.ChooseSpecies_WaterVeryLow,
       impact: {
-        co2: '12 Kg/Year',
-        oxygen: '90 Kg/Year',
-        waterSaved: '700+ Liters/Year',
-        biodiversity: 'High',
+        co2: String.ChooseSpecies_OxygenVal.replace('{{count}}', '12'),
+        oxygen: String.ChooseSpecies_OxygenVal.replace('{{count}}', '90'),
+        waterSaved: String.ChooseSpecies_WaterSavedVal.replace('{{count}}', '700+'),
+        biodiversity: String.ChooseSpecies_BioHigh,
       },
     },
   ];
@@ -152,16 +153,16 @@ const ChooseSpeciesScreen = () => {
             <View style={styles.headerContentRow}>
               <View style={styles.headerTextContainer}>
                 <View style={styles.headerTitleRow}>
-                  <Text style={styles.headerTitle}>Choose a Tree Species</Text>
+                  <Text style={styles.headerTitle}>{String.ChooseSpecies_Title}</Text>
                 </View>
                 <View style={styles.headerSubtitleRow}>
-                  <Text style={styles.headerSubtitle}>Select a native tree species to plant at</Text>
+                  <Text style={styles.headerSubtitle}>{String.ChooseSpecies_Subtitle}</Text>
                   <Text style={styles.projectHighlight}>{projectName}, {projectCity.split(',')[0]}  </Text>
                 </View>
 
                 <View style={styles.gpsBadge}>
                   <Image source={Images.shield} style={styles.gpsIcon} resizeMode="contain" />
-                  <Text style={styles.gpsText}>GPS Verified Project</Text>
+                  <Text style={styles.gpsText}>{String.ChooseSpecies_GpsVerified}</Text>
                 </View>
               </View>
             </View>
@@ -172,34 +173,34 @@ const ChooseSpeciesScreen = () => {
             <View style={styles.quickStatCol}>
               <Image source={Images.treeIcon} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{treesPlantedText}</Text>
-              <Text style={styles.quickStatLabel}>Trees Planted</Text>
+              <Text style={styles.quickStatLabel}>{String.Home_StatsTreesLabel}</Text>
             </View>
             <View style={styles.quickStatDivider} />
             <View style={styles.quickStatCol}>
               <Image source={Images.soiltype} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{areaCoveredVal}</Text>
-              <Text style={styles.quickStatLabel}>Acres Covered</Text>
+              <Text style={styles.quickStatLabel}>{String.ChooseSpecies_AcresCovered}</Text>
             </View>
             <View style={styles.quickStatDivider} />
             <View style={styles.quickStatCol}>
               <Image source={Images.verified} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{survivalRateText}</Text>
-              <Text style={styles.quickStatLabel}>Survival Rate</Text>
+              <Text style={styles.quickStatLabel}>{String.AppOpening_SurvivalRate}</Text>
             </View>
             <View style={styles.quickStatDivider} />
             <View style={styles.quickStatCol}>
               <Image source={Images.calendar} style={styles.quickStatIcon} resizeMode="contain" />
               <Text style={styles.quickStatValue}>{projectSinceText}</Text>
-              <Text style={styles.quickStatLabel}>Project Since</Text>
+              <Text style={styles.quickStatLabel}>{String.ProjectSelect_ProjectSince}</Text>
             </View>
           </View>
 
           {/* Available Species Section */}
           <View style={styles.listSection}>
             <View style={styles.listHeader}>
-              <Text style={styles.listTitle}>Available Tree Species</Text>
+              <Text style={styles.listTitle}>{String.ChooseSpecies_AvailableTitle}</Text>
             </View>
-            <Text style={styles.listSubtitle}>Choose a species that you want to plant.</Text>
+            <Text style={styles.listSubtitle}>{String.ChooseSpecies_AvailableSubtitle}</Text>
 
             {/* Render Species Cards */}
             {speciesList.map((species) => {
@@ -232,7 +233,7 @@ const ChooseSpeciesScreen = () => {
                         <Text style={styles.speciesScientific}>{species.scientificName}</Text>
                         <View style={styles.nativeBadge}>
                           <Image source={Images.leaf} style={styles.nativeBadgeLeaf} resizeMode="contain" />
-                          <Text style={styles.nativeText}>Native</Text>
+                          <Text style={styles.nativeText}>{String.ChooseSpecies_NativeTag}</Text>
                         </View>
                       </View>
 
@@ -241,14 +242,14 @@ const ChooseSpeciesScreen = () => {
                         <View style={styles.detailCol}>
                           <View style={styles.detailLabelContainer}>
                             <Image source={Images.co2Cloud} style={styles.detailIcon} resizeMode="contain" />
-                            <Text style={styles.detailLabel}>CO₂ Absorption</Text>
+                            <Text style={styles.detailLabel}>{String.CO2AbsorptionLabel}</Text>
                             <Text style={styles.detailValue}>{species.co2}</Text>
                           </View>
                         </View>
                         <View style={styles.detailCol}>
                           <View style={styles.detailLabelContainer}>
                             <Image source={Images.maintaince} style={styles.detailIcon} resizeMode="contain" />
-                            <Text style={styles.detailLabel}>Lifespan</Text>
+                            <Text style={styles.detailLabel}>{String.ChooseSpecies_Lifespan}</Text>
                             <Text style={styles.detailValue}>{species.lifespan}</Text>
                           </View>
                         </View>
@@ -256,7 +257,7 @@ const ChooseSpeciesScreen = () => {
                         <View style={styles.detailCol}>
                           <View style={styles.detailLabelContainer}>
                             <Image source={Images.drop} style={styles.detailIcon} resizeMode="contain" />
-                            <Text style={styles.detailLabel}>Water Need</Text>
+                            <Text style={styles.detailLabel}>{String.ChooseSpecies_WaterNeed}</Text>
                             <Text style={styles.detailValue}>{species.waterNeed}</Text>
                           </View>
                         </View>
@@ -272,17 +273,17 @@ const ChooseSpeciesScreen = () => {
           <View style={styles.impactSection}>
             <View style={styles.impactCard}>
               <View style={styles.impactHeader}>
-                <Text style={styles.impactTitle}>Your Impact with This Tree</Text>
+                <Text style={styles.impactTitle}>{String.ChooseSpecies_ImpactTitle}</Text>
                 <Image source={Images.leaf} style={styles.headerTitleLeaf} resizeMode="contain" />
               </View>
-              <Text style={styles.impactSubtitle}>See the positive change your tree will create.</Text>
+              <Text style={styles.impactSubtitle}>{String.ChooseSpecies_ImpactSubtitle}</Text>
 
               <View style={styles.impactGrid}>
                 <View style={styles.impactCol}>
                   <View style={styles.impactIconBg}>
                     <Image source={Images.co2Cloud} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <Text style={styles.impactLabel}>CO₂ Absorption (Est.)</Text>
+                  <Text style={styles.impactLabel}>{String.ProjectSelect_Co2OffsetEst}</Text>
                   <Text style={styles.impactValue}>{selectedSpecies.impact.co2}</Text>
                 </View>
                 <View style={styles.impactDivider} />
@@ -290,7 +291,7 @@ const ChooseSpeciesScreen = () => {
                   <View style={styles.impactIconBg}>
                     <Image source={Images.leaf} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <Text style={styles.impactLabel}>Oxygen Generated</Text>
+                  <Text style={styles.impactLabel}>{String.ChooseSpecies_OxygenGenerated}</Text>
                   <Text style={styles.impactValue}>{selectedSpecies.impact.oxygen}</Text>
                 </View>
                 <View style={styles.impactDivider} />
@@ -298,7 +299,7 @@ const ChooseSpeciesScreen = () => {
                   <View style={styles.impactIconBgDrop}>
                     <Image source={Images.drop} style={styles.impactIconDrop} resizeMode="contain" />
                   </View>
-                  <Text style={styles.impactLabel}>Water Saved</Text>
+                  <Text style={styles.impactLabel}>{String.ChooseSpecies_WaterSaved}</Text>
                   <Text style={styles.impactValue}>{selectedSpecies.impact.waterSaved}</Text>
                 </View>
                 <View style={styles.impactDivider} />
@@ -306,7 +307,7 @@ const ChooseSpeciesScreen = () => {
                   <View style={styles.impactIconBg}>
                     <Image source={Images.bird} style={styles.impactIcon} resizeMode="contain" />
                   </View>
-                  <Text style={styles.impactLabel}>Supports Biodiversity</Text>
+                  <Text style={styles.impactLabel}>{String.ChooseSpecies_SupportsBiodiversity}</Text>
                   <Text style={styles.impactValue}>{selectedSpecies.impact.biodiversity}</Text>
                 </View>
               </View>
@@ -318,7 +319,7 @@ const ChooseSpeciesScreen = () => {
             <View style={styles.footerSelectedInfo}>
               <Image source={selectedSpecies.image} style={styles.footerThumbnail} resizeMode="cover" />
               <View style={styles.footerTextCol}>
-                <Text style={styles.footerLabel}>Selected Species</Text>
+                <Text style={styles.footerLabel}>{String.ChooseSpecies_SelectedLabel}</Text>
                 <Text style={styles.footerName}>{selectedSpecies.name}</Text>
                 <Text style={styles.footerScientific}>{selectedSpecies.scientificName}</Text>
                 <TouchableOpacity
@@ -328,7 +329,7 @@ const ChooseSpeciesScreen = () => {
                     // Action to trigger change
                   }}
                 >
-                  <Text style={styles.footerChangeText}>Change</Text>
+                  <Text style={styles.footerChangeText}>{String.ChooseSpecies_ChangeBtn}</Text>
                   <Image source={Images.edit} style={styles.footerChangeIcon} resizeMode="contain" />
                 </TouchableOpacity>
               </View>
@@ -340,7 +341,7 @@ const ChooseSpeciesScreen = () => {
                 activeOpacity={0.8}
                 onPress={() => navigation.navigate('DedicateTree', { project, selectedSpecies })}
               >
-                <Text style={styles.proceedButtonText}>Proceed to Dedication</Text>
+                <Text style={styles.proceedButtonText}>{String.ChooseSpecies_ProceedBtn}</Text>
               </TouchableOpacity>
 
             </View>

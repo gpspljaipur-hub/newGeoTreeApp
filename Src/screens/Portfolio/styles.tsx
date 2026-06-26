@@ -442,6 +442,7 @@ export const styles = StyleSheet.create({
   },
   timelineTextCol: {
     flex: 1,
+    top: -10,
   },
   timelineTitle: {
     fontSize: 14,

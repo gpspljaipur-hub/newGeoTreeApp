@@ -15,6 +15,11 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { handleNavigation, RootStackParamList } from '../../navigation/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+import String from '../../comman/String';
+import { RootState } from '../../redux/Store/Store';
+import { locationData, stateData as fetchStateData } from '../../api/ApiService';
+import Config from '../../comman/Config';
 
 type StatewiseScreenRouteProp = RouteProp<RootStackParamList, 'Statewise'>;
 
@@ -288,39 +293,71 @@ export const PROJECTS_DATA: { [key: string]: StateData } = {
   },
 };
 
-const WHY_CHOOSE_DATA = [
-  {
-    id: '1',
-    icon: Images.location,
-    title: 'GPS Tracked',
-    desc: 'Real-time location tracking',
-  },
-  {
-    id: '2',
-    icon: Images.verified,
-    title: 'Verified Plantation',
-    desc: '100% verified & authenticated',
-  },
-  {
-    id: '3',
-    icon: Images.co2Cloud,
-    title: 'Carbon Offset',
-    desc: 'Measurable carbon impact',
-  },
-  {
-    id: '4',
-    icon: Images.certificate,
-    title: 'Digital Certificate',
-    desc: 'Get a certificate for your contribution',
-  },
-];
-
 const StatewiseScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<StatewiseScreenRouteProp>();
+  const dispatch = useDispatch();
+
+  const WHY_CHOOSE_DATA = [
+    {
+      id: '1',
+      icon: Images.location,
+      title: String.Statewise_GPSTracked,
+      desc: String.Statewise_GPSDesc,
+    },
+    {
+      id: '2',
+      icon: Images.verified,
+      title: String.Statewise_VerifiedPlantation,
+      desc: String.Statewise_VerifiedDesc,
+    },
+    {
+      id: '3',
+      icon: Images.co2Cloud,
+      title: String.Statewise_CarbonOffset,
+      desc: String.Statewise_CarbonDesc,
+    },
+    {
+      id: '4',
+      icon: Images.certificate,
+      title: String.Statewise_DigitalCertificate,
+      desc: String.Statewise_CertificateDesc,
+    },
+  ];
 
   const stateName = route.params?.stateName || 'Rajasthan';
   const stateData = PROJECTS_DATA[stateName] || PROJECTS_DATA['Rajasthan'];
+
+  const apiStates = useSelector((state: RootState) => state.state.stateList);
+  const apiLocations = useSelector((state: RootState) => state.location.locationList);
+
+  React.useEffect(() => {
+    fetchStateData(dispatch);
+  }, [dispatch]);
+
+  const matchedState = apiStates?.find(
+    (s: any) => s.state_name?.toLowerCase() === stateName.toLowerCase()
+  );
+
+  React.useEffect(() => {
+    if (matchedState?._id) {
+      locationData(dispatch, matchedState._id);
+    }
+  }, [dispatch, matchedState?._id]);
+
+  const mappedLocations = apiLocations && apiLocations.length > 0
+    ? apiLocations.map((item: any, idx: number) => ({
+      id: item._id?.toString() || idx.toString(),
+      name: item.location_name,
+      category: 'Restoration Zone',
+      description: item.description,
+      treesPlanted: '10,000+',
+      survivalRate: '95%',
+      image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.aravali_belt,
+      city: stateName,
+      about: item.description,
+    }))
+    : stateData.locations;
 
   const handleBack = () => {
     navigation.goBack();
@@ -354,7 +391,7 @@ const StatewiseScreen = () => {
 
             {/* Header titles */}
             <View style={styles.headerTextContainer}>
-              <Text style={styles.headerTitle}>{stateName} Plantation  {'\n'}Projects</Text>
+              <Text style={styles.headerTitle}>{String.Statewise_Title.replace('{{state}}', stateName)}</Text>
               <Text style={styles.headerSubtitle}>{stateData.subtitle}</Text>
             </View>
           </ImageBackground>
@@ -368,7 +405,7 @@ const StatewiseScreen = () => {
                 </View>
                 <View style={styles.statTextCol}>
                   <Text style={styles.statValue}>{stateData.treesPlanted}</Text>
-                  <Text style={styles.statLabel}>Trees Planted</Text>
+                  <Text style={styles.statLabel}>{String.AppOpening_TreesPlanted}</Text>
                 </View>
               </View>
 
@@ -380,7 +417,7 @@ const StatewiseScreen = () => {
                 </View>
                 <View style={styles.statTextCol}>
                   <Text style={styles.statValue}>{stateData.locationsCovered}</Text>
-                  <Text style={styles.statLabel}>Locations Covered</Text>
+                  <Text style={styles.statLabel}>{String.Statewise_LocationsCovered}</Text>
                 </View>
               </View>
 
@@ -392,7 +429,7 @@ const StatewiseScreen = () => {
                 </View>
                 <View style={styles.statTextCol}>
                   <Text style={styles.statValue}>{stateData.co2Offset}</Text>
-                  <Text style={styles.statLabel}>Tons CO₂ Offset</Text>
+                  <Text style={styles.statLabel}>{String.Home_StatsCO2Label}</Text>
                 </View>
               </View>
             </View>
@@ -403,14 +440,14 @@ const StatewiseScreen = () => {
             {/* Section Header */}
             <View style={styles.sectionHeader}>
               <View style={styles.sectionTitleRow}>
-                <Text style={styles.sectionTitle}>Available Plantation Locations</Text>
+                <Text style={styles.sectionTitle}>{String.Statewise_AvailableLocations}</Text>
                 <Image source={Images.leaf1} style={styles.titleLeafIcon} resizeMode="contain" />
               </View>
-              <Text style={styles.sectionSubtitle}>Choose a verified project location to plant your tree.</Text>
+              <Text style={styles.sectionSubtitle}>{String.Statewise_ChooseVerified}</Text>
             </View>
 
             {/* Location Cards */}
-            {stateData.locations.map((loc) => {
+            {mappedLocations.map((loc) => {
               return (
                 <View key={loc.id} style={styles.horizontalCard}>
                   {/* Left Column: Image wrapper */}
@@ -459,19 +496,19 @@ const StatewiseScreen = () => {
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.tree} style={styles.horizontalSpecIcon} resizeMode="contain" />
                         <Text style={styles.horizontalSpecValue}>{loc.treesPlanted}</Text>
-                        <Text style={styles.horizontalSpecLabel}>Trees Planted</Text>
+                        <Text style={styles.horizontalSpecLabel}>{String.AppOpening_TreesPlanted}</Text>
                       </View>
 
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.verified} style={styles.horizontalSpecIcon} resizeMode="contain" />
                         <Text style={styles.horizontalSpecValue}>GPS</Text>
-                        <Text style={styles.horizontalSpecLabel}>Verified</Text>
+                        <Text style={styles.horizontalSpecLabel}>{String.Verified}</Text>
                       </View>
 
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.check} style={styles.horizontalSpecIcon} resizeMode="contain" />
                         <Text style={styles.horizontalSpecValue}>{loc.survivalRate}</Text>
-                        <Text style={styles.horizontalSpecLabel}>Tree Survival Rate</Text>
+                        <Text style={styles.horizontalSpecLabel}>{String.Statewise_SurvivalRate}</Text>
                       </View>
                     </View>
 
@@ -482,7 +519,7 @@ const StatewiseScreen = () => {
                       onPress={() => navigation.navigate('ProjectSelect', { project: loc })}
                     >
                       <View style={{ width: 12 }} />
-                      <Text style={styles.horizontalExploreButtonText}>Explore Project</Text>
+                      <Text style={styles.horizontalExploreButtonText}>{String.Statewise_ExploreProject}</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -491,8 +528,7 @@ const StatewiseScreen = () => {
 
             <View style={styles.whySection}>
               <View style={styles.whyHeaderRow}>
-                <Text style={styles.whyTitle}>Why Choose Our Plantation Projects?</Text>
-                {/* <Image source={Images.leaf} style={styles.whyTitleLeaf} resizeMode="contain" /> */}
+                <Text style={styles.whyTitle}>{String.Statewise_WhyChoose}</Text>
               </View>
 
               <View style={styles.whyGrid}>
@@ -516,7 +552,7 @@ const StatewiseScreen = () => {
           <TouchableOpacity onPress={() => { ProjectToPlan() }} style={styles.bottomBanner}>
             <Image source={Images.handtree} style={styles.bottomBannerIcon} resizeMode="cover" />
             <View style={styles.bottomBannerTextContainer}>
-              <Text style={styles.bottomBannerText}>Select a Project to Plant Your Tree</Text>
+              <Text style={styles.bottomBannerText}>{String.Statewise_SelectProjectToPlant}</Text>
             </View>
           </TouchableOpacity>
         </ScrollView>
