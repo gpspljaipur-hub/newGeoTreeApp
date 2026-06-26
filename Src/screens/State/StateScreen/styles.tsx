@@ -1,0 +1,347 @@
+import { Dimensions, StyleSheet } from 'react-native';
+import { Colors } from '../../../comman/Colors';
+import fonts from '../../../comman/fonts';
+import FontsSize from '../../../comman/FontsSize';
+import MarginHW from '../../../comman/MarginHW';
+
+const { width } = Dimensions.get('window');
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  scrollContainer: {
+
+  },
+  heroImage: {
+    width: '100%',
+    height: Dimensions.get('window').height / 3.3
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: MarginHW.PaddingW10,
+    paddingVertical: 5,
+  },
+  backButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#111827',
+  },
+  coinBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FEF8F0',
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderWidth: 1,
+    borderColor: '#FEEFD6',
+  },
+  coinEmoji: {
+    fontSize: FontsSize.size16,
+    marginRight: MarginHW.MarginW6,
+  },
+  coinTextContainer: {
+    justifyContent: 'center',
+  },
+  coinAmount: {
+    fontSize: FontsSize.size11,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#111827',
+    lineHeight: 13,
+  },
+  coinLabel: {
+    fontSize: FontsSize.size8,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#B87A1B',
+    lineHeight: 10,
+  },
+  heroRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: MarginHW.MarginW16,
+    marginTop: MarginHW.MarginH30,
+    marginBottom: MarginHW.MarginH14,
+  },
+  heroLeft: {
+    flex: 1.3,
+    paddingRight: 10,
+  },
+  heroRight: {
+    flex: 0.8,
+    alignItems: 'flex-end',
+  },
+  titleText: {
+    fontSize: FontsSize.size22,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+
+  },
+  highlightGreen: {
+    fontSize: FontsSize.size22,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1E6B46',
+  },
+  subtitleText: {
+    width: Dimensions.get('window').width / 1.8,
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Regular,
+    color: '#000',
+    marginTop: MarginHW.MarginH8,
+    lineHeight: 16,
+  },
+  bubbletreeImage: {
+    width: 120,
+    height: 120,
+  },
+  whyCard: {
+    backgroundColor: '#f7f8f2',
+    borderRadius: 12,
+    marginHorizontal: MarginHW.MarginW10,
+    padding: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: MarginHW.MarginH20,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+  },
+  whyIconBg: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: '#EEF5EE',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  whyPinIcon: {
+    width: 18,
+    height: 18,
+    tintColor: '#1E6B46',
+  },
+  whyTextContent: {
+    flex: 1,
+    marginHorizontal: MarginHW.MarginW12,
+  },
+  whyTitle: {
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+  },
+  whyDesc: {
+    fontSize: FontsSize.size10,
+    fontFamily: fonts.OpenSans_Regular,
+    color: '#5B665F',
+    marginTop: MarginHW.MarginH2,
+    lineHeight: 14,
+  },
+  whyLeafIcon: {
+    width: 30,
+    height: 30,
+    opacity: 0.6,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginHorizontal: MarginHW.MarginW16,
+    marginBottom: MarginHW.MarginH10,
+  },
+  sectionTitleCol: {
+    flex: 1,
+  },
+  sectionTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sectionTitle: {
+    fontSize: FontsSize.size14,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#22391f',
+  },
+  sectionSubtitle: {
+    fontSize: FontsSize.size10,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#8E9A93',
+    marginTop: MarginHW.MarginH2,
+  },
+  viewAllLink: {
+    fontSize: FontsSize.size11,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1E6B46',
+    marginBottom: MarginHW.MarginH2,
+  },
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: MarginHW.PaddingH16,
+  },
+  stateCard: {
+    width: (width - 42) / 2,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    borderWidth: 1.2,
+    borderColor: '#E7ECE8',
+    marginBottom: MarginHW.MarginH12,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.03,
+    shadowRadius: 6,
+    elevation: 2,
+    overflow: 'hidden',
+  },
+  stateCardSelected: {
+    borderColor: '#1E6B46',
+    borderWidth: 1.8,
+  },
+  imageWrapper: {
+    width: '100%',
+    height: 95,
+  },
+  stateImage: {
+    width: '100%',
+    height: '100%',
+  },
+  checkIndicator: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    borderColor: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  checkIndicatorSelected: {
+    backgroundColor: '#1E6B46',
+    borderColor: '#1E6B46',
+  },
+  checkText: {
+    color: '#FFFFFF',
+    fontSize: FontsSize.size9,
+    fontFamily: fonts.OpenSans_Bold,
+    lineHeight: 11,
+  },
+  cardContent: {
+    padding: 8,
+  },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginBottom: MarginHW.MarginH6,
+  },
+  stateName: {
+    fontSize: FontsSize.size12,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#111827',
+  },
+  stateNameSelected: {
+    color: '#1E6B46',
+  },
+  popularBadge: {
+    backgroundColor: '#EEF5EE',
+    borderRadius: 4,
+    paddingHorizontal: 5,
+    paddingVertical: 1.5,
+    marginLeft: MarginHW.MarginW6,
+  },
+  popularText: {
+    fontSize: FontsSize.size7,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#1E6B46',
+  },
+  statItemRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: MarginHW.MarginH3,
+  },
+  statIcon: {
+    width: 11,
+    height: 11,
+    marginRight: MarginHW.MarginW4,
+  },
+  statText: {
+    fontSize: FontsSize.size9,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#5B665F',
+  },
+  infoBanner: {
+    backgroundColor: Colors.listBg,
+    borderRadius: 10,
+    marginHorizontal: MarginHW.MarginW16,
+    marginVertical: 16,
+    paddingLeft: 12,
+    paddingRight: 6,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderColor: '#E2EFE2',
+  },
+  infoLeftSection: {
+    flex: 1.3,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  infoPinIcon: {
+    width: 14,
+    height: 14,
+    tintColor: '#1E6B46',
+    marginRight: MarginHW.MarginW6,
+    marginTop: MarginHW.MarginH1,
+  },
+  infoText: {
+    fontSize: FontsSize.size9_5,
+    fontFamily: fonts.OpenSans_Medium,
+    color: '#22391f',
+    lineHeight: 14,
+    flex: 1,
+  },
+  infoHandImage: {
+    width: 60,
+    height: 40,
+    borderRadius: 6,
+  },
+  continueButton: {
+    backgroundColor: '#1E6B46',
+    borderRadius: 10,
+    marginHorizontal: MarginHW.MarginW16,
+    paddingVertical: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#1E6B46',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  continueText: {
+    color: '#FFFFFF',
+    fontSize: FontsSize.size14,
+    fontFamily: fonts.OpenSans_Bold,
+  },
+});
