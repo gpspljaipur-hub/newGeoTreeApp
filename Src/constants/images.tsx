@@ -107,6 +107,21 @@ const Images = {
   email: require('../assets/Images/email.png'),
   camera: require('../assets/Images/camera.png'),
   DedicatedBg: require('../assets/Images/DedicatedBg.png'),
+  travel_cat: require('../assets/Images/travel_cat.png'),
+  travel_bg: require('../assets/Images/travel_bg.png'),
+  food_cat: require('../assets/Images/food_cat.png'),
+  electricity_cat: require('../assets/Images/electricity_cat.png'),
+  flights_cat: require('../assets/Images/flights_cat.png'),
+  carbon_bg: require('../assets/Images/carbon_bg.jpg'),
+  calculator_icon: require('../assets/Images/calculator_icon.png'),
+  banner_tree: require('../assets/Images/banner_tree.png'),
+  travel_mode_car: require('../assets/Images/travel_mode_car.png'),
+  travel_mode_bike: require('../assets/Images/travel_mode_bike.png'),
+  travel_mode_public: require('../assets/Images/travel_mode_public.png'),
+  travel_mode_walk: require('../assets/Images/travel_mode_walk.png'),
+  travel_speedometer: require('../assets/Images/travel_speedometer.png'),
+  travel_fuel_pump: require('../assets/Images/travel_fuel_pump.png'),
+  travel_mode_electric: require('../assets/Images/travel_mode_electric.png'),
 };
 
 export type ImageKey = keyof typeof Images;

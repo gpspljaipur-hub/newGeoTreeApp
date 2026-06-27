@@ -33,6 +33,9 @@ import StatePaymentScreen from '../screens/State/StatePayment/StatePaymentScreen
 import WhichtreeShouldIPlantScreen from '../screens/Plantation/WhichtreeShouldIPlant/WhichtreeShouldIPlant';
 import PlantationConfirmedScreen from '../screens/Plantation/PlantationConfirmed/PlantationConfirmed';
 import PortfolioScreen from '../screens/Portfolio/Portfolio';
+import CalculateCarbonScreen from '../screens/Carbon/CalculateCarbon/CalculateCarbon';
+import TravelCarbonScreen from '../screens/Carbon/TravelCarbon/TravelCarbon';
+
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -74,6 +77,8 @@ export type RootStackParamList = {
   PlantationConfirmed: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
   Portfolio: undefined;
   Setting: undefined;
+  CalculateCarbon: undefined;
+  TravelCarbon: undefined;
 };
 
 
@@ -192,6 +197,8 @@ export default function RootNavigator() {
       <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
       <Stack.Screen name="StatePayment" component={StatePaymentScreen} />
       <Stack.Screen name="Setting" component={SettingScreen} />
+      <Stack.Screen name="CalculateCarbon" component={CalculateCarbonScreen} />
+      <Stack.Screen name="TravelCarbon" component={TravelCarbonScreen} />
     </Stack.Navigator>
 
   );

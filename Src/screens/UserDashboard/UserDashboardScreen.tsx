@@ -228,7 +228,17 @@ const UserDashboardScreen = () => {
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.journeyList}
             renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => { StartYourJourney() }} style={styles.journeyCard} activeOpacity={0.9}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (item.id === '2') {
+                    navigation.navigate('CalculateCarbon');
+                  } else {
+                    StartYourJourney();
+                  }
+                }}
+                style={styles.journeyCard}
+                activeOpacity={0.9}
+              >
                 <View style={styles.journeyImageContainer}>
                   <Image source={item.image} style={styles.journeyImage} resizeMode="cover" />
                 </View>
