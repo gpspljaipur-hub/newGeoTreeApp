@@ -8,16 +8,19 @@ import {
     StatusBar,
     Alert,
     Modal,
-    PanResponder,
     ImageBackground,
+    Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import Images from '../../../constants/images';
 import { useNavigation } from '@react-navigation/native';
+// @ts-ignore
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 const TravelCarbonScreen = () => {
     const navigation = useNavigation<any>();
+    const { width } = Dimensions.get('window');
 
     // Input States
     const [selectedMode, setSelectedMode] = useState('1'); // '1' = Car, '2' = Bike, '3' = Public, '4' = Walking, '5' = Other
@@ -27,43 +30,17 @@ const TravelCarbonScreen = () => {
 
     // Modal State
     const [isCalcModalVisible, setIsCalcModalVisible] = useState(false);
+    const [scrollEnabled, setScrollEnabled] = useState(true);
 
     // Track layout for custom slider
     const trackRef = useRef<View>(null);
-    const [sliderX, setSliderX] = useState(0);
     const [sliderWidth, setSliderWidth] = useState(0);
 
     const measureTrack = () => {
         trackRef.current?.measure((x, y, w, h, px, py) => {
-            setSliderX(px);
             setSliderWidth(w);
         });
     };
-
-    const handleTouchGesture = (pageX: number) => {
-        if (sliderWidth <= 0) return;
-        const relativeX = pageX - sliderX;
-        const pct = Math.max(0, Math.min(1, relativeX / sliderWidth));
-        const rawVal = Math.round(pct * 2000);
-        // Snap to nearest 50 KM for clean slider steps
-        const snappedVal = Math.round(rawVal / 50) * 50;
-        setDistance(snappedVal);
-    };
-
-    const panResponder = useRef(
-        PanResponder.create({
-            onStartShouldSetPanResponder: () => true,
-            onStartShouldSetPanResponderCapture: () => true,
-            onMoveShouldSetPanResponder: () => true,
-            onMoveShouldSetPanResponderCapture: () => true,
-            onPanResponderGrant: (evt) => {
-                handleTouchGesture(evt.nativeEvent.pageX);
-            },
-            onPanResponderMove: (evt) => {
-                handleTouchGesture(evt.nativeEvent.pageX);
-            },
-        })
-    ).current;
 
     // Emission Factors
     const MODE_FACTORS: Record<string, { label: string; factor: number; icon: any }> = {
@@ -135,72 +112,76 @@ const TravelCarbonScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             {/* Top Stepper Header */}
-            <View style={styles.headerRow}>
-                <TouchableOpacity
-                    style={styles.backButton}
-                    activeOpacity={0.7}
-                    onPress={() => navigation.goBack()}
-                >
-                    <Image
-                        source={Images.back}
-                        style={styles.backIcon}
-                        resizeMode='cover'
-                    />
-                </TouchableOpacity>
 
-                <View style={styles.stepperContainer}>
-                    <View style={styles.stepLine} />
-                    {[
-                        { step: '1', title: 'Travel', active: true, completed: false },
-                        { step: '2', title: 'Food', active: false, completed: false },
-                        { step: '3', title: 'Electricity', active: false, completed: false },
-                        { step: '4', title: 'Flights', active: false, completed: false },
-                    ].map((item, idx) => (
-                        <View key={item.step} style={styles.stepItem}>
-                            <View
-                                style={[
-                                    styles.stepIndicator,
-                                    item.active && styles.stepIndicatorActive,
-                                    item.completed && styles.stepIndicatorCompleted,
-                                ]}
-                            >
-                                <Text
+
+
+            {/* Hero Section */}
+            <ImageBackground
+                source={Images.travel_bg}
+                style={styles.heroCard}
+                resizeMode="cover"
+            >
+
+                <View style={styles.headerRow}>
+                    <TouchableOpacity
+                        style={styles.backButton}
+                        activeOpacity={0.7}
+                        onPress={() => navigation.goBack()}
+                    >
+                        <Image
+                            source={Images.back}
+                            style={styles.backIcon}
+                            resizeMode='cover'
+                        />
+                    </TouchableOpacity>
+
+                    <View style={styles.stepperContainer}>
+                        <View style={styles.stepLine} />
+                        {[
+                            { step: '1', title: 'Travel', active: true, completed: false },
+                            { step: '2', title: 'Food', active: false, completed: false },
+                            { step: '3', title: 'Electricity', active: false, completed: false },
+                            { step: '4', title: 'Flights', active: false, completed: false },
+                        ].map((item, idx) => (
+                            <View key={item.step} style={styles.stepItem}>
+                                <View
                                     style={[
-                                        styles.stepText,
-                                        item.active && styles.stepTextActive,
-                                        item.completed && styles.stepTextCompleted,
+                                        styles.stepIndicator,
+                                        item.active && styles.stepIndicatorActive,
+                                        item.completed && styles.stepIndicatorCompleted,
                                     ]}
                                 >
-                                    {item.step}
+                                    <Text
+                                        style={[
+                                            styles.stepText,
+                                            item.active && styles.stepTextActive,
+                                            item.completed && styles.stepTextCompleted,
+                                        ]}
+                                    >
+                                        {item.step}
+                                    </Text>
+                                </View>
+                                <Text
+                                    style={[
+                                        styles.stepLabel,
+                                        item.active && styles.stepLabelActive,
+                                    ]}
+                                >
+                                    {item.title}
                                 </Text>
                             </View>
-                            <Text
-                                style={[
-                                    styles.stepLabel,
-                                    item.active && styles.stepLabelActive,
-                                ]}
-                            >
-                                {item.title}
-                            </Text>
-                        </View>
-                    ))}
+                        ))}
+                    </View>
                 </View>
-            </View>
-
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.scrollContent}
-            >
-                {/* Hero Section */}
-                <ImageBackground
-                    source={Images.travel_bg}
-                    style={styles.heroCard}
-                    resizeMode="cover"
-                >
+                <View style={styles.heroContentRow}>
                     <View style={styles.heroTextSection}>
                         <View style={styles.heroTitleRow}>
                             <Text style={styles.heroTitle}>Travel</Text>
-
+                            <Image
+                                source={Images.leaf}
+                                style={styles.heroLeafIcon}
+                                resizeMode="contain"
+                            />
                         </View>
                         <Text style={styles.heroDesc}>
                             Calculate your emissions from daily commuting and road travel.
@@ -218,7 +199,13 @@ const TravelCarbonScreen = () => {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 1.1 }} />
-                </ImageBackground>
+                </View>
+            </ImageBackground>
+            <ScrollView
+                scrollEnabled={scrollEnabled}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.scrollContent}
+            >
 
                 {/* Questions Area */}
                 <View style={styles.questionsSection}>
@@ -279,8 +266,8 @@ const TravelCarbonScreen = () => {
                                             <Image
                                                 source={item.icon}
                                                 style={{
-                                                    width: 24,
-                                                    height: 24,
+                                                    width: 20,
+                                                    height: 20,
                                                     tintColor: isSelected ? '#0A5F35' : '#44554C',
                                                     marginBottom: 4,
                                                 }}
@@ -354,21 +341,41 @@ const TravelCarbonScreen = () => {
                         <View
                             ref={trackRef}
                             onLayout={measureTrack}
-                            style={styles.sliderContainer}
-                            {...panResponder.panHandlers}
+                            style={{ width: '100%', alignItems: 'center' }}
                         >
-                            <View style={styles.sliderTrack} />
-                            <View
-                                style={[
-                                    styles.sliderTrackActive,
-                                    { width: `${(distance / 2000) * 100}%` },
-                                ]}
-                            />
-                            <View
-                                style={[
-                                    styles.sliderThumb,
-                                    { left: `${(distance / 2000) * 100}%` },
-                                ]}
+                            <MultiSlider
+                                values={[distance]}
+                                sliderLength={sliderWidth || width - 64}
+                                onValuesChange={(values) => {
+                                    setDistance(values[0]);
+                                }}
+                                onValuesChangeStart={() => setScrollEnabled(false)}
+                                onValuesChangeFinish={() => setScrollEnabled(true)}
+                                min={0}
+                                max={2000}
+                                step={50}
+                                allowOverlap={false}
+                                snapped={true}
+                                customMarker={() => (
+                                    <View style={[styles.sliderThumb, { position: 'relative', transform: [] }]}>
+                                        <View style={styles.sliderThumbDot} />
+                                    </View>
+                                )}
+                                trackStyle={{
+                                    height: 6,
+                                    borderRadius: 3,
+                                    backgroundColor: '#E2E8F0',
+                                }}
+                                selectedStyle={{
+                                    backgroundColor: '#0A5F35',
+                                }}
+                                unselectedStyle={{
+                                    backgroundColor: '#E2E8F0',
+                                }}
+                                containerStyle={{
+                                    height: 30,
+                                    justifyContent: 'center',
+                                }}
                             />
                         </View>
 
