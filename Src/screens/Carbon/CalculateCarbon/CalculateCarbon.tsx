@@ -93,6 +93,10 @@ const CalculateCarbonScreen = () => {
     const handleCategoryPress = (categoryId: string) => {
         if (categoryId === '1') {
             navigation.navigate('TravelCarbon');
+        } else if (categoryId === '2') {
+            navigation.navigate('FoodCarbon');
+        } else if (categoryId === '3') {
+            navigation.navigate('ElectricityCarbon');
         } else {
             Alert.alert('Coming Soon', 'This category assessment is coming soon!');
         }

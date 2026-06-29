@@ -34,7 +34,11 @@ import WhichtreeShouldIPlantScreen from '../screens/Plantation/WhichtreeShouldIP
 import PlantationConfirmedScreen from '../screens/Plantation/PlantationConfirmed/PlantationConfirmed';
 import PortfolioScreen from '../screens/Portfolio/Portfolio';
 import CalculateCarbonScreen from '../screens/Carbon/CalculateCarbon/CalculateCarbon';
-import TravelCarbonScreen from '../screens/Carbon/TravelCarbon/TravelCarbon';
+import TravelCarbonScreen from '../screens/Carbon/TravelCarbon/TravelCarbon/TravelCarbon';
+import TravelEmissionCalculationScreen from '../screens/Carbon/TravelCarbon/TravelEmissionCalculation/TravelEmissionCalculation';
+import FoodCarbonScreen from '../screens/Carbon/FoodCarbon/FoodCarbon/FoodCarbon';
+import FoodEmissionCalculationScreen from '../screens/Carbon/FoodCarbon/FoodEmissionCalculation/FoodEmissionCalculation';
+import ElectricityCarbonScreen from '../screens/Carbon/ElectricityCarbon/ElectricityCarbon/ElectricityCarbon';
 
 import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen';
 import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
@@ -83,6 +87,24 @@ export type RootStackParamList = {
   Setting: undefined;
   CalculateCarbon: undefined;
   TravelCarbon: undefined;
+  TravelEmissionCalculation: {
+    selectedMode: string;
+    distance: number;
+    selectedFuel: string;
+    selectedOccupancy: string;
+  } | undefined;
+  FoodCarbon: undefined;
+  FoodEmissionCalculation: {
+    annualTons: number;
+    selectedDiet: string;
+    selectedMeals: string;
+    selectedFruits: string;
+    selectedDairy: string;
+    selectedProcessed: string;
+    selectedMeat: string;
+    selectedLocal: string;
+  } | undefined;
+  ElectricityCarbon: undefined;
   SponsorProject: undefined;
   SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
   SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
@@ -207,6 +229,10 @@ export default function RootNavigator() {
       <Stack.Screen name="Setting" component={SettingScreen} />
       <Stack.Screen name="CalculateCarbon" component={CalculateCarbonScreen} />
       <Stack.Screen name="TravelCarbon" component={TravelCarbonScreen} />
+      <Stack.Screen name="TravelEmissionCalculation" component={TravelEmissionCalculationScreen} />
+      <Stack.Screen name="FoodCarbon" component={FoodCarbonScreen} />
+      <Stack.Screen name="FoodEmissionCalculation" component={FoodEmissionCalculationScreen} />
+      <Stack.Screen name="ElectricityCarbon" component={ElectricityCarbonScreen} />
       <Stack.Screen name="SponsorProject" component={SponsorProjectScreen} />
       <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
       <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />

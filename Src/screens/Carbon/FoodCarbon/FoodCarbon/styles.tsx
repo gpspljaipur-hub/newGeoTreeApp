@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { Colors } from '../../../comman/Colors';
-import FontsSize from '../../../comman/FontsSize';
-import fonts from '../../../comman/fonts';
+import { Colors } from '../../../../comman/Colors';
+import FontsSize from '../../../../comman/FontsSize';
+import fonts from '../../../../comman/fonts';
 
 const { width } = Dimensions.get('window');
 
@@ -13,11 +13,15 @@ export const styles = StyleSheet.create({
   safeArea: {
     backgroundColor: '#FFFFFF',
   },
+  scrollContent: {
+    paddingBottom: 32,
+  },
+  // Stepper Progress Indicators
   headerRow: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    marginTop: 10,
     backgroundColor: 'transparent',
   },
   backButton: {
@@ -40,7 +44,6 @@ export const styles = StyleSheet.create({
     height: 18,
     tintColor: '#000000',
   },
-  // Stepper Progress Indicators
   stepperContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -92,32 +95,38 @@ export const styles = StyleSheet.create({
     color: '#0F172A',
     fontFamily: fonts.OpenSans_Bold,
   },
-  stepLine: {
+  stepLineLeft: {
     position: 'absolute',
     top: 13,
     left: '12.5%',
+    right: '50%',
+    height: 1.5,
+    backgroundColor: '#0A5F35',
+    zIndex: 1,
+  },
+  stepLineRight: {
+    position: 'absolute',
+    top: 13,
+    left: '50%',
     right: '12.5%',
     height: 1.5,
     backgroundColor: '#E2E8F0',
     zIndex: 1,
   },
-  scrollContent: {
-    paddingBottom: 32,
-  },
   // Hero Section
-  heroCard: {
-    flexDirection: 'column',
-    backgroundColor: '#FFFFFF',
+  heroImageBg: {
+    width: '100%',
     minHeight: 220,
+    backgroundColor: '#FFFFFF',
   },
   heroContentRow: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 10,
   },
   heroTextSection: {
-    flex: 1.3,
+    flex: 1.25,
     paddingRight: 8,
   },
   heroTitleRow: {
@@ -133,28 +142,37 @@ export const styles = StyleSheet.create({
     width: 24,
     height: 24,
     marginLeft: 6,
+    tintColor: '#0A5F35',
+  },
+  heroDescTitle: {
+    fontSize: 15,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0F172A',
+    marginTop: 4,
   },
   heroDesc: {
-    fontSize: 13,
+    fontSize: 11.5,
     fontFamily: fonts.OpenSans_Regular,
-    color: '#1E293B',
-    marginTop: 6,
-    lineHeight: 19,
+    color: '#000',
+    marginTop: 4,
+    lineHeight: 16,
   },
   infoPillButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EDF6EE',
-    alignSelf: 'flex-start',
-    borderRadius: 6,
+    backgroundColor: '#EFF6F1',
+    borderColor: '#E6F4ED',
+    borderWidth: 1,
+    borderRadius: 20,
     paddingHorizontal: 10,
-    paddingVertical: 6,
-    marginTop: 12,
+    paddingVertical: 5.5,
+    alignSelf: 'flex-start',
+    marginTop: 10,
   },
   infoPillIconContainer: {
-    width: 18,
-    height: 18,
-    borderRadius: 9,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
     backgroundColor: '#0A5F35',
     justifyContent: 'center',
     alignItems: 'center',
@@ -162,34 +180,21 @@ export const styles = StyleSheet.create({
   },
   infoPillIconText: {
     color: '#FFFFFF',
-    fontSize: 10,
+    fontSize: 9.5,
     fontFamily: fonts.OpenSans_Bold,
   },
   infoPillText: {
-    fontSize: 11,
-    fontFamily: fonts.OpenSans_SemiBold,
-    color: '#111827',
+    fontSize: 10.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0A5F35',
   },
-  heroImageContainer: {
-    flex: 1.1,
-    height: 125,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  heroImage: {
-    width: '100%',
-    height: '100%',
+  heroRightSpacer: {
+    flex: 0.95,
   },
   // Main Questions Area
   questionsSection: {
     paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  sectionHeading: {
-    fontSize: 13.5,
-    fontFamily: fonts.OpenSans_Bold,
-    color: '#0A1C14',
-    marginBottom: 12,
+    marginTop: -5,
   },
   // Question Card
   questionCard: {
@@ -222,7 +227,7 @@ export const styles = StyleSheet.create({
   questionHeaderIcon: {
     width: 18,
     height: 18,
-    tintColor: '#0D684D',
+    tintColor: '#0A5F35',
   },
   questionTextContainer: {
     flex: 1,
@@ -255,234 +260,258 @@ export const styles = StyleSheet.create({
     color: '#8E9A93',
     fontFamily: fonts.OpenSans_Bold,
   },
-  // Multi Options Container (Row of 5 items)
+  // 4 Option Diet Grid Row
   optionsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  optionBox: {
-    width: '18.5%',
-    aspectRatio: 1,
+  dietOptionBox: {
+    width: '23.8%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#ECEFEF',
     backgroundColor: '#FFFFFF',
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+  },
+  dietOptionBoxSelected: {
+    borderColor: '#0D684D',
+    backgroundColor: '#EFF6F1',
+  },
+  dietOptionEmoji: {
+    fontSize: 12,
+    marginRight: 3,
+  },
+  dietOptionText: {
+    fontSize: 8.2,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#44554C',
+  },
+  dietOptionTextSelected: {
+    color: '#0D684D',
+  },
+  // Regular Option Row Box (Meals / Meat / Local)
+  optionBox: {
+    width: '23.8%',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 2,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ECEFEF',
+    backgroundColor: '#FFFFFF',
+    paddingVertical: 8,
+    paddingHorizontal: 2,
   },
   optionBoxSelected: {
     borderColor: '#0D684D',
     backgroundColor: '#EFF6F1',
   },
-  optionIconText: {
-    fontSize: 16,
-    marginBottom: 4,
-  },
-  optionLabel: {
+  optionBoxText: {
     fontSize: 8.5,
-    fontFamily: fonts.OpenSans_Medium,
+    fontFamily: fonts.OpenSans_Bold,
     color: '#44554C',
     textAlign: 'center',
   },
-  optionLabelSelected: {
+  optionBoxTextSelected: {
     color: '#0D684D',
-    fontFamily: fonts.OpenSans_Bold,
   },
-  // Occupancy Option Box
-  occupancyBox: {
-    width: '18.5%',
-    height: 32,
+  // Table style frequencies (Question 3)
+  freqRowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 6,
+  },
+  freqRowLabel: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '35%',
+  },
+  freqRowEmoji: {
+    fontSize: 14,
+    marginRight: 6,
+  },
+  freqRowLabelText: {
+    fontSize: 10,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#44554C',
+  },
+  freqRowSegments: {
+    flexDirection: 'row',
+    width: '63%',
+    justifyContent: 'space-between',
+  },
+  freqSegmentBox: {
+    flex: 1,
+    height: 28,
     borderRadius: 6,
     borderWidth: 1,
     borderColor: '#ECEFEF',
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 1.5,
   },
-  occupancyBoxSelected: {
+  freqSegmentBoxSelected: {
     borderColor: '#0D684D',
     backgroundColor: '#EFF6F1',
   },
-  occupancyLabel: {
-    fontSize: 11.5,
-    fontFamily: fonts.OpenSans_SemiBold,
+  freqSegmentText: {
+    fontSize: 8,
+    fontFamily: fonts.OpenSans_Bold,
     color: '#44554C',
   },
-  occupancyLabelSelected: {
+  freqSegmentTextSelected: {
     color: '#0D684D',
-    fontFamily: fonts.OpenSans_Bold,
   },
-  // Slider Distance Card Elements
-  distanceDisplayContainer: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    marginBottom: 10,
-    marginTop: 4,
-  },
-  distanceValue: {
-    fontSize: 28,
-    fontFamily: fonts.OpenSans_Bold,
-    color: '#0A5F35',
-  },
-  distanceUnit: {
-    fontSize: 14,
-    fontFamily: fonts.OpenSans_Bold,
-    color: '#111827',
-    marginLeft: 8,
-  },
-  sliderContainer: {
-    height: 30,
-    justifyContent: 'center',
-    position: 'relative',
-    marginVertical: 4,
-  },
-  sliderTrack: {
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#E2E8F0',
-    width: '100%',
-    position: 'absolute',
-  },
-  sliderTrackActive: {
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: '#0A5F35',
-    position: 'absolute',
-  },
-  sliderThumb: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    transform: [{ translateX: -12 }],
+  // 5 option local sourcing boxes
+  localOptionBox: {
+    width: '18.5%',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 3.5,
+    borderRadius: 8,
     borderWidth: 1,
     borderColor: '#ECEFEF',
+    backgroundColor: '#FFFFFF',
+    paddingVertical: 8,
+    paddingHorizontal: 2,
   },
-  sliderThumbDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: '#0F201B',
-  },
-  sliderRangeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 6,
-  },
-  sliderRangeLabel: {
-    fontSize: 11.5,
-    fontFamily: fonts.OpenSans_SemiBold,
-    color: '#64748B',
-  },
-  // Estimated emissions block
-  estimatedEmissionsCard: {
+  // Estimated Emissions Card
+  emissionsCard: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: '#F3F9F5',
-    marginHorizontal: 16,
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E2EFE6',
-    marginTop: 4,
+    borderColor: '#E6F4ED',
+    paddingHorizontal: 12,
+    paddingVertical: 14,
     marginBottom: 16,
   },
-  co2IconContainer: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
+  emissionsLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1.25,
+    marginRight: 8,
+  },
+  emissionsIconCircle: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     backgroundColor: '#EFF6F1',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
-    borderWidth: 1,
-    borderColor: '#DFEAE2',
   },
-  co2IconText: {
-    fontSize: 10.5,
-    fontFamily: fonts.OpenSans_Bold,
-    color: '#0D684D',
+  emissionsIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#0A5F35',
   },
   emissionsTextContainer: {
-    flex: 1.3,
+    flex: 1,
   },
-  emissionsHeading: {
+  emissionsLabel: {
     fontSize: 9.5,
-    fontFamily: fonts.OpenSans_SemiBold,
-    color: '#44554C',
-  },
-  emissionsAmount: {
-    fontSize: 17,
     fontFamily: fonts.OpenSans_Bold,
-    color: '#0D684D',
-    marginTop: 2,
-  },
-  emissionsUnit: {
-    fontSize: 10.5,
     color: '#44554C',
   },
-  emissionsAmountSub: {
-    fontSize: 8.5,
-    fontFamily: fonts.OpenSans_Regular,
-    color: '#8E9A93',
+  emissionsValue: {
+    fontSize: 16.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0A5F35',
     marginTop: 2,
   },
-  seeCalculationButton: {
+  emissionsSub: {
+    fontSize: 8,
+    fontFamily: fonts.OpenSans_Regular,
+    color: '#6B7A70',
+    marginTop: 2,
+  },
+  seeCalcButton: {
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#0D684D',
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 5,
+    borderColor: '#0A5F35',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
     backgroundColor: '#FFFFFF',
   },
-  seeCalculationIcon: {
-    width: 11,
-    height: 11,
-    marginRight: 4,
-    tintColor: '#0D684D',
+  seeCalcIcon: {
+    width: 12,
+    height: 12,
+    tintColor: '#0A5F35',
+    marginRight: 5,
   },
-  seeCalculationText: {
+  seeCalcText: {
     fontSize: 9.5,
     fontFamily: fonts.OpenSans_Bold,
-    color: '#0D684D',
+    color: '#0A5F35',
   },
-  // Submit Button
-  saveButton: {
+  // Did you know Card
+  didYouKnowCard: {
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#F8FAFC',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#EEF2EF',
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    marginBottom: 24,
+  },
+  didYouKnowIconContainer: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#EFF6F1',
     justifyContent: 'center',
-    backgroundColor: '#015608',
-    marginHorizontal: 16,
-    height: 46,
-    borderRadius: 10,
-    shadowColor: '#0D684D',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    elevation: 3,
-    marginBottom: 10,
+    alignItems: 'center',
+    marginRight: 10,
+  },
+  didYouKnowIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#0A5F35',
+  },
+  didYouKnowTextContainer: {
+    flex: 1,
+    marginRight: 8,
+  },
+  didYouKnowTitle: {
+    fontSize: 9.5,
+    fontFamily: fonts.OpenSans_Bold,
+    color: '#0F172A',
+  },
+  didYouKnowDesc: {
+    fontSize: 8,
+    fontFamily: fonts.OpenSans_Regular,
+    color: '#475569',
+    marginTop: 2,
+    lineHeight: 12,
+  },
+  didYouKnowBowlImage: {
+    width: 50,
+    height: 40,
+  },
+  // Save & Continue Button
+  saveButton: {
+    backgroundColor: '#0A5F35',
+    borderRadius: 8,
+    height: 48,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: 8,
   },
   saveButtonText: {
-    fontSize: 14,
-    fontFamily: fonts.OpenSans_Bold,
     color: '#FFFFFF',
-    marginRight: 6,
-  },
-  saveButtonIcon: {
-    fontSize: 14,
-    color: '#FFFFFF',
+    fontSize: 14.5,
     fontFamily: fonts.OpenSans_Bold,
   },
 });
