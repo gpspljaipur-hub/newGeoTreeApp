@@ -36,6 +36,10 @@ import PortfolioScreen from '../screens/Portfolio/Portfolio';
 import CalculateCarbonScreen from '../screens/Carbon/CalculateCarbon/CalculateCarbon';
 import TravelCarbonScreen from '../screens/Carbon/TravelCarbon/TravelCarbon';
 
+import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen';
+import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
+import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/PaymentSucessfulScreen';
+import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/SponsorSupportScreen';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -79,6 +83,10 @@ export type RootStackParamList = {
   Setting: undefined;
   CalculateCarbon: undefined;
   TravelCarbon: undefined;
+  SponsorProject: undefined;
+  SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
+  SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
+  PaymentSucessful: { project?: any; selectedLevel?: any; transactionId?: string; dateTime?: string } | undefined;
 };
 
 
@@ -163,7 +171,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'Splash'}
+      initialRouteName={'SponsorProject'}
       screenOptions={{
         headerShown: false,
       }}
@@ -199,6 +207,10 @@ export default function RootNavigator() {
       <Stack.Screen name="Setting" component={SettingScreen} />
       <Stack.Screen name="CalculateCarbon" component={CalculateCarbonScreen} />
       <Stack.Screen name="TravelCarbon" component={TravelCarbonScreen} />
+      <Stack.Screen name="SponsorProject" component={SponsorProjectScreen} />
+      <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
+      <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />
+      <Stack.Screen name="PaymentSucessful" component={PaymentSucessfulScreen} />
     </Stack.Navigator>
 
   );
