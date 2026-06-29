@@ -122,6 +122,22 @@ const Images = {
   travel_speedometer: require('../assets/Images/travel_speedometer.png'),
   travel_fuel_pump: require('../assets/Images/travel_fuel_pump.png'),
   travel_mode_electric: require('../assets/Images/travel_mode_electric.png'),
+  Sponser1bg: require('../assets/Images/Sponser1bg.png'),
+  rotatehand_tree: require('../assets/Images/rotatehand_tree.png'),
+  copy: require('../assets/Images/copy.png'),
+  download: require('../assets/Images/download.png'),
+  facebook: require('../assets/Images/facebook.png'),
+  twitter: require('../assets/Images/twitter.png'),
+  whatsapp: require('../assets/Images/Whatsapp.png'),
+  link: require('../assets/Images/link.png'),
+  linkedin: require('../assets/Images/linkedin.png'),
+  visa: require('../assets/Images/visa.png'),
+  mastercard: require('../assets/Images/mastercard.png'),
+  rupay: require('../assets/Images/rupay.png'),
+  upi: require('../assets/Images/upi.png'),
+  gpay: require('../assets/Images/gpay.png'),
+  phonepe: require('../assets/Images/phonepe.png'),
+  paytm: require('../assets/Images/paytm.png'),
 };
 
 export type ImageKey = keyof typeof Images;
