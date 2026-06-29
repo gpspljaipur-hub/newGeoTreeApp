@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
-import Images from '../../../constants/images';
+import Images from '../../../../constants/images';
 import { useNavigation } from '@react-navigation/native';
 // @ts-ignore
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
@@ -545,7 +545,14 @@ const TravelCarbonScreen = () => {
                     <TouchableOpacity
                         style={styles.seeCalculationButton}
                         activeOpacity={0.7}
-                        onPress={() => setIsCalcModalVisible(true)}
+                        onPress={() => {
+                            navigation.navigate('TravelEmissionCalculation', {
+                                selectedMode,
+                                distance,
+                                selectedFuel,
+                                selectedOccupancy,
+                            });
+                        }}
                     >
                         <Image
                             source={Images.impact}
