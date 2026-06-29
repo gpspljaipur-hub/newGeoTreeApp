@@ -146,7 +146,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
 
             {/* Carbon Calculator button */}
-            <TouchableOpacity style={styles.heroBtnWhite} activeOpacity={0.9}>
+            <TouchableOpacity style={styles.heroBtnWhite} activeOpacity={0.9} onPress={() => navigation.navigate('CalculateCarbon')}>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Image source={Images.carbon_img} style={{ width: 18, height: 18, marginRight: 8 }} resizeMode="contain" />
                 <View>

@@ -2,37 +2,40 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
-import AppOpeningScreen from '../screens/AppOpening/AppOpeningScreen';
-import SignInScreen from '../screens/SignIn/SignInScreen';
-import OtpScreen from '../screens/Otp/Otp';
-import ChooseTreeScreen from '../screens/ChooseTree/ChooseTree';
+import SplashScreen from '../screens/Auth/Splash/SplashScreen';
+import AppOpeningScreen from '../screens/Auth/AppOpening/AppOpeningScreen';
+import SignInScreen from '../screens/Auth/SignIn/SignInScreen';
+import OtpScreen from '../screens/Auth/Otp/Otp';
+import ChooseTreeScreen from '../screens/Choose/ChooseTree/ChooseTree';
 import HomeScreen from '../screens/Home/HomeScreen';
-import ChooseLocationScreen from '../screens/ChooseLocation/ChooseLocation';
+import ChooseLocationScreen from '../screens/Choose/ChooseLocation/ChooseLocation';
 import UserDashboardScreen from '../screens/UserDashboard/UserDashboardScreen';
-import StateScreen from '../screens/StateScreen/StateScreen';
+import StateScreen from '../screens/State/StateScreen/StateScreen';
 import DetailsScreen from '../screens/Details/Details';
 import PaymentScreen from '../screens/Payment/Payment';
 import ThankYouScreen from '../screens/ThankYou/ThankYou';
-import ExploreStatesScreen from '../screens/ExploreStates/ExploreStatesScreen';
+import ExploreStatesScreen from '../screens/State/ExploreStates/ExploreStatesScreen';
 import SettingScreen from '../screens/Setting/SettingScreen';
-import SplashScreen from '../screens/Splash/SplashScreen';
 import Images from '../constants/images';
 import { Colors } from '../comman/Colors';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/Store/Store';
-import StatewiseScreen from '../screens/Statewise/StatewiseScreen';
-import ChoicetreeplantationScreen from '../screens/Choicetreeplantation/Choicetreeplantation';
-import DedicatePlantationScreen from '../screens/DedicatePlantation/DedicatePlantation';
+import StatewiseScreen from '../screens/State/Statewise/StatewiseScreen';
+import ChoicetreeplantationScreen from '../screens/Plantation/Choicetreeplantation/Choicetreeplantation';
+import DedicatePlantationScreen from '../screens/Plantation/DedicatePlantation/DedicatePlantation';
 import MyTreeJourneyScreen from '../screens/MyTreeJourney/MyTreeJourney';
-import PlantationJourneyScreen from '../screens/PlantationJourney/PlantationJourney';
-import ReviewPlantationScreen from '../screens/ReviewPlantation/ReviewPlantation';
-import ProjectSelectScreen from '../screens/ProjectSelect/ProjectSelectScreen';
-import ChooseSpeciesScreen from '../screens/ChooseSpecies/ChooseSpeciesScreen';
-import DedicateTreeScreen from '../screens/DedicateTree/DedicateTreeScreen';
-import StatePaymentScreen from '../screens/StatePayment/StatePaymentScreen';
-import WhichtreeShouldIPlantScreen from '../screens/WhichtreeShouldIPlant/WhichtreeShouldIPlant';
-import PlantationConfirmedScreen from '../screens/PlantationConfirmed/PlantationConfirmed';
+import PlantationJourneyScreen from '../screens/Plantation/PlantationJourney/PlantationJourney';
+import ReviewPlantationScreen from '../screens/Plantation/ReviewPlantation/ReviewPlantation';
+import ProjectSelectScreen from '../screens/Choose/ProjectSelect/ProjectSelectScreen';
+import ChooseSpeciesScreen from '../screens/Choose/ChooseSpecies/ChooseSpeciesScreen';
+import DedicateTreeScreen from '../screens/Plantation/DedicateTree/DedicateTreeScreen';
+import StatePaymentScreen from '../screens/State/StatePayment/StatePaymentScreen';
+import WhichtreeShouldIPlantScreen from '../screens/Plantation/WhichtreeShouldIPlant/WhichtreeShouldIPlant';
+import PlantationConfirmedScreen from '../screens/Plantation/PlantationConfirmed/PlantationConfirmed';
 import PortfolioScreen from '../screens/Portfolio/Portfolio';
+import CalculateCarbonScreen from '../screens/Carbon/CalculateCarbon/CalculateCarbon';
+import TravelCarbonScreen from '../screens/Carbon/TravelCarbon/TravelCarbon';
+
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -74,6 +77,8 @@ export type RootStackParamList = {
   PlantationConfirmed: { qty?: number; co2?: number; projectName?: string; stateName?: string; treeName?: string } | undefined;
   Portfolio: undefined;
   Setting: undefined;
+  CalculateCarbon: undefined;
+  TravelCarbon: undefined;
 };
 
 
@@ -192,6 +197,8 @@ export default function RootNavigator() {
       <Stack.Screen name="DedicateTree" component={DedicateTreeScreen} />
       <Stack.Screen name="StatePayment" component={StatePaymentScreen} />
       <Stack.Screen name="Setting" component={SettingScreen} />
+      <Stack.Screen name="CalculateCarbon" component={CalculateCarbonScreen} />
+      <Stack.Screen name="TravelCarbon" component={TravelCarbonScreen} />
     </Stack.Navigator>
 
   );
