@@ -147,6 +147,22 @@ const Images = {
   electricity_feature_star: require('../assets/Images/electricity_feature_star.png'),
   electricity_feature_heater: require('../assets/Images/electricity_feature_heater.png'),
   electricity_feature_panels: require('../assets/Images/electricity_feature_panels.png'),
+  Sponser1bg: require('../assets/Images/Sponser1bg.png'),
+  rotatehand_tree: require('../assets/Images/rotatehand_tree.png'),
+  copy: require('../assets/Images/copy.png'),
+  download: require('../assets/Images/download.png'),
+  facebook: require('../assets/Images/facebook.png'),
+  twitter: require('../assets/Images/twitter.png'),
+  whatsapp: require('../assets/Images/Whatsapp.png'),
+  link: require('../assets/Images/link.png'),
+  linkedin: require('../assets/Images/linkedin.png'),
+  visa: require('../assets/Images/visa.png'),
+  mastercard: require('../assets/Images/mastercard.png'),
+  rupay: require('../assets/Images/rupay.png'),
+  upi: require('../assets/Images/upi.png'),
+  gpay: require('../assets/Images/gpay.png'),
+  phonepe: require('../assets/Images/phonepe.png'),
+  paytm: require('../assets/Images/paytm.png'),
 };
 
 export type ImageKey = keyof typeof Images;

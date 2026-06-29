@@ -40,6 +40,10 @@ import FoodCarbonScreen from '../screens/Carbon/FoodCarbon/FoodCarbon/FoodCarbon
 import FoodEmissionCalculationScreen from '../screens/Carbon/FoodCarbon/FoodEmissionCalculation/FoodEmissionCalculation';
 import ElectricityCarbonScreen from '../screens/Carbon/ElectricityCarbon/ElectricityCarbon/ElectricityCarbon';
 
+import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen';
+import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
+import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/PaymentSucessfulScreen';
+import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/SponsorSupportScreen';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -101,6 +105,10 @@ export type RootStackParamList = {
     selectedLocal: string;
   } | undefined;
   ElectricityCarbon: undefined;
+  SponsorProject: undefined;
+  SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
+  SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
+  PaymentSucessful: { project?: any; selectedLevel?: any; transactionId?: string; dateTime?: string } | undefined;
 };
 
 
@@ -185,7 +193,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'Splash'}
+      initialRouteName={'SponsorProject'}
       screenOptions={{
         headerShown: false,
       }}
@@ -225,6 +233,10 @@ export default function RootNavigator() {
       <Stack.Screen name="FoodCarbon" component={FoodCarbonScreen} />
       <Stack.Screen name="FoodEmissionCalculation" component={FoodEmissionCalculationScreen} />
       <Stack.Screen name="ElectricityCarbon" component={ElectricityCarbonScreen} />
+      <Stack.Screen name="SponsorProject" component={SponsorProjectScreen} />
+      <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
+      <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />
+      <Stack.Screen name="PaymentSucessful" component={PaymentSucessfulScreen} />
     </Stack.Navigator>
 
   );
