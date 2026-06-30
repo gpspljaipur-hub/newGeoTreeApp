@@ -44,7 +44,13 @@ import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen
 import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
 import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/PaymentSucessfulScreen';
 import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/SponsorSupportScreen';
+<<<<<<< HEAD
 import finalreport from '../screens/Carbon/Report/finalreport';
+import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
+=======
+import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
+
+>>>>>>> 745f1e8 (Code push)
 export type RootStackParamList = {
   Splash: undefined;
   AppOpening: undefined;
@@ -106,6 +112,7 @@ export type RootStackParamList = {
   } | undefined;
   ElectricityCarbon: undefined;
   ElectricityEmission: undefined;
+  CarbonFootprint: undefined;
   SponsorProject: undefined;
   SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
   SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
@@ -195,7 +202,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'Home'}
+      initialRouteName={'CarbonFootprint'}
       screenOptions={{
         headerShown: false,
       }}
@@ -236,6 +243,8 @@ export default function RootNavigator() {
       <Stack.Screen name="FoodEmissionCalculation" component={FoodEmissionCalculationScreen} />
       <Stack.Screen name="ElectricityCarbon" component={ElectricityCarbonScreen} />
       <Stack.Screen name="ElectricityEmission" component={ElectricityEmissionScreen} />
+      <Stack.Screen name="CarbonFootprint" component={CarbonFootprint} />
+      {/* <Stack.Screen name="CarbonFootprintEmission" component={CarbonFootprintEmissionScreen} /> */}
       <Stack.Screen name="SponsorProject" component={SponsorProjectScreen} />
       <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
       <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />

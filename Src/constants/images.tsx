@@ -148,6 +148,7 @@ const Images = {
   electricity_home_other: require('../assets/Images/buildings.png'),
   electricity_feature_led: require('../assets/Images/lightbulb.png'),
   electricity_feature_star: require('../assets/Images/electricity_feature_star.png'),
+  Footprintbg: require('../assets/Images/Footprintbg.png'),
   electricity_feature_heater: require('../assets/Images/heater.png'),
   electricity_feature_panels: require('../assets/Images/solar-panel.png'),
   Sponser1bg: require('../assets/Images/Sponser1bg.png'),
