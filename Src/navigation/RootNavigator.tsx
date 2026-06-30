@@ -39,6 +39,7 @@ import TravelEmissionCalculationScreen from '../screens/Carbon/TravelCarbon/Trav
 import FoodCarbonScreen from '../screens/Carbon/FoodCarbon/FoodCarbon/FoodCarbon';
 import FoodEmissionCalculationScreen from '../screens/Carbon/FoodCarbon/FoodEmissionCalculation/FoodEmissionCalculation';
 import ElectricityCarbonScreen from '../screens/Carbon/ElectricityCarbon/ElectricityCarbon/ElectricityCarbon';
+import ElectricityEmissionScreen from '../screens/Carbon/ElectricityCarbon/ElectricityEmission/ElectricityEmission';
 
 import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen';
 import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
@@ -105,6 +106,7 @@ export type RootStackParamList = {
     selectedLocal: string;
   } | undefined;
   ElectricityCarbon: undefined;
+  ElectricityEmission: undefined;
   SponsorProject: undefined;
   SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
   SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
@@ -233,6 +235,7 @@ export default function RootNavigator() {
       <Stack.Screen name="FoodCarbon" component={FoodCarbonScreen} />
       <Stack.Screen name="FoodEmissionCalculation" component={FoodEmissionCalculationScreen} />
       <Stack.Screen name="ElectricityCarbon" component={ElectricityCarbonScreen} />
+      <Stack.Screen name="ElectricityEmission" component={ElectricityEmissionScreen} />
       <Stack.Screen name="SponsorProject" component={SponsorProjectScreen} />
       <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
       <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />

@@ -111,6 +111,8 @@ const Images = {
   travel_bg: require('../assets/Images/travel_bg.png'),
   food_cat: require('../assets/Images/food_cat.jpg'),
   did_you_know_banner: require('../assets/Images/did_you_know_banner.png'),
+  electricity_emission_bg: require('../assets/Images/electricity_emission_bg.jpg'),
+  electricity_emission_header: require('../assets/Images/electricity_emission_header.png'),
   electricity_cat: require('../assets/Images/electricity_cat.png'),
   flights_cat: require('../assets/Images/flights_cat.png'),
   carbon_bg: require('../assets/Images/carbon_bg.jpg'),

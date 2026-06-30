@@ -197,7 +197,6 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
         justifyContent: "center",
         alignItems: "center",
-        alignSelf: 'center',
         backgroundColor: '#EBF4EF',
         marginRight: 12,
     },

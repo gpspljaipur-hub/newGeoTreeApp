@@ -65,11 +65,7 @@ const ElectricityCarbonScreen = () => {
     const treesRequired = Math.ceil(annualEmissionsKg / 22);
 
     const handleSave = () => {
-        Alert.alert(
-            'Assessment Saved',
-            'Your electricity carbon footprint preferences have been saved successfully.',
-            [{ text: 'Proceed', onPress: () => navigation.goBack() }]
-        );
+        navigation.navigate('ElectricityEmission');
     };
 
     return (
@@ -247,7 +243,7 @@ const ElectricityCarbonScreen = () => {
                     <View style={styles.questionCard}>
                         <View style={styles.questionHeader}>
                             <View style={styles.qustionView}>
-                                <Image source={Images.electricity_icon_bill_check} style={styles.questionHeaderIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_icon_bill_2} style={styles.questionHeaderIcon} resizeMode="contain" />
                             </View>
 
                             <View style={styles.questionHeaderTextCol}>
@@ -308,6 +304,7 @@ const ElectricityCarbonScreen = () => {
                             <View style={styles.qustionView}>
                                 <Image source={Images.electricity_icon_residents} style={styles.questionHeaderIcon} resizeMode="contain" />
                             </View>
+
                             <View style={styles.questionHeaderTextCol}>
                                 <Text style={styles.questionTitle}>4. Number of Residents</Text>
                                 <Text style={styles.questionSubtitle}>How many people live in your home?</Text>
@@ -337,7 +334,7 @@ const ElectricityCarbonScreen = () => {
                     <View style={styles.questionCard}>
                         <View style={styles.questionHeader}>
                             <View style={styles.qustionView}>
-                                <Image source={Images.electricity_icon_bill_check} style={styles.questionHeaderIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_icon_bill_2} style={styles.questionHeaderIcon} resizeMode="contain" />
                             </View>
                             <View style={styles.questionHeaderTextCol}>
                                 <Text style={styles.questionTitle}>5. Energy Efficient Appliances</Text>
@@ -469,13 +466,12 @@ const ElectricityCarbonScreen = () => {
                             <Image source={Images.impact} style={styles.seeCalculationIcon} resizeMode="contain" />
                             <Text style={styles.seeCalculationText}>See Calculation</Text>
                         </TouchableOpacity>
-
                         <TouchableOpacity
                             style={styles.saveButton}
                             activeOpacity={0.8}
                             onPress={handleSave}
                         >
-                            <Text style={styles.saveButtonText}>Save & Continue  →</Text>
+                            <Text style={styles.saveButtonText}>Calculate Footprint  →</Text>
                         </TouchableOpacity>
                     </View>
 
