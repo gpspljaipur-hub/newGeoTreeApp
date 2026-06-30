@@ -16,6 +16,7 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { styles } from './Styles';
 import Images from '../../../../constants/images';
 import fonts from '../../../../comman/fonts';
+import { Colors } from '../../../../comman/Colors';
 
 const { width } = Dimensions.get('window');
 
@@ -209,7 +210,7 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedSource('grid')}
                             >
-                                <Image source={Images.electricity_source_grid} style={styles.sourceCardIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_source_grid} style={[styles.sourceCardIcon, { tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <View style={styles.sourceCardTextContainer}>
                                     <Text style={[styles.sourceCardTitle, selectedSource === 'grid' && styles.sourceCardTitleSelected]}>Grid Electricity</Text>
                                     <Text style={styles.sourceCardDesc}>From power distribution company</Text>
@@ -233,7 +234,7 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedSource('mixed')}
                             >
-                                <Image source={Images.electricity_source_mixed} style={styles.sourceCardIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_source_mixed} style={[styles.sourceCardIcon,{ tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <View style={styles.sourceCardTextContainer}>
                                     <Text style={[styles.sourceCardTitle, selectedSource === 'mixed' && styles.sourceCardTitleSelected]}>Mixed Source</Text>
                                     <Text style={styles.sourceCardDesc}>Combination of grid and solar</Text>
