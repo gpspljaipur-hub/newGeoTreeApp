@@ -193,7 +193,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'SponsorProject'}
+      initialRouteName={'Home'}
       screenOptions={{
         headerShown: false,
       }}

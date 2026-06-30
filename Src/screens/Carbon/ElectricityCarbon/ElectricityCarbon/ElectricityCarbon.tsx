@@ -234,7 +234,7 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedSource('mixed')}
                             >
-                                <Image source={Images.electricity_source_mixed} style={[styles.sourceCardIcon,{ tintColor: Colors.legacyGreen }]} resizeMode="contain" />
+                                <Image source={Images.electricity_source_mixed} style={[styles.sourceCardIcon, { tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <View style={styles.sourceCardTextContainer}>
                                     <Text style={[styles.sourceCardTitle, selectedSource === 'mixed' && styles.sourceCardTitleSelected]}>Mixed Source</Text>
                                     <Text style={styles.sourceCardDesc}>Combination of grid and solar</Text>
@@ -259,13 +259,17 @@ const ElectricityCarbonScreen = () => {
                             </TouchableOpacity>
                         </View>
 
-                        <View style={styles.homeTypeRow}>
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            contentContainerStyle={styles.homeTypeRow}
+                        >
                             <TouchableOpacity
                                 style={[styles.homeTypeCard, selectedHomeType === 'apartment' && styles.homeTypeCardSelected]}
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedHomeType('apartment')}
                             >
-                                <Image source={Images.electricity_home_apartment} style={styles.homeTypeIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_home_apartment} style={[styles.homeTypeIcon, { tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <Text style={[styles.homeTypeTitle, selectedHomeType === 'apartment' && styles.homeTypeTitleSelected]}>Apartment</Text>
                             </TouchableOpacity>
 
@@ -274,7 +278,7 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedHomeType('house')}
                             >
-                                <Image source={Images.electricity_home_house} style={styles.homeTypeIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_home_house} style={[styles.homeTypeIcon, { tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <Text style={[styles.homeTypeTitle, selectedHomeType === 'house' && styles.homeTypeTitleSelected]}>Independent House</Text>
                             </TouchableOpacity>
 
@@ -283,7 +287,7 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedHomeType('villa')}
                             >
-                                <Image source={Images.electricity_home_villa} style={styles.homeTypeIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_home_villa} style={[styles.homeTypeIcon, { tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <Text style={[styles.homeTypeTitle, selectedHomeType === 'villa' && styles.homeTypeTitleSelected]}>Villa</Text>
                             </TouchableOpacity>
 
@@ -292,10 +296,10 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => setSelectedHomeType('other')}
                             >
-                                <Image source={Images.electricity_home_other} style={styles.homeTypeIcon} resizeMode="contain" />
+                                <Image source={Images.electricity_home_other} style={[styles.homeTypeIcon, { tintColor: Colors.legacyGreen }]} resizeMode="contain" />
                                 <Text style={[styles.homeTypeTitle, selectedHomeType === 'other' && styles.homeTypeTitleSelected]}>Other</Text>
                             </TouchableOpacity>
-                        </View>
+                        </ScrollView>
                     </View>
 
                     {/* Question 4: Number of Residents */}
@@ -350,11 +354,13 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => toggleAppliance('led')}
                             >
+                                <View style={styles.applianceIconCircle}>
+                                    <Image source={Images.electricity_feature_led} style={styles.applianceIcon} resizeMode="contain" />
+                                </View>
+                                <Text style={styles.applianceLabel}>LED Lights</Text>
                                 <View style={[styles.checkboxContainer, selectedAppliances.includes('led') && styles.checkboxContainerChecked]}>
                                     {selectedAppliances.includes('led') && <Image source={Images.check} style={styles.checkIcon} resizeMode="contain" />}
                                 </View>
-                                <Image source={Images.electricity_feature_led} style={styles.applianceIcon} resizeMode="contain" />
-                                <Text style={styles.applianceLabel}>LED Lights</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity
@@ -362,11 +368,13 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => toggleAppliance('star')}
                             >
+                                <View style={styles.applianceIconCircle}>
+                                    <Image source={Images.electricity_feature_star} style={styles.applianceIcon} resizeMode="contain" />
+                                </View>
+                                <Text style={styles.applianceLabel}>5-Star Appliances</Text>
                                 <View style={[styles.checkboxContainer, selectedAppliances.includes('star') && styles.checkboxContainerChecked]}>
                                     {selectedAppliances.includes('star') && <Image source={Images.check} style={styles.checkIcon} resizeMode="contain" />}
                                 </View>
-                                <Image source={Images.electricity_feature_star} style={styles.applianceIcon} resizeMode="contain" />
-                                <Text style={styles.applianceLabel}>5-Star Appliances</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity
@@ -374,11 +382,13 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => toggleAppliance('heater')}
                             >
+                                <View style={styles.applianceIconCircle}>
+                                    <Image source={Images.electricity_feature_heater} style={styles.applianceIcon} resizeMode="contain" />
+                                </View>
+                                <Text style={styles.applianceLabel}>Solar Water Heater</Text>
                                 <View style={[styles.checkboxContainer, selectedAppliances.includes('heater') && styles.checkboxContainerChecked]}>
                                     {selectedAppliances.includes('heater') && <Image source={Images.check} style={styles.checkIcon} resizeMode="contain" />}
                                 </View>
-                                <Image source={Images.electricity_feature_heater} style={styles.applianceIcon} resizeMode="contain" />
-                                <Text style={styles.applianceLabel}>Solar Water Heater</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity
@@ -386,40 +396,41 @@ const ElectricityCarbonScreen = () => {
                                 activeOpacity={0.8}
                                 onPress={() => toggleAppliance('panels')}
                             >
+                                <View style={styles.applianceIconCircle}>
+                                    <Image source={Images.electricity_feature_panels} style={styles.applianceIcon} resizeMode="contain" />
+                                </View>
+                                <Text style={styles.applianceLabel}>Solar Panels</Text>
                                 <View style={[styles.checkboxContainer, selectedAppliances.includes('panels') && styles.checkboxContainerChecked]}>
                                     {selectedAppliances.includes('panels') && <Image source={Images.check} style={styles.checkIcon} resizeMode="contain" />}
                                 </View>
-                                <Image source={Images.electricity_feature_panels} style={styles.applianceIcon} resizeMode="contain" />
-                                <Text style={styles.applianceLabel}>Solar Panels</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
 
                     {/* Bottom Estimated Stats Card */}
                     <View style={styles.statsOverviewCard}>
+
                         <View style={styles.statItem}>
                             <View style={styles.statIconCircle}>
-                                <Image source={Images.co2Cloud} style={styles.statIcon} resizeMode="contain" />
+                                <Image source={Images.co2Cloud} style={[styles.statIcon, { tintColor: '#0A5F35' }]} resizeMode="contain" />
                             </View>
                             <View style={styles.statTextCol}>
-                                <Text style={styles.statLabel}>Estimated Annual Emissions</Text>
+                                <Text style={styles.statLabel}>Estimated Annual</Text>
                                 <Text style={styles.statValue}>
                                     {annualTons} <Text style={styles.statUnit}>Tons CO₂ / Year</Text>
                                 </Text>
                                 <Text style={styles.statDesc}>From your electricity usage</Text>
                             </View>
                         </View>
-                        <View style={styles.statsCardDivider} />
-                        <View style={styles.statItem}>
+
+                        <View style={styles.statItem1}>
                             <View style={styles.statIconCircle}>
-                                <Image source={Images.treeIcon} style={styles.statIcon} resizeMode="contain" />
+                                <Image source={Images.treeIcon} style={[styles.statIcon, { tintColor: '#0A5F35' }]} resizeMode="contain" />
                             </View>
                             <View style={styles.statTextCol}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                                     <Text style={styles.statLabel}>Trees Required To Offset</Text>
-                                    <TouchableOpacity style={{ marginLeft: 6 }} activeOpacity={0.7}>
-                                        <Text style={styles.infoTextButton}>i</Text>
-                                    </TouchableOpacity>
+
                                 </View>
                                 <Text style={styles.statValue}>
                                     {treesRequired} <Text style={styles.statUnit}>Trees</Text>
@@ -427,12 +438,13 @@ const ElectricityCarbonScreen = () => {
                                 <Text style={styles.statDesc}>To offset 1 year of emissions</Text>
                             </View>
                         </View>
+
                     </View>
 
                     {/* Did You Know? Card */}
                     <View style={styles.didYouKnowCard}>
                         <View style={styles.didYouKnowIconContainer}>
-                            <Image source={Images.food_icon_bulb} style={styles.didYouKnowIcon} resizeMode="contain" />
+                            <Image source={Images.electricity_feature_led} style={styles.didYouKnowIcon} resizeMode="contain" />
                         </View>
                         <View style={styles.didYouKnowTextContainer}>
                             <Text style={styles.didYouKnowTitle}>Did You Know?</Text>
