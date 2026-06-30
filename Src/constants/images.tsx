@@ -166,6 +166,10 @@ const Images = {
   gpay: require('../assets/Images/gpay.png'),
   phonepe: require('../assets/Images/phonepe.png'),
   paytm: require('../assets/Images/paytm.png'),
+  electricity: require('../assets/Images/electricity.png'),
+  flight: require('../assets/Images/flight.png'),
+  food: require('../assets/Images/food.png'),
+  travel: require('../assets/Images/travel.png'),
 };
 
 export type ImageKey = keyof typeof Images;

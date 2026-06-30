@@ -40,12 +40,11 @@ import FoodCarbonScreen from '../screens/Carbon/FoodCarbon/FoodCarbon/FoodCarbon
 import FoodEmissionCalculationScreen from '../screens/Carbon/FoodCarbon/FoodEmissionCalculation/FoodEmissionCalculation';
 import ElectricityCarbonScreen from '../screens/Carbon/ElectricityCarbon/ElectricityCarbon/ElectricityCarbon';
 import ElectricityEmissionScreen from '../screens/Carbon/ElectricityCarbon/ElectricityEmission/ElectricityEmission';
-
 import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen';
 import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
 import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/PaymentSucessfulScreen';
 import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/SponsorSupportScreen';
-
+import finalreport from '../screens/Carbon/Report/finalreport';
 export type RootStackParamList = {
   Splash: undefined;
   AppOpening: undefined;
@@ -111,6 +110,7 @@ export type RootStackParamList = {
   SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
   SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
   PaymentSucessful: { project?: any; selectedLevel?: any; transactionId?: string; dateTime?: string } | undefined;
+  finalreport: undefined;
 };
 
 
@@ -240,6 +240,7 @@ export default function RootNavigator() {
       <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
       <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />
       <Stack.Screen name="PaymentSucessful" component={PaymentSucessfulScreen} />
+      <Stack.Screen name="finalreport" component={finalreport} />
     </Stack.Navigator>
 
   );
