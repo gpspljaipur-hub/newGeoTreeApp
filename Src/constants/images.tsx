@@ -172,6 +172,9 @@ const Images = {
   flight: require('../assets/Images/flight.png'),
   food: require('../assets/Images/food.png'),
   travel: require('../assets/Images/travel.png'),
+  PaymentBg: require('../assets/Images/PaymentBg.png'),
+  Mobile: require('../assets/Images/Mobile.png'),
+  Contribution: require('../assets/Images/Contribution.png'),
 };
 
 export type ImageKey = keyof typeof Images;

@@ -23,6 +23,7 @@ export const Colors = {
     darkGreen: '#354826',
     greenMint: '#39B89A',
     legacyGreen: '#0D684D',
+    greenthem: '#3f6e41',
     greenLight: '#1e5f20',
     green: '#22391f',
 
