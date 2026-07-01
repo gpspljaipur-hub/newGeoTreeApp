@@ -155,6 +155,7 @@ const Images = {
   rotatehand_tree: require('../assets/Images/rotatehand_tree.png'),
   copy: require('../assets/Images/copy.png'),
   download: require('../assets/Images/download.png'),
+  Offeset: require('../assets/Images/Offeset.png'),
   facebook: require('../assets/Images/facebook.png'),
   twitter: require('../assets/Images/twitter.png'),
   whatsapp: require('../assets/Images/Whatsapp.png'),

@@ -116,7 +116,7 @@ const CarbonFootprint = ({ navigation }: any) => {
                                 <View style={styles.featureIconCircle}>
                                     <Image source={Images.certificate} style={styles.featureIcon} resizeMode="contain" />
                                 </View>
-                                <Text style={styles.featureText}>Digital Certificate{'\n'}of Plantation</Text>
+                                <Text style={styles.featureText}>Digital Certificate of Plantation</Text>
                             </View>
 
                             <View style={styles.featureDivider} />
@@ -125,7 +125,7 @@ const CarbonFootprint = ({ navigation }: any) => {
                                 <View style={styles.featureIconCircle}>
                                     <Image source={Images.treeIcon} style={styles.featureIcon} resizeMode="contain" />
                                 </View>
-                                <Text style={styles.featureText}>Real-time Impact{'\n'}Tracking</Text>
+                                <Text style={styles.featureText}>Real-time Impact Tracking</Text>
                             </View>
 
                             <View style={styles.featureDivider} />
@@ -134,7 +134,7 @@ const CarbonFootprint = ({ navigation }: any) => {
                                 <View style={styles.featureIconCircle}>
                                     <Image source={Images.camera} style={styles.featureIcon} resizeMode="contain" />
                                 </View>
-                                <Text style={styles.featureText}>Photos & Updates{'\n'}of Your Trees</Text>
+                                <Text style={styles.featureText}>Photos & Updates of Your Trees</Text>
                             </View>
                         </View>
                     </View>
@@ -144,65 +144,70 @@ const CarbonFootprint = ({ navigation }: any) => {
                 <View style={styles.goodToKnowCard}>
                     <View style={styles.goodToKnowContent}>
                         <View style={styles.goodToKnowHeader}>
-                            <Image source={Images.leaf} style={styles.goodToKnowIcon} resizeMode="contain" />
                             <Text style={styles.goodToKnowTitle}>Good to know!</Text>
                         </View>
                         <Text style={styles.goodToKnowText}>1 mature tree absorbs ~22 kg of CO₂ per year.</Text>
                         <Text style={styles.goodToKnowText}>Your trees will grow and create impact for decades!</Text>
                     </View>
-                    <Image source={Images.nature} style={styles.goodToKnowImage} resizeMode="contain" />
+                    <Image source={Images.Offeset} style={styles.goodToKnowImage} resizeMode="contain" />
                 </View>
 
                 {/* What's Next */}
-                <Text style={styles.whatsNextTitle}>What's Next?</Text>
-                <View style={styles.stepsRow}>
-                    <View style={styles.stepItem}>
-                        <View style={styles.stepIconCircle}>
-                            <Image source={Images.treeIcon} style={styles.stepIcon} resizeMode="contain" />
-                            <View style={styles.stepNumberCircle}><Text style={styles.stepNumberText}>1</Text></View>
-                        </View>
-                        <Text style={styles.stepTitle}>Select Trees</Text>
-                        <Text style={styles.stepDesc}>Choose the type{'\n'}of trees you want{'\n'}to plant</Text>
-                    </View>
-                    <Text style={styles.stepArrow}>→</Text>
+                <View style={{ marginHorizontal: 20, }}>
+                    <Text style={styles.whatsNextTitle}>What's Next?</Text>
 
-                    <View style={styles.stepItem}>
-                        <View style={styles.stepIconCircle}>
-                            <Image source={Images.heart} style={styles.stepIcon} resizeMode="contain" />
-                            <View style={styles.stepNumberCircle}><Text style={styles.stepNumberText}>2</Text></View>
-                        </View>
-                        <Text style={styles.stepTitle}>Dedicate</Text>
-                        <Text style={styles.stepDesc}>Dedicate your{'\n'}plantation to{'\n'}yourself or others</Text>
-                    </View>
-                    <Text style={styles.stepArrow}>→</Text>
+                </View>
 
-                    <View style={styles.stepItem}>
-                        <View style={styles.stepIconCircle}>
-                            <Image source={Images.creditcard} style={styles.stepIcon} resizeMode="contain" />
-                            <View style={styles.stepNumberCircle}><Text style={styles.stepNumberText}>3</Text></View>
+                <View style={styles.whatsNextCard}>
+                    <View style={styles.stepsRow}>
+                        <View style={styles.stepItem}>
+                            <View style={styles.stepIconCircle}>
+                                <Image source={Images.treeIcon} style={styles.stepIcon} resizeMode="contain" />
+                            </View>
+                            <View style={styles.stepTextContainer}>
+                                <Text style={styles.stepTitle}>Select Trees</Text>
+                                <Text style={styles.stepDesc}>Choose the type of trees you want to plant</Text>
+                            </View>
                         </View>
-                        <Text style={styles.stepTitle}>Make Payment</Text>
-                        <Text style={styles.stepDesc}>Secure payment{'\n'}with multiple{'\n'}options</Text>
-                    </View>
-                    <Text style={styles.stepArrow}>→</Text>
 
-                    <View style={styles.stepItem}>
-                        <View style={styles.stepIconCircle}>
-                            <Image source={Images.location} style={styles.stepIcon} resizeMode="contain" />
-                            <View style={styles.stepNumberCircle}><Text style={styles.stepNumberText}>4</Text></View>
+                        <View style={styles.stepItem}>
+                            <View style={styles.stepIconCircle}>
+                                <Image source={Images.heart} style={styles.stepIcon} resizeMode="contain" />
+                            </View>
+                            <View style={styles.stepTextContainer}>
+                                <Text style={styles.stepTitle}>Dedicate</Text>
+                                <Text numberOfLines={2} style={styles.stepDesc}>Dedicate your plantation to yourself or others</Text>
+                            </View>
                         </View>
-                        <Text style={styles.stepTitle}>Track & See Impact</Text>
-                        <Text style={styles.stepDesc}>Track your trees{'\n'}and see your real{'\n'}impact grow</Text>
+
+                        <View style={styles.stepItem}>
+                            <View style={styles.stepIconCircle}>
+                                <Image source={Images.creditcard} style={styles.stepIcon} resizeMode="contain" />
+                            </View>
+                            <View style={styles.stepTextContainer}>
+                                <Text style={styles.stepTitle}>Make Payment</Text>
+                                <Text style={styles.stepDesc}>Secure payment with multiple options</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.stepItem}>
+                            <View style={styles.stepIconCircle}>
+                                <Image source={Images.location} style={styles.stepIcon} resizeMode="contain" />
+                            </View>
+                            <View style={styles.stepTextContainer}>
+                                <Text numberOfLines={1} style={styles.stepTitle}>Track & See Impact</Text>
+                                <Text style={styles.stepDesc}>Track your trees and see your real impact grow</Text>
+                            </View>
+                        </View>
                     </View>
                 </View>
 
                 {/* Footer CTA */}
                 <View style={styles.footerContainer}>
                     <TouchableOpacity style={styles.ctaButton} activeOpacity={0.8}>
-                        <Image source={Images.treeIcon} style={styles.ctaTreeIcon} resizeMode="contain" />
                         <Text style={styles.ctaButtonText}>Continue to Tree Selection</Text>
-                        <Text style={styles.ctaArrow}>→</Text>
                     </TouchableOpacity>
+                    
                     <View style={styles.securePaymentRow}>
                         <Image source={Images.lock} style={styles.secureLockIcon} resizeMode="contain" />
                         <Text style={styles.secureText}>Secure Payment • 100% Safe & Trusted</Text>

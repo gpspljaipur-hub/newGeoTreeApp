@@ -85,7 +85,16 @@ const FinalReportScreen = () => {
                                 resizeMode="contain"
                             />
                         </TouchableOpacity>
-                        <View />
+                        <TouchableOpacity
+                            style={styles.headerDownloadButton}
+                            activeOpacity={0.7}
+                        >
+                            <Image
+                                source={Images.download}
+                                style={styles.headerDownloadIcon}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
                     </View>
 
                     {/* Hero Header Title */}
