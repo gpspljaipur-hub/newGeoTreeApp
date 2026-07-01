@@ -44,13 +44,8 @@ import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen
 import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
 import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/PaymentSucessfulScreen';
 import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/SponsorSupportScreen';
-<<<<<<< HEAD
 import finalreport from '../screens/Carbon/Report/finalreport';
 import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
-=======
-import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
-
->>>>>>> 745f1e8 (Code push)
 export type RootStackParamList = {
   Splash: undefined;
   AppOpening: undefined;
