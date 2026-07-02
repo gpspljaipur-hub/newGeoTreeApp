@@ -47,6 +47,7 @@ import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/Spons
 import finalreport from '../screens/Carbon/Report/finalreport';
 import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
 
+import CompletePaymentScreen from '../screens/Carbon/CompletePayment/CompletePayment';
 export type RootStackParamList = {
   Splash: undefined;
   AppOpening: undefined;
@@ -114,6 +115,7 @@ export type RootStackParamList = {
   SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
   PaymentSucessful: { project?: any; selectedLevel?: any; transactionId?: string; dateTime?: string } | undefined;
   finalreport: undefined;
+  CompletePayment: undefined;
 };
 
 
@@ -246,6 +248,7 @@ export default function RootNavigator() {
       <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />
       <Stack.Screen name="PaymentSucessful" component={PaymentSucessfulScreen} />
       <Stack.Screen name="finalreport" component={finalreport} />
+      <Stack.Screen name="CompletePayment" component={CompletePaymentScreen} />
     </Stack.Navigator>
 
   );
