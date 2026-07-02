@@ -46,6 +46,8 @@ import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/P
 import SponsorSupportScreen from '../screens/SponsorProject/SponsorSupport/SponsorSupportScreen';
 import finalreport from '../screens/Carbon/Report/finalreport';
 import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
+import CarbonPaymentSuccessful from '../screens/Carbon/CarbonPaymentSuccessful/CarbonPaymentSuccessful/CarbonPaymentSuccessful';
+import ImpactDashboard from '../screens/Carbon/CarbonFootprint/ImpactDashboard/ImpactDashboard';
 
 import CompletePaymentScreen from '../screens/Carbon/CompletePayment/CompletePayment';
 export type RootStackParamList = {
@@ -110,11 +112,13 @@ export type RootStackParamList = {
   ElectricityCarbon: undefined;
   ElectricityEmission: undefined;
   CarbonFootprint: undefined;
+  CarbonPaymentSuccessful: undefined;
   SponsorProject: undefined;
   SponsorSupport: { project?: any; selectedLevel?: any } | undefined;
   SponsorPayment: { project?: any; selectedLevel?: any } | undefined;
   PaymentSucessful: { project?: any; selectedLevel?: any; transactionId?: string; dateTime?: string } | undefined;
   finalreport: undefined;
+  ImpactDashboard: undefined;
   CompletePayment: undefined;
 };
 
@@ -200,7 +204,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'CarbonFootprint'}
+      initialRouteName={'ImpactDashboard'}
       screenOptions={{
         headerShown: false,
       }}
@@ -242,7 +246,8 @@ export default function RootNavigator() {
       <Stack.Screen name="ElectricityCarbon" component={ElectricityCarbonScreen} />
       <Stack.Screen name="ElectricityEmission" component={ElectricityEmissionScreen} />
       <Stack.Screen name="CarbonFootprint" component={CarbonFootprint} />
-      {/* <Stack.Screen name="CarbonFootprintEmission" component={CarbonFootprintEmissionScreen} /> */}
+      <Stack.Screen name="CarbonPaymentSuccessful" component={CarbonPaymentSuccessful} />
+      <Stack.Screen name="ImpactDashboard" component={ImpactDashboard} />
       <Stack.Screen name="SponsorProject" component={SponsorProjectScreen} />
       <Stack.Screen name="SponsorSupport" component={SponsorSupportScreen} />
       <Stack.Screen name="SponsorPayment" component={SponsorPaymentScreen} />

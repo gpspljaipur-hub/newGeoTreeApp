@@ -111,8 +111,6 @@ const Images = {
   travel_bg: require('../assets/Images/travel_bg.png'),
   food_cat: require('../assets/Images/food_cat.jpg'),
   did_you_know_banner: require('../assets/Images/did_you_know_banner.png'),
-  electricity_emission_bg: require('../assets/Images/electricity_emission_bg.jpg'),
-  electricity_emission_header: require('../assets/Images/electricity_emission_header.png'),
   electricity_cat: require('../assets/Images/electricity_cat.png'),
   flights_cat: require('../assets/Images/flights_cat.png'),
   carbon_bg: require('../assets/Images/carbon_bg.jpg'),
@@ -172,6 +170,14 @@ const Images = {
   flight: require('../assets/Images/flight.png'),
   food: require('../assets/Images/food.png'),
   travel: require('../assets/Images/travel.png'),
+  PaymentBg: require('../assets/Images/PaymentBg.png'),
+  Mobile: require('../assets/Images/Mobile.png'),
+  Contribution: require('../assets/Images/Contribution.png'),
+  Sponser_plantation: require('../assets/Images/job.png'),
+  gifttree: require('../assets/Images/gifttree.png'),
+  calculator: require('../assets/Images/calculator.png'),
+  plantMore: require('../assets/Images/plantMore.png'),
+
 };
 
 export type ImageKey = keyof typeof Images;
