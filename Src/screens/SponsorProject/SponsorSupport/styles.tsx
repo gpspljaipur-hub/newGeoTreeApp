@@ -805,15 +805,11 @@ export const styles = StyleSheet.create({
   // Sticky Bottom Footer Bar
   bottomFloatingBar: {
     backgroundColor: Colors.white,
-    borderTopWidth: 1,
-    borderTopColor: Colors.borderGreenLight,
+
     paddingVertical: MarginHW.PaddingH10,
     paddingHorizontal: MarginHW.PaddingW10,
     shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.06,
-    shadowRadius: 4,
-    elevation: 10,
+
   },
   bottomSummaryCard: {
     flexDirection: 'row',
