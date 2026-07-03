@@ -91,6 +91,7 @@ const Images = {
   filter: require('../assets/Images/filter.png'),
   sort: require('../assets/Images/sort.png'),
   certificate: require('../assets/Images/certificate.png'),
+  certificateIcon: require('../assets/Images/certificateIcon.png'),
   heart: require('../assets/Images/heart.png'),
   projectIcon: require('../assets/Images/project.png'),
   one_tree_plant: require('../assets/Images/one_tree_plant.png'),
@@ -177,6 +178,7 @@ const Images = {
   gifttree: require('../assets/Images/gifttree.png'),
   calculator: require('../assets/Images/calculator.png'),
   plantMore: require('../assets/Images/plantMore.png'),
+  Maps: require('../assets/Images/Maps.png'),
 
 };
 

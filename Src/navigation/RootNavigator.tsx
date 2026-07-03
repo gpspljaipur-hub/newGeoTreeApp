@@ -48,6 +48,9 @@ import finalreport from '../screens/Carbon/Report/finalreport';
 import CarbonFootprint from '../screens/Carbon/CarbonFootprint/CarbonFootprint/CarbonFootprint';
 import CarbonPaymentSuccessful from '../screens/Carbon/CarbonPaymentSuccessful/CarbonPaymentSuccessful/CarbonPaymentSuccessful';
 import ImpactDashboard from '../screens/Carbon/CarbonFootprint/ImpactDashboard/ImpactDashboard';
+import HowWorks from '../screens/ViewAllProject/HowWorks/HowWorks';
+import GreenProjects from '../screens/ViewAllProject/GreenProjects/GreenProjects';
+import ViewDetailProjects from '../screens/ViewAllProject/ViewDetailProjects/ViewDetailProjects';
 
 import CompletePaymentScreen from '../screens/Carbon/CompletePayment/CompletePayment';
 export type RootStackParamList = {
@@ -120,6 +123,9 @@ export type RootStackParamList = {
   finalreport: undefined;
   ImpactDashboard: undefined;
   CompletePayment: undefined;
+  HowWorks: undefined;
+  GreenProjects: undefined;
+  ViewDetailProjects: undefined
 };
 
 
@@ -204,7 +210,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'ImpactDashboard'}
+      initialRouteName={'Splash'}
       screenOptions={{
         headerShown: false,
       }}
@@ -254,6 +260,10 @@ export default function RootNavigator() {
       <Stack.Screen name="PaymentSucessful" component={PaymentSucessfulScreen} />
       <Stack.Screen name="finalreport" component={finalreport} />
       <Stack.Screen name="CompletePayment" component={CompletePaymentScreen} />
+      <Stack.Screen name="HowWorks" component={HowWorks} />
+      <Stack.Screen name="GreenProjects" component={GreenProjects} />
+      <Stack.Screen name="ViewDetailProjects" component={ViewDetailProjects} />
+
     </Stack.Navigator>
 
   );
