@@ -27,25 +27,51 @@ import ApiUrl from '../../Lib/ApiUrl';
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
-  const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  // const categoryList = useSelector((state: RootState) => state.category.categoryList);
+  // const apiStates = useSelector((state: RootState) => state.state.stateList);
+  // const [projectSite, setProjectSite] = React.useState<any[]>([]);
+  // const [selectedState, setSelectedState] = React.useState('1');
+  // const [dashboardDetails, setDashboardDetails] = React.useState<any>(null);
+
+  const localCategoryList = [
+    { _id: '1', name: 'PLANT A TREE', type: 'Plant for yourself', button: 'Plant', category_image: Images.chooseTree },
+    { _id: '2', name: 'GIFT A TREE', type: 'Gift for someone', button: 'Gift ', category_image: Images.gift_tree },
+    { _id: '3', name: 'CARBON CALCULATOR', type: 'Calculate your impact', button: 'Carbon', category_image: Images.carbon_cal },
+    { _id: '4', name: 'SPONSOR PLANTATION', type: 'Support communities', button: 'Sponsor', category_image: Images.sponsor_plant },
+  ];
+  const categoryList = localCategoryList;
   const apiStates = useSelector((state: RootState) => state.state.stateList);
-  const [projectSite, setProjectSite] = React.useState<any[]>([]);
+  const localProjects = [
+    { _id: '1', site_name: 'Aravalli Restoration', location: 'Rajasthan', plantation_type: 'RESTORATION', image: Images.aravali_belt },
+    { _id: '2', site_name: 'Urban Forest Jaipur', location: 'Rajasthan', plantation_type: 'URBAN', image: Images.project_jaipur },
+    { _id: '3', site_name: 'Himalayan Plantation', location: 'Uttarakhand', plantation_type: 'HIMALAYAN', image: Images.project_himalayas },
+  ];
+  const [projectSite, setProjectSite] = React.useState<any[]>(localProjects);
   const [selectedState, setSelectedState] = React.useState('1');
   const [dashboardDetails, setDashboardDetails] = React.useState<any>(null);
 
-  const mappedStatesList = apiStates && apiStates.length > 0
-    ? apiStates.map((item: any, idx: number) => ({
-      id: item._id?.toString() || idx.toString(),
-      name: item.state_name,
-      image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.rajasthan,
-    }))
-    : [];
+  const localStates = [
+    { id: '1', name: 'Rajasthan', image: Images.rajasthan },
+    { id: '2', name: 'Uttarakhand', image: Images.project_himalayas },
+    { id: '3', name: 'Karnataka', image: Images.project_aravalli },
+    { id: '4', name: 'Maharashtra', image: Images.project_jaipur },
+    { id: '5', name: 'Tamil Nadu', image: Images.sariska_reserve },
+  ];
+
+  const mappedStatesList = localStates;
+  // const mappedStatesList = apiStates && apiStates.length > 0
+  //   ? apiStates.map((item: any, idx: number) => ({
+  //     id: item._id?.toString() || idx.toString(),
+  //     name: item.state_name,
+  //     image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.rajasthan,
+  //   }))
+  //   : [];
 
   React.useEffect(() => {
-    categoryData(dispatch);
-    stateData(dispatch);
-    SiteGetApi();
-    DashboardGetApi();
+    // categoryData(dispatch);
+    // stateData(dispatch);
+    // SiteGetApi();
+    // DashboardGetApi();
   }, [dispatch]);
 
 
@@ -74,6 +100,15 @@ const HomeScreen = () => {
   console.log('categoryList in HomeScreen:', categoryList);
 
   const CategoryHandle = (item: any) => {
+    if (item?._id == '1') {
+      navigation.navigate('ChooseTreeScreen')
+    } else if (item?._id == '2') {
+      navigation.navigate('GiftTreeScreen')
+    } else if (item?._id == '3') {
+      navigation.navigate('CalculateCarbon')
+    } else if (item?._id == '4') {
+      navigation.navigate('SponsorProject')
+    }
     console.log("item: ", item)
   };
 
@@ -280,7 +315,7 @@ const HomeScreen = () => {
                   CategoryHandle(item)
                 }}
               >
-                <Image source={{ uri: Config.imageurl + item?.category_image }} style={styles.cardImage} resizeMode='cover' />
+                <Image source={typeof item?.category_image === 'string' ? { uri: Config.imageurl + item?.category_image } : item?.category_image} style={styles.cardImage} resizeMode='cover' />
                 <View style={{ paddingHorizontal: 10, marginBottom: 12, }}>
                   <Text style={styles.cardTitle}>{item?.name}</Text>
                   <View style={styles.cardFooterRow}>

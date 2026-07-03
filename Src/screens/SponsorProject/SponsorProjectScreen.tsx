@@ -118,7 +118,7 @@ const SponsorProjectScreen = () => {
   ];
 
   const benefitsData = [
-    { id: '1', title: 'Digital Certificate of Sponsorship', icon: Images.certificate },
+    { id: '1', title: 'Digital Certificate of Sponsorship', icon: Images.certificateIcon },
     { id: '2', title: 'GPS Verified Project Location', icon: Images.location },
     { id: '3', title: 'Monthly Progress Photos', icon: Images.camera },
     { id: '4', title: 'Trees Planted with Your Support', icon: Images.treeIcon },
@@ -156,11 +156,11 @@ const SponsorProjectScreen = () => {
                 <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
               </TouchableOpacity>
 
-              <Image
+              {/* <Image
                 source={Images.logoGeotree}
                 style={styles.headerLogo}
                 resizeMode="contain"
-              />
+              /> */}
 
               <View style={styles.headerRight}>
                 <TouchableOpacity style={styles.iconButton} activeOpacity={0.7}>
@@ -177,38 +177,54 @@ const SponsorProjectScreen = () => {
             <View style={styles.heroSection}>
               <View style={styles.heroTextContainer}>
                 <Text style={styles.heroTitle}>
-                  Sponsor a <Text style={styles.heroTitleGreen}>Green Project</Text>
+                  Sponsor a {'\n'}<Text style={styles.heroTitleGreen}>Green Project</Text>
                 </Text>
                 <Text style={styles.heroSubtitle}>
                   Support large-scale environmental restoration projects across India. Your contribution helps plant thousands of trees with verified implementation and transparent impact tracking.
                 </Text>
               </View>
 
-              {/* 2x2 Grid of Badges */}
-              <View style={styles.metricsGrid}>
-                <View style={styles.metricChip}>
-                  <Image source={Images.shield} style={styles.metricChipIcon} resizeMode="contain" />
-                  <Text style={styles.metricChipText}>
-                    100% <Text style={styles.metricChipTextBlack}>Verified Projects</Text>
-                  </Text>
-                </View>
-                <View style={styles.metricChip}>
-                  <Image source={Images.group || Images.profile} style={styles.metricChipIcon} resizeMode="contain" />
-                  <Text style={styles.metricChipText}>
-                    NGO <Text style={styles.metricChipTextBlack}>& Expert Implementation</Text>
-                  </Text>
-                </View>
-                <View style={styles.metricChip}>
-                  <Image source={Images.location} style={styles.metricChipIcon} resizeMode="contain" />
-                  <Text style={styles.metricChipText}>
-                    GPS <Text style={styles.metricChipTextBlack}>Verified Plantations</Text>
-                  </Text>
-                </View>
-                <View style={styles.metricChip}>
-                  <Image source={Images.impact || Images.chooseTree} style={styles.metricChipIcon} resizeMode="contain" />
-                  <Text style={styles.metricChipText}>
-                    Transparent <Text style={styles.metricChipTextBlack}>Impact Tracking</Text>
-                  </Text>
+              {/* Horizontal Metrics Bar */}
+              <View style={styles.metricsGridOuter}>
+                <View style={styles.metricsGridInner}>
+                  <View style={styles.metricChip}>
+                    <View style={styles.metricIconBg}>
+                      <Image source={Images.shield} style={styles.metricChipIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.metricChipText}>
+                      100% Verified{'\n'}<Text style={styles.metricChipTextBlack}>Projects</Text>
+                    </Text>
+                  </View>
+                  <View style={styles.metricDivider} />
+
+                  <View style={styles.metricChip}>
+                    <View style={styles.metricIconBg}>
+                      <Image source={Images.group || Images.profile} style={styles.metricChipIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.metricChipText}>
+                      NGO & Expert{'\n'}<Text style={styles.metricChipTextBlack}>Implementation</Text>
+                    </Text>
+                  </View>
+                  <View style={styles.metricDivider} />
+
+                  <View style={styles.metricChip}>
+                    <View style={styles.metricIconBg}>
+                      <Image source={Images.location} style={styles.metricChipIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.metricChipText}>
+                      GPS Verified{'\n'}<Text style={styles.metricChipTextBlack}>Plantations</Text>
+                    </Text>
+                  </View>
+                  <View style={styles.metricDivider} />
+
+                  <View style={styles.metricChip}>
+                    <View style={styles.metricIconBg}>
+                      <Image source={Images.impact || Images.chooseTree} style={styles.metricChipIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.metricChipText}>
+                      Transparent{'\n'}<Text style={styles.metricChipTextBlack}>Impact Tracking</Text>
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -221,8 +237,7 @@ const SponsorProjectScreen = () => {
                 <Text style={styles.sectionTitle}>Featured Green Projects</Text>
               </View>
               <TouchableOpacity activeOpacity={0.7} style={styles.viewAllLink} onPress={() => navigation.navigate('ExploreStates')}>
-                <Text style={styles.viewAllText}>View All Projects </Text>
-                <Text style={styles.viewAllText}>→</Text>
+                <Text style={styles.viewAllText}>View All </Text>
               </TouchableOpacity>
             </View>
 
@@ -262,9 +277,11 @@ const SponsorProjectScreen = () => {
                       {/* Progress Bar */}
                       <View style={styles.progressContainer}>
                         <View style={styles.progressTextRow}>
-                          <Text style={styles.progressTextLabel}>
-                            {item.planted.toLocaleString()} / {item.goal.toLocaleString()} Trees
-                          </Text>
+                          <View style={styles.progressTextLabelContainer}>
+                            <Image source={Images.tree} style={styles.progressTreeIcon} resizeMode="contain" />
+                            <Text style={styles.progressTextLabelBold}>{item.planted.toLocaleString()}</Text>
+                            <Text style={styles.progressTextLabel}> / {item.goal.toLocaleString()} Trees</Text>
+                          </View>
                           <Text style={styles.progressTextPercent}>{percent}%</Text>
                         </View>
                         <View style={styles.progressBarBg}>
@@ -274,13 +291,16 @@ const SponsorProjectScreen = () => {
 
                       {/* Card Stats */}
                       <View style={styles.cardStatsRow}>
-                        <View style={styles.cardStatItem}>
-                          <Image source={Images.calendar} style={styles.cardStatIcon} resizeMode="contain" />
-                          <Text style={styles.cardStatText} numberOfLines={1}>{item.daysLeft} Days Left</Text>
+                        <View style={styles.cardStatBox}>
+                          <Text style={styles.cardStatValue}>{item.daysLeft}</Text>
+                          <Text style={styles.cardStatLabel}>Days Left</Text>
                         </View>
-                        <View style={styles.cardStatItem}>
+                        <View style={styles.cardStatBoxRight}>
                           <Image source={Images.group || Images.profile} style={styles.cardStatIcon} resizeMode="contain" />
-                          <Text style={styles.cardStatText} numberOfLines={1}>{item.ngoPartner} NGO Partner</Text>
+                          <View style={styles.cardStatTextCol}>
+                            <Text style={styles.cardStatValueRight} numberOfLines={1}>{item.ngoPartner}</Text>
+                            <Text style={styles.cardStatLabelRight}>NGO Partner</Text>
+                          </View>
                         </View>
                       </View>
 
@@ -296,7 +316,6 @@ const SponsorProjectScreen = () => {
                         <Text style={styles.supportButtonText}>
                           {isSelected ? 'Selected' : 'Support Project'}
                         </Text>
-                        <Text style={styles.supportButtonArrow}>→</Text>
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -306,94 +325,115 @@ const SponsorProjectScreen = () => {
           </View>
 
           {/* How Sponsorship Works */}
-          <View style={[styles.sectionContainer, { paddingTop: 0, paddingBottom: 4 }]}>
-            <View style={[styles.sectionHeaderRow, { marginBottom: 4 }]}>
-              <View style={styles.sectionTitleRow}>
-                <Text style={styles.sectionTitle}>How Sponsorship Works</Text>
+          <View style={[styles.sectionContainer, { paddingTop: 10, paddingBottom: 10 }]}>
+            <View style={{
+              marginHorizontal: 12,
+              backgroundColor: '#FFFFFF',
+              borderRadius: 12,
+              borderWidth: 1,
+              borderColor: '#F0F0F0',
+              paddingVertical: 16,
+              paddingHorizontal: 4,
+            }}>
+              <View style={[styles.sectionHeaderRow,]}>
+                <View style={styles.sectionTitleRow}>
+                  <Text style={styles.sectionTitle}>How Sponsorship Works</Text>
+                </View>
               </View>
-            </View>
 
-            <View style={styles.sponsorshipWorksContainer}>
-              <View style={styles.sponsorshipStepsRow}>
-                <View style={styles.stepItem}>
-                  <View style={styles.stepIconContainer}>
-                    <Image source={Images.plant} style={styles.stepIcon} resizeMode="contain" />
+              <View style={styles.sponsorshipWorksContainer}>
+                <View style={styles.sponsorshipStepsRow}>
+                  <View style={styles.stepItem}>
+                    <View style={styles.stepIconContainer}>
+                      <Image source={Images.plant} style={styles.stepIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.stepTitle}>1. Choose a Project</Text>
+                    <Text numberOfLines={2} style={styles.stepSub}>Select a verified green project to support</Text>
                   </View>
-                  <Text style={styles.stepTitle}>1. Choose Project</Text>
-                  <Text style={styles.stepSub}>Select a verified green project</Text>
-                </View>
 
-                <Text style={styles.stepArrowIcon}>→</Text>
-
-                <View style={styles.stepItem}>
-                  <View style={styles.stepIconContainer}>
-                    <Image source={Images.heart} style={styles.stepIcon} resizeMode="contain" />
+                  <View style={styles.stepItem}>
+                    <View style={styles.stepIconContainer}>
+                      <Image source={Images.heart} style={styles.stepIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.stepTitle}>2. Make an Impact</Text>
+                    <Text numberOfLines={2} style={styles.stepSub}>Your contribution helps plant thousands of trees</Text>
                   </View>
-                  <Text style={styles.stepTitle}>2. Make Impact</Text>
-                  <Text style={styles.stepSub}>Your contribution plants trees</Text>
-                </View>
 
-                <Text style={styles.stepArrowIcon}>→</Text>
-
-                <View style={styles.stepItem}>
-                  <View style={styles.stepIconContainer}>
-                    <Image source={Images.camera} style={styles.stepIcon} resizeMode="contain" />
+                  <View style={styles.stepItem}>
+                    <View style={styles.stepIconContainer}>
+                      <Image source={Images.camera} style={styles.stepIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.stepTitle}>3. Track Progress</Text>
+                    <Text numberOfLines={2} style={styles.stepSub}>Get real-time updates, photos & GPS locations</Text>
                   </View>
-                  <Text style={styles.stepTitle}>3. Track Progress</Text>
-                  <Text style={styles.stepSub}>Get real-time updates & GPS coords</Text>
-                </View>
 
-                <Text style={styles.stepArrowIcon}>→</Text>
-
-                <View style={styles.stepItem}>
-                  <View style={styles.stepIconContainer}>
-                    <Image source={Images.certificate} style={styles.stepIcon} resizeMode="contain" />
+                  <View style={styles.stepItem}>
+                    <View style={styles.stepIconContainer}>
+                      <Image source={Images.certificateIcon} style={styles.stepIcon} resizeMode="contain" />
+                    </View>
+                    <Text style={styles.stepTitle}>4. Receive Certificate</Text>
+                    <Text numberOfLines={2} style={styles.stepSub}>Earn a digital certificate & impact report</Text>
                   </View>
-                  <Text style={styles.stepTitle}>4. Get Certificate</Text>
-                  <Text style={styles.stepSub}>Earn your digital certificate</Text>
                 </View>
               </View>
             </View>
           </View>
 
           {/* Choose Your Sponsorship Level */}
-          <View style={[styles.sectionContainer, { paddingTop: 4, paddingBottom: 4 }]}>
-            <View style={styles.sectionHeaderRow}>
-              <View style={styles.sectionTitleRow}>
-                <Text style={styles.sectionTitle}>Choose Your Sponsorship Level</Text>
+          <View style={[styles.sectionContainer, { paddingTop: 10, paddingBottom: 10 }]}>
+            <View style={{
+              marginHorizontal: 12,
+              backgroundColor: '#FFFFFF',
+              borderRadius: 12,
+              borderWidth: 1,
+              borderColor: '#F0F0F0',
+              paddingVertical: 16,
+            }}>
+              <View style={[styles.sectionHeaderRow, { marginBottom: 12 }]}>
+                <View style={styles.sectionTitleRow}>
+                  <Text style={styles.sectionTitleUppercase}>CHOOSE YOUR SPONSORSHIP LEVEL</Text>
+                </View>
               </View>
-            </View>
 
-            <View style={styles.levelsGrid}>
-              {levelsData.map((level) => {
-                const isSelected = selectedLevel.id === level.id;
-                return (
-                  <TouchableOpacity
-                    key={level.id}
-                    style={[styles.levelCard, isSelected && styles.levelCardSelected]}
-                    activeOpacity={0.9}
-                    onPress={() => setSelectedLevel(level)}
-                  >
-                    {isSelected && (
-                      <View style={styles.selectedCheckmark}>
-                        <Image source={Images.check} style={styles.selectedCheckmarkIcon} resizeMode="contain" />
+              <FlatList
+                data={levelsData}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.levelsGridScroll}
+                renderItem={({ item: level }) => {
+                  const isSelected = selectedLevel.id === level.id;
+                  return (
+                    <TouchableOpacity
+                      style={[styles.levelCard, isSelected && styles.levelCardSelected]}
+                      activeOpacity={0.9}
+                      onPress={() => setSelectedLevel(level)}
+                    >
+                      <View style={styles.levelCardTopRight}>
+                        {isSelected ? (
+                          <View style={styles.selectedCheckmark}>
+                            <Image source={Images.check} style={styles.selectedCheckmarkIcon} resizeMode="contain" />
+                          </View>
+                        ) : (
+                          <View style={styles.unselectedCircle} />
+                        )}
                       </View>
-                    )}
 
-                    <View style={styles.levelIconContainer}>
-                      <Image source={Images.leaf} style={styles.levelIcon} resizeMode="contain" />
-                    </View>
+                      <View style={styles.levelIconContainer}>
+                        <Image source={Images.five_trees_plant || Images.five_trees_plant} style={styles.levelIcon} resizeMode="contain" />
+                      </View>
 
-                    <Text style={styles.levelName}>{level.name}</Text>
-                    <Text style={styles.levelAmount}>{level.amountText}</Text>
-                    <Text style={styles.levelDesc}>{level.desc}</Text>
+                      <Text style={styles.levelName}>{level.name}</Text>
+                      <Text style={styles.levelAmount}>{level.amountText}</Text>
+                      <Text style={styles.levelDesc}>{level.desc}</Text>
 
-                    <View style={styles.levelBadge}>
-                      <Text style={styles.levelBadgeText}>{level.badge}</Text>
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
+                      <View style={styles.levelBadge}>
+                        <Text style={styles.levelBadgeText}>{level.badge}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                }}
+              />
             </View>
           </View>
 
@@ -443,11 +483,7 @@ const SponsorProjectScreen = () => {
                       <Text style={styles.boldProgressText}>
                         {selectedProject.planted.toLocaleString()}
                       </Text>
-                      {' Trees planted of '}
-                      <Text style={styles.boldProgressText}>
-                        {selectedProject.goal.toLocaleString()}
-                      </Text>
-                      {' goal'}
+                      {` Trees planted of ${selectedProject.goal.toLocaleString()} goal`}
                     </Text>
                   </View>
                 </View>
@@ -471,7 +507,6 @@ const SponsorProjectScreen = () => {
                   })}
                 >
                   <Text style={styles.continueButtonText}>Continue to Support</Text>
-                  <Text style={styles.continueButtonArrow}>→</Text>
                 </TouchableOpacity>
 
                 <View style={styles.securePaymentRow}>

@@ -98,12 +98,9 @@ const ChooseLocationScreen = () => {
             <View style={styles.heroContent}>
               <View style={styles.heroTextContainer}>
                 <Text style={styles.heroTitle}>
-                  {String.ChooseLocation_TitleLeft}{'\n'}
-                  <Text style={styles.highlightGreen}>{String.ChooseTree_Rajasthan}</Text>
+                  {String.ChooseLocation_TitleLeft} <Text style={styles.highlightGreen}>{'Rajsthan'}</Text>
                 </Text>
-                <Text style={styles.heroSubtitle}>
-                  {String.ChooseLocation_Subtitle}
-                </Text>
+                <Text style={styles.heroSubtitle}>{String.ChooseLocation_Subtitle}  </Text>
               </View>
             </View>
           </ImageBackground>
@@ -117,8 +114,8 @@ const ChooseLocationScreen = () => {
             </View>
 
             <View style={styles.stateTextContainer}>
-              <Text style={styles.stateLabelText}>{String.ChooseTree_SelectedStateLabel}</Text>
-              <Text style={styles.stateValueText}>{String.ChooseTree_Rajasthan}</Text>
+              <Text style={styles.stateLabelText}>{'Selected State'}</Text>
+              <Text style={styles.stateValueText}>{'Rajasthan'}</Text>
             </View>
 
           </View>
@@ -134,8 +131,8 @@ const ChooseLocationScreen = () => {
             <Text style={styles.sectionSubtitle}>{String.ChooseLocation_ChooseSpecific}</Text>
           </View>
           <TouchableOpacity style={styles.viewMapButton} activeOpacity={0.8}>
-            <Text style={styles.viewMapText}>{String.TrackingViewFullMap}</Text>
-            {/* <Image source={Images.location} style={styles.viewMapIcon} resizeMode="contain" /> */}
+            <Text style={styles.viewMapText}>View on Map</Text>
+            {/* <Image source={Images.Maps} style={styles.viewMapIcon} resizeMode="contain" /> */}
           </TouchableOpacity>
         </View>
 

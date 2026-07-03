@@ -210,7 +210,7 @@ export default function RootNavigator() {
 
   return (
     <Stack.Navigator
-      initialRouteName={'Splash'}
+      initialRouteName={isAuthenticated ? 'Home' : 'Splash'}
       screenOptions={{
         headerShown: false,
       }}

@@ -107,7 +107,7 @@ const PaymentScreen = () => {
           {/* Header */}
           <PlantHeader />
           {/* Stepper */}
-          <View style={{ backgroundColor: '#FAFBFB', position: 'absolute', top: 50, left: 0, right: 0, }}>
+          <View style={{ backgroundColor: '#FAFBFB', position: 'absolute', top: 40, left: 0, right: 0, }}>
 
             <Stepper currentStep={4} />
           </View>
@@ -210,7 +210,7 @@ const PaymentScreen = () => {
             <Text style={styles.sectionTitle}>Contribution Amount</Text>
             <Text style={styles.sectionSubtitle}>Your support makes a real difference!</Text>
           </View>
- 
+
           <View>
             <ScrollView
               horizontal
@@ -219,7 +219,7 @@ const PaymentScreen = () => {
             >
               {contributionPackages.map((pkg) => {
                 const isSelected = selectedPackageId === pkg.id;
- 
+
                 return (
                   <TouchableOpacity
                     key={pkg.id}
@@ -235,7 +235,7 @@ const PaymentScreen = () => {
                         <Image source={Images.check} style={{ width: 10, height: 10, tintColor: '#FFFFFF' }} resizeMode="contain" />
                       </View>
                     )}
- 
+
                     <View style={styles.amountIconContainer}>
                       <Image
                         source={pkg.isCustom ? Images.leaf : Images.tree}
@@ -243,11 +243,11 @@ const PaymentScreen = () => {
                         resizeMode="contain"
                       />
                     </View>
- 
+
                     <Text style={styles.amountValueText}>
                       {pkg.isCustom ? 'Other' : `₹${pkg.amount}`}
                     </Text>
- 
+
                     <Text style={styles.amountSubtext}>
                       {pkg.text}
                     </Text>
@@ -255,7 +255,7 @@ const PaymentScreen = () => {
                 );
               })}
             </ScrollView>
- 
+
             {/* Custom Amount Input Field */}
             {selectedPackageId === 'other' && (
               <View style={styles.customAmountContainer}>
@@ -273,7 +273,7 @@ const PaymentScreen = () => {
               </View>
             )}
           </View>
- 
+
           {/* 100% Contribution Banner */}
           <View style={styles.impactBanner}>
             <View style={styles.impactLeft}>

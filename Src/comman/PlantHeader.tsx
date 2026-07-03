@@ -52,7 +52,7 @@ const PlantHeader: React.FC<PlantHeaderProps> = ({
         />
       </TouchableOpacity>
       <Text style={styles.headerTitle}>{title}</Text>
-      <View style={styles.coinBadge}>
+      {/* <View style={styles.coinBadge}>
         <LinearGradient
           colors={['#FFE259', '#FFA751']}
           style={styles.coinIconContainer}
@@ -67,7 +67,7 @@ const PlantHeader: React.FC<PlantHeaderProps> = ({
           <Text style={styles.coinAmount}>{points}</Text>
           <Text style={styles.coinLabel}>Green Points</Text>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     paddingHorizontal: MarginHW.PaddingW16,
     backgroundColor: '#FAFBFB',
     marginVertical: 5,
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.OpenSans_Bold,
     fontSize: FontsSize.size16,
     color: Colors.black,
+    left: 20,
   },
   coinBadge: {
     flexDirection: 'row',
