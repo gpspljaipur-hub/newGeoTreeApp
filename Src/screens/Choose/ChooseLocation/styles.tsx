@@ -53,9 +53,9 @@ export const styles = StyleSheet.create({
     color: Colors.textDark,
   },
   heroSubtitle: {
-    marginTop: MarginHW.MarginH4,
+    marginTop: MarginHW.MarginH3,
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size12,
+    fontSize: FontsSize.size10,
     lineHeight: 16,
     color: Colors.black,
   },
@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.OpenSans_Bold,
   },
   stateSelectorCard: {
-    top: -10,
+    marginTop: -20,
     backgroundColor: '#F3F8F4',
     borderWidth: 1,
     borderColor: '#E2EFE5',
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
   },
   changeStateText: {
     fontFamily: fonts.OpenSans_SemiBold,
-    fontSize: FontsSize.size14,
+    fontSize: FontsSize.size12,
     color: Colors.tint,
     marginRight: 4,
   },
@@ -125,7 +125,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     marginHorizontal: MarginHW.MarginW16,
-    marginBottom: MarginHW.MarginH12,
+    marginVertical: 10,
   },
   sectionTitleContainer: {
     flex: 1,

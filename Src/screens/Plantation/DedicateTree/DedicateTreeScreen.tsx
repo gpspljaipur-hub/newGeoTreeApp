@@ -131,13 +131,13 @@ const DedicateTreeScreen = () => {
   const occasionsList = apiOccasions && apiOccasions.length > 0
     ? apiOccasions.map((o: any) => o.name)
     : [
-        'Birthday',
-        'Anniversary',
-        'In Memory Of',
-        'Loved One Gift',
-        'Corporate Event',
-        'Other Celebration',
-      ];
+      'Birthday',
+      'Anniversary',
+      'In Memory Of',
+      'Loved One Gift',
+      'Corporate Event',
+      'Other Celebration',
+    ];
 
   // Custom simple date items for date picker modal
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1));
@@ -413,7 +413,7 @@ const DedicateTreeScreen = () => {
                   </View>
                   <View style={styles.checkboxDetails}>
                     <View style={styles.checkboxHeaderRow}>
-                      <Image source={Images.certificate} style={styles.checkboxListIcon} resizeMode="contain" />
+                      <Image source={Images.certificateIcon} style={styles.checkboxListIcon} resizeMode="contain" />
                       <Text style={styles.checkboxLabel}>Send Digital Certificate</Text>
                     </View>
                     <Text style={styles.checkboxSublabel}>We will email the certificate to recipient</Text>

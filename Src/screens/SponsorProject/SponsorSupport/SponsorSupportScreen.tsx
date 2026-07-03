@@ -15,6 +15,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Images from '../../../constants/images';
 import { styles } from './styles';
 import MarginHW from '../../../comman/MarginHW';
+import fonts from '../../../comman/fonts';
 
 const SponsorSupportScreen = () => {
   const navigation = useNavigation<any>();
@@ -177,6 +178,7 @@ const SponsorSupportScreen = () => {
             {/* Progress */}
             <View style={styles.progressWrapper}>
               <View style={styles.progressLabelRow}>
+                <Image source={Images.treeIcon || Images.plant} style={styles.progressTreeIcon} resizeMode="contain" />
                 <Text style={styles.progressLabelText}>
                   {selectedProject.planted?.toLocaleString()}{' '}
                   <Text style={styles.progressLabelNormal}>/ {selectedProject.goal?.toLocaleString()} Trees Planted</Text>
@@ -226,10 +228,10 @@ const SponsorSupportScreen = () => {
         </View>
 
         {/* Your Impact Preview Section */}
-        <Text style={styles.sectionTitle}>Your Impact</Text>
-        <Text style={styles.sectionSubtitle}>Based on your selected support</Text>
-
         <View style={styles.impactPreviewCard}>
+          <Text style={styles.sectionTitle}>Your Impact</Text>
+          {/* <Text style={styles.sectionSubtitle}>Based on your selected support</Text> */}
+
           <View style={styles.impactRow}>
             <View style={styles.impactColumn}>
               <View style={styles.impactIconCircle}>
@@ -263,10 +265,10 @@ const SponsorSupportScreen = () => {
 
             <View style={styles.impactColumn}>
               <View style={styles.impactIconCircle}>
-                <Image source={Images.certificate} style={styles.impactIcon} resizeMode="contain" />
+                <Image source={Images.certificateIcon} style={styles.impactIcon} resizeMode="contain" />
               </View>
-              <Text style={styles.impactValue}>Digital</Text>
-              <Text style={styles.impactLabel}>Certificate{'\n'}of Sponsorship</Text>
+              <Text style={[styles.impactValue, { color: '#111827', fontSize: 10, fontFamily: fonts.OpenSans_SemiBold }]}>Digital Certificate</Text>
+              <Text style={[styles.impactLabel, { color: '#111827', fontSize: 10 }]}>of Sponsorship</Text>
             </View>
 
             <View style={styles.impactDivider} />
@@ -275,61 +277,65 @@ const SponsorSupportScreen = () => {
               <View style={styles.impactIconCircle}>
                 <Image source={Images.location} style={styles.impactIcon} resizeMode="contain" />
               </View>
-              <Text style={styles.impactValue}>GPS Verified</Text>
-              <Text style={styles.impactLabel}>Project{'\n'}Location</Text>
+              <Text style={[styles.impactValue, { color: '#111827', fontSize: 10, fontFamily: fonts.OpenSans_SemiBold }]}>GPS Verified</Text>
+              <Text style={[styles.impactLabel, { color: '#111827', fontSize: 10 }]}>Project Location</Text>
             </View>
           </View>
         </View>
 
         {/* 1. Review Your Selection */}
-        <Text style={[
-          styles.sectionTitle, { marginTop: MarginHW.MarginH6 }]}>1. Review Your Selection</Text>
+        <Text style={[styles.sectionTitle, { marginLeft: MarginHW.MarginW10, marginBottom: MarginHW.MarginH6 }]}>1. Review Your Selection</Text>
 
-        {/* Selection Card - Level */}
-        <View style={styles.selectionCard}>
-          <View style={styles.selectionLeft}>
-            <View style={styles.selectionThumbContainer}>
-              <Image source={Images.leaf} style={styles.selectionThumb} resizeMode="contain" />
+        {/* Selection Card (Combined) */}
+        <View style={styles.reviewCard}>
+          {/* Level Row */}
+          <View style={styles.reviewRow}>
+            <View style={styles.selectionLeft}>
+              <View style={styles.selectionThumbContainer}>
+                <Image source={Images.plant} style={styles.selectionThumb} resizeMode="contain" />
+              </View>
+              <View style={styles.selectionTextContainer}>
+                <Text style={styles.selectionLabel}>Sponsorship Level</Text>
+                <Text style={styles.selectionValue}>{getLevelName(selectedAmount)}</Text>
+                <Text style={styles.selectionDesc}>Helps plant approximately {treesCount} trees</Text>
+              </View>
             </View>
-            <View style={styles.selectionTextContainer}>
-              <Text style={styles.selectionLabel}>Sponsorship Level</Text>
-              <Text style={styles.selectionValue}>{getLevelName(selectedAmount)}</Text>
-              <Text style={styles.selectionDesc}>Helps plant approximately {treesCount} trees</Text>
-            </View>
+
+            <TouchableOpacity style={styles.changeButton} activeOpacity={0.7}>
+              <Image source={Images.edit} style={styles.changeButtonIcon} resizeMode="contain" />
+              <Text style={styles.changeButtonText}>Change</Text>
+            </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.changeButton} activeOpacity={0.7}>
-            <Image source={Images.edit} style={styles.changeButtonIcon} resizeMode="contain" />
-            <Text style={styles.changeButtonText}>Change</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.reviewDivider} />
 
-        {/* Selection Card - Project */}
-        <View style={styles.selectionCard}>
-          <View style={styles.selectionLeft}>
-            <View style={styles.selectionThumbContainer}>
-              <Image source={Images.earth || Images.globe} style={styles.selectionThumb} resizeMode="contain" />
+          {/* Project Row */}
+          <View style={styles.reviewRow}>
+            <View style={styles.selectionLeft}>
+              <View style={styles.selectionTextContainer}>
+                <Text style={styles.selectionLabel}>Supporting Project</Text>
+                <Text style={[styles.selectionValue, { color: '#111827' }]}>{selectedProject.name}, {selectedProject.location}</Text>
+              </View>
             </View>
-            <View style={styles.selectionTextContainer}>
-              <Text style={styles.selectionLabel}>Supporting Project</Text>
-              <Text style={styles.selectionValue}>{selectedProject.name}</Text>
-              <Text style={styles.selectionDesc}>{selectedProject.location}</Text>
-            </View>
+
+            <TouchableOpacity
+              style={styles.changeButton}
+              activeOpacity={0.7}
+              onPress={() => navigation.navigate('SponsorProject')}
+            >
+              <Image source={Images.edit} style={styles.changeButtonIcon} resizeMode="contain" />
+              <Text style={styles.changeButtonText}>Change</Text>
+            </TouchableOpacity>
           </View>
-
-          <TouchableOpacity
-            style={styles.changeButton}
-            activeOpacity={0.7}
-            onPress={() => navigation.navigate('SponsorProject')}
-          >
-            <Image source={Images.edit} style={styles.changeButtonIcon} resizeMode="contain" />
-            <Text style={styles.changeButtonText}>Change</Text>
-          </TouchableOpacity>
         </View>
         {/* 2. Choose Contribution Amount */}
-        <Text style={styles.sectionTitle}>2. Choose Contribution Amount</Text>
-        <Text style={styles.sectionSubtitle}>Select a recommended amount or enter your own</Text>
-        <View style={styles.amountGrid}>
+        <Text style={[styles.sectionTitle, { marginLeft: MarginHW.MarginW10, }]}>2. Choose Contribution Amount</Text>
+        <Text style={[styles.sectionSubtitle, { marginLeft: MarginHW.MarginW10, }]}>Select a recommended amount or enter your own</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.amountGridScroll}
+        >
           {amountOptions.map((opt) => {
             const isSelected = !isCustomAmount && selectedAmount === opt.value;
             return (
@@ -360,10 +366,10 @@ const SponsorSupportScreen = () => {
             activeOpacity={0.85}
             onPress={handleSelectCustomClick}
           >
-            <Text style={[styles.amountCardValue, isCustomAmount && styles.amountCardSelectedText]}>
+            <Text style={[styles.amountCardValue, isCustomAmount && styles.amountCardSelectedText, { color: isCustomAmount ? '#1A6836' : '#111827' }]}>
               Other
             </Text>
-            <Text style={[styles.amountCardTrees, isCustomAmount && styles.amountCardSelectedTrees]}>
+            <Text style={[styles.amountCardTrees, isCustomAmount && styles.amountCardSelectedTrees, { color: isCustomAmount ? '#1A6836' : '#111827' }]}>
               Amount
             </Text>
 
@@ -373,26 +379,26 @@ const SponsorSupportScreen = () => {
               </View>
             )}
           </TouchableOpacity>
+        </ScrollView>
 
-          {/* Custom amount text input (visible when Custom is selected) */}
-          {isCustomAmount && (
-            <View style={styles.otherAmountContainer}>
-              <View style={[styles.otherAmountWrapper, focusedField === 'custom' && styles.otherAmountWrapperSelected]}>
-                <Text style={styles.otherAmountCurrency}>₹</Text>
-                <TextInput
-                  style={styles.otherAmountInput}
-                  placeholder="Enter custom contribution amount"
-                  placeholderTextColor="#8E9A93"
-                  keyboardType="numeric"
-                  value={customAmountText}
-                  onChangeText={handleCustomAmountChange}
-                  onFocus={() => setFocusedField('custom')}
-                  onBlur={() => setFocusedField(null)}
-                />
-              </View>
+        {/* Custom amount text input (visible when Custom is selected) */}
+        {isCustomAmount && (
+          <View style={styles.otherAmountContainer}>
+            <View style={[styles.otherAmountWrapper, focusedField === 'custom' && styles.otherAmountWrapperSelected]}>
+              <Text style={styles.otherAmountCurrency}>₹</Text>
+              <TextInput
+                style={styles.otherAmountInput}
+                placeholder="Enter custom contribution amount"
+                placeholderTextColor="#8E9A93"
+                keyboardType="numeric"
+                value={customAmountText}
+                onChangeText={handleCustomAmountChange}
+                onFocus={() => setFocusedField('custom')}
+                onBlur={() => setFocusedField(null)}
+              />
             </View>
-          )}
-        </View>
+          </View>
+        )}
 
         {/* Every Contribution helps banner */}
         <View style={styles.alertGreenBanner}>
@@ -611,37 +617,37 @@ const SponsorSupportScreen = () => {
         </View>
         {/* Bottom floating bar inside ScrollView */}
         <View style={styles.bottomFloatingBar}>
-          <View style={styles.bottomMainRow}>
-            <View style={styles.bottomLeftInfo}>
-              <View style={styles.bottomThumbCircle}>
-                <Image source={Images.rotatehand_tree} style={styles.bottomThumbImg} resizeMode="contain" />
-              </View>
-              <View style={styles.bottomTextCol}>
-                <Text style={styles.bottomSupportingLabel}>You are supporting</Text>
-                <Text style={styles.bottomProjectName} numberOfLines={1}>
-                  {selectedProject.name}
-                </Text>
-                <View style={styles.bottomAmountRow}>
-                  <Text style={styles.bottomAmountLabel}>Amount:</Text>
-                  <Text style={styles.bottomAmountVal}>₹{selectedAmount.toLocaleString('en-IN')}</Text>
-                  <Text style={styles.bottomAmountQty}>({treesCount} Trees Approx.)</Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles.bottomButtonBox}>
-              <TouchableOpacity
-                style={styles.paySecurelyButton}
-                activeOpacity={0.8}
-                onPress={() => navigation.navigate('SponsorPayment')}
-              >
-                <Text style={styles.payButtonText}>Proceed to Payment</Text>
-                <Text style={styles.payButtonArrow}>→</Text>
-              </TouchableOpacity>
+          <View style={styles.bottomSummaryCard}>
+            <Image source={Images.rotatehand_tree} style={styles.bottomThumbImg} resizeMode="contain" />
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }}>
-                <Image source={Images.lock} style={styles.bottomRedirectIcon} resizeMode="contain" />
-                <Text style={styles.bottomRedirectText}>Secure Checkout</Text>
-              </View>
+            <View style={styles.bottomTextCol}>
+              <Text style={styles.bottomSupportingLabel}>You are supporting</Text>
+              <Text style={styles.bottomProjectName} numberOfLines={1}>
+                {selectedProject.name}
+              </Text>
+            </View>
+
+            <View style={styles.bottomDivider} />
+
+            <View style={styles.bottomAmountCol}>
+              <Text style={styles.bottomAmountLabel}>Amount</Text>
+              <Text style={styles.bottomAmountVal}>₹{selectedAmount.toLocaleString('en-IN')}</Text>
+              <Text style={styles.bottomAmountQty}>({treesCount} Trees Approx.)</Text>
+            </View>
+          </View>
+
+          <View style={styles.bottomButtonBox}>
+            <TouchableOpacity
+              style={styles.paySecurelyButton}
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('SponsorPayment')}
+            >
+              <Text style={styles.payButtonText}>Proceed to Payment</Text>
+            </TouchableOpacity>
+
+            <View style={{ flexDirection: 'row', justifyContent: "center", alignItems: 'center', marginTop: 4 }}>
+              <Image source={Images.lock} style={styles.bottomRedirectIcon} resizeMode="contain" />
+              <Text style={styles.bottomRedirectText}>Secure Checkout</Text>
             </View>
           </View>
         </View>
