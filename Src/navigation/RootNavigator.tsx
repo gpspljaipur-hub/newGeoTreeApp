@@ -40,6 +40,8 @@ import FoodCarbonScreen from '../screens/Carbon/FoodCarbon/FoodCarbon/FoodCarbon
 import FoodEmissionCalculationScreen from '../screens/Carbon/FoodCarbon/FoodEmissionCalculation/FoodEmissionCalculation';
 import ElectricityCarbonScreen from '../screens/Carbon/ElectricityCarbon/ElectricityCarbon/ElectricityCarbon';
 import ElectricityEmissionScreen from '../screens/Carbon/ElectricityCarbon/ElectricityEmission/ElectricityEmission';
+import FlightCarbonScreen from '../screens/Carbon/Flight/FlightCarbon/FlightCarbon';
+import FlightEmissionCalculationScreen from '../screens/Carbon/Flight/FlightEmissionCalculation/FlightEmissionCalculation';
 import SponsorProjectScreen from '../screens/SponsorProject/SponsorProjectScreen';
 import SponsorPaymentScreen from '../screens/SponsorProject/SponsorPayment/SponsorPaymentScreen';
 import PaymentSucessfulScreen from '../screens/SponsorProject/PaymentSucessful/PaymentSucessfulScreen';
@@ -114,6 +116,18 @@ export type RootStackParamList = {
   } | undefined;
   ElectricityCarbon: undefined;
   ElectricityEmission: undefined;
+  FlightCarbon: undefined;
+  FlightEmissionCalculation: {
+    annualTons: number;
+    annualDistance: number;
+    annualEmissionsKg: number;
+    tripsPerYear: number;
+    flightType: string;
+    tripType: string;
+    frequency: string;
+    seatClass: string;
+    distanceSector: string;
+  } | undefined;
   CarbonFootprint: undefined;
   CarbonPaymentSuccessful: undefined;
   SponsorProject: undefined;
@@ -251,6 +265,8 @@ export default function RootNavigator() {
       <Stack.Screen name="FoodEmissionCalculation" component={FoodEmissionCalculationScreen} />
       <Stack.Screen name="ElectricityCarbon" component={ElectricityCarbonScreen} />
       <Stack.Screen name="ElectricityEmission" component={ElectricityEmissionScreen} />
+      <Stack.Screen name="FlightCarbon" component={FlightCarbonScreen} />
+      <Stack.Screen name="FlightEmissionCalculation" component={FlightEmissionCalculationScreen} />
       <Stack.Screen name="CarbonFootprint" component={CarbonFootprint} />
       <Stack.Screen name="CarbonPaymentSuccessful" component={CarbonPaymentSuccessful} />
       <Stack.Screen name="ImpactDashboard" component={ImpactDashboard} />

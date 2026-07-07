@@ -98,6 +98,8 @@ const CalculateCarbonScreen = () => {
             navigation.navigate('FoodCarbon');
         } else if (categoryId === '3') {
             navigation.navigate('ElectricityCarbon');
+        } else if (categoryId === '4') {
+            navigation.navigate('FlightCarbon');
         } else {
             Alert.alert('Coming Soon', 'This category assessment is coming soon!');
         }

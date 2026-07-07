@@ -115,6 +115,7 @@ const Images = {
   electricity_cat: require('../assets/Images/electricity_cat.png'),
   flights_cat: require('../assets/Images/flights_cat.png'),
   carbon_bg: require('../assets/Images/carbon_bg.jpg'),
+  flight_carbon_bg: require('../assets/Images/flight_carbon_bg.png'),
   calculator_icon: require('../assets/Images/calculator_icon.jpg'),
   banner_tree: require('../assets/Images/banner_tree.png'),
   travel_mode_car: require('../assets/Images/travel_mode_car.png'),
@@ -179,7 +180,14 @@ const Images = {
   calculator: require('../assets/Images/calculator.png'),
   plantMore: require('../assets/Images/plantMore.png'),
   Maps: require('../assets/Images/Maps.png'),
-
+  trip: require('../assets/Images/trip.png'),
+  seat: require('../assets/Images/seat.png'),
+  distance_icon: require('../assets/Images/distance.png'),
+  idea: require('../assets/Images/idea.png'),
+  green_trees: require('../assets/Images/green_trees.png'),
+  car: require('../assets/Images/car.png'),
+  AI: require('../assets/Images/AI.png'),
+  score: require('../assets/Images/score.png'),
 };
 
 export type ImageKey = keyof typeof Images;
