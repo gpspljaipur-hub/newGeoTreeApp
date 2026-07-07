@@ -963,7 +963,7 @@ const WhichtreeShouldIPlantScreen = () => {
                     activeOpacity={0.8}
                 >
                     <Text style={styles.primaryStickyBtnText}>{isHi ? 'अनुशंसित पेड़ लगाएं' : 'Plant Recommended Tree'}</Text>
-                    <Text style={styles.primaryStickyBtnArrow}>→</Text>
+                    {/* <Text style={styles.primaryStickyBtnArrow}>→</Text> */}
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

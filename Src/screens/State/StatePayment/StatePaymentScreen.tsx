@@ -417,7 +417,7 @@ const StatePaymentScreen = () => {
                 resizeMode="contain"
               />
               <View style={styles.paymentButtonContent}>
-                <Text style={styles.paymentButtonText}>Pay ₹{totalAmount} Securely →</Text>
+                <Text style={styles.paymentButtonText}>Pay ₹{totalAmount} Securely</Text>
               </View>
             </TouchableOpacity>
 

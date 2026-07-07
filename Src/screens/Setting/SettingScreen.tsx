@@ -130,12 +130,10 @@ const SettingScreen = () => {
           <View style={styles.card}>
             <TouchableOpacity style={styles.clickableRow} activeOpacity={0.7}>
               <Text style={styles.clickableLabel}>{String.Otp_TermsAndConditions}</Text>
-              <Text style={styles.arrow}>→</Text>
             </TouchableOpacity>
             <View style={styles.divider} />
             <TouchableOpacity style={styles.clickableRow} activeOpacity={0.7}>
               <Text style={styles.clickableLabel}>{String.PrivacyPolicy}</Text>
-              <Text style={styles.arrow}>→</Text>
             </TouchableOpacity>
           </View>
         </View>

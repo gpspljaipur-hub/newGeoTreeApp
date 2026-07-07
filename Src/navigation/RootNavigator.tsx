@@ -75,7 +75,7 @@ export type RootStackParamList = {
   ThankYou: undefined;
   ExploreStates: undefined;
   Statewise: { stateName: string } | undefined;
-  ProjectSelect: { project: any } | undefined;
+  ProjectSelect: { project?: any; title?: string } | undefined;
   ChooseSpecies: { project: any; selectedTreeId?: string } | undefined;
   DedicateTree: { project: any; selectedSpecies: any } | undefined;
   StatePayment: {

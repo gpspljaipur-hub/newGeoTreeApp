@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StatusBar,
+  Alert,
 } from 'react-native';
 import { styles } from './styles';
 import Images from '../../../constants/images';
@@ -296,7 +297,8 @@ export const PROJECTS_DATA: { [key: string]: StateData } = {
 const StatewiseScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<StatewiseScreenRouteProp>();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   const WHY_CHOOSE_DATA = [
     {
@@ -364,8 +366,14 @@ const StatewiseScreen = () => {
   };
 
   const ProjectToPlan = () => {
-    handleNavigation({ type: 'push', page: 'ProjectSelect', navigation });
-
+    if (selectedProjectId) {
+      const selectedProject = mappedLocations.find((loc: any) => loc.id === selectedProjectId);
+      if (selectedProject) {
+        navigation.navigate('ProjectSelect', { project: selectedProject });
+      }
+    } else {
+      Alert.alert('Selection Required', 'Please select a project from the list to proceed.');
+    }
   }
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
@@ -447,9 +455,15 @@ const StatewiseScreen = () => {
             </View>
 
             {/* Location Cards */}
-            {mappedLocations.map((loc) => {
+            {mappedLocations.map((loc: any) => {
+              const isSelected = selectedProjectId === loc.id;
               return (
-                <View key={loc.id} style={styles.horizontalCard}>
+                <TouchableOpacity
+                  key={loc.id}
+                  style={[styles.horizontalCard, isSelected && { borderColor: Colors.secondary_button, borderWidth: 2 }]}
+                  activeOpacity={0.9}
+                  onPress={() => setSelectedProjectId(loc.id)}
+                >
                   {/* Left Column: Image wrapper */}
                   <View style={styles.horizontalCardImageWrapper}>
                     <ImageBackground
@@ -522,7 +536,7 @@ const StatewiseScreen = () => {
                       <Text style={styles.horizontalExploreButtonText}>{String.Statewise_ExploreProject}</Text>
                     </TouchableOpacity>
                   </View>
-                </View>
+                </TouchableOpacity>
               );
             })}
 
@@ -557,8 +571,8 @@ const StatewiseScreen = () => {
           </TouchableOpacity>
         </ScrollView>
 
-      </View>
-    </SafeAreaView>
+      </View >
+    </SafeAreaView >
   );
 };
 

@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   ScrollView,
   ImageBackground,
+  StatusBar,
 } from 'react-native';
 import { styles } from './styles';
 import Images from '../../../constants/images';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,7 +21,9 @@ import Stepper from '../../../comman/Stepper';
 
 const ChooseTreeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const insets = useSafeAreaInsets();
   const [selectedTab, setSelectedTab] = useState('All');
+  const [selectedTree, setSelectedTree] = useState<string | null>(null);
 
   const treesData = [
     {
@@ -105,20 +108,33 @@ const ChooseTreeScreen = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
+    <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
+      <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
         {/* Header */}
-        <PlantHeader />
+        {/* <PlantHeader /> */}
         {/* Stepper */}
-        <Stepper currentStep={1} />
+
         {/* Hero Card */}
         <View style={styles.heroCard}>
           <ImageBackground
             source={Images.detailbg}
             style={styles.heroImage}
             imageStyle={styles.heroImageRadius}
-            resizeMode='contain'
+            resizeMode='cover'
           >
+            <View style={[styles.headerTopRow, { paddingTop: Math.max(insets.top, 16) }]}>
+              <TouchableOpacity
+                style={styles.backButton}
+                activeOpacity={0.7}
+                onPress={() => navigation.goBack()}
+              >
+                <Image source={Images.back} style={styles.backButtonIcon} resizeMode="contain" />
+              </TouchableOpacity>
+              <View style={{ flex: 1 }}>
+                <Stepper currentStep={1} />
+              </View>
+            </View>
             <View style={styles.heroContent}>
 
               {/* State Card */}
@@ -133,9 +149,12 @@ const ChooseTreeScreen = () => {
                   </View>
 
                   <View style={styles.stateTextContainer}>
-                    {/* <Text style={styles.stateLabel}>Selected State </Text> */}
                     <Text style={styles.stateName}>{String.Home_ProjRajasthan}</Text>
-                    <TouchableOpacity activeOpacity={0.8} style={styles.changeStateButton} >
+                    <TouchableOpacity 
+                      activeOpacity={0.8} 
+                      style={styles.changeStateButton} 
+                      onPress={() => navigation.navigate('ExploreStates')}
+                    >
                       <Text style={styles.changeStateText}>{String.ChooseTree_ChangeState}</Text>
                     </TouchableOpacity>
                   </View>
@@ -213,7 +232,12 @@ const ChooseTreeScreen = () => {
 
             return (
 
-              <View key={tree.id} style={styles.treeCard}>
+              <TouchableOpacity 
+                key={tree.id} 
+                style={[styles.treeCard, selectedTree === tree.id && styles.treeCardSelected]}
+                activeOpacity={0.8}
+                onPress={() => setSelectedTree(tree.id)}
+              >
                 <View style={{ flexDirection: 'row', }}>
                   <View style={styles.treeImageContainer}>
                     <ImageBackground source={tree.image} style={styles.treeImage} resizeMode='cover' imageStyle={{ borderRadius: 10, }}>
@@ -277,7 +301,7 @@ const ChooseTreeScreen = () => {
                     </View>
                   </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </View>
@@ -373,12 +397,16 @@ const ChooseTreeScreen = () => {
           </View>
 
           <TouchableOpacity
-            style={styles.continueButton}
-            onPress={() => navigation.navigate('ChooseLocation')}
+            style={[styles.continueButton, !selectedTree && { opacity: 0.5 }]}
+            onPress={() => {
+              if (selectedTree) {
+                navigation.navigate('ChooseLocation');
+              }
+            }}
             activeOpacity={0.85}
+            disabled={!selectedTree}
           >
             <Text style={styles.continueText}>{String.ChooseTree_Continue}</Text>
-
           </TouchableOpacity>
         </View>
       </ScrollView>

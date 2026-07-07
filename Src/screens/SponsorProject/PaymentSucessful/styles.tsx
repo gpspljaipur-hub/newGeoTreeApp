@@ -33,9 +33,31 @@ export const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'ios' ? 35 : 15,
   },
   checkCircle: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 2,
+    borderColor: '#E2EFE5',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 4 },
+    // shadowOpacity: 0.08,
+    // shadowRadius: 6,
+    // elevation: 3,
+    marginTop: MarginHW.MarginH16,
+    marginBottom: MarginHW.MarginH6,
+  },
+  checkIcon: {
+    width: 15,
+    height: 15,
+    tintColor: '#1A6836',
+  },
+  successCheckCircle: {
+    width: 50,
+    height: 50,
+    borderRadius: 50 / 2,
     backgroundColor: '#FFFFFF',
     borderWidth: 2,
     borderColor: '#E2EFE5',
@@ -46,12 +68,12 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.08,
     shadowRadius: 6,
     elevation: 3,
-    marginTop: MarginHW.MarginH26,
+    marginTop: MarginHW.MarginH16,
     marginBottom: MarginHW.MarginH6,
   },
-  checkIcon: {
-    width: 32,
-    height: 32,
+  successCheckIcon: {
+    width: 25,
+    height: 25,
     tintColor: '#1A6836',
   },
   successTitle: {
@@ -466,7 +488,7 @@ export const styles = StyleSheet.create({
 
   // Dark Impact Banner
   darkBanner: {
-    backgroundColor: '#0A1C14',
+    backgroundColor: '#fff',
     borderRadius: 14,
     marginHorizontal: MarginHW.MarginW10,
     marginTop: MarginHW.MarginH12,
@@ -507,8 +529,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
+    backgroundColor: Colors.legacyGreen,
+    borderRadius: 6,
     paddingVertical: MarginHW.PaddingH8,
     paddingHorizontal: MarginHW.PaddingW10,
     alignSelf: 'flex-start',
@@ -517,7 +539,7 @@ export const styles = StyleSheet.create({
   dashboardButtonText: {
     fontSize: FontsSize.size11,
     fontFamily: fonts.OpenSans_Bold,
-    color: '#0A1C14',
+    color: '#fff',
     marginRight: MarginHW.MarginW6,
   },
   dashboardButtonArrow: {

@@ -11,6 +11,7 @@ import {
   Platform,
   UIManager,
   KeyboardAvoidingView,
+  StatusBar,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -19,7 +20,7 @@ import { styles } from './styles';
 import Images from '../../constants/images';
 import Stepper from '../../comman/Stepper';
 import PlantHeader from '../../comman/PlantHeader';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 
 // if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -27,6 +28,7 @@ import LinearGradient from 'react-native-linear-gradient';
 // }
 const DetailsScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const insets = useSafeAreaInsets();
 
   // Form State
   const [name, setName] = useState('');
@@ -45,21 +47,14 @@ const DetailsScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
+    <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
+      <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{ flex: 1 }}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80}
       >
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
-          {/* Header */}
-
-          <PlantHeader />
-          {/* Stepper */}
-          <View style={{ backgroundColor: '#FAFBFB', position: 'absolute', top: 38, left: 0, right: 0, }}>
-            <Stepper currentStep={3} />
-          </View>
-
           {/* Hero Card */}
           <View style={styles.heroCard}>
             <ImageBackground
@@ -69,12 +64,25 @@ const DetailsScreen = () => {
               resizeMode='cover'
             >
               <LinearGradient
-                colors={['#FFFFFF', 'rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
+                colors={['rgba(255, 255, 255, 0.8)', 'rgba(255, 255, 255, 0)']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 locations={[0, 0.38, 0.58, 1]}
                 style={styles.heroOverlay}
               />
+              <View style={[styles.headerTopRow, { paddingTop: Math.max(insets.top, 16) }]}>
+                <TouchableOpacity
+                  style={styles.backButton}
+                  activeOpacity={0.7}
+                  onPress={() => navigation.goBack()}
+                >
+                  <Image source={Images.back} style={styles.backButtonIcon} resizeMode="contain" />
+                </TouchableOpacity>
+
+                <View style={{ flex: 1 }}>
+                  <Stepper currentStep={3} />
+                </View>
+              </View>
 
               <View style={styles.heroContent}>
                 <View style={styles.heroTextContainer}>

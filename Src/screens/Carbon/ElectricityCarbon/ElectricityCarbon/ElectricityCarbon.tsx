@@ -457,10 +457,7 @@ const ElectricityCarbonScreen = () => {
                             style={styles.seeCalculationButton}
                             activeOpacity={0.7}
                             onPress={() => {
-                                Alert.alert(
-                                    'Calculation Info',
-                                    'CO₂ emissions are estimated using the official grid carbon intensity data for India (0.82 kg/kWh), corrected for household structure, resident shares, and energy-efficient system benefits.'
-                                );
+                                handleSave()
                             }}
                         >
                             <Image source={Images.impact} style={styles.seeCalculationIcon} resizeMode="contain" />
@@ -469,9 +466,8 @@ const ElectricityCarbonScreen = () => {
                         <TouchableOpacity
                             style={styles.saveButton}
                             activeOpacity={0.8}
-                            onPress={handleSave}
-                        >
-                            <Text style={styles.saveButtonText}>Calculate Footprint  →</Text>
+                            onPress={() => { navigation.goBack() }}>
+                            <Text style={styles.saveButtonText}>Calculate Footprint</Text>
                         </TouchableOpacity>
                     </View>
 

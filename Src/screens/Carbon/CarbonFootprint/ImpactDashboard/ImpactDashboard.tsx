@@ -189,7 +189,7 @@ const ImpactDashboard = ({ navigation }: any) => {
                 <View style={styles.sectionHeaderRow}>
                     <Text style={styles.sectionTitle}>Active Plantations</Text>
                     <TouchableOpacity>
-                        <Text style={styles.sectionLink}>View All Projects →</Text>
+                        <Text style={styles.sectionLink}>View All Projects</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -227,7 +227,7 @@ const ImpactDashboard = ({ navigation }: any) => {
                     <View style={styles.growthUpdatesHeader}>
                         <Text style={styles.sectionTitle}>Latest Growth Updates</Text>
                         <TouchableOpacity>
-                            <Text style={styles.sectionLink}>View All Photos →</Text>
+                            <Text style={styles.sectionLink}>View All Photos</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -257,7 +257,7 @@ const ImpactDashboard = ({ navigation }: any) => {
                     <View style={styles.growthUpdatesHeader}>
                         <Text style={styles.sectionTitle}>My Certificates</Text>
                         <TouchableOpacity>
-                            <Text style={styles.sectionLink}>View All →</Text>
+                            <Text style={styles.sectionLink}>View All</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -377,7 +377,7 @@ const ImpactDashboard = ({ navigation }: any) => {
                     </View>
 
                     <TouchableOpacity style={styles.feedViewAllBtn}>
-                        <Text style={styles.feedViewAllText}>View Full Timeline →</Text>
+                        <Text style={styles.feedViewAllText}>View Full Timeline</Text>
                     </TouchableOpacity>
                 </View>
 

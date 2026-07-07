@@ -570,7 +570,6 @@ const TravelCarbonScreen = () => {
                     onPress={handleSaveAndContinue}
                 >
                     <Text style={styles.saveButtonText}>Save & Continue</Text>
-                    <Text style={styles.saveButtonIcon}>→</Text>
                 </TouchableOpacity>
             </ScrollView>
 

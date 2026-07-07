@@ -619,7 +619,7 @@ const SponsorSupportScreen = () => {
         <View style={styles.bottomFloatingBar}>
           <View style={styles.bottomSummaryCard}>
             <Image source={Images.rotatehand_tree} style={styles.bottomThumbImg} resizeMode="contain" />
-
+            
             <View style={styles.bottomTextCol}>
               <Text style={styles.bottomSupportingLabel}>You are supporting</Text>
               <Text style={styles.bottomProjectName} numberOfLines={1}>
@@ -645,11 +645,11 @@ const SponsorSupportScreen = () => {
               <Text style={styles.payButtonText}>Proceed to Payment</Text>
             </TouchableOpacity>
 
-            <View style={{ flexDirection: 'row', justifyContent: "center", alignItems: 'center', marginTop: 4 }}>
-              <Image source={Images.lock} style={styles.bottomRedirectIcon} resizeMode="contain" />
-              <Text style={styles.bottomRedirectText}>Secure Checkout</Text>
+              <View style={{ flexDirection: 'row', justifyContent:"center", alignItems: 'center', marginTop: 4 }}>
+                <Image source={Images.lock} style={styles.bottomRedirectIcon} resizeMode="contain" />
+                <Text style={styles.bottomRedirectText}>Secure Checkout</Text>
+              </View>
             </View>
-          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

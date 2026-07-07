@@ -284,7 +284,7 @@ const SponsorPaymentScreen = () => {
               <Text style={styles.taxBenefitTextBold}>Thank you for supporting a greener planet!</Text>
               <Text style={styles.taxBenefitTextDesc}>This contribution is eligible for 80G tax benefit.</Text>
               <TouchableOpacity activeOpacity={0.7}>
-                <Text style={styles.taxBenefitLink}>Know more →</Text>
+                <Text style={styles.taxBenefitLink}>Know more</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -544,7 +544,6 @@ const SponsorPaymentScreen = () => {
               >
                 <Image source={Images.lock} style={styles.payButtonLockIcon} resizeMode="contain" />
                 <Text style={styles.payButtonText}>Pay Securely</Text>
-                <Text style={styles.payButtonArrow}>→</Text>
               </TouchableOpacity>
               <Text style={styles.bottomRedirectText}>You will be redirected to a secure payment gateway</Text>
             </View>

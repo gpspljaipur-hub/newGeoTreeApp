@@ -183,16 +183,42 @@ export const styles = StyleSheet.create({
     overflow: 'visible',
     backgroundColor: Colors.white,
   },
+  headerTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: MarginHW.PaddingW20,
+    paddingTop: MarginHW.PaddingH16,
+    width: '100%',
+  },
+  backButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    marginRight: 10,
+  },
+  backButtonIcon: {
+    width: 18,
+    height: 18,
+    tintColor: Colors.tint,
+  },
 
   heroImage: {
     width: '100%',
-    height: 220,
+    height: 260,
     justifyContent: 'space-between',
   },
 
   heroContent: {
     paddingHorizontal: MarginHW.PaddingW20,
-    paddingTop: MarginHW.PaddingH16,
+
     paddingBottom: MarginHW.PaddingH50,
   },
 
@@ -209,9 +235,9 @@ export const styles = StyleSheet.create({
   },
 
   stateIconContainer: {
-    width: 42,
-    height: 42,
-    borderRadius: 42 / 2,
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
     backgroundColor: Colors.listBg,
     justifyContent: 'center',
     alignItems: 'center',
@@ -219,8 +245,8 @@ export const styles = StyleSheet.create({
   },
 
   stateIcon: {
-    width: 22,
-    height: 22,
+    width: 15,
+    height: 15,
     tintColor: Colors.tint,
   },
 
@@ -236,10 +262,9 @@ export const styles = StyleSheet.create({
 
   stateName: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size18,
+    fontSize: FontsSize.size14,
     color: Colors.tint,
     marginTop: 0,
-    lineHeight: FontsSize.size24,
   },
 
   changeStateButton: {
@@ -249,8 +274,8 @@ export const styles = StyleSheet.create({
   },
 
   changeStateText: {
-    fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size10,
+    fontFamily: fonts.OpenSans_Regular,
+    fontSize: FontsSize.size8,
     color: Colors.tint,
   },
 
@@ -261,16 +286,14 @@ export const styles = StyleSheet.create({
 
   heroTitle: {
     fontFamily: fonts.OpenSans_Bold,
-    fontSize: FontsSize.size20,
-    lineHeight: 24,
+    fontSize: FontsSize.size18,
     color: Colors.textDark,
   },
 
   heroSubtitle: {
     marginTop: MarginHW.MarginH8,
     fontFamily: fonts.OpenSans_Regular,
-    fontSize: FontsSize.size14,
-    lineHeight: 18,
+    fontSize: FontsSize.size12,
     color: Colors.black,
   },
 
@@ -367,7 +390,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     marginBottom: 10,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: Colors.borderLight,
     shadowColor: Colors.black,
 
@@ -379,6 +402,10 @@ export const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 3,
     overflow: 'hidden',
+  },
+  treeCardSelected: {
+    borderColor: Colors.tint,
+    backgroundColor: Colors.bgGreenLight,
   },
   treeImageContainer: {
     flex: 0.5,
