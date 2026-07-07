@@ -103,7 +103,7 @@ const HomeScreen = () => {
     if (item?._id == '1') {
       navigation.navigate('ChooseTreeScreen')
     } else if (item?._id == '2') {
-      navigation.navigate('GiftTreeScreen')
+      // navigation.navigate('GiftTreeScreen')
     } else if (item?._id == '3') {
       navigation.navigate('CalculateCarbon')
     } else if (item?._id == '4') {
@@ -320,9 +320,9 @@ const HomeScreen = () => {
                   <Text style={styles.cardTitle}>{item?.name}</Text>
                   <View style={styles.cardFooterRow}>
                     <Text numberOfLines={1} style={styles.cardSubtitle}>{item?.type}</Text>
-                    <View style={styles.cardCircleArrow}>
+                    {/* <View style={styles.cardCircleArrow}>
                       <Text style={styles.cardArrowIcon}>→</Text>
-                    </View>
+                    </View> */}
                   </View>
                 </View>
 
@@ -336,9 +336,9 @@ const HomeScreen = () => {
           <View style={styles.sectionTitleRow}>
             <Text style={styles.sectionTitle}>{String.Home_SectionTitle} </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('ExploreStates')}>
+          {/* <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('ExploreStates')}>
             <Text style={styles.viewAllLink}>{String.Home_ViewAll}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         {/* Projects Horizontal List */}
@@ -362,7 +362,7 @@ const HomeScreen = () => {
                 <TouchableOpacity
                   style={styles.projectCard}
                   activeOpacity={0.9}
-                  onPress={() => navigation.navigate('Statewise', { stateName: location })}
+                  onPress={() => navigation.navigate('ProjectSelect', { title: title })}
                 >
                   <View style={styles.projectImgContainer}>
                     <Image source={typeof image === 'string' ? { uri: image } : image} style={styles.projectImage} resizeMode="cover" />

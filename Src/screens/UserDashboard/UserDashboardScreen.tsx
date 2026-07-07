@@ -380,7 +380,6 @@ const UserDashboardScreen = () => {
                   end={{ x: 1, y: 0 }}
                 >
                   <Text style={styles.exploreBtnText}>{String.Dashboard_ExploreProjects}</Text>
-                  <Text style={styles.exploreBtnArrow}>→</Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>

@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
   },
   heroImage: {
     width: '100%',
-    height: 220,
-    justifyContent: 'center',
+    height: 260,
+    justifyContent: 'space-between',
   },
   heroImageRadius: {
     width: '100%',
@@ -37,11 +37,38 @@ export const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: 'transparent',
   },
+  headerTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: MarginHW.PaddingW20,
+    paddingTop: MarginHW.PaddingH16,
+    width: '100%',
+  },
+  backButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    marginRight: 10,
+  },
+  backButtonIcon: {
+    width: 18,
+    height: 18,
+    tintColor: Colors.tint,
+  },
   heroContent: {
     flex: 1,
     paddingHorizontal: MarginHW.PaddingW20,
     justifyContent: 'center',
-    top: 10,
+    top: -10,
+
   },
   heroTextContainer: {
     width: '60%',

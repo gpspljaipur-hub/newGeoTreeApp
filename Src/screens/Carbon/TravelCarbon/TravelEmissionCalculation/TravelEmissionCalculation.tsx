@@ -343,7 +343,6 @@ const TravelEmissionCalculationScreen = () => {
                     </View>
                     <TouchableOpacity style={styles.connectButton} activeOpacity={0.7}>
                         <Text style={styles.connectButtonText}>Connect Data</Text>
-                        <Text style={styles.connectButtonIcon}>→</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -354,7 +353,6 @@ const TravelEmissionCalculationScreen = () => {
                     onPress={() => navigation.goBack()}
                 >
                     <Text style={styles.backCtaText}>Back to Travel Assessment</Text>
-                    <Text style={styles.backCtaIcon}>→</Text>
                 </TouchableOpacity>
 
             </ScrollView>

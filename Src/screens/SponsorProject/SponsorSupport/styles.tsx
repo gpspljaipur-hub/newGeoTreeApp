@@ -805,7 +805,6 @@ export const styles = StyleSheet.create({
   // Sticky Bottom Footer Bar
   bottomFloatingBar: {
     backgroundColor: Colors.white,
-
     paddingVertical: MarginHW.PaddingH10,
     paddingHorizontal: MarginHW.PaddingW10,
     shadowColor: Colors.black,

@@ -601,7 +601,6 @@ const CompletePaymentScreen = () => {
               >
                 <Image source={Images.lock} style={styles.payButtonIcon} resizeMode="contain" />
                 <Text style={styles.payButtonText}>Pay Securely ₹{total.toLocaleString('en-IN')}</Text>
-                <Text style={styles.payButtonArrow}>→</Text>
               </TouchableOpacity>
             </View>
 

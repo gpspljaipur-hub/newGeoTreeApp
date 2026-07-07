@@ -436,7 +436,7 @@ const ChoicetreeplantationScreen = () => {
                             end={{ x: 1, y: 0 }}
                         >
                             <Text style={styles.actionBtnText}>{String.ChoiceTree_ProceedBtn}</Text>
-                            <Text style={styles.actionBtnArrow}>→</Text>
+                            {/* <Text style={styles.actionBtnArrow}>→</Text> */}
                         </LinearGradient>
                     </TouchableOpacity>
 

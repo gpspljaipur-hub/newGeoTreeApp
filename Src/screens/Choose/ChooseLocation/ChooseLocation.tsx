@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   ImageBackground,
+  StatusBar,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -13,7 +14,7 @@ import { RootStackParamList } from '../../../navigation/RootNavigator';
 import { styles } from './styles';
 import Images from '../../../constants/images';
 import String from '../../../comman/String';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import Stepper from '../../../comman/Stepper';
 import PlantHeader from '../../../comman/PlantHeader';
@@ -67,25 +68,20 @@ const locationsData = [
 
 const ChooseLocationScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const insets = useSafeAreaInsets();
   const [selectedLocationId, setSelectedLocationId] = useState('aravali');
 
 
   return (
-    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
+    <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
-        {/* Header */}
-        <PlantHeader />
-
-        {/* Stepper */}
-        <Stepper currentStep={2} />
-
         {/* Hero Card */}
         <View style={styles.heroCard}>
           <ImageBackground
             source={Images.location_hero_bg}
             style={styles.heroImage}
             imageStyle={styles.heroImageRadius}
-            resizeMode='contain'
+            resizeMode='cover'
           >
             {/* White Fade Overlay */}
             <LinearGradient
@@ -95,6 +91,19 @@ const ChooseLocationScreen = () => {
               locations={[0, 0.38, 0.58, 1]}
               style={styles.heroOverlay}
             />
+            <View style={[styles.headerTopRow, { paddingTop: Math.max(insets.top, 16) }]}>
+              <TouchableOpacity
+                style={styles.backButton}
+                activeOpacity={0.7}
+                onPress={() => navigation.goBack()}
+              >
+                <Image source={Images.back} style={styles.backButtonIcon} resizeMode="contain" />
+              </TouchableOpacity>
+
+              <View style={{ flex: 1 }}>
+                <Stepper currentStep={2} />
+              </View>
+            </View>
             <View style={styles.heroContent}>
               <View style={styles.heroTextContainer}>
                 <Text style={styles.heroTitle}>
@@ -119,7 +128,11 @@ const ChooseLocationScreen = () => {
             </View>
 
           </View>
-          <TouchableOpacity style={styles.changeStateButton} activeOpacity={0.8}>
+          <TouchableOpacity 
+            style={styles.changeStateButton} 
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('ExploreStates')}
+          >
             <Text style={styles.changeStateText}>{String.ChooseTree_ChangeState}</Text>
           </TouchableOpacity>
         </View>

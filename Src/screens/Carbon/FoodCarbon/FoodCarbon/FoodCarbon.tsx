@@ -89,12 +89,16 @@ const FoodCarbonScreen = () => {
     };
 
     const handleSeeCalculation = () => {
-        Alert.alert(
-            'How Estimate is Calculated',
-            `Based on your selections:\n- Diet base: ${selectedDiet === 'vegetarian' ? '2.2' : selectedDiet === 'eggetarian' ? '2.8' : selectedDiet === 'non-veg' ? '3.8' : '5.2'
-            } kg CO₂/day\n- Meal factor: ${selectedMeals === '1' ? '70%' : selectedMeals === '2' ? '90%' : selectedMeals === '3' ? '100%' : '120%'}\n- Adjustments for dairy, processed food, meat frequencies, and local sourcing.\n- Formula: Annual Tons = (Daily Base * Meals Multiplier + Frequencies Adjustments) * 365 / 1000.`,
-            [{ text: 'OK', style: 'default' }]
-        );
+        navigation.navigate('FoodEmissionCalculation', {
+            annualTons,
+            selectedDiet,
+            selectedMeals,
+            selectedFruits,
+            selectedDairy,
+            selectedProcessed,
+            selectedMeat,
+            selectedLocal,
+        });
     };
 
     return (
@@ -537,7 +541,7 @@ const FoodCarbonScreen = () => {
                                 A plant-rich diet can reduce your food emissions by up to 70% compared to a high meat diet.
                             </Text>
                         </View>
-                        <Image source={Images.food_icon_salad_bowl} style={{ width: 44, height: 30 }} resizeMode="contain" />
+                        {/* <Image source={Images.food_icon_salad_bowl} style={{ width: 44, height: 30 }} resizeMode="contain" /> */}
                     </View>
 
                     {/* Save & Continue CTA */}
@@ -545,19 +549,10 @@ const FoodCarbonScreen = () => {
                         style={styles.saveButton}
                         activeOpacity={0.8}
                         onPress={() => {
-                            navigation.navigate('FoodEmissionCalculation', {
-                                annualTons,
-                                selectedDiet,
-                                selectedMeals,
-                                selectedFruits,
-                                selectedDairy,
-                                selectedProcessed,
-                                selectedMeat,
-                                selectedLocal,
-                            });
+                            navigation.goBack()
                         }}
                     >
-                        <Text style={styles.saveButtonText}>Save & Continue  →</Text>
+                        <Text style={styles.saveButtonText}>Save & Continue </Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

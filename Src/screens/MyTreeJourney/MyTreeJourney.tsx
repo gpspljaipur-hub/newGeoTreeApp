@@ -584,7 +584,6 @@ const MyTreeJourneyScreen = () => {
                     >
                         <Image source={Images.impact} style={styles.stickyButtonLeftIcon} resizeMode="contain" />
                         <Text style={styles.stickyButtonLeftText}>View Plantation Photos</Text>
-                        <Text style={styles.stickyButtonLeftArrow}>→</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity

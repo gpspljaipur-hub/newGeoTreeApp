@@ -31,10 +31,11 @@ const ProjectSelectScreen = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'ProjectSelect'>>();
 
   // Extract project from navigation parameter
-  const { project } = route.params || {};
+  const { project = {} } = route.params || {};
+  console.log('project', project, route.params)
 
   // Dynamic values with static fallbacks matching "Aravalli Green Belt" design mockup
-  const projectName = project?.name || 'Aravalli Green Belt';
+  const projectName = route?.params?.title || 'Aravalli Green Belt';
   const projectCategory = project?.category || 'Desert Restoration';
   const projectDescription = project?.description || 'Restoring the Aravalli hills and enhancing biodiversity around Jaipur.';
   const treesPlantedText = project?.treesPlanted || '25,000+';

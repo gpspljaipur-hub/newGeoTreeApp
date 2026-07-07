@@ -25,8 +25,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     backgroundColor: 'transparent',
   },
   headerLeft: {
@@ -313,8 +313,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bannerTreeIcon: {
-    width: 24,
-    height: 24,
+    width: 150,
+    height: 40,
     marginLeft: -4,
   },
   // Action Button

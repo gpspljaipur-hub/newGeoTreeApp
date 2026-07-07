@@ -250,7 +250,7 @@ const ReviewPlantationScreen = () => {
                                     </View>
                                 ))}
                                 <TouchableOpacity activeOpacity={0.7}>
-                                    <Text style={styles.viewDetailsLink}>View Details  →</Text>
+                                    <Text style={styles.viewDetailsLink}>View Details</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -489,7 +489,7 @@ const ReviewPlantationScreen = () => {
                     </View>
                     <TouchableOpacity style={styles.payButton} onPress={handlePay} activeOpacity={0.8}>
                         <Text style={styles.payButtonText}>Pay ₹1,990 Securely</Text>
-                        <Text style={styles.payButtonArrow}>→</Text>
+                        {/* <Text style={styles.payButtonArrow}>→</Text> */}
                     </TouchableOpacity>
                 </View>
 

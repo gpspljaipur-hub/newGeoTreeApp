@@ -309,7 +309,6 @@ const PortfolioScreen = () => {
 
                         <TouchableOpacity style={styles.primaryBtn} onPress={handleGoToJourney} activeOpacity={0.9}>
                             <Text style={styles.primaryBtnText}>View Tree Journey</Text>
-                            <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold', marginLeft: 4 }}>→</Text>
                         </TouchableOpacity>
                     </View>
 

@@ -9,7 +9,7 @@ import {
     Alert,
     ImageBackground,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import Images from '../../../constants/images';
 import { Colors } from '../../../comman/Colors';
@@ -19,6 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const CalculateCarbonScreen = () => {
     const navigation = useNavigation<any>();
+    const insets = useSafeAreaInsets();
 
     const STATS_DATA = [
         {
@@ -119,9 +120,8 @@ const CalculateCarbonScreen = () => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor="#F4FBF7" barStyle="dark-content" />
-
+        <SafeAreaView style={styles.container} edges={['left', 'right', 'bottom']}>
+            <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.scrollViewContent}
@@ -133,7 +133,7 @@ const CalculateCarbonScreen = () => {
                     resizeMode="cover"
                 >
                     {/* Custom Header */}
-                    <View style={styles.header}>
+                    <View style={[styles.header, { paddingTop: Math.max(insets.top, 16) }]}>
                         <TouchableOpacity
                             style={styles.headerIconButton}
                             activeOpacity={0.7}
@@ -251,9 +251,9 @@ const CalculateCarbonScreen = () => {
                     </Text>
                     <View style={styles.bannerTreesRow}>
                         <Image source={Images.banner_tree} style={styles.bannerTreeIcon} resizeMode="contain" />
+                        {/* <Image source={Images.banner_tree} style={styles.bannerTreeIcon} resizeMode="contain" />
                         <Image source={Images.banner_tree} style={styles.bannerTreeIcon} resizeMode="contain" />
-                        <Image source={Images.banner_tree} style={styles.bannerTreeIcon} resizeMode="contain" />
-                        <Image source={Images.banner_tree} style={styles.bannerTreeIcon} resizeMode="contain" />
+                        <Image source={Images.banner_tree} style={styles.bannerTreeIcon} resizeMode="contain" /> */}
                     </View>
                 </View>
 
