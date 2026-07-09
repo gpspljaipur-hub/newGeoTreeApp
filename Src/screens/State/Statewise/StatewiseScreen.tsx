@@ -326,10 +326,9 @@ const StatewiseScreen = () => {
       desc: String.Statewise_CertificateDesc,
     },
   ];
-
-  const stateName = route.params?.stateName || 'Rajasthan';
+  const stateName = route.params?.State?.name || 'Rajasthan';
+  const Stateobject = route.params?.State;
   const stateData = PROJECTS_DATA[stateName] || PROJECTS_DATA['Rajasthan'];
-
   const apiStates = useSelector((state: RootState) => state.state.stateList);
   const apiLocations = useSelector((state: RootState) => state.location.locationList);
 
@@ -340,24 +339,28 @@ const StatewiseScreen = () => {
   const matchedState = apiStates?.find(
     (s: any) => s.state_name?.toLowerCase() === stateName.toLowerCase()
   );
+  // console.log('matchedState====', matchedState)
+
 
   React.useEffect(() => {
-    if (matchedState?._id) {
-      locationData(dispatch, matchedState._id);
+    if (Stateobject?.id) {
+      locationData(dispatch, Stateobject?.id);
     }
-  }, [dispatch, matchedState?._id]);
+  }, [dispatch, Stateobject?.id]);
 
   const mappedLocations = apiLocations && apiLocations.length > 0
     ? apiLocations.map((item: any, idx: number) => ({
+      ...item,
       id: item._id?.toString() || idx.toString(),
-      name: item.location_name,
-      category: 'Restoration Zone',
-      description: item.description,
-      treesPlanted: '10,000+',
-      survivalRate: '95%',
-      image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.aravali_belt,
-      city: stateName,
-      about: item.description,
+      name: item.site_name,
+      category: item.plantation_type || 'Restoration Zone',
+      description: item.description || item.site_description,
+      treesPlanted: item.planted_count !== undefined ? item.planted_count.toString() : '10,000+',
+      survivalRate: item.survival_rate ? item.survival_rate : 0,
+      image: item.site_image ? { uri: Config.imageurl + item.site_image } : Images.aravali_belt,
+      city: item.district || item.village || stateName,
+      about: item.description || item.site_description,
+      capacity: item.capacity,
     }))
     : stateData.locations;
 
@@ -382,6 +385,7 @@ const StatewiseScreen = () => {
           {/* Header Image Background */}
           <ImageBackground
             source={Images.BgState}
+            // source={Stateobject?.image ? { uri: Stateobject?.image?.uri } : Images.BgState}
             style={styles.headerBackground}
             resizeMode='cover'
           >
@@ -481,14 +485,15 @@ const StatewiseScreen = () => {
 
                   <View style={styles.horizontalCardContent}>
                     <View style={styles.horizontalTitleRow}>
+
                       <Text style={styles.horizontalCardTitle}>
-                        {loc.name}
+                        {loc?.site_name}
                       </Text>
-                      <TouchableOpacity
+                      {/* <TouchableOpacity
                         activeOpacity={0.7}
                       >
                         <Image source={Images.heart} style={styles.horizontalHeartIcon} resizeMode="contain" />
-                      </TouchableOpacity>
+                      </TouchableOpacity> */}
                     </View>
 
                     {/* Category Tag */}
@@ -521,7 +526,7 @@ const StatewiseScreen = () => {
 
                       <View style={styles.horizontalSpecItem}>
                         <Image source={Images.check} style={styles.horizontalSpecIcon} resizeMode="contain" />
-                        <Text style={styles.horizontalSpecValue}>{loc.survivalRate}</Text>
+                        <Text style={styles.horizontalSpecValue}>{loc.survivalRate} %</Text>
                         <Text style={styles.horizontalSpecLabel}>{String.Statewise_SurvivalRate}</Text>
                       </View>
                     </View>

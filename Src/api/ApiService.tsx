@@ -29,7 +29,8 @@ export const locationData = async (dispatch: any, state_id: any) => {
             state_id: state_id,
         }
         const response: any = await Get_Api(ApiUrl.location_list, Satatedata)();
-        dispatch(setLocation(response?.data?.data || []));
+        console.log('response location_list', response?.data)
+        dispatch(setLocation(response?.data || []));
 
     } catch (error) {
     }

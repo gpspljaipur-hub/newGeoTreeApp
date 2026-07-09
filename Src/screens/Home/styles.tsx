@@ -82,11 +82,13 @@ export const styles = StyleSheet.create({
     height: Dimensions.get("window").height / 3.2,
     width: '100%',
     paddingHorizontal: MarginHW.PaddingW10,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     overflow: 'hidden',
   },
   heroImage: {
-    flex: 1,
+    width: '100%',
+    height: Dimensions.get("window").height / 3.1,
+
   },
   heroTextContent: {
     marginVertical: 15,
@@ -98,7 +100,7 @@ export const styles = StyleSheet.create({
 
   },
   heroTitleGreen: {
-    fontSize: FontsSize.size24,
+    fontSize: FontsSize.size18,
     fontFamily: fonts.OpenSans_ExtraBold,
     color: '#2F9E67',
     lineHeight: 30,
@@ -206,7 +208,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 16,
     marginHorizontal: MarginHW.MarginW10,
-    marginTop: 15,
+    marginTop: 5,
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: MarginHW.PaddingH14,

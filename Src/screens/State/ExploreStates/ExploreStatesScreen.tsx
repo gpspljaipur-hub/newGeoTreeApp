@@ -9,6 +9,7 @@ import {
   ScrollView,
   StatusBar,
   FlatList,
+  Modal,
 } from 'react-native';
 import { styles } from './styles';
 import Images from '../../../constants/images';
@@ -39,6 +40,12 @@ const ExploreStatesScreen = () => {
   const dispatch = useDispatch();
   const apiStates = useSelector((state: RootState) => state.state.stateList);
 
+  const [sortModalVisible, setSortModalVisible] = useState(false);
+  const [filterModalVisible, setFilterModalVisible] = useState(false);
+  const [sortOption, setSortOption] = useState<string>('Name (A-Z)');
+  const [filterOption, setFilterOption] = useState<string>('All');
+
+  console.log('apiStates', apiStates)
   React.useEffect(() => {
     stateData(dispatch);
   }, [dispatch]);
@@ -48,8 +55,8 @@ const ExploreStatesScreen = () => {
       id: item._id?.toString() || idx.toString(),
       name: item.state_name,
       image: item.state_image ? { uri: Config.imageurl + item.state_image } : Images.rajasthan,
-      trees: '600K+',
-      projects: '10',
+      trees: item.tree_count,
+      projects: item.project_count,
       description: item.description || 'Forestry Conservation',
       icon: Images.treeIcon,
       species: 'Native Species',
@@ -58,9 +65,28 @@ const ExploreStatesScreen = () => {
 
   console.log('mappedAllStates', mappedAllStates)
 
-  const filteredAll = mappedAllStates.filter(item =>
+  let filteredAll = mappedAllStates.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (filterOption === 'Has Trees') {
+    filteredAll = filteredAll.filter(item => parseInt(item.trees || '0') > 0);
+  } else if (filterOption === 'Has Projects') {
+    filteredAll = filteredAll.filter(item => parseInt(item.projects || '0') > 0);
+  }
+
+  filteredAll = [...filteredAll].sort((a, b) => {
+    if (sortOption === 'Name (A-Z)') {
+      return a.name.localeCompare(b.name);
+    } else if (sortOption === 'Name (Z-A)') {
+      return b.name.localeCompare(a.name);
+    } else if (sortOption === 'Highest Trees') {
+      return parseInt(b.trees || '0') - parseInt(a.trees || '0');
+    } else if (sortOption === 'Highest Projects') {
+      return parseInt(b.projects || '0') - parseInt(a.projects || '0');
+    }
+    return 0;
+  });
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['left', 'right']}>
@@ -77,8 +103,7 @@ const ExploreStatesScreen = () => {
                 style={styles.backButton}
                 activeOpacity={0.7}
                 onPress={() => navigation.goBack()}
-              >
-                <Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
+              ><Image source={Images.back} style={styles.backIcon} resizeMode="contain" />
               </TouchableOpacity>
             </View>
 
@@ -91,7 +116,7 @@ const ExploreStatesScreen = () => {
               </Text>
             </View>
             <View style={styles.searchContainer}>
-              <Image source={Images.geolocation} style={styles.searchIcon} resizeMode="contain" />
+              {/* <Image source={Images.geolocation} style={styles.searchIcon} resizeMode="contain" /> */}
               <TextInput
                 style={styles.searchInput}
                 placeholder={String.ExploreStates_SearchPlaceholder}
@@ -124,7 +149,7 @@ const ExploreStatesScreen = () => {
                   <TouchableOpacity
                     style={styles.popularCard}
                     activeOpacity={0.9}
-                    onPress={() => navigation.navigate('Statewise', { stateName: item.name })}
+                    onPress={() => navigation.navigate('Statewise', { State: item })}
                   >
                     <Image source={item.image} style={styles.popularCardImage} resizeMode="cover" />
                     <View style={styles.popularCardContent}>
@@ -147,9 +172,9 @@ const ExploreStatesScreen = () => {
                             {item.projects}
                           </Text>
                         </View>
-                        <View style={styles.popularArrowBtn}>
+                        {/* <View style={styles.popularArrowBtn}>
                           <Image source={Images.back} style={styles.popularArrowIcon} resizeMode="contain" />
-                        </View>
+                        </View> */}
                       </View>
                     </View>
                   </TouchableOpacity>
@@ -162,11 +187,19 @@ const ExploreStatesScreen = () => {
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>{String.ExploreStates_AllStates}</Text>
             <View style={styles.sortFilterRow}>
-              <TouchableOpacity style={styles.sortFilterBtn} activeOpacity={0.7}>
+              <TouchableOpacity
+                style={styles.sortFilterBtn}
+                activeOpacity={0.7}
+                onPress={() => setSortModalVisible(true)}
+              >
                 <Image source={Images.sort} style={styles.sortFilterIcon} resizeMode="contain" />
                 <Text style={styles.sortFilterText}>{String.ExploreStates_Sort}</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.sortFilterBtn} activeOpacity={0.7}>
+              <TouchableOpacity
+                style={styles.sortFilterBtn}
+                activeOpacity={0.7}
+                onPress={() => setFilterModalVisible(true)}
+              >
                 <Image source={Images.filter} style={styles.sortFilterIcon} resizeMode="contain" />
                 <Text style={styles.sortFilterText}>{String.ExploreStates_Filter}</Text>
               </TouchableOpacity>
@@ -175,19 +208,15 @@ const ExploreStatesScreen = () => {
 
           <View style={styles.allStatesList}>
             {filteredAll.map((item) => (
-              <View key={item.id} style={styles.allCard}>
+              <TouchableOpacity key={item.id} style={styles.allCard} onPress={() => navigation.navigate('Statewise', { State: item })}>
                 <View style={styles.allCardImageContainer}>
                   <Image source={item.image} style={styles.allCardImage} resizeMode="cover" />
-                  {/* {item.tag && (
-                    <View style={styles.tagBadge}>
-                      <Text style={styles.tagBadgeText}>{item.tag}</Text>
-                    </View>
-                  )} */}
-                  {item.icon && (
+
+                  {/* {item.icon && (
                     <View style={styles.overlapIconContainer}>
                       <Image source={item.icon} style={styles.overlapIcon} resizeMode="contain" />
                     </View>
-                  )}
+                  )} */}
                 </View>
 
                 <View style={styles.allCardContent}>
@@ -213,17 +242,17 @@ const ExploreStatesScreen = () => {
                   </Text>
 
 
-                  <View style={styles.allCardDivider} />
+                  {/* <View style={styles.allCardDivider} /> */}
 
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={styles.exploreBtn}
                     activeOpacity={0.8}
                     onPress={() => navigation.navigate('Statewise', { stateName: item.name })}
                   >
                     <Text style={styles.exploreBtnText}>{String.ExploreStates_Explore}</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
 
@@ -247,6 +276,80 @@ const ExploreStatesScreen = () => {
           </View>
         </ScrollView>
       </View>
+
+      {/* Sort Modal */}
+      <Modal
+        visible={sortModalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setSortModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>{String.ExploreStates_Sort || 'Sort By'}</Text>
+              <TouchableOpacity style={styles.closeButton} onPress={() => setSortModalVisible(false)}>
+                <Text style={styles.closeButtonText}>✕</Text>
+              </TouchableOpacity>
+            </View>
+
+            {['Name (A-Z)', 'Name (Z-A)', 'Highest Trees', 'Highest Projects'].map((option) => (
+              <TouchableOpacity
+                key={option}
+                style={styles.optionRow}
+                onPress={() => {
+                  setSortOption(option);
+                  setSortModalVisible(false);
+                }}
+              >
+                <Text style={[styles.optionText, sortOption === option && styles.optionSelectedText]}>
+                  {option}
+                </Text>
+                <View style={[styles.radioButton, sortOption === option && styles.radioButtonSelected]}>
+                  {sortOption === option && <View style={styles.radioInner} />}
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </Modal>
+
+      {/* Filter Modal */}
+      <Modal
+        visible={filterModalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setFilterModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>{String.ExploreStates_Filter || 'Filter By'}</Text>
+              <TouchableOpacity style={styles.closeButton} onPress={() => setFilterModalVisible(false)}>
+                <Text style={styles.closeButtonText}>✕</Text>
+              </TouchableOpacity>
+            </View>
+
+            {['All', 'Has Trees', 'Has Projects'].map((option) => (
+              <TouchableOpacity
+                key={option}
+                style={styles.optionRow}
+                onPress={() => {
+                  setFilterOption(option);
+                  setFilterModalVisible(false);
+                }}
+              >
+                <Text style={[styles.optionText, filterOption === option && styles.optionSelectedText]}>
+                  {option}
+                </Text>
+                <View style={[styles.radioButton, filterOption === option && styles.radioButtonSelected]}>
+                  {filterOption === option && <View style={styles.radioInner} />}
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };

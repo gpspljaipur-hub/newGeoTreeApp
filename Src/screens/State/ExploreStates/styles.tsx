@@ -31,15 +31,15 @@ export const styles = StyleSheet.create({
     paddingHorizontal: MarginHW.PaddingW10,
   },
   backButton: {
-    width: ImageSize.ImageW35,
-    height: ImageSize.ImageH35,
+    width: 35,
+    height: 35,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: MarginHW.MarginH16
   },
   backIcon: {
-    width: ImageSize.ImageW20,
-    height: ImageSize.ImageH20,
+    width: 20,
+    height: 20,
     tintColor: Colors.textDark,
   },
   decorLeaves: {
@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     paddingHorizontal: MarginHW.PaddingW16,
     paddingVertical: MarginHW.PaddingH8,
-    borderRadius: 20,
+    borderRadius: 8,
     borderWidth: 1,
     borderColor: Colors.borderLight,
     shadowColor: Colors.black,
@@ -97,7 +97,6 @@ export const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-
     fontFamily: fonts.OpenSans_Regular,
     fontSize: FontsSize.size14,
     color: Colors.textDark,
@@ -131,10 +130,10 @@ export const styles = StyleSheet.create({
   },
   popularCard: {
     width: 145,
-    height: 195,
     backgroundColor: Colors.white,
-    borderRadius: 14,
-    marginRight: 12,
+    borderRadius: 10,
+    marginRight: 10,
+    marginBottom: 2,
     borderWidth: 1,
     borderColor: '#ECEFEF',
     overflow: 'hidden',
@@ -149,7 +148,7 @@ export const styles = StyleSheet.create({
     height: 95,
   },
   popularCardContent: {
-    padding: 12,
+    paddingHorizontal: 5,
     flex: 1,
     justifyContent: 'space-between',
   },
@@ -162,6 +161,8 @@ export const styles = StyleSheet.create({
   popularStatRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: 2,
+
     marginBottom: MarginHW.MarginH2,
   },
   popularStatIcon: {
@@ -235,7 +236,7 @@ export const styles = StyleSheet.create({
   allCard: {
     width: '48%',
     backgroundColor: Colors.white,
-    borderRadius: FontsSize.size16,
+    borderRadius: 10,
     marginBottom: MarginHW.MarginH10,
     borderWidth: 1,
     borderColor: Colors.borderLight,
@@ -419,5 +420,71 @@ export const styles = StyleSheet.create({
     fontSize: FontsSize.size14,
     color: Colors.textMuted,
     lineHeight: 18,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: FontsSize.size20,
+    borderTopRightRadius: FontsSize.size20,
+    padding: MarginHW.PaddingW20,
+    minHeight: 250,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: MarginHW.MarginH20,
+  },
+  modalTitle: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size18,
+    color: Colors.textDarkGreen,
+  },
+  closeButton: {
+    padding: MarginHW.PaddingH5,
+  },
+  closeButtonText: {
+    fontFamily: fonts.OpenSans_Bold,
+    fontSize: FontsSize.size16,
+    color: Colors.textDark,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: MarginHW.PaddingH14,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.borderLight,
+  },
+  optionText: {
+    fontFamily: fonts.OpenSans_Medium,
+    fontSize: FontsSize.size16,
+    color: Colors.textDark,
+  },
+  optionSelectedText: {
+    fontFamily: fonts.OpenSans_Bold,
+    color: Colors.legacyGreen,
+  },
+  radioButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: Colors.borderLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  radioButtonSelected: {
+    borderColor: Colors.legacyGreen,
+  },
+  radioInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: Colors.legacyGreen,
   },
 });
