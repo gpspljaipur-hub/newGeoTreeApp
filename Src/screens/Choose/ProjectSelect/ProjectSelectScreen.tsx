@@ -32,27 +32,27 @@ const ProjectSelectScreen = () => {
 
   // Extract project from navigation parameter
   const { project = {} } = route.params || {};
-  console.log('project', project, route.params)
+  console.log('project', project)
 
   // Dynamic values with static fallbacks matching "Aravalli Green Belt" design mockup
-  const projectName = route?.params?.title || 'Aravalli Green Belt';
-  const projectCategory = project?.category || 'Desert Restoration';
-  const projectDescription = project?.description || 'Restoring the Aravalli hills and enhancing biodiversity around Jaipur.';
-  const treesPlantedText = project?.treesPlanted || '25,000+';
-  const survivalRateText = project?.survivalRate || '96%';
+  const projectName = project?.site_name || '';
+  const projectCategory = project?.category || '';
+  const projectDescription = project?.description || '';
+  const treesPlantedText = project?.treesPlanted || '';
+  const survivalRateText = project?.survivalRate || '0%';
   const heroImage = project?.image || Images.aravali_belt;
-  const projectCity = project?.city || 'Jaipur, Rajasthan';
-  const projectAbout = project?.about || 'The Aravalli Green Belt project aims to restore the degraded Aravalli hills by planting native trees, improving soil health, and creating a sustainable green cover for future generations.';
-  const areaCoveredText = project?.areaCovered || '120+ Acres';
-  const projectSinceText = project?.projectSince || '2019';
-  const projectPartnerText = project?.projectPartner || 'Green Earth Foundation';
-  const plantationMethodText = project?.plantationMethod || 'Miyawaki & Native Plantation';
-  const soilTypeText = project?.soilType || 'Rocky, Sandy Loam';
-  const rainfallText = project?.rainfall || '650–700 mm/year';
-  const maintenanceText = project?.maintenance || '3 Years of Care & Monitoring';
-  const co2OffsetVal = project?.co2Offset || '5,200+ Tons';
-  const nativeSpeciesCountVal = project?.nativeSpeciesCount || '50+';
-  const waterSavedVal = project?.waterSaved || '1.8M+ Liters';
+  const projectCity = project?.city || '';
+  const projectAbout = project?.about || '';
+  const areaCoveredText = project?.area.toFixed(2) || '';
+  const projectSinceText = project?.project_start_date ? new Date(project.project_start_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+  const projectPartnerText = project?.project_partner_name || '';
+  const plantationMethodText = project?.plantationMethod || 'Plant';
+  const soilTypeText = project?.soil_type || '';
+  const rainfallText = project?.rain_fall || '';
+  const maintenanceText = project?.maintenance || '';
+  const co2OffsetVal = project?.co2Offset || '0';
+  const nativeSpeciesCountVal = project?.native_species.length || '';
+  const waterSavedVal = project?.waterSaved || '0';
 
   // Dynamic gallery with fallbacks
   const galleryImages = project?.gallery || [
@@ -200,7 +200,7 @@ const ProjectSelectScreen = () => {
               <View style={styles.statsCardColumn}>
                 {/* <Image source={Images.check} style={styles.statsCardIcon} resizeMode="contain" /> */}
                 <View style={styles.statsCardTextCol}>
-                  <Text style={styles.statsCardValue}>{survivalRateText}</Text>
+                  <Text style={styles.statsCardValue}>{survivalRateText}%</Text>
                   <Text style={styles.statsCardLabel}>{String.AppOpening_SurvivalRate}</Text>
                 </View>
               </View>
@@ -248,7 +248,7 @@ const ProjectSelectScreen = () => {
                 <View style={styles.quickStatIconBg}>
                   <Image source={Images.group} style={styles.quickStatIcon} resizeMode="contain" />
                 </View>
-                <Text style={styles.quickStatValue}>{String.ProjectSelect_NgoPartner}</Text>
+                <Text style={styles.quickStatValue}>{projectPartnerText}</Text>
                 <Text style={styles.quickStatLabel}>{String.ProjectSelect_TrustedPartner}</Text>
               </View>
             </View>
@@ -397,9 +397,9 @@ const ProjectSelectScreen = () => {
                 <View style={styles.speciesTitleContainer}>
                   <Text style={styles.sectionTitle}>{String.ProjectSelect_AvailableSpecies}</Text>
                 </View>
-                <TouchableOpacity onPress={() => { SpeciesAll() }} style={styles.viewAllSpeciesLink} activeOpacity={0.7}>
-                  <Text style={styles.viewAllSpeciesText}>{String.HomeDeshbord_ViewAll}</Text>
-                </TouchableOpacity>
+                {/* <TouchableOpacity onPress={() => { SpeciesAll() }} style={styles.viewAllSpeciesLink} activeOpacity={0.7}>
+                  <Text style={styles.viewAllSpeciesText}>{'View All'}</Text>
+                </TouchableOpacity> */}
               </View>
               <Text style={styles.speciesSubtitle}>
                 {String.ProjectSelect_ChooseNative}
